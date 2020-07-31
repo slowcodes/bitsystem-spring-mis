@@ -1,9 +1,6 @@
 package ng.com.bitsystems.mis.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -11,8 +8,9 @@ import java.util.Date;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @MappedSuperclass
 public class Person extends BaseEntity {
 
@@ -25,8 +23,6 @@ public class Person extends BaseEntity {
     private String sex;
     private String email;
     private String phone;
-    private String username;
-    private String password;
     private Date regDay;
     private String status;
     private Date lastLoginDay;
