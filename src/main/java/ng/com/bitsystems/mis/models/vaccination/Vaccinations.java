@@ -14,7 +14,6 @@ import javax.persistence.Entity;
 @Entity
 public class Vaccinations  extends BaseEntity {
 
-
      private Integer id;
      private Integer name;
      private Integer description;

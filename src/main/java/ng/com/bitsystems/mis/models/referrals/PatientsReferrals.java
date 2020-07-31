@@ -8,7 +8,7 @@ package ng.com.bitsystems.mis.models.referrals;
  */
 
 import lombok.*;
-import ng.com.bitsystems.mis.models.Person;
+import ng.com.bitsystems.mis.models.users.Person;
 import ng.com.bitsystems.mis.models.patients.Patients;
 
 import javax.persistence.Entity;
@@ -21,13 +21,9 @@ import javax.persistence.Entity;
 @Builder
 @Entity
 public class PatientsReferrals  extends Person {
-
-
      private int id;
      private Patients patientsByReferredPatient;
      private Patients patientsByReferringPatient;
-
-
 }
 
 

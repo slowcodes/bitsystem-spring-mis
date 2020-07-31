@@ -2,7 +2,7 @@ package ng.com.bitsystems.mis.models.accounts.payments;
 
 
 import lombok.*;
-import ng.com.bitsystems.mis.models.transactions.PharmacyTransactionDetailsSales;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransaction;
 
 import javax.persistence.Entity;
 
@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 @Entity
 public class PharmacyTransactionPaymentsSales extends Payments {
 
-     private PharmacyTransactionDetailsSales pharmacyTransactionDetailsSales;
+     private PharmacyTransaction pharmacyTransaction;
 
 }
 

@@ -4,6 +4,7 @@ package ng.com.bitsystems.mis.models.admissions.inpatients;
 
 import lombok.*;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.pharmacy.PrecriptionAdministration;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
@@ -16,12 +17,9 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @Entity
-public class InpatientPrescriptionAdministration extends BaseEntity {
+public class InpatientPrescriptionAdministration extends PrecriptionAdministration {
 
      private InpatientPharmacyPrescriptions inpatientPharmacyPrescriptions;
-     private Users users;
-     private Date administrationTime;
-     private String commentObservation;
 
 }
 

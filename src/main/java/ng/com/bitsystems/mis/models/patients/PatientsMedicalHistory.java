@@ -18,14 +18,10 @@ import java.util.Date;
 @Entity
 public class PatientsMedicalHistory  extends BaseEntity {
 
-
-     private Integer id;
      private Patients patients;
      private PatientsMedicalActivityListing patientsMedicalActivityListing;
      private Users users;
      private Date dateRecorded;
-
-
 
 }
 

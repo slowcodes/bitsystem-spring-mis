@@ -1,11 +1,10 @@
 package ng.com.bitsystems.mis.models.accounts;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
 import lombok.*;
 import ng.com.bitsystems.mis.models.BaseEntity;
-
-import javax.persistence.Entity;
+import ng.com.bitsystems.mis.models.transactions.Service;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,14 +13,12 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
-public class OtherServices extends BaseEntity {
+@Table(name ="other_services")
+public class OtherServices extends Service {
 
-     private Integer id;
+     @Column(name = "expense_book")
      private ExpenseBooks expenseBooks;
-     private Integer discount;
-     private Integer amount;
      private Set accountsOtherServiceBillingsPaymentses = new HashSet(0);
 
 }

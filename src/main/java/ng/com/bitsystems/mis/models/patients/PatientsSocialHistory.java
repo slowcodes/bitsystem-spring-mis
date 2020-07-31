@@ -18,13 +18,10 @@ import java.util.Date;
 @Entity
 public class PatientsSocialHistory  extends BaseEntity {
 
-
-     private Integer id;
      private PatientSocioCulturalHistoryDirectory patientSocioCulturalHistoryDirectory;
      private Patients patients;
      private Users users;
      private Date dateRecorded;
-
 
 }
 

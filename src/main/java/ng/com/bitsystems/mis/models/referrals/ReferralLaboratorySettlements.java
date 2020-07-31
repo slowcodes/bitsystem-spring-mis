@@ -4,7 +4,7 @@ package ng.com.bitsystems.mis.models.referrals;
 
 import lombok.*;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.LaboratoryTransactionDetails;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
 
 import javax.persistence.Entity;
 import java.util.Date;
@@ -18,7 +18,7 @@ import java.util.Date;
 public class ReferralLaboratorySettlements  extends BaseEntity {
 
 
-     private LaboratoryTransactionDetails laboratoryTransactionDetails;
+     private LaboratoryTransaction laboratoryTransaction;
      private ReferralLaboratorySettlementDetails referralLaboratorySettlementDetails;
      private Date logTime;
 

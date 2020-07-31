@@ -1,7 +1,6 @@
 package ng.com.bitsystems.mis.models.users;
 
 import lombok.*;
-import ng.com.bitsystems.mis.models.Person;
 
 import javax.persistence.MappedSuperclass;
 

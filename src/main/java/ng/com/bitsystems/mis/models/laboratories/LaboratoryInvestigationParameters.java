@@ -20,7 +20,7 @@ import javax.persistence.Entity;
 @Entity
 public class LaboratoryInvestigationParameters  extends BaseEntity {
 
-     private LabaratoryInvestigationResultByParams labaratoryInvestigationResultByParams;
+     private ExperimentResultsByParameters experimentResultsByParameters;
      private String variableName;
      private String value;
 

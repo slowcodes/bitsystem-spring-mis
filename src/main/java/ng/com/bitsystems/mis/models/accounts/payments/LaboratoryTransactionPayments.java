@@ -2,7 +2,7 @@ package ng.com.bitsystems.mis.models.accounts.payments;
 
 
 import lombok.*;
-import ng.com.bitsystems.mis.models.transactions.LaboratoryTransactionDetails;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
 
 import javax.persistence.Entity;
 
@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 @Entity
 public class LaboratoryTransactionPayments  extends Payments {
 
-     private LaboratoryTransactionDetails laboratoryTransactionDetails;
+     private LaboratoryTransaction laboratoryTransaction;
 
 }
 

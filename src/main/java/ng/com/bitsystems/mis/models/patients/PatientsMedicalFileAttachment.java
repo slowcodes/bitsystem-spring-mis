@@ -15,12 +15,9 @@ import javax.persistence.Entity;
 @Builder
 @Entity
 public class PatientsMedicalFileAttachment  extends BaseEntity {
-
      private Patients patients;
      private byte[] medicalFile;
      private String description;
-
-
 }
 
 

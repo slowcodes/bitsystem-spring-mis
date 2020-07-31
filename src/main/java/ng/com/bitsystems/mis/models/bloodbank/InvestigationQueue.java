@@ -8,7 +8,6 @@ package ng.com.bitsystems.mis.models.bloodbank;
  */
 import lombok.*;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.laboratories.Investigations;
 
 import javax.persistence.Entity;
 

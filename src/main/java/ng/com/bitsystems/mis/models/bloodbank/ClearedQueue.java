@@ -4,7 +4,6 @@ package ng.com.bitsystems.mis.models.bloodbank;
 
 import lombok.*;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.laboratories.InvestigationResults;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
@@ -24,7 +23,7 @@ public class ClearedQueue extends BaseEntity {
      private Users users;
      private Integer timeOfClearance;
      private BleedingSchedule bleedingSchedules;
-     private Set<InvestigationResults> investigationResults = new HashSet<>();
+     private Set<Results> investigationResults = new HashSet<>();
 }
 
 

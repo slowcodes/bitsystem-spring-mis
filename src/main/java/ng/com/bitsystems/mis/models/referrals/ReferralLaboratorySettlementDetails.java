@@ -18,13 +18,11 @@ import java.util.Set;
 @Entity
 public class ReferralLaboratorySettlementDetails  extends BaseEntity {
 
-
      private Integer id;
      private Integer preparedBy;
      private Date datePrepared;
      private Integer commision;
      private Set referralLaboratorySettlementses = new HashSet(0);
-
 
 }
 

@@ -21,7 +21,7 @@ import javax.persistence.Entity;
 
 public class LaboratoryPackageDetails  extends BaseEntity {
 
-     private LaboratoriesPackages laboratoriesPackages;
+     private Packages packages;
      private LaboratoryInvestigations laboratoryInvestigations;
 
 

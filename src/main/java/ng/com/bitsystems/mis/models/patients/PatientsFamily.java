@@ -19,15 +19,11 @@ import java.util.Set;
 @Entity
 public class PatientsFamily  extends BaseEntity {
 
-
-     private int id;
      private String familyName;
      private String phone;
      private String email;
      private Date dateRegistered;
      private Set patientses = new HashSet(0);
-
-
 
 }
 

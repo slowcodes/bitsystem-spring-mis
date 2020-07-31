@@ -19,12 +19,8 @@ import javax.persistence.Entity;
 @Builder
 @Entity
 public class PharmacyProductBarcodes  extends BaseEntity {
-
-
      private PharmacyProducts pharmacyProducts;
      private String barcode;
-
-
 }
 
 

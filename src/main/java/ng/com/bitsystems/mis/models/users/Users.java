@@ -21,7 +21,6 @@ public class Users  extends AccountHolder {
 
      private byte[] image;
      private Date regDay;
-
      private String title;
      private Set outpatientPrescriptionSchedules = new HashSet(0);
      private Set vaccinationTransactionsDetailses = new HashSet(0);

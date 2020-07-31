@@ -8,6 +8,8 @@ import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.MappedSuperclass;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,7 +18,6 @@ import java.util.Date;
 @Builder
 @MappedSuperclass
 public class Transaction extends BaseEntity {
-
     private Patients patients;
     private Users users;
     private Date dateTransaction;
@@ -24,4 +25,6 @@ public class Transaction extends BaseEntity {
     private String comment;
     private Integer discount;
     private Referrals referrals;
+    private Set insuranceLaboratoryTransactions = new HashSet(0);
+    private Set referralLaboratorySettlementses = new HashSet(0);
 }

@@ -24,7 +24,6 @@ public class Referrals  extends BaseEntity {
      private String bank;
      private String account;
      private String address;
-     private Set radiologyTransactionDetailses = new HashSet(0);
      private Set laboratoryInvoiceDetailses = new HashSet(0);
      private Set vaccinationTransactionsDetailses = new HashSet(0);
      private Set referralsReferalsForReferredId = new HashSet(0);
