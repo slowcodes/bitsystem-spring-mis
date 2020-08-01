@@ -1,36 +1,38 @@
 package ng.com.bitsystems.mis.models.accounts.pricing;
 
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.accounts.OtherServices;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
+@Table(name="service_price_code")
 public class ServicePriceCode extends BaseEntity {
-     private Integer priceId;
-     private Double buyingPrice;
-     private Double discountQty;
-     private Double sellingPrice;
-     private Double discountPrice;
+
+     @Column(name="service_price")
      private Double servicePrice;
-     private Set radiologyInvestigationses = new HashSet(0);
-     private Set inventories = new HashSet(0);
-     private Set laboratoryTransactionses = new HashSet(0);
-     private Set laboratoryInvestigationses = new HashSet(0);
-     private Set laboratoryInvoiceTrasactionses = new HashSet(0);
-     private Set bloodbankDonorDonatedStorages = new HashSet(0);
-     private Set bloodbankTransactionses = new HashSet(0);
-     private Set radiologyInvoiceTransactionses = new HashSet(0);
-     private Set radiologyTransactionses = new HashSet(0);
+     @Column(name = "discount_price")
+     private Double discountPrice;
+
+     //private Set <LaboratoryServiceTransactionDetail> laboratoryServiceTransactionDetails = new HashSet<>();
+     //private Set <VaccinationTransactionsDetails> vaccinationTransactionsDetails = new HashSet<>();
+     //private Set <BloodbankTransaction> bloodbankTransactions = new HashSet<>();
+
+     @OneToOne
+     private OtherServices otherServices;
 }
 
 

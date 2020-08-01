@@ -1,30 +1,35 @@
 package ng.com.bitsystems.mis.models.accounts.pricing;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class SalesPriceCode extends BaseEntity {
 
-     private Integer id;
+     @Column(name = "buying_price")
      private Double buyingPrice;
-     private Double sellingPrice;
-     private Double discountPrice;
-     private Integer discountQty;
-     private Set pharmacyProductses = new HashSet(0);
-     private Set pharmacyInvoiceTransactionses = new HashSet(0);
-     private Set pharmacyTransactionses = new HashSet(0);
 
+     @Column(name="selling_price")
+     private Double sellingPrice;
+
+     @Column(name="discount_price")
+     private Double discountPrice;
+
+     @Column(name="discount_quantity")
+     private Integer discountQty;
+     //private Set <PharmacyTransactionDetails> pharmacyTransactionDetails = new HashSet<>();
+     //private Set <Inventory> inventories = new HashSet<>();
 }
 
 

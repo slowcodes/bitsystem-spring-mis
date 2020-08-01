@@ -1,6 +1,9 @@
 package ng.com.bitsystems.mis.models.laboratories;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryServiceTransactionDetail;
 
@@ -13,7 +16,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class Results extends BaseEntity {
     LaboratoryServiceTransactionDetail laboratoryTransactionDetail;

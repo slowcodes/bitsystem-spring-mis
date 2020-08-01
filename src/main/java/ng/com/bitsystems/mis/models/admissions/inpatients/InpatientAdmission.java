@@ -2,7 +2,11 @@ package ng.com.bitsystems.mis.models.admissions.inpatients;
 // Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import ng.com.bitsystems.mis.models.admissions.Admission;
 import ng.com.bitsystems.mis.models.admissions.facilities.Beds;
 
 import javax.persistence.Entity;
@@ -14,13 +18,10 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
-public class InpatientAdmission extends ng.com.bitsystems.mis.models.admissions.Admission {
+public class InpatientAdmission extends Admission {
 
      private Beds admissionBed;
-     private String presentingComplaint;
-     private String provisionalDiagnosis;
      private Set inpatientAdmissionDischargeds = new HashSet(0);
      private Set inpatientPharmacyPrescriptionses = new HashSet(0);
 

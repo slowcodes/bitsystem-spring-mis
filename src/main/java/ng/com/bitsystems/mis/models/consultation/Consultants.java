@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
 
 import javax.persistence.MappedSuperclass;
 
@@ -13,9 +13,9 @@ import javax.persistence.MappedSuperclass;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-public class InitClinicals  extends BaseEntity {
-    private String presentingComplaints;
-    private String historyPresentingComplaints;
-    private String clinicalExamination;
-    private Integer provisionalDiagnosis;
+public class Consultants {
+
+    private String consultant;
+    private String description;
+    private ServicePriceCode consultationfee;
 }

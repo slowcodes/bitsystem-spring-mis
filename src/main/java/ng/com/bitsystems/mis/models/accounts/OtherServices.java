@@ -1,12 +1,14 @@
 package ng.com.bitsystems.mis.models.accounts;
 
 
-import lombok.*;
-import ng.com.bitsystems.mis.models.BaseEntity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
 import ng.com.bitsystems.mis.models.transactions.Service;
+
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Getter
@@ -17,9 +19,15 @@ import java.util.Set;
 @Table(name ="other_services")
 public class OtherServices extends Service {
 
-     @Column(name = "expense_book")
+     @JoinColumn(name = "expense_books_id")
+     @ManyToOne
      private ExpenseBooks expenseBooks;
-     private Set accountsOtherServiceBillingsPaymentses = new HashSet(0);
+
+     @Column(name = "service_description")
+     private String description;
+
+     @OneToOne(fetch = FetchType.EAGER)
+     private ServicePriceCode servicePriceCode;
 
 }
 

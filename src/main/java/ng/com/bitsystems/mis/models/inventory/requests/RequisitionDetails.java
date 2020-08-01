@@ -1,18 +1,20 @@
 package ng.com.bitsystems.mis.models.inventory.requests;
 
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.inventory.Inventory;
 
 import javax.persistence.Entity;
-import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 @Entity
 public class RequisitionDetails extends BaseEntity
 {

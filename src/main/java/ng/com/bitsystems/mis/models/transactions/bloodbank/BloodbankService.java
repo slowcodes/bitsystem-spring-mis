@@ -1,8 +1,11 @@
 package ng.com.bitsystems.mis.models.transactions.bloodbank;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.bloodbank.Storage;
 import ng.com.bitsystems.mis.models.transactions.Sales;
-import ng.com.bitsystems.mis.models.transactions.Service;
 
 import javax.persistence.Entity;
 
@@ -11,7 +14,6 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class BloodbankService extends Sales {
 

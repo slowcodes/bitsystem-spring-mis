@@ -1,6 +1,9 @@
 package ng.com.bitsystems.mis.models.accounts;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.*;
@@ -13,25 +16,20 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name="expense_books")
 public class ExpenseBooks extends BaseEntity {
-
-//     @Column(name = "expense_book")
-//     @OneToMany(cascade = CascadeType.ALL, mappedBy = "expenseBook")
-//     private ExpenseBooks expenseBooks;
 
      @Column(name = "desciption")
      private String description;
 
      @Column(name = "parent_book")
-     private Set<ExpenseBooks> parentBook = new HashSet<>();
+     private Integer parentBook;
 
-     @Column(name = "expense_manager")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "expenseBook")
      private Set<ExpenseManager> expenseManager = new HashSet<>();
 
-     @Column(name = "other_service")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "expenseBook")
      private Set<OtherServices> otherServices = new HashSet<>();
 
 }

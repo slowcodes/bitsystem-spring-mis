@@ -1,18 +1,23 @@
 package ng.com.bitsystems.mis.models.accounts.payments.insurance;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransaction;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
-public class InsuranceTransactionsPharmacyTransaction extends InsuranceTransactions {
+public class InsuredPharmacyTransactions extends InsuranceTransactions {
+
+     @OneToOne
      private PharmacyTransaction pharmacyTransaction;
 }
 

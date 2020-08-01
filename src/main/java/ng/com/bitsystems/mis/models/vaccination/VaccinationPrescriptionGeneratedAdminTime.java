@@ -1,7 +1,9 @@
 package ng.com.bitsystems.mis.models.vaccination;
 
-import lombok.*;
-import ng.com.bitsystems.mis.models.BaseEntity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.GeneratedAdministration;
 
 import javax.persistence.Entity;
@@ -11,7 +13,6 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class VaccinationPrescriptionGeneratedAdminTime  extends GeneratedAdministration {
 

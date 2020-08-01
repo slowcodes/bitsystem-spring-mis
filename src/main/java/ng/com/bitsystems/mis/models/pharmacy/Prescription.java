@@ -1,6 +1,9 @@
 package ng.com.bitsystems.mis.models.pharmacy;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
@@ -12,7 +15,6 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @MappedSuperclass
 public class Prescription extends BaseEntity {
     private PharmacyProducts pharmacyProducts;

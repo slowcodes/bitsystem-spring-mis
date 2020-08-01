@@ -1,29 +1,32 @@
 package ng.com.bitsystems.mis.models.accounts.payments.insurance;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class Programs extends BaseEntity {
+     @Column(name="insurance_company")
      private String insuranceCompany;
-     private Integer serviceDiscount;
-     private Integer companyEmail;
+
+     @Column(name="service_discount")
+     private Double serviceDiscount;
+
+     @Column(name="company_email")
+     private String companyEmail;
+
+     @Column(name="company_phone")
      private Integer companyPhone;
-     private Set insuranceVacinationTransactions = new HashSet(0);
-     private Set insurancePharmacyTransactions = new HashSet(0);
-     private Set insuranceLaboratoryTransactions = new HashSet(0);
-     private Set insuranceRadiologyTransactions = new HashSet(0);
-     private Set insuranceBloodbankTransactions = new HashSet(0);
 }
 
 

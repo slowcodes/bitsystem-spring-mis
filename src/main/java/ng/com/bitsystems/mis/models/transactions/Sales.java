@@ -1,11 +1,13 @@
 package ng.com.bitsystems.mis.models.transactions;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
 
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
 import java.util.Date;
 
 
@@ -13,7 +15,6 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @MappedSuperclass
 public class Sales extends BaseEntity {
 

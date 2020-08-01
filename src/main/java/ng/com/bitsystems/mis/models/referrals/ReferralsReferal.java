@@ -1,6 +1,9 @@
 package ng.com.bitsystems.mis.models.referrals;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
@@ -9,7 +12,6 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class ReferralsReferal  extends BaseEntity {
      private Referrals referralsByReferredId;
