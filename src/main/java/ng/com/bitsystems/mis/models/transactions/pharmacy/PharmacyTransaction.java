@@ -6,9 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.referrals.Referrals;
 import ng.com.bitsystems.mis.models.transactions.Transaction;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,8 +20,12 @@ import java.util.Set;
 @Entity
 public class PharmacyTransaction extends Transaction {
 
-     private Set pharmacyTransactionses = new HashSet(0);
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyTransaction")
+     private Set<PharmacyTransactionDetails> pharmacyTransactionDetails = new HashSet<>();
 
+     @ManyToOne
+     @JoinColumn(name = "refferals_id")
+     private Referrals referral;
 }
 
 

@@ -5,9 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.bloodbank.Storage;
+import ng.com.bitsystems.mis.models.transactions.bloodbank.BloodbankTransactionDetails;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 
 @Getter
@@ -28,6 +31,13 @@ public class SalesPriceCode extends BaseEntity {
 
      @Column(name="discount_quantity")
      private Integer discountQty;
+
+     @OneToOne
+     private Storage storage;
+
+     @OneToOne
+     private BloodbankTransactionDetails bloodbankTransactionDetails;
+
      //private Set <PharmacyTransactionDetails> pharmacyTransactionDetails = new HashSet<>();
      //private Set <Inventory> inventories = new HashSet<>();
 }

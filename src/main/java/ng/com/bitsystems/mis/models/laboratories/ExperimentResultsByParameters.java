@@ -7,11 +7,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryServiceTransactionDetail;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 
 import javax.persistence.Entity;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -21,12 +21,24 @@ import java.util.Set;
 @Entity
 public class ExperimentResultsByParameters extends BaseEntity {
 
-     private ExperimentResultParameters experimentResultParameters;
-     private LaboratoryServiceTransactionDetail laboratoryTransactionDetail;
+     @ManyToOne
+     @JoinColumn(name = "experimentparamenters_id")
+     private ExperimentParameters experimentParameters;
+
+     @ManyToOne
+     @JoinColumn(name = "laboratoryservicetransactiondetails_id")
+     private LaboratoryTransactionDetail laboratoryTransactionDetail;
+
      private String valueOfParameter;
      private String color;
-     private Set laboratoryInvestigationParameterses = new HashSet(0);
 
+//     @ManyToOne
+//     @JoinColumn(name = "LaboratoryTransactionDetail")
+//     private LaboratoryTransactionDetail laboratoryTransactionDetail;
+
+     @ManyToOne
+     @JoinColumn(name="collectedsamples_id")
+     private CollectedSamples collectedSamples;
 }
 
 

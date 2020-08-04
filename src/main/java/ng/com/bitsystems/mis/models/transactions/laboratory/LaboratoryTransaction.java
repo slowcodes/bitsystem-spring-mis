@@ -1,15 +1,16 @@
 package ng.com.bitsystems.mis.models.transactions.laboratory;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.laboratories.ObservationQueue;
+import ng.com.bitsystems.mis.models.accounts.payments.insurance.InsuredLaboratoryTransactions;
+import ng.com.bitsystems.mis.models.referrals.ReferralLaboratorySettlements;
+import ng.com.bitsystems.mis.models.referrals.Referrals;
 import ng.com.bitsystems.mis.models.transactions.Transaction;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,10 +21,23 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 public class LaboratoryTransaction extends Transaction {
+
      private String presentingComplaint;
      private String provsionalDiagnosis;
-     private Set laboratoryTransactionses = new HashSet(0);
-     private Set<ObservationQueue> observationQueues = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratoryTransaction")
+     private Set<LaboratoryTransactionDetail> laboratoryTransactionDetails = new HashSet<>();
+
+     @OneToOne
+     private InsuredLaboratoryTransactions insuredLaboratoryTransactions;
+
+     @ManyToOne
+     @JoinColumn(name = "referralLaboratorySettlements_id")
+     private ReferralLaboratorySettlements referralLaboratorySettlements;
+
+     @ManyToOne
+     @JoinColumn(name = "refferals_id")
+     private Referrals referral;
 }
 
 

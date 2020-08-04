@@ -6,23 +6,22 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.accounts.pricing.Rate;
 
-import javax.persistence.Entity;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Beds extends BaseEntity {
+public class Beds extends Facilities {
 
-     private Set inpatientAdmissions = new HashSet(0);
+     @Enumerated(value = EnumType.STRING)
      private BedCategory bedCategory;
-     private Rate rate;
+
+     @ManyToOne
+     @JoinColumn(name = "wards_id")
+     private Wards ward;
 }
 
 

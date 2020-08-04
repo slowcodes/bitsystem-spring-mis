@@ -9,8 +9,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.admissions.Admission;
 
 import javax.persistence.Entity;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.OneToOne;
 
 
 @Getter
@@ -20,7 +19,8 @@ import java.util.Set;
 @Entity
 public class OutpatientAdmission  extends Admission {
 
-     private Set outpatientAdmissionDischargeds = new HashSet(0);
+     @OneToOne
+     private OutpatientAdmissionDischarged outpatientAdmissionDischarged;
 
 }
 

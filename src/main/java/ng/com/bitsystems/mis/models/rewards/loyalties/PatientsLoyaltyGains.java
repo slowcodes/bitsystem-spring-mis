@@ -10,6 +10,8 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.patients.Patients;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 
@@ -20,8 +22,14 @@ import java.time.LocalDate;
 @Entity
 public class PatientsLoyaltyGains  extends BaseEntity {
 
+     @ManyToOne
+     @JoinColumn(name = "patients_id")
      private Patients patients;
+
+     @ManyToOne
+     @JoinColumn(name = "patientsloyaltyactivities_id")
      private PatientsLoyaltyActivites patientsLoyaltyActivites;
+
      private Integer redemption;
      private LocalDate date;
 

@@ -10,7 +10,10 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -20,11 +23,18 @@ import java.util.Date;
 @Entity
 public class Donations extends BaseEntity {
 
-
+     @OneToOne
      private BleedingSchedule bleedingSchedule;
+
+     @ManyToOne
+     @JoinColumn(name = "storage_id")
      private Storage storage;
+
+     @ManyToOne
+     @JoinColumn(name = "users_id")
      private Users users;
-     private Date timeOfDonation;
+
+     private LocalDateTime timeOfDonation;
      private String tagId;
 
 }

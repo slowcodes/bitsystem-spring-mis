@@ -8,6 +8,7 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.pricing.Rate;
 
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -16,5 +17,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class Facilities extends BaseEntity {
     private String locationDescription;
+
+    @OneToOne
     private Rate rate;
 }

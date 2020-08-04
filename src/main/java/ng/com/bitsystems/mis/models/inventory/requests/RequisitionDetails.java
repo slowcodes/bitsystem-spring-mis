@@ -9,6 +9,8 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.inventory.Inventory;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
@@ -18,11 +20,17 @@ import javax.persistence.Entity;
 @Entity
 public class RequisitionDetails extends BaseEntity
 {
+     @ManyToOne
+     @JoinColumn(name="inventory_id")
      private Inventory inventory;
+
+     @ManyToOne
+     @JoinColumn(name="requisitions_id")
      private Requisitions requisitions;
-     private int reqQty;
+
+     private Integer reqQty;
      private String reason;
-     private double estimatedCost;
+     private Double estimatedCost;
      private String status;
 }
 

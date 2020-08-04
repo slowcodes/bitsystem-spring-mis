@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
 import ng.com.bitsystems.mis.models.transactions.Service;
+import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.*;
 
@@ -16,10 +17,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name ="other_services")
+//@Table(name = "other_services")
 public class OtherServices extends Service {
 
-     @JoinColumn(name = "expense_books_id")
+     @JoinColumn(name = "expensebooks_id")
      @ManyToOne
      private ExpenseBooks expenseBooks;
 
@@ -28,6 +29,10 @@ public class OtherServices extends Service {
 
      @OneToOne(fetch = FetchType.EAGER)
      private ServicePriceCode servicePriceCode;
+
+     @JoinColumn(name = "users_id")
+     @ManyToOne
+     private Users createdBy;
 
 }
 

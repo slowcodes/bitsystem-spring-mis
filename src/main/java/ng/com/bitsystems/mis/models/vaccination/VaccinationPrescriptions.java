@@ -8,7 +8,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.Prescription;
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransactionsDetails;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,9 +23,11 @@ import java.util.Set;
 @Entity
 public class VaccinationPrescriptions extends Prescription {
 
+     @OneToOne
      private VaccinationTransactionsDetails vaccinationTransactionsDetails;
-     private Set vaccinationPrescriptionActualAdminTimes = new HashSet(0);
 
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "vaccinationPrescriptionSchedule")
+     private Set<VaccinationPrescriptionGeneratedAdmin> vaccinationPrescriptionGeneratedAdminTimes = new HashSet<>();
 }
 
 

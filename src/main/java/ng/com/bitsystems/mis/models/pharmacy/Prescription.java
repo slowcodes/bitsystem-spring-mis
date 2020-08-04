@@ -7,8 +7,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.MappedSuperclass;
-import java.util.Date;
+import javax.persistence.*;
 
 
 @Getter
@@ -17,11 +16,20 @@ import java.util.Date;
 @AllArgsConstructor
 @MappedSuperclass
 public class Prescription extends BaseEntity {
+    @ManyToOne
+    @JoinColumn(name = "pharmacyproducts_id")
     private PharmacyProducts pharmacyProducts;
+
+    @ManyToOne
+    @JoinColumn(name = "users_id")
     private Users users;
-    private Date form;
+
+    @Enumerated(value = EnumType.STRING)
+    private Form form;
     private String administrationMode;
+
     private int duration;
+
     private int frequency;
     private int dose;
     private String measure;

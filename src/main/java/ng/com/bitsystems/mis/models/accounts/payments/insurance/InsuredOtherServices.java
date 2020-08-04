@@ -7,7 +7,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -16,6 +16,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class InsuredOtherServices extends InsuranceTransactions {
 
-    @ManyToOne()
+    @OneToOne
     private OtherServices otherServices;
 }

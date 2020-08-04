@@ -9,6 +9,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,11 +20,13 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 public class Packages extends BaseEntity {
+
      private String packageName;
      private Double discount;
      private String packageDesc;
-     private Set radiologyPackageDetailses = new HashSet(0);
-     private Set laboratoryPackageDetailses = new HashSet(0);
+
+     @OneToMany(mappedBy = "packages")
+     private Set<LaboratoryPackageDetails> laboratoryPackageDetails = new HashSet<>();
 
 }
 

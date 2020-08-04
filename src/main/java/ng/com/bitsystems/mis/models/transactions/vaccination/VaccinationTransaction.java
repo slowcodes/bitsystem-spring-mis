@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.referrals.Referrals;
 import ng.com.bitsystems.mis.models.transactions.Transaction;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +17,10 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 public class VaccinationTransaction extends Transaction {
-    @ManyToOne
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vaccinationTransaction")
     Set<VaccinationTransactionsDetails> vaccinationTransactionsDetails = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "refferals_id")
+    private Referrals referral;
 }

@@ -8,7 +8,9 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -16,7 +18,9 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 public class PrecriptionAdministration extends BaseEntity {
+    @ManyToOne
+    @JoinColumn(name = "users_id")
     private Users users;
-    private Date administrationTime;
-    private String commentObservation;
+    private LocalDateTime administrationTime;
+    private String comment;
 }

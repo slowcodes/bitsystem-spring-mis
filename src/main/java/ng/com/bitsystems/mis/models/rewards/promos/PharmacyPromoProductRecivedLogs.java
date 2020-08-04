@@ -12,9 +12,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyService;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransactionDetails;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -23,10 +26,12 @@ import javax.persistence.Entity;
 @Entity
 public class PharmacyPromoProductRecivedLogs  extends BaseEntity {
 
-
-     private PharmacyPromoProductBasedRewards pharmacyPromoProductBasedRewards;
+     @ManyToOne
+     @JoinColumn(name = "pharmacypromosproducts_id")
      private PharmacyPromosProducts pharmacyPromosProducts;
-     private PharmacyService pharmacyTransactionDetails;
+
+     @OneToOne
+     private PharmacyTransactionDetails pharmacyTransactionDetails;
 
 
 }

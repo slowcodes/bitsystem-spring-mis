@@ -5,9 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
+import ng.com.bitsystems.mis.models.accounts.pricing.SalesPriceCode;
+import ng.com.bitsystems.mis.models.transactions.bloodbank.BloodbankTransactionDetails;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,12 +23,21 @@ import java.util.Set;
 @Entity
 public class Storage extends BaseEntity {
 
-     private ServicePriceCode servicePriceCode;
+     @OneToOne
+     private SalesPriceCode salesPriceCode;
+
      private String location;
+
      private String description;
-     private Set bloodbloodDonorIssuanceLogses = new HashSet(0);
-     private Set bloodbankTransactionses = new HashSet(0);
-     private Set bloodbankDonorDonateds = new HashSet(0);
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "storage")
+     private Set <BloodbankTransactionDetails> bloodbankTransactionDetails = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "storage")
+     private Set<Donations> donations = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "storage")
+     private Set<IssueLog> issueLogs = new HashSet<>();
 }
 
 

@@ -1,6 +1,4 @@
 package ng.com.bitsystems.mis.models.patients;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
-
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +8,9 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 
 
 @Getter
@@ -20,10 +20,19 @@ import java.util.Date;
 @Entity
 public class PatientsSocialHistory  extends BaseEntity {
 
-     private PatientSocioCulturalHistoryDirectory patientSocioCulturalHistoryDirectory;
+     @ManyToOne
+     @JoinColumn(name = "PatientSocioCulturalHistoryDirectory_id")
+     private PatientSocioCulturalHistoryDirectory patientSocioHistory;
+
+     @ManyToOne
+     @JoinColumn(name = "patients_id")
      private Patients patients;
+
+     @ManyToOne
+     @JoinColumn(name = "users_id")
      private Users users;
-     private Date dateRecorded;
+
+     private LocalDate dateRecorded;
 
 }
 

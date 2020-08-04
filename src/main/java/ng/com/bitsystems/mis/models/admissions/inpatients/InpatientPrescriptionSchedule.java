@@ -6,10 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.pharmacy.PrescriptionSchedule;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 
 @Getter
@@ -17,14 +17,11 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class InpatientPrescriptionSchedule  extends BaseEntity {
+public class InpatientPrescriptionSchedule  extends PrescriptionSchedule {
 
-
+     @OneToOne
      private InpatientPharmacyPrescriptions inpatientPharmacyPrescriptions;
-     private Users users;
-     private int noOfDosage;
-     private Integer hourlyInterval;
-     private Integer timeOfSchedule;
+
 
 }
 

@@ -1,42 +1,66 @@
 package ng.com.bitsystems.mis.models.pharmacy;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.accounts.pricing.SalesPriceCode;
+import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientPharmacyPrescriptions;
+import ng.com.bitsystems.mis.models.patients.PatientDrugAllergy;
+import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
+import ng.com.bitsystems.mis.models.rewards.promos.PharmacyRewardBasedPromo;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransactionDetails;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransactionsSupplies;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class PharmacyProducts  extends BaseEntity {
+public class PharmacyProducts  extends Drugs {
+     @ManyToMany
+     @JoinTable(name = "pharmacy_retails",
+             joinColumns = @JoinColumn(name = "pharmacyproducts_id"),
+             inverseJoinColumns = @JoinColumn(name = "retailmeasure_id"))
+     private Set<RetailMeasure> retailMeasure = new HashSet<>();
 
-     private SalesPriceCode salesPriceCode;
-     private PharmacyProductCategory pharmacyProductCategory;
-     private PharmacyProductRetailMeasure pharmacyProductRetailMeasure;
-     private String product;
-     private String description;
-     private byte[] image;
-     private Byte changePrice;
-     private Set pharmacyPromosProductses = new HashSet(0);
-     private Set patientDrugAllergies = new HashSet(0);
-     private Set pharmacyInvoiceTransactionses = new HashSet(0);
-     private Set pharmacyPromoProductBasedRewardses = new HashSet(0);
-     private Set pharmacyProductBarcodeses = new HashSet(0);
-     private Set inpatientPharmacyPrescriptionses = new HashSet(0);
-     private Set pharmacyTransactionses = new HashSet(0);
-     private Set vaccinationTransactionsPrescriptionses = new HashSet(0);
+     @ManyToMany
+     @JoinTable(name = "pharmacy_category",
+             joinColumns = @JoinColumn(name = "pharmacyproducts_id"),
+             inverseJoinColumns = @JoinColumn(name = "category_id"))
+     private Set<Category> categories = new HashSet<>();
 
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
+     private Set<PharmacyPromosProducts> pharmacyPromosProductses = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
+     private Set<PatientDrugAllergy> patientDrugAllergies = new HashSet<>();//     private Set pharmacyInvoiceTransactionses = new HashSet(0);
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
+     private Set<PharmacyTransactionsSupplies> transactionsSupplies = new HashSet<>();
+
+     @ManyToMany
+     @JoinTable(name = "pharmacy_suppliers",
+             joinColumns = @JoinColumn(name = "pharmacyproducts_id"),
+             inverseJoinColumns = @JoinColumn(name = "suppliers_id"))
+     private Set<Suppliers> suppliers = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "promosProducts")
+     private Set<PharmacyRewardBasedPromo> pharmacyRewardBasedPromos = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rewardProducts")
+     private Set<PharmacyRewardBasedPromo> pharmacyProducts = new HashSet<>();
+
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
+     private Set<Barcodes> barcodes = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
+     private Set<InpatientPharmacyPrescriptions> inpatientPharmacyPrescriptionses = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
+     private Set<PharmacyTransactionDetails> pharmacyTransactions = new HashSet<>();
 }
 
 

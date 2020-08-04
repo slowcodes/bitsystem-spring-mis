@@ -7,9 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.PrecriptionAdministration;
-import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -17,8 +18,11 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PrescriptionAdministrationLogs extends PrecriptionAdministration {
-     private VaccinationTransaction vaccinationTransaction;
+public class VaccineAdministration extends PrecriptionAdministration {
+
+     @ManyToOne
+     @JoinColumn(name = "vaccinationprescription_id")
+     private VaccinationPrescriptions vaccinationPrescriptions;
 }
 
 

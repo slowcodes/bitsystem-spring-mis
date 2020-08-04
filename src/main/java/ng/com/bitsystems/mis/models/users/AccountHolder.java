@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.MappedSuperclass;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -18,4 +19,9 @@ public class AccountHolder extends Person {
     private String email;
     private byte[] signature;
     private String accountStatus;
+    private byte[] image;
+    private Date regDay;
+    private String title;
+
+
 }

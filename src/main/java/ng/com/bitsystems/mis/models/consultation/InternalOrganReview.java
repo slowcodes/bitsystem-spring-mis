@@ -8,6 +8,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -17,9 +19,13 @@ import javax.persistence.Entity;
 @Entity
 public class InternalOrganReview extends BaseEntity {
 
-     private ClerkingSymptoms clerkingSymptoms;
+     @ManyToOne
+     @JoinColumn(name = "internalorgansdirectory_id")
      private InternalOrgansDirectory internalOrgansDirectory;
+
+     private Integer state; //0-10, 10-Perfect condition, 0 very bad condition
      private Integer review;
+     private ClerkingSymptoms clerkingSymptoms;
 
 }
 

@@ -7,6 +7,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.admissions.Discharged;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 
 @Getter
@@ -16,6 +17,7 @@ import javax.persistence.Entity;
 @Entity
 public class InpatientDischarged extends Discharged {
 
+     @OneToOne
      private InpatientAdmission inpatientAdmission;
 
 }

@@ -9,6 +9,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +23,9 @@ public class InventoryGroups  extends BaseEntity {
 
      private String groupName;
      private String groupDesc;
-     private Set inventories = new HashSet(0);
+
+     @ManyToMany(mappedBy = "inventoryGroups")
+     private Set<Inventory> inventories = new HashSet<>();
 
 }
 

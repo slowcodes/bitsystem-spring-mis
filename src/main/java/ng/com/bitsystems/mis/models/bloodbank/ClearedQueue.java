@@ -10,6 +10,9 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 @Getter
@@ -20,9 +23,15 @@ import javax.persistence.Entity;
 @Entity
 public class ClearedQueue extends BaseEntity {
 
-     private DonotionQueue donotionQueue;
+     @OneToOne
+     private DonationQueue donationQueue;
+
+     @ManyToOne
+     @JoinColumn(name = "users_id")
      private Users users;
      private Integer timeOfClearance;
+
+     @OneToOne
      private BleedingSchedule bleedingSchedules;
 }
 

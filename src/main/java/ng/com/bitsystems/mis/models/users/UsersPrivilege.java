@@ -7,6 +7,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -17,7 +19,9 @@ import javax.persistence.Entity;
 public class UsersPrivilege  extends BaseEntity {
 
 
-     private AccountHolder accountHolder;
+     @ManyToOne
+     @JoinColumn(name = "users_id")
+     private Users users;
      private String privileges;
 
 

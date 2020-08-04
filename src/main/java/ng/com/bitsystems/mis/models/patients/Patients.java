@@ -1,15 +1,26 @@
 package ng.com.bitsystems.mis.models.patients;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientAdmission;
+import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
+import ng.com.bitsystems.mis.models.bloodbank.DonorRegistry;
+import ng.com.bitsystems.mis.models.bloodbank.IssueLog;
+import ng.com.bitsystems.mis.models.consultation.BookConsultation;
+import ng.com.bitsystems.mis.models.consultation.Clerks;
+import ng.com.bitsystems.mis.models.invoice.Invoice;
+import ng.com.bitsystems.mis.models.referrals.PatientsReferrals;
+import ng.com.bitsystems.mis.models.rewards.loyalties.PatientsLoyaltyGains;
+import ng.com.bitsystems.mis.models.transactions.bloodbank.BloodbankTransaction;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransaction;
+import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 import ng.com.bitsystems.mis.models.users.AccountHolder;
-import ng.com.bitsystems.mis.models.users.States;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,42 +32,73 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 public class Patients  extends AccountHolder {
-
+     @ManyToOne
+     @JoinColumn(name = "")
      private PatientsFamily patientsFamily;
-     private States states;
-     private String firstName;
-     private String lastName;
-     private String phone;
-     private Date regDay;
-     private String address;
-     private String sex;
-     private String email;
+
      private Date dob;
      private String occupation;
      private String marritalStatus;
-     private byte[] photo;
-     private Set patientsConsultationAppointments = new HashSet(0);
-     private Set patientsReferralsesForReferredPatient = new HashSet(0);
-     private Set patientsSocialHistories = new HashSet(0);
-     private Set patientsMedicalHistories = new HashSet(0);
-     private Set patientsReferralsesForReferringPatient = new HashSet(0);
-     private Set pharmacyTransactionDetailsSaleses = new HashSet(0);
-     private Set radiologyInvoiceTransactionDetailses = new HashSet(0);
-     private Set radiologyTransactionDetailses = new HashSet(0);
-     private Set laboratoryTransactionDetailses = new HashSet(0);
-     private Set patientsFamilyHistories = new HashSet(0);
-     private Set bloodbloodDonorIssuanceLogses = new HashSet(0);
-     private Set inpatientAdmissions = new HashSet(0);
-     private Set outpatientAdmissions = new HashSet(0);
-     private Set patientsMedicalFileAttachments = new HashSet(0);
-     private Set bloodbankDonorRegistries = new HashSet(0);
-     private Set patientsLoyaltyGainses = new HashSet(0);
-     private Set patientConsultationsClerkingses = new HashSet(0);
-     private Set bloodbankTransactionDetailses = new HashSet(0);
-     private Set patientDrugAllergies = new HashSet(0);
-     private Set patientsVitalses = new HashSet(0);
-     private Set laboratoryInvoiceDetailses = new HashSet(0);
-     private Set vaccinationTransactionsDetailses = new HashSet(0);
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<BookConsultation> bookConsultations = new HashSet<>();
+
+//     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+//     private Set<PatientsReferrals> patientsReferrals = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<PatientsSocialHistory> patientsSocialHistories = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<PatientsMedicalHistory> patientsMedicalHistories = new HashSet<>();
+
+     @OneToOne
+     private PatientsReferrals patientsReferrals;
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<PharmacyTransaction> pharmacyTransaction = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<LaboratoryTransaction> laboratoryTransactions = new HashSet();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<PatientsMedicalHistory> patientsFamilyHistories = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<IssueLog> issueLogs = new HashSet(0);
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<InpatientAdmission> inpatientAdmissions = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<OutpatientAdmission> outpatientAdmissions = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set <PatientsMedicalFileAttachment> patientsMedicalFileAttachments = new HashSet<>();
+
+     @OneToOne
+     private DonorRegistry donorRegistry;
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<PatientsLoyaltyGains> patientsLoyaltyGainses = new HashSet();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<Clerks> Clerkings = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set <BloodbankTransaction> bloodbankTransaction = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<PatientDrugAllergy> patientDrugAllergies = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set <PatientsVitals> patientsVitalses = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<Invoice> invoices = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+     private Set<VaccinationTransaction> vaccinationTransaction = new HashSet<>();
 
 }
 

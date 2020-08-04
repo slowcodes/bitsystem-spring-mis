@@ -1,29 +1,31 @@
 package ng.com.bitsystems.mis.models.consultation;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.patients.Patients;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.MappedSuperclass;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@MappedSuperclass
+@Entity
 public class Clerks extends InitClinicals {
 
+     @ManyToOne
+     @JoinColumn(name = "patients_id")
      private Patients patients;
+
+     @ManyToOne
+     @JoinColumn(name ="user_id")
      private Users users;
-     private Date consultationDate;
-     private Set patientConsultationClerkingSymptomses = new HashSet(0);
+
+     private LocalDate consultationDate;
+
 
 }
 

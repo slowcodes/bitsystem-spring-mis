@@ -10,8 +10,8 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -22,10 +22,13 @@ import java.util.Set;
 @Entity
 public class DiseaseDirectory extends BaseEntity {
 
-     private Users users;
+     @ManyToOne
+     @JoinColumn(name = "users_id")
+     private Users createdBy;
+
      private String disease;
      private String description;
-     private Set patientsFamilyHistories = new HashSet(0);
+     //private Set<PatientsFamilyHistory> = new HashSet(0);
 
 }
 

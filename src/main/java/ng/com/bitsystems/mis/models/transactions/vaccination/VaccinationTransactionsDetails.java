@@ -1,5 +1,4 @@
 package ng.com.bitsystems.mis.models.transactions.vaccination;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
 import lombok.AllArgsConstructor;
@@ -7,9 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.transactions.Service;
+import ng.com.bitsystems.mis.models.vaccination.VaccinationPrescriptions;
 import ng.com.bitsystems.mis.models.vaccination.Vaccinations;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 @Getter
@@ -18,8 +21,17 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class VaccinationTransactionsDetails extends Service {
+
+     @ManyToOne()
+     @JoinColumn(name = "vaccinationtransaction_id")
      VaccinationTransaction vaccinationTransaction;
+
+     @ManyToOne
+     @JoinColumn(name = "vaccinations_id")
      Vaccinations vaccinations;
+
+     @OneToOne
+     VaccinationPrescriptions vaccinationPrescriptions;
 }
 
 

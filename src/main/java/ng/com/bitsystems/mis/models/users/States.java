@@ -7,10 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.patients.Patients;
 
 import javax.persistence.Entity;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -21,7 +21,9 @@ public class States  extends BaseEntity {
 
      private String state;
      private int code;
-     private Set patientses = new HashSet(0);
+
+     @OneToOne
+     private Patients patientse;
 
 }
 

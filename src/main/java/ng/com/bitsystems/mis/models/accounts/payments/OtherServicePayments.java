@@ -12,8 +12,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
+import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
@@ -25,7 +27,12 @@ import javax.persistence.ManyToOne;
 public class OtherServicePayments extends Payments {
 
      @ManyToOne
+     @JoinColumn(name = "otherservices_id")
      private OtherServices otherServices;
+
+     @JoinColumn(name="users_id")
+     @ManyToOne()
+     private Users users;
 }
 
 

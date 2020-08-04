@@ -7,7 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +20,9 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 public class Wards extends Facilities {
-     private Set admissionBedses = new HashSet(0);
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ward")
+     private Set<Beds> beds = new HashSet<>();
 }
 
 

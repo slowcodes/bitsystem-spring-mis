@@ -8,8 +8,10 @@ import ng.com.bitsystems.mis.models.consultation.InitClinicals;
 import ng.com.bitsystems.mis.models.patients.Patients;
 import ng.com.bitsystems.mis.models.users.Users;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,8 +19,15 @@ import java.util.Date;
 @AllArgsConstructor
 @MappedSuperclass
 public class Admission extends InitClinicals {
+
+    @ManyToOne
+    @JoinColumn(name = "patients_id")
     private Patients patients;
+
+    @ManyToOne
+    @JoinColumn(name = "users_id")
     private Users users;
+
     private String status;
-    private Date admissionDate;
+    private LocalDate admissionDate;
 }

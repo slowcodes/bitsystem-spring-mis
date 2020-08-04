@@ -6,9 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import ng.com.bitsystems.mis.models.pharmacy.Prescription;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,10 +21,19 @@ import java.util.Set;
 @Entity
 public class InpatientPharmacyPrescriptions  extends Prescription {
 
+     @ManyToOne
+     @JoinColumn(name = "inpatientadmission_id")
      private InpatientAdmission inpatientAdmission;
-     private Set inpatientPrescriptionSchedules = new HashSet(0);
-     private Set inpatientPrescriptionActualAdminTimes = new HashSet(0);
 
+     @OneToOne
+     private InpatientPrescriptionSchedule inpatientPrescriptionSchedules;
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientPharmacyPrescriptions")
+     private Set<InpatientPrescriptionAdministration> inpatientPrescriptionAdministrations = new HashSet<>();
+
+     @ManyToOne
+     @JoinColumn(name = "pharmacyproduct_id")
+     private PharmacyProducts pharmacyProducts;
 }
 
 

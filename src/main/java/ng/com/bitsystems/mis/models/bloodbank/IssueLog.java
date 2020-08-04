@@ -10,7 +10,9 @@ import ng.com.bitsystems.mis.models.patients.Patients;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 
 
 @Getter
@@ -20,11 +22,19 @@ import java.util.Date;
 @Entity
 public class IssueLog extends BaseEntity {
 
+     @ManyToOne
+     @JoinColumn(name = "storage_id")
      private Storage storage;
-     private Patients patients;
-     private Users users;
-     private Date issueDate;
 
+     @ManyToOne
+     @JoinColumn(name = "patient_id")
+     private Patients patients;
+
+     @ManyToOne
+     @JoinColumn(name = "users_id")
+     private Users users;
+
+     private LocalDate issueDate;
 }
 
 

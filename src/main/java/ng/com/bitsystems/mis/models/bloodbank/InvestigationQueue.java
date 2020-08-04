@@ -15,6 +15,9 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 @Getter
@@ -24,8 +27,12 @@ import javax.persistence.Entity;
 @Entity
 public class InvestigationQueue extends BaseEntity {
 
+     @ManyToOne
+     @JoinColumn(name = "laboratoryinvestigations_id")
      private LaboratoryInvestigations laboratoryInvestigations;
-     private DonotionQueue donotionQueue;
+
+     @OneToOne
+     private DonationQueue donationQueue;
 }
 
 

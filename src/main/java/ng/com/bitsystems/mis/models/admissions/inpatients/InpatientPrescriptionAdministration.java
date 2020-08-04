@@ -1,5 +1,4 @@
 package ng.com.bitsystems.mis.models.admissions.inpatients;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
 import lombok.AllArgsConstructor;
@@ -9,6 +8,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.PrecriptionAdministration;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -18,6 +19,8 @@ import javax.persistence.Entity;
 @Entity
 public class InpatientPrescriptionAdministration extends PrecriptionAdministration {
 
+     @ManyToOne
+     @JoinColumn(name = "inpatientpharmacyprescriptions_id")
      private InpatientPharmacyPrescriptions inpatientPharmacyPrescriptions;
 
 }

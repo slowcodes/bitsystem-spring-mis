@@ -10,8 +10,8 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,18 +22,28 @@ import java.util.Set;
 @Entity
 public class PharmacyPromosProducts  extends BaseEntity {
 
+     @ManyToOne
+     @JoinColumn(name = "pharmacyproducts_id")
      private PharmacyProducts pharmacyProducts;
+
+     @ManyToOne
+     @JoinColumn(name = "users_id")
      private Users users;
+
      private int status;
      private String title;
      private String description;
-     private Date dateCreated;
-     private Date startDay;
-     private Date endDay;
+     private LocalDate dateCreated;
+     private LocalDate startDay;
+     private LocalDate endDay;
      private Integer qty;
      private Integer productPromoExclusivity;
-     private Set pharmacyPromoProductBasedRewardses = new HashSet(0);
-     private Set pharmacyPromoProductRecivedLogses = new HashSet(0);
+
+     @OneToOne
+     private PharmacyRewardBasedPromo pharmacyRewardBasedPromos;
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyPromosProducts")
+     private Set<PharmacyPromoProductRecivedLogs> pharmacyPromoProductRecivedLogs= new HashSet<>();
 
 }
 

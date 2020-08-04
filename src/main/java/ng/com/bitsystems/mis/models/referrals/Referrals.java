@@ -1,14 +1,19 @@
 package ng.com.bitsystems.mis.models.referrals;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.transactions.bloodbank.BloodbankTransaction;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransaction;
+import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
+import ng.com.bitsystems.mis.models.users.Person;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,20 +22,29 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Referrals  extends BaseEntity {
-     private String name;
-     private String phone;
+public class Referrals  extends Person {
+
      private String organisation;
-     private String email;
      private String bank;
      private String account;
-     private String address;
-     private Set laboratoryInvoiceDetailses = new HashSet(0);
-     private Set vaccinationTransactionsDetailses = new HashSet(0);
-     private Set referralsReferalsForReferredId = new HashSet(0);
-     private Set referralsReferalsForReferralId = new HashSet(0);
-     private Set laboratoryTransactionDetailses = new HashSet(0);
-     private Set radiologyInvoiceTransactionDetailses = new HashSet(0);
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referral")
+     private Set<PharmacyTransaction> pharmacyTransactions = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referral")
+     private Set<VaccinationTransaction> vaccinationTransactions = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralreferral")
+     private Set<ReferralsReferal> referralreferral = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referred")
+     private Set<ReferralsReferal> referred  = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referral")
+     private Set<LaboratoryTransaction> laboratoryTransactions = new HashSet<>();
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referral")
+     private Set<BloodbankTransaction> bloodbankTransactions= new HashSet<>();
 
 }
 

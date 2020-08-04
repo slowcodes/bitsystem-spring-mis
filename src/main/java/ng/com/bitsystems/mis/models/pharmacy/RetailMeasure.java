@@ -9,24 +9,23 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PharmacySuppliers  extends BaseEntity {
+public class RetailMeasure extends BaseEntity {
 
-     private String companyName;
-     private String contactPerson;
-     private String contactPhone;
-     private String contactEmail;
-     private String address;
-     private Date registrationDate;
-     private String sex;
-     private String state;
-     private String comment;
+     private String metric;
+     private String mesures;
+
+     @ManyToMany(mappedBy = "retailMeasure")
+     private Set<PharmacyProducts> pharmacyProducts = new HashSet<>();
+
 }
 
 

@@ -5,11 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryServiceTransactionDetail;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,11 +21,20 @@ import java.util.Set;
 @Entity
 public class CollectedSamples extends BaseEntity {
 
-     private LaboratoryServiceTransactionDetail laboratoryTransactionDetail;
+     @OneToOne
+     private LaboratoryTransactionDetail laboratoryTransactionDetail;
+
+     @ManyToOne
+     @JoinColumn(name = "users_id")
      private Users users;
-     private String sampleType;
+
+     @Enumerated(value = EnumType.STRING)
+     private SampleType sampleType;
+
      private Integer analysed;
-     private Date dateOfCollection;
+     private LocalDate dateOfCollection;
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "collectedSamples")
      private Set<ExperimentResultsByParameters> experimentResultsByParams = new HashSet<>();
 }
 

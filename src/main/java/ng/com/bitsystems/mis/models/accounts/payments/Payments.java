@@ -13,12 +13,12 @@ import java.util.Date;
 @MappedSuperclass
 public class Payments extends BaseEntity {
 
-    @Column(name="teller")
     @ManyToOne()
     private Users users;
 
     @Column(name="payment_method")
-    private String paymentMethod;
+    @Enumerated(EnumType.STRING)
+    private PaymentMethods paymentMethod;
 
     @Column(name="amount_paid")
     private double amountPaid;

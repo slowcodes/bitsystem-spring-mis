@@ -10,9 +10,10 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -20,10 +21,18 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 public class BleedingSchedule extends BaseEntity {
+
+     @OneToOne
      private ClearedQueue clearedQueue;
+
+     @ManyToOne
+     @JoinColumn(name = "users_id")
      private Users users;
-     private Date timeOfSchedule;
-     private Set bloodbankDonorDonateds = new HashSet(0);
+
+     private LocalDateTime timeOfSchedule;
+
+     @OneToOne
+     private DonationQueue donationQueue;
 }
 
 

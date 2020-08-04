@@ -5,12 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryServiceTransactionDetail;
+import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -18,13 +19,19 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 public class Results extends BaseEntity {
-    LaboratoryServiceTransactionDetail laboratoryTransactionDetail;
-    private int user;
+
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private Users users;
     private String footNote;
     private Date logTime;
     private String resultNote;
     private String commentColor;
     private String signatoryColor;
-    private Set laboratoryInvestigationResultVerifieds = new HashSet(0);
-    private Set laboratoryInvestigationResultCollectionLogses = new HashSet(0);
+
+    @OneToOne
+    private VerifiedResults verifiedResults;
+
+    @OneToOne
+    private ResultCollectionLog resultCollectionLog;
 }

@@ -7,6 +7,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @Getter
@@ -15,8 +17,12 @@ import javax.persistence.MappedSuperclass;
 @AllArgsConstructor
 @MappedSuperclass
 public class InsuranceTransactions extends BaseEntity {
-    @Column(name="insurance_program")
+
+
+    @ManyToOne
+    @JoinColumn(name="programs_id")
     private Programs programs;
+
     @Column(name="percentage_incured")
-    private Integer percentageIncured;
+    private Double percentageIncured;
 }

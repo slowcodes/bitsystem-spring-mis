@@ -15,6 +15,8 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -24,8 +26,14 @@ import javax.persistence.Entity;
 @Entity
 public class InventoryPerLaboratoryTransaction  extends BaseEntity {
 
+     @ManyToOne
+     @JoinColumn(name = "inventory_id")
      private Inventory inventory;
+
+     @ManyToOne
+     @JoinColumn(name = "laboratoryinvestigation_id")
      private LaboratoryInvestigations laboratoryInvestigations;
+
      private Integer requiredQty;
 
 }

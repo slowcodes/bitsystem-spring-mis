@@ -7,10 +7,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransactionsDetails;
+import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 
 @Getter
@@ -18,12 +19,16 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="vaccination_transaction_payments")
+//@Table(name="vaccination_transaction_payments")
 public class VaccinationTransactionsPayments  extends Payments {
 
-     @ManyToOne()
+     @ManyToOne
+     @JoinColumn(name = "vaccinationtransactionsdetails_id")
      private VaccinationTransactionsDetails vaccinationTransactionsDetails;
 
+     @JoinColumn(name="users_id")
+     @ManyToOne()
+     private Users users;
 }
 
 

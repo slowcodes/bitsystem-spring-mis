@@ -5,9 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
+import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromoProductRecivedLogs;
 import ng.com.bitsystems.mis.models.transactions.Sales;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -15,6 +18,19 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class PharmacyTransactionDetails extends Sales {
-    PharmacyProducts pharmacyProducts;
+
+    @ManyToOne
+    @JoinColumn(name = "pharmacyproducts_id")
+    private PharmacyProducts pharmacyProducts;
+
+
+    @ManyToOne
+    @JoinColumn(name = "pharmacytransaction_id")
     private PharmacyTransaction pharmacyTransaction;
+
+    @OneToOne
+    PharmacyPromoProductRecivedLogs pharmacyPromoProductRecivedLogs;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyTransactionDetails")
+    private Set<AdditionalTransactionDetails> additionalTransactionDetails = new HashSet<>();
 }

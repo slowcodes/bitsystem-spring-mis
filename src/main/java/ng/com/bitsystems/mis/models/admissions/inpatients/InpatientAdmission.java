@@ -9,7 +9,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.admissions.Admission;
 import ng.com.bitsystems.mis.models.admissions.facilities.Beds;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,9 +24,14 @@ import java.util.Set;
 @Entity
 public class InpatientAdmission extends Admission {
 
+     @OneToOne
      private Beds admissionBed;
-     private Set inpatientAdmissionDischargeds = new HashSet(0);
-     private Set inpatientPharmacyPrescriptionses = new HashSet(0);
+
+     @OneToOne
+     private InpatientDischarged inpatientDischarged;
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientAdmission")
+     private Set<InpatientPharmacyPrescriptions> inpatientPharmacyPrescriptions = new HashSet<>();
 
 }
 

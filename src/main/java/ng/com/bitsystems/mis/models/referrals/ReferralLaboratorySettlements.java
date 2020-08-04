@@ -9,8 +9,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
 
-import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,10 +21,14 @@ import java.util.Date;
 @Entity
 public class ReferralLaboratorySettlements  extends BaseEntity {
 
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralLaboratorySettlements" )
+     private Set<LaboratoryTransaction> laboratoryTransaction = new HashSet<>();
 
-     private LaboratoryTransaction laboratoryTransaction;
+     @ManyToOne
+     @JoinColumn(name = "ReferralLaboratorySettlementDetails_id")
      private ReferralLaboratorySettlementDetails referralLaboratorySettlementDetails;
-     private Date logTime;
+
+     private LocalDateTime logTime;
 
 
 }

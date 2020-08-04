@@ -9,7 +9,9 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
-import java.time.LocalDate;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -19,8 +21,11 @@ import java.time.LocalDate;
 @Entity
 public class InpatientPrescriptionGeneratedAdminTime  extends BaseEntity {
 
+     @ManyToOne
+     @JoinColumn(name = "inpatientprescriptionschedule_id")
      private InpatientPrescriptionSchedule schedule;
-     private LocalDate extimatedAdminTime;
+
+     private LocalDateTime extimatedAdminTime;
 
 }
 

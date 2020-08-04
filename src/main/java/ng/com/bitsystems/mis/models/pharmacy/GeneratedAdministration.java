@@ -7,6 +7,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -15,6 +17,8 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class GeneratedAdministration extends BaseEntity {
+    @ManyToOne
+    @JoinColumn(name = "pharmacyproduct_id")
     private PharmacyProducts pharmacyProducts;
     private Integer extimatedAdminTime;
 }

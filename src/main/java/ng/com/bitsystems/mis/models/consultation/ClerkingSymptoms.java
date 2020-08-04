@@ -9,8 +9,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -20,10 +20,15 @@ import java.util.Set;
 @Entity
 public class ClerkingSymptoms extends BaseEntity {
 
+     @ManyToOne
+     @JoinColumn(name = "symptomsdirectory_id")
      private SymptomsDirectory symptomsDirectory;
-     private Clerks clerks;
+
      private Integer degree;
-     private Set patientConsultationOrganReviews = new HashSet(0);
+
+     @ManyToOne
+     @JoinColumn(name = "clerks_id")
+     private Clerks clerks;
 
 }
 

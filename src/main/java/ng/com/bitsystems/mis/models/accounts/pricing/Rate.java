@@ -5,11 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.admissions.facilities.Beds;
+import ng.com.bitsystems.mis.models.admissions.facilities.Wards;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -27,4 +26,11 @@ public class Rate extends BaseEntity {
 
     @Column(name = "service_description")
     private String service_description;
+
+    @OneToOne
+    private Beds beds;
+
+    @OneToOne
+    private Wards wards;
+
 }

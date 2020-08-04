@@ -1,6 +1,4 @@
 package ng.com.bitsystems.mis.models.patients;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
-
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +7,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -17,8 +17,13 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class PatientsMedicalFileAttachment  extends BaseEntity {
+
+     @ManyToOne
+     @JoinColumn(name = "patients_id")
      private Patients patients;
+
      private byte[] medicalFile;
+
      private String description;
 }
 

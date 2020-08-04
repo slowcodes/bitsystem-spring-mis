@@ -7,6 +7,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
@@ -14,8 +16,14 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class ReferralsReferal  extends BaseEntity {
-     private Referrals referralsByReferredId;
-     private Referrals referralsByReferralId;
+
+     @ManyToOne
+     @JoinColumn(name = "referrals_id", insertable = false, updatable = false)
+     private Referrals referred;
+
+     @ManyToOne
+     @JoinColumn(name = "referrals_id", insertable = false, updatable = false)
+     private Referrals referralreferral;
 
 }
 

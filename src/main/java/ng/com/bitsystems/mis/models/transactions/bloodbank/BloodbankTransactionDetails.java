@@ -8,6 +8,8 @@ import ng.com.bitsystems.mis.models.bloodbank.Storage;
 import ng.com.bitsystems.mis.models.transactions.Sales;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -15,10 +17,15 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class BloodbankService extends Sales {
+public class BloodbankTransactionDetails extends Sales {
 
+     @ManyToOne
+     @JoinColumn(name = "storage_id")
      private Storage storage;
-     private BloodbankTransaction bloodbankTransaction;
+
+     @ManyToOne
+     @JoinColumn(name = "bloodbanktransaction_id")
+     private BloodbankTransaction bloodbanktransaction;
 
 }
 

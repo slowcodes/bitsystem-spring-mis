@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +24,9 @@ public class ReferralLaboratorySettlementDetails  extends BaseEntity {
      private Integer preparedBy;
      private Date datePrepared;
      private Integer commision;
-     private Set referralLaboratorySettlementses = new HashSet(0);
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralLaboratorySettlementDetails")
+     private Set<ReferralLaboratorySettlements> referralLaboratorySettlements = new HashSet<>();
 
 }
 

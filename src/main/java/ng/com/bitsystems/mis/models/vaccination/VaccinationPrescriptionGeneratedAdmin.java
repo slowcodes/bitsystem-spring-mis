@@ -7,6 +7,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.GeneratedAdministration;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -14,8 +16,10 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class VaccinationPrescriptionGeneratedAdminTime  extends GeneratedAdministration {
+public class VaccinationPrescriptionGeneratedAdmin extends GeneratedAdministration {
 
+     @ManyToOne
+     @JoinColumn(name = "vaccinationprescriptions_id")
      private VaccinationPrescriptionSchedule vaccinationPrescriptionSchedule;
 
 }

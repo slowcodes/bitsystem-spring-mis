@@ -7,6 +7,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @Getter
@@ -16,6 +18,8 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class Discharged extends BaseEntity {
 
+    @ManyToOne
+    @JoinColumn(name = "users_id")
     private Users users;
     private Integer dateDischarged;
     private Integer comment;

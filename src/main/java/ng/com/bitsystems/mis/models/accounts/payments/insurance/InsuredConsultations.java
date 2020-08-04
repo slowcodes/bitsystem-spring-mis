@@ -7,6 +7,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Getter
@@ -15,6 +16,8 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @Entity
 public class InsuredConsultations extends InsuranceTransactions {
+
     @ManyToOne
+    @JoinColumn(name = "bookconsultation_id")
     private BookConsultation bookConsultation;
 }

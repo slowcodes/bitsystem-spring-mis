@@ -5,11 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.accounts.pricing.Rate;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.pharmacy.PrescriptionSchedule;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,15 +19,10 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class VaccinationPrescriptionSchedule  extends BaseEntity {
+public class VaccinationPrescriptionSchedule  extends PrescriptionSchedule {
 
-     private Users users;
-     private VaccinationPrescriptionSchedule vaccinationPrescriptionSchedule;
-     private int noOfDosage;
-     private Rate rate;
-     private Integer timeOfSchedule;
-     private Set vaccinationPrescriptionGeneratedAdminTimes = new HashSet(0);
-     private Set vaccinationPrescriptionSchedules = new HashSet(0);
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "vaccinationPrescriptionSchedule")
+     private Set<VaccinationPrescriptionGeneratedAdmin> vaccinationPrescriptionGeneratedAdminTimes = new HashSet<>();
 
 }
 

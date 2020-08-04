@@ -7,6 +7,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
@@ -14,5 +16,10 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class OtherServiceInvoiceDetails extends OtherServices {
+
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "invoice_id")
+    private Invoice invoice;
 }

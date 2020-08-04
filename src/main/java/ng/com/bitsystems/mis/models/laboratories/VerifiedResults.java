@@ -10,6 +10,8 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.util.Date;
 
 @Getter
@@ -19,7 +21,10 @@ import java.util.Date;
 @Entity
 public class VerifiedResults extends BaseEntity {
 
+     @OneToOne
      private Results results;
+
+     @ManyToOne
      private Users users;
      private Date timeOfVerfication;
 

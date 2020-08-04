@@ -34,6 +34,7 @@ public class Person extends BaseEntity {
     @Column(name = "lastLoginDate")
     private Date lastLoginDay;
 
+
     public Person(Long id, String firstName, String lastName){
         super(id);
         this.firstName = firstName;

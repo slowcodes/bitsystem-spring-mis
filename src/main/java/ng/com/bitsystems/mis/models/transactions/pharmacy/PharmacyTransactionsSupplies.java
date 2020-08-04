@@ -8,7 +8,9 @@ import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import ng.com.bitsystems.mis.models.transactions.Service;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,11 +19,20 @@ import java.util.Date;
 
 @Entity
 public class PharmacyTransactionsSupplies  extends Service {
+
+     @ManyToOne
+     @JoinColumn(name = "supplyTransaction_id")
+     private SupplyTransactions supplyTransactions;
+
      private Double qty;
+
+     @ManyToOne
+     @JoinColumn(name = "pharmacyproducts_id")
      private PharmacyProducts pharmacyProducts;
+
      private String batchNumber;
      private String comment;
-     private Date expiryDate;
+     private LocalDate expiryDate;
 
 }
 

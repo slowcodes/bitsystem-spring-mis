@@ -7,8 +7,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,9 +18,14 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 public class Requisitions extends BaseEntity {
+     @ManyToOne
+     @JoinColumn(name="users_id")
      private Users users;
-     private Date date;
-     private Date dateOfRequisition;
+
+     private LocalDate dateOfRequisition;
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "requisitions")
+     private Set<RequisitionDetails> requistionDetails = new HashSet<>();
 }
 
 

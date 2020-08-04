@@ -9,6 +9,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,8 +26,12 @@ public class PatientsFamily  extends BaseEntity {
      private String phone;
      private String email;
      private Date dateRegistered;
-     private Set patientses = new HashSet(0);
 
+     @OneToMany(mappedBy = "patientsFamily")
+     private Set<Patients> patients = new HashSet<>();
+
+     @OneToMany(mappedBy = "patientsFamily")
+     private Set<PatientsFamilyHistory> patientsFamilyHistory = new HashSet<>();
 }
 
 

@@ -1,5 +1,4 @@
 package ng.com.bitsystems.mis.models.laboratories;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
 import lombok.AllArgsConstructor;
@@ -7,10 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryServiceTransactionDetail;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 
 import javax.persistence.Entity;
-import java.util.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -19,9 +21,15 @@ import java.util.Date;
 @Entity
 public class PendingSampleCollection extends BaseEntity {
 
-     private LaboratoryServiceTransactionDetail laboratoryTransactionDetail;
-     private Integer samplePackage;
-     private Date requestTime;
+
+     @OneToOne
+     private LaboratoryTransactionDetail laboratoryTransactionDetail;
+
+     @ManyToOne
+     @JoinColumn(name = "laboratorypackagedatils_id")
+     private LaboratoryPackageDetails laboratoryPackageDetails;
+
+     private LocalDate requestTime;
      private Integer collectionStatus;
 
 }

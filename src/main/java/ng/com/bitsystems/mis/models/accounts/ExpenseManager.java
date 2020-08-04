@@ -7,7 +7,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Getter
@@ -15,18 +18,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name ="expense_manager")
+//@Table(name = "expense_manager")
 public class ExpenseManager extends BaseEntity {
 
-     @JoinColumn(name = "expense_books_id")
-     @ManyToOne()
-     private ExpenseBooks expenseBook;
-
-     @Column(name = "fund_issuer")
+     @JoinColumn(name = "users_id", insertable = false, updatable = false)
      @ManyToOne()
      private Users usersByIssueTo;
 
-     @Column(name = "fund_reciever")
+     @JoinColumn(name = "users_id", insertable = false, updatable = false)
      @ManyToOne()
      private Users usersByTeller;
 
@@ -38,6 +37,10 @@ public class ExpenseManager extends BaseEntity {
 
      @Column(name = "purpose_of_expenditure")
      private String purpose;
+
+     @ManyToOne
+     @JoinColumn(name="expensebook_id")
+     private ExpenseBooks expenseBooks;
 
 }
 
