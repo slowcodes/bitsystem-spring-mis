@@ -1,4 +1,4 @@
-package ng.com.bitsystems.mis.models.bloodbank;
+package ng.com.bitsystems.mis.models.laboratories.bloodbank;
 // Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
@@ -15,24 +15,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class BleedingSchedule extends BaseEntity {
+public class Donations extends BaseEntity {
 
      @OneToOne
-     private ClearedQueue clearedQueue;
+     private BleedingSchedule bleedingSchedule;
+
+     @ManyToOne
+     @JoinColumn(name = "storage_id")
+     private Storage storage;
 
      @ManyToOne
      @JoinColumn(name = "users_id")
      private Users users;
 
-     private LocalDateTime timeOfSchedule;
+     private LocalDateTime timeOfDonation;
+     private String tagId;
 
-     @OneToOne
-     private DonationQueue donationQueue;
 }
 
 
