@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.admissions.facilities.Beds;
+import ng.com.bitsystems.mis.models.admissions.facilities.FacilityTypes;
 import ng.com.bitsystems.mis.models.admissions.facilities.Wards;
 
 import javax.persistence.*;
@@ -28,7 +28,7 @@ public class Rate extends BaseEntity {
     private String service_description;
 
     @OneToOne
-    private Beds beds;
+    private FacilityTypes facilityTypes;
 
     @OneToOne
     private Wards wards;

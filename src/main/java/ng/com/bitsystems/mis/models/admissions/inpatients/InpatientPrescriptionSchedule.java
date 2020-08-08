@@ -20,7 +20,7 @@ import javax.persistence.OneToOne;
 public class InpatientPrescriptionSchedule  extends PrescriptionSchedule {
 
      @OneToOne
-     private InpatientPharmacyPrescriptions inpatientPharmacyPrescriptions;
+     private InpatientPrescriptions inpatientPrescriptions;
 
 
 }

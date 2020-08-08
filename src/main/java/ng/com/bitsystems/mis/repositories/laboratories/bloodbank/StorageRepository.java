@@ -1,0 +1,7 @@
+package ng.com.bitsystems.mis.repositories.laboratories.bloodbank;
+
+import ng.com.bitsystems.mis.models.laboratories.bloodbank.Storage;
+import org.springframework.data.repository.CrudRepository;
+
+public interface StorageRepository extends CrudRepository<Storage, Long> {
+}

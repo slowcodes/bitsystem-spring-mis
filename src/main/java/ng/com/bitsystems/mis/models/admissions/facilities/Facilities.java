@@ -7,17 +7,33 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.pricing.Rate;
 
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
+@Entity
 public class Facilities extends BaseEntity {
     private String locationDescription;
 
+    @ManyToOne
+    @JoinColumn(name = "facilityTypes_id")
+    private FacilityTypes facilityTypes;
+
+    @ManyToOne
+    @JoinColumn(name = "typeCategory_id")
+    private FacilityTypeCategory facilityTypeCategory;
+
     @OneToOne
     private Rate rate;
+
+    @ManyToOne
+    @JoinColumn(name = "wards_id")
+    private Wards ward;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "facilities")
+    private Set<StartUsage> startUsage = new HashSet<>();
 }

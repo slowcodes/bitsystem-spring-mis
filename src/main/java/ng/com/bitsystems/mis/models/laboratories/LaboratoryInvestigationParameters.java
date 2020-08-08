@@ -16,7 +16,7 @@ import javax.persistence.Entity;
 @Entity
 public class LaboratoryInvestigationParameters  extends BaseEntity {
 
-     private ExperimentResultsByParameters experimentResultsByParameters;
+     private ExperimentReadings experimentReadings;
      private String variableName;
      private String value;
 

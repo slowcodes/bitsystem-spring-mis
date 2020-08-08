@@ -22,7 +22,7 @@ import java.util.Set;
 public class Wards extends Facilities {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "ward")
-     private Set<Beds> beds = new HashSet<>();
+     private Set<Facilities> facilities = new HashSet<>();
 }
 
 

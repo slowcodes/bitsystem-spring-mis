@@ -28,8 +28,8 @@ public class OutpatientPrescriptionAdministration extends BaseEntity {
      private LocalDateTime administrationTime;
 
      @ManyToOne
-     @JoinColumn(name = "outpatientpharmacyprescription_id")
-     private OutpatientPharmacyPrescriptions outpatientPharmacyPrescriptions;
+     @JoinColumn(name = "outpatientprescription_id")
+     private OutpatientPrescriptions outpatientPrescriptions;
 
      private String commentObservation;
 }

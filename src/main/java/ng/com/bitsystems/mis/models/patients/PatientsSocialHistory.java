@@ -22,7 +22,7 @@ public class PatientsSocialHistory  extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name = "PatientSocioCulturalHistoryDirectory_id")
-     private PatientSocioCulturalHistoryDirectory patientSocioHistory;
+     private SocioCulturalDirectory patientSocioHistory;
 
      @ManyToOne
      @JoinColumn(name = "patients_id")

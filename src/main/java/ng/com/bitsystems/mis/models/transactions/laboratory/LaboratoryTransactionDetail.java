@@ -28,7 +28,7 @@ public class LaboratoryTransactionDetail extends Service {
      private LaboratoryTransaction laboratoryTransaction;
 
      @OneToOne
-     private PendingSampleCollection pendingSampleCollection;
+     private SampleCollectionQueue sampleCollectionQueue;
 
      @OneToOne
      private CollectedSamples collectedSamples;
@@ -37,6 +37,6 @@ public class LaboratoryTransactionDetail extends Service {
      private Set<ObservationQueue> observationQueues = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratoryTransactionDetail")
-     private Set<ExperimentResultsByParameters> experimentResultsByParameters = new HashSet<>();
+     private Set<ExperimentReadings> experimentResultsByParameters = new HashSet<>();
 }
 

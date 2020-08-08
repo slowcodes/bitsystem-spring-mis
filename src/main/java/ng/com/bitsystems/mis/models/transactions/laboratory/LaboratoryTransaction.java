@@ -30,9 +30,6 @@ public class LaboratoryTransaction extends Transaction {
      @OneToOne
      private InsuredLaboratoryTransactions insuredLaboratoryTransactions;
 
-     @ManyToOne
-     @JoinColumn(name = "referralLaboratorySettlements_id")
-     private ReferralLaboratorySettlements referralLaboratorySettlements;
 
      @ManyToOne
      @JoinColumn(name = "refferals_id")

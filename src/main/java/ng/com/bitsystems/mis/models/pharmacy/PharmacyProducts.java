@@ -3,7 +3,7 @@ package ng.com.bitsystems.mis.models.pharmacy;
 
 import lombok.Getter;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientPharmacyPrescriptions;
+import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientPrescriptions;
 import ng.com.bitsystems.mis.models.patients.PatientDrugAllergy;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyRewardBasedPromo;
@@ -57,7 +57,7 @@ public class PharmacyProducts  extends Drugs {
      private Set<Barcodes> barcodes = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
-     private Set<InpatientPharmacyPrescriptions> inpatientPharmacyPrescriptionses = new HashSet<>();
+     private Set<InpatientPrescriptions> inpatientPrescriptions = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
      private Set<PharmacyTransactionDetails> pharmacyTransactions = new HashSet<>();

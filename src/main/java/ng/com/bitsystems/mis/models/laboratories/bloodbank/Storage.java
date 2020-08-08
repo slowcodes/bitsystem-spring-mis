@@ -37,7 +37,7 @@ public class Storage extends BaseEntity {
      private Set<Donations> donations = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "storage")
-     private Set<IssueLog> issueLogs = new HashSet<>();
+     private Set<IssuanceLogs> issuanceLogs = new HashSet<>();
 }
 
 

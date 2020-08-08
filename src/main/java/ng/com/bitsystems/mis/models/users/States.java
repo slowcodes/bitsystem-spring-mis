@@ -23,7 +23,7 @@ public class States  extends BaseEntity {
      private int code;
 
      @OneToOne
-     private Patients patientse;
+     private Patients patients;
 
 }
 

@@ -20,8 +20,8 @@ import javax.persistence.ManyToOne;
 public class InpatientPrescriptionAdministration extends PrecriptionAdministration {
 
      @ManyToOne
-     @JoinColumn(name = "inpatientpharmacyprescriptions_id")
-     private InpatientPharmacyPrescriptions inpatientPharmacyPrescriptions;
+     @JoinColumn(name = "inpatientprescriptions_id")
+     private InpatientPrescriptions inpatientPrescriptions;
 
 }
 

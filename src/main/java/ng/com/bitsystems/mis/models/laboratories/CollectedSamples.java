@@ -35,7 +35,7 @@ public class CollectedSamples extends BaseEntity {
      private LocalDate dateOfCollection;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "collectedSamples")
-     private Set<ExperimentResultsByParameters> experimentResultsByParams = new HashSet<>();
+     private Set<ExperimentReadings> experimentResultsByParams = new HashSet<>();
 }
 
 

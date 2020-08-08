@@ -35,7 +35,7 @@ public class LaboratoryPackageDetails  extends BaseEntity {
      private Set<ObservationQueue> observationQueue = new HashSet<>();
 
      @OneToMany(mappedBy = "laboratoryPackageDetails")
-     private  Set<PendingSampleCollection> pendingSampleCollections = new HashSet<>();
+     private  Set<SampleCollectionQueue> sampleCollectionQueues = new HashSet<>();
 }
 
 

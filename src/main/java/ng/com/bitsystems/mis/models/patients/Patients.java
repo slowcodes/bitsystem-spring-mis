@@ -11,7 +11,7 @@ import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.Clerks;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonorRegistry;
-import ng.com.bitsystems.mis.models.laboratories.bloodbank.IssueLog;
+import ng.com.bitsystems.mis.models.laboratories.bloodbank.IssuanceLogs;
 import ng.com.bitsystems.mis.models.referrals.PatientsReferrals;
 import ng.com.bitsystems.mis.models.rewards.loyalties.PatientsLoyaltyGains;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
@@ -65,7 +65,7 @@ public class Patients  extends AccountHolder {
      private Set<PatientsMedicalHistory> patientsFamilyHistories = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
-     private Set<IssueLog> issueLogs = new HashSet(0);
+     private Set<IssuanceLogs> issuanceLogs = new HashSet(0);
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<InpatientAdmission> inpatientAdmissions = new HashSet<>();

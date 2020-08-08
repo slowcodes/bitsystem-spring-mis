@@ -19,6 +19,6 @@ import java.util.Set;
 @Entity
 public class PharmacySupplyTransactions extends Transaction {
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplyTransactions")
-    Set<PharmacySupplyTransactionsDetails> pharmacySupplyTransactionsSupplies = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacySupplyTransactions")
+    Set<PharmacySupplyTransactionsDetails> pharmacySupplyTransactionsDetails = new HashSet<>();
 }

@@ -1,0 +1,7 @@
+package ng.com.bitsystems.mis.repositories.laboratories;
+
+import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigationParameters;
+import org.springframework.data.repository.CrudRepository;
+
+public interface LaboratoryInvestigationParametersRepository extends CrudRepository<LaboratoryInvestigationParameters, Long> {
+}
