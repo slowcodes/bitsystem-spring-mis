@@ -1,4 +1,4 @@
-package ng.com.bitsystems.mis.models.transactions.bloodbank;
+package ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.payments.insurance.InsuredLaboratoryTransactions;
-import ng.com.bitsystems.mis.models.referrals.ReferralLaboratorySettlements;
 import ng.com.bitsystems.mis.models.referrals.Referrals;
 import ng.com.bitsystems.mis.models.transactions.Transaction;
 

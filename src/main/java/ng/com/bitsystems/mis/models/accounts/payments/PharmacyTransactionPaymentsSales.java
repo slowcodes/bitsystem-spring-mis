@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransaction;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransaction;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class PharmacyTransactionPaymentsSales extends Payments {
 
      @ManyToOne
      @JoinColumn(name = "pharmacytransaction_id")
-     private PharmacyTransaction pharmacyTransaction;
+     private PharmacySalesTransaction pharmacySalesTransaction;
 
      @JoinColumn(name="users_id")
      @ManyToOne()

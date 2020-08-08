@@ -18,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PharmacyTransaction extends Transaction {
+public class PharmacySalesTransaction extends Transaction {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyTransaction")
      private Set<PharmacyTransactionDetails> pharmacyTransactionDetails = new HashSet<>();

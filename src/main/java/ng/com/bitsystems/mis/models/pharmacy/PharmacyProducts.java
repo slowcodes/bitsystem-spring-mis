@@ -7,8 +7,8 @@ import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientPharmacyPresc
 import ng.com.bitsystems.mis.models.patients.PatientDrugAllergy;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyRewardBasedPromo;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySupplyTransactionsDetails;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransactionDetails;
-import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransactionsSupplies;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -38,7 +38,7 @@ public class PharmacyProducts  extends Drugs {
      private Set<PatientDrugAllergy> patientDrugAllergies = new HashSet<>();//     private Set pharmacyInvoiceTransactionses = new HashSet(0);
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
-     private Set<PharmacyTransactionsSupplies> transactionsSupplies = new HashSet<>();
+     private Set<PharmacySupplyTransactionsDetails> transactionsSupplies = new HashSet<>();
 
      @ManyToMany
      @JoinTable(name = "pharmacy_suppliers",

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Storage;
-import ng.com.bitsystems.mis.models.transactions.bloodbank.BloodbankTransactionDetails;
+import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransactionDetails;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

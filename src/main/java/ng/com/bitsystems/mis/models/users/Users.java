@@ -10,19 +10,19 @@ import ng.com.bitsystems.mis.models.accounts.payments.BloodbankDonationPayments;
 import ng.com.bitsystems.mis.models.accounts.payments.LaboratoryTransactionPayments;
 import ng.com.bitsystems.mis.models.accounts.payments.PharmacyTransactionPaymentsSales;
 import ng.com.bitsystems.mis.models.accounts.payments.VaccinationTransactionsPayments;
-import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonationQueue;
-import ng.com.bitsystems.mis.models.laboratories.bloodbank.Donations;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
 import ng.com.bitsystems.mis.models.inventory.requests.Requisitions;
 import ng.com.bitsystems.mis.models.laboratories.CollectedSamples;
 import ng.com.bitsystems.mis.models.laboratories.ResultCollectionLog;
 import ng.com.bitsystems.mis.models.laboratories.VerifiedResults;
+import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonationQueue;
+import ng.com.bitsystems.mis.models.laboratories.bloodbank.Donations;
 import ng.com.bitsystems.mis.models.patients.PatientsFamilyHistory;
 import ng.com.bitsystems.mis.models.patients.PatientsMedicalHistory;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
-import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransaction;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransaction;
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 
 import javax.persistence.CascadeType;
@@ -98,7 +98,7 @@ public class Users  extends AccountHolder {
     private Set<LaboratoryTransaction> laboratoryTransactions = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private Set<PharmacyTransaction> pharmacyTransaction = new HashSet<>();
+    private Set<PharmacySalesTransaction> pharmacySalesTransaction = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<VaccinationTransaction> vaccinationTransactions = new HashSet<>();

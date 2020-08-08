@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
-import ng.com.bitsystems.mis.models.transactions.Service;
+import ng.com.bitsystems.mis.models.transactions.Sales;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -18,11 +18,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 
 @Entity
-public class PharmacyTransactionsSupplies  extends Service {
+public class PharmacySupplyTransactionsDetails extends Sales {
 
      @ManyToOne
      @JoinColumn(name = "supplyTransaction_id")
-     private SupplyTransactions supplyTransactions;
+     private PharmacySupplyTransactions pharmacySupplyTransactions;
 
      private Double qty;
 

@@ -26,7 +26,7 @@ public class PharmacyTransactionDetails extends Sales {
 
     @ManyToOne
     @JoinColumn(name = "pharmacytransaction_id")
-    private PharmacyTransaction pharmacyTransaction;
+    private PharmacySalesTransaction pharmacySalesTransaction;
 
     @OneToOne
     PharmacyPromoProductRecivedLogs pharmacyPromoProductRecivedLogs;

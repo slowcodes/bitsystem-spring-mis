@@ -1,4 +1,4 @@
-package ng.com.bitsystems.mis.models.vaccination;
+package ng.com.bitsystems.mis.models.admissions.outpatient.vaccination;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

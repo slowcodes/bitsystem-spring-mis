@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.admissions.outpatient.vaccination.VaccinationPrescriptions;
+import ng.com.bitsystems.mis.models.admissions.outpatient.vaccination.Vaccinations;
 import ng.com.bitsystems.mis.models.transactions.Service;
-import ng.com.bitsystems.mis.models.vaccination.VaccinationPrescriptions;
-import ng.com.bitsystems.mis.models.vaccination.Vaccinations;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

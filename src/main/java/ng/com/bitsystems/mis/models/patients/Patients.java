@@ -7,16 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientAdmission;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
-import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonorRegistry;
-import ng.com.bitsystems.mis.models.laboratories.bloodbank.IssueLog;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.Clerks;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
+import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonorRegistry;
+import ng.com.bitsystems.mis.models.laboratories.bloodbank.IssueLog;
 import ng.com.bitsystems.mis.models.referrals.PatientsReferrals;
 import ng.com.bitsystems.mis.models.rewards.loyalties.PatientsLoyaltyGains;
-import ng.com.bitsystems.mis.models.transactions.bloodbank.BloodbankTransaction;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
-import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransaction;
+import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransaction;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransaction;
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 import ng.com.bitsystems.mis.models.users.AccountHolder;
 
@@ -56,7 +56,7 @@ public class Patients  extends AccountHolder {
      private PatientsReferrals patientsReferrals;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
-     private Set<PharmacyTransaction> pharmacyTransaction = new HashSet<>();
+     private Set<PharmacySalesTransaction> pharmacySalesTransaction = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<LaboratoryTransaction> laboratoryTransactions = new HashSet();
