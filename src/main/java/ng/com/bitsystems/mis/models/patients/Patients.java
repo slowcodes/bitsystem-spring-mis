@@ -100,6 +100,9 @@ public class Patients  extends AccountHolder {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<VaccinationTransaction> vaccinationTransaction = new HashSet<>();
 
+     @ManyToMany(mappedBy = "patients")
+     private Set<Companies> company = new HashSet<>();
+
 }
 
 

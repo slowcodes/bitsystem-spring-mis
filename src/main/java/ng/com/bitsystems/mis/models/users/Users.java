@@ -8,7 +8,7 @@ import ng.com.bitsystems.mis.models.accounts.ExpenseManager;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
 import ng.com.bitsystems.mis.models.accounts.payments.BloodbankDonationPayments;
 import ng.com.bitsystems.mis.models.accounts.payments.LaboratoryTransactionPayments;
-import ng.com.bitsystems.mis.models.accounts.payments.PharmacyTransactionPaymentsSales;
+import ng.com.bitsystems.mis.models.accounts.payments.PharmacyTransactionPayments;
 import ng.com.bitsystems.mis.models.accounts.payments.VaccinationTransactionsPayments;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
@@ -89,7 +89,7 @@ public class Users  extends AccountHolder {
     private Set<OtherServices> otherServices = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private Set<PharmacyTransactionPaymentsSales> pharmacyTransactionPaymentsSales=new HashSet<>();
+    private Set<PharmacyTransactionPayments> pharmacyTransactionPaymentsSales=new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<VaccinationTransactionsPayments> vaccinationTransactionsPayments = new HashSet<>();
