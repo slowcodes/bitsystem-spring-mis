@@ -1,4 +1,4 @@
-Patients
+Patients (#)
    Add Patients (/patients/add)
    Patients	(/patients)
    Medical Insurance (#)
@@ -11,7 +11,7 @@ Patients
    Folders (/patients/folder)
    Result Collection (/patients/investigations/results)
 
-Consultations
+Consultations (#)
    Add Consultants (/consultation/consultants/add)
    Consultations (/consultation/consultations)
    Consultants	(/consultation/consultants)
@@ -20,6 +20,10 @@ Laboratory
 Pharmacy
 Accounts
 Reports
+Referrals (#)
+    Add Referral(/referrals/add)
+    Referrals (/referrals)
+    Generate Settlement (referrals/settlements)
 BloodBank
 Admissions
 Referrals
