@@ -1,0 +1,27 @@
+Patients
+   Add Patients (/patients/add)
+   Patients	(/patients)
+   Medical Insurance (#)
+      Add Insurance (/patients/insurance/add)
+      Insurance Programs (/patients/insurance/programs)
+   Investigations (patients/investigations)
+   Medical Appointments (#)
+      View Appointments (/patients/appointments/view)
+      Add Appointments  (/patients/appointments/add)
+   Folders (/patients/folder)
+   Result Collection (/patients/investigations/results)
+
+Consultations
+   Add Consultants (/consultation/consultants/add)
+   Consultations (/consultation/consultations)
+   Consultants	(/consultation/consultants)
+
+Laboratory
+Pharmacy
+Accounts
+Reports
+BloodBank
+Admissions
+Referrals
+Inventory
+Configurations & Settings
