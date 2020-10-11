@@ -10,7 +10,13 @@ public class IndexController {
 
     @RequestMapping({"/", "/index", "/home"})
     public String home(Model model){
-
-        return "ui/index.html";
+        return "index.html";
     }
+
+
+    @RequestMapping({"/about.html", "/about"})
+    public String about(Model model){
+        return "about.html";
+    }
+
 }
