@@ -10,8 +10,24 @@ public class ConsultationController {
     @RequestMapping("/")
     public String index(){
         return "consultations.html";
+        //HTML Table Columns (Name, Specialization, Staff ID, Action)
     }
 
+    @RequestMapping("/specializations")
+    public String specializations(){
+        return "specialization.html";
+    }
+
+    @RequestMapping("/specializations/add")
+    public String addSpecialization(){
+        return "specialization.html";
+        //HTML Form: Fields,
+    }
+
+    @RequestMapping("/specializations/update")
+    public String updateSpecialization(){
+        return "updateSpecialization.html";
+    }
 
     @RequestMapping("/consultants/add")
     public String add(){

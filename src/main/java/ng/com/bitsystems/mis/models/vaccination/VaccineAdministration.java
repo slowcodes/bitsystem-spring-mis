@@ -1,5 +1,4 @@
-package ng.com.bitsystems.mis.models.admissions.outpatient.vaccination;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
+package ng.com.bitsystems.mis.models.vaccination;
 
 
 import lombok.AllArgsConstructor;
@@ -21,8 +20,8 @@ import javax.persistence.ManyToOne;
 public class VaccineAdministration extends PrecriptionAdministration {
 
      @ManyToOne
-     @JoinColumn(name = "vaccinationprescription_id")
-     private VaccinationPrescriptions vaccinationPrescriptions;
+     @JoinColumn(name = "vaccineSchedule_id")
+     private VaccineSchedule vaccineSchedule;
 }
 
 

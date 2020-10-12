@@ -13,7 +13,6 @@ public class LaboratoryController {
 
     @RequestMapping("/laboratory/results/pending_results")
     public String pendingLabResults(){
-
         return "";
     }
 
@@ -119,11 +118,7 @@ public class LaboratoryController {
         return "observationConsole.html";
     }
 
-    @RequestMapping("/laboratory/bloodbank")
-    public String bloodbank(){
-
-        return "bloodbankStock.html";
-    }
+//
 
     @RequestMapping("/laboratory/blood-bank/registry")
     public String donorRegistry(){
