@@ -33,7 +33,7 @@ import java.util.Set;
 @Entity
 public class Patients  extends AccountHolder {
      @ManyToOne
-     @JoinColumn(name = "")
+     @JoinColumn(name = "patient_family_id")
      private PatientsFamily patientsFamily;
 
      private Date dob;

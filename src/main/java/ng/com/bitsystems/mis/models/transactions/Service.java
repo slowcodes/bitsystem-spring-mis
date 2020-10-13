@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
-import ng.com.bitsystems.mis.models.referrals.ReferralSettlementDetails;
+import ng.com.bitsystems.mis.models.referrals.ReferralSettlements;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,5 +32,5 @@ public class Service extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "referralSettlementDetails_id")
-    private ReferralSettlementDetails referralSettlementDetails;
+    private ReferralSettlements referralSettlements;
 }
