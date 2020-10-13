@@ -1,4 +1,4 @@
-package ng.com.bitsystems.mis.models.admissions.outpatient.vaccination;
+package ng.com.bitsystems.mis.models.vaccination;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,11 +16,11 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class VaccinationPrescriptionGeneratedAdmin extends GeneratedAdministration {
+public class VaccineDoses extends GeneratedAdministration {
 
      @ManyToOne
-     @JoinColumn(name = "vaccinationprescriptions_id")
-     private VaccinationPrescriptionSchedule vaccinationPrescriptionSchedule;
+     @JoinColumn(name = "vaccineSchedule_id")
+     private VaccineSchedule vaccineSchedule;
 
 }
 
