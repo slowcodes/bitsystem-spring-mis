@@ -29,5 +29,3 @@ Admissions
 Referrals
 Inventory
 Configurations & Settings
-//updating main project doesn't affect the forked project
-//Still Testing Commit to forkclear
