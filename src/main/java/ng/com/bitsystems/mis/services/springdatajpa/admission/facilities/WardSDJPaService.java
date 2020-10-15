@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.admission.facilities;
 import ng.com.bitsystems.mis.models.admissions.facilities.Wards;
 import ng.com.bitsystems.mis.repositories.admissions.facilities.WardRepository;
 import ng.com.bitsystems.mis.services.admission.facilities.WardService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class WardSDJPaService implements WardService {
     private WardRepository wardRepository;
 

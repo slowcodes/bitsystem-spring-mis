@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.consulatation;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
 import ng.com.bitsystems.mis.repositories.consultations.DiseaseDirectoryRepository;
 import ng.com.bitsystems.mis.services.consultations.DiseaseDirectoryService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class DiseaseDirectorySDJPaService implements DiseaseDirectoryService {
     private DiseaseDirectoryRepository  diseaseDirectoryRepository;
 

@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.referrals;
 import ng.com.bitsystems.mis.models.referrals.ReferralSettlements;
 import ng.com.bitsystems.mis.repositories.referrals.ReferralSettlementRepository;
 import ng.com.bitsystems.mis.services.referrals.ReferralSettlementService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class ReferralSettlementSDJPaService implements ReferralSettlementService {
     private ReferralSettlementRepository referralSettlementRepository;
 

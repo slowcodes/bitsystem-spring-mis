@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.inventory;
 import ng.com.bitsystems.mis.models.inventory.Inventory;
 import ng.com.bitsystems.mis.repositories.inventory.InventoryRepository;
 import ng.com.bitsystems.mis.services.inventory.InventoryService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class InventorySDJPaService implements InventoryService {
     private InventoryRepository inventoryRepository;
 

@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.transactions.pharmacy;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySupplyTransactionsDetails;
 import ng.com.bitsystems.mis.repositories.transactions.pharmacy.PharmacySupplyTransactionDetailsRepository;
 import ng.com.bitsystems.mis.services.transactions.pharmacy.PharmacySupplyTransactionDetailsService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class PharmacySupplyTransactionDetailsSDJPaService implements PharmacySupplyTransactionDetailsService {
     private PharmacySupplyTransactionDetailsRepository transactionDetailsRepository;
 

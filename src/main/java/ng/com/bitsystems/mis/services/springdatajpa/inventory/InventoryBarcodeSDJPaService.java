@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.inventory;
 import ng.com.bitsystems.mis.models.inventory.InventoryBarcodes;
 import ng.com.bitsystems.mis.repositories.inventory.InventoryBarcodeRepository;
 import ng.com.bitsystems.mis.services.inventory.InventoryBarcodeServices;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class InventoryBarcodeSDJPaService implements InventoryBarcodeServices {
     private InventoryBarcodeRepository inventoryBarcodeRepository;
     @Override

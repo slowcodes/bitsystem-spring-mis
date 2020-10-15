@@ -7,12 +7,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -25,6 +23,7 @@ public class ReferralOtherServiceSettlement extends BaseEntity {
     private ReferralSettlements referralSettlements;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlements")
-    private Set<OtherServices> otherService = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "otherService_id")
+    private OtherServices otherService;
 }

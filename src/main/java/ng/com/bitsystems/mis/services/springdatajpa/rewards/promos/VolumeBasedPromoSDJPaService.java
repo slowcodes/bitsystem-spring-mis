@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.rewards.promos;
 import ng.com.bitsystems.mis.models.rewards.promos.VolumedBasedPromos;
 import ng.com.bitsystems.mis.repositories.rewards.promos.VolumeBasedPromoRepository;
 import ng.com.bitsystems.mis.services.rewards.promos.VolumeBasedPromoService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class VolumeBasedPromoSDJPaService implements VolumeBasedPromoService {
     private VolumeBasedPromoRepository volumeBasedPromoRepository;
 

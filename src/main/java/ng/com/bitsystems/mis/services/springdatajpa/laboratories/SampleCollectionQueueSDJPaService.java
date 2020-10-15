@@ -3,10 +3,13 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories;
 import ng.com.bitsystems.mis.models.laboratories.SampleCollectionQueue;
 import ng.com.bitsystems.mis.repositories.laboratories.SampleCollectionQueueRepository;
 import ng.com.bitsystems.mis.services.laboratories.SampleCollectionQueueService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+
+@Service
 public class SampleCollectionQueueSDJPaService implements SampleCollectionQueueService {
     private SampleCollectionQueueRepository sampleCollectionQueueRepository;
 

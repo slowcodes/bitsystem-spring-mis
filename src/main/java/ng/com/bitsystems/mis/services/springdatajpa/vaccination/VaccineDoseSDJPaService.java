@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.vaccination;
 import ng.com.bitsystems.mis.models.vaccination.VaccineDoses;
 import ng.com.bitsystems.mis.repositories.vaccinations.VaccineDosageRepository;
 import ng.com.bitsystems.mis.services.vaccination.VaccineDoseService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class VaccineDoseSDJPaService implements VaccineDoseService {
 
     private VaccineDosageRepository vaccineDosageRepository;

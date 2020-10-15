@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.consulatation;
 import ng.com.bitsystems.mis.models.consultation.ClerkingSymptoms;
 import ng.com.bitsystems.mis.repositories.consultations.ClerkingSymptomsRepository;
 import ng.com.bitsystems.mis.services.consultations.ClerkingSymptomsService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class ClerkingSymptonsSDJPaService implements ClerkingSymptomsService {
     private ClerkingSymptomsRepository clerkingSymptomsRepository;
 

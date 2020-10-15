@@ -3,10 +3,13 @@ package ng.com.bitsystems.mis.services.springdatajpa.pharmacy;
 import ng.com.bitsystems.mis.models.pharmacy.Suppliers;
 import ng.com.bitsystems.mis.repositories.pharmacy.SuppliersRepository;
 import ng.com.bitsystems.mis.services.pharmacy.SupplierService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+
+@Service
 public class SuppliersSDJPaService implements SupplierService {
     private SuppliersRepository suppliersRepository;
 

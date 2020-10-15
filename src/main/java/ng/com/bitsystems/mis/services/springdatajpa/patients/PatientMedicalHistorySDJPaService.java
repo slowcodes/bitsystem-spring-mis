@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.patients;
 import ng.com.bitsystems.mis.models.patients.PatientsMedicalHistory;
 import ng.com.bitsystems.mis.repositories.patients.PatientMedicalHistoryRepository;
 import ng.com.bitsystems.mis.services.patients.PatientMedicalHistoryService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class PatientMedicalHistorySDJPaService implements PatientMedicalHistoryService {
 
     private PatientMedicalHistoryRepository historyRepository;

@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.admission.facilities;
 import ng.com.bitsystems.mis.models.admissions.facilities.FacilityTypeCategory;
 import ng.com.bitsystems.mis.repositories.admissions.facilities.FacilityTypeCategoryRepository;
 import ng.com.bitsystems.mis.services.admission.facilities.FacilityTypeCategoryService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class FacilityTypeCategorySDJPaService implements FacilityTypeCategoryService {
     private FacilityTypeCategoryRepository facilityTypeCategoryRepository;
 

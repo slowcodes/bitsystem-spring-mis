@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.consulatation;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.repositories.consultations.BookingConsultationRepository;
 import ng.com.bitsystems.mis.services.consultations.BookingConsultationService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class BookingConsultationSDJPaService implements BookingConsultationService {
     private BookingConsultationRepository bookingConsultationRepository;
 

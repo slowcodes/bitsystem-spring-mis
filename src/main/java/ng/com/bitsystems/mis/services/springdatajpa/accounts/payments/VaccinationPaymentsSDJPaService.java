@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.accounts.payments;
 import ng.com.bitsystems.mis.models.accounts.payments.VaccinationTransactionsPayments;
 import ng.com.bitsystems.mis.repositories.accounts.payments.VaccinationPaymentRepository;
 import ng.com.bitsystems.mis.services.accounts.payments.VaccinationPaymentService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class VaccinationPaymentsSDJPaService implements VaccinationPaymentService {
     private VaccinationPaymentRepository vaccinationPaymentRepository;
 

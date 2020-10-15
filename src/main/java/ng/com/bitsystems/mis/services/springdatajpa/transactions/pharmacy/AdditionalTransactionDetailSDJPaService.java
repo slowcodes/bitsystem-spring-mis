@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.transactions.pharmacy;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.AdditionalTransactionDetails;
 import ng.com.bitsystems.mis.repositories.transactions.pharmacy.AdditionalTransactionDetailsRepository;
 import ng.com.bitsystems.mis.services.transactions.pharmacy.AdditionalTransactionDetailService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class AdditionalTransactionDetailSDJPaService implements AdditionalTransactionDetailService {
     private AdditionalTransactionDetailsRepository additionalTransactionDetailsRepository;
 

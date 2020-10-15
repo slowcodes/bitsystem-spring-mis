@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories.bloodbank;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.IssuanceLogs;
 import ng.com.bitsystems.mis.repositories.laboratories.bloodbank.IssuanceLogRepository;
 import ng.com.bitsystems.mis.services.laboratories.bloodbank.IssuanceLogService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class IssueanceLogSDJPaService implements IssuanceLogService {
 
     private IssuanceLogRepository issuanceLogRepository;

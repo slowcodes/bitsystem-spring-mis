@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.rewards.loyalty;
 import ng.com.bitsystems.mis.models.rewards.loyalties.PatientsLoyaltyGains;
 import ng.com.bitsystems.mis.repositories.rewards.loyalties.PatientLoyaltyGainRepository;
 import ng.com.bitsystems.mis.services.rewards.loyalties.PatientLoyaltyGainService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class PatientLoyaltyGainSDJPaService implements PatientLoyaltyGainService {
     private PatientLoyaltyGainRepository patientLoyaltyGainRepository;
 

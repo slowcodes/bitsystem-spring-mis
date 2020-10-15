@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.rewards.promos;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyRewardBasedPromo;
 import ng.com.bitsystems.mis.repositories.rewards.promos.PharmacyRewardBasedPromoRepository;
 import ng.com.bitsystems.mis.services.rewards.promos.PharmacyRewardBasedPromoService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class PharmacyRewardBasedPromoSDJPaService implements PharmacyRewardBasedPromoService {
     private PharmacyRewardBasedPromoRepository pharmacyRewardBasedPromoRepository;
 

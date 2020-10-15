@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.pharmacy;
 import ng.com.bitsystems.mis.models.pharmacy.GeneratedAdministration;
 import ng.com.bitsystems.mis.repositories.pharmacy.GeneratedAdministrationRepository;
 import ng.com.bitsystems.mis.services.pharmacy.GeneratedAdministrationService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class GeneratedAdministrationSDJPaService implements GeneratedAdministrationService {
     private GeneratedAdministrationRepository generatedAdministrationRepository;
 

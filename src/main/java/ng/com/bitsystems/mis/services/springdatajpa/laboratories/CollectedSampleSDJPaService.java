@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories;
 import ng.com.bitsystems.mis.models.laboratories.CollectedSamples;
 import ng.com.bitsystems.mis.repositories.laboratories.CollectedSamplesRepository;
 import ng.com.bitsystems.mis.services.laboratories.CollectedSamplesServices;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class CollectedSampleSDJPaService implements CollectedSamplesServices {
     private CollectedSamplesRepository collectedSamplesRepository;
 

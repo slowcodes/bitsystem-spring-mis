@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.pharmacy;
 import ng.com.bitsystems.mis.models.pharmacy.Category;
 import ng.com.bitsystems.mis.repositories.pharmacy.CategoryRepository;
 import ng.com.bitsystems.mis.services.pharmacy.CategoryService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class CategorySDJPaService implements CategoryService {
 
     private CategoryRepository categoryRepository;

@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories.bloodbank;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Donations;
 import ng.com.bitsystems.mis.repositories.laboratories.bloodbank.DonationRepository;
 import ng.com.bitsystems.mis.services.laboratories.bloodbank.DonationService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class DonationSDJPaService implements DonationService {
     private DonationRepository donationRepository;
 

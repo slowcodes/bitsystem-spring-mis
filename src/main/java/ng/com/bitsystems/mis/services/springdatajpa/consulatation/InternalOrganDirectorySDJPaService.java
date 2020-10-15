@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.consulatation;
 import ng.com.bitsystems.mis.models.consultation.InternalOrgansDirectory;
 import ng.com.bitsystems.mis.repositories.consultations.InternalOrganDirectoryRepository;
 import ng.com.bitsystems.mis.services.consultations.InternalOrganDirectoryService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class InternalOrganDirectorySDJPaService implements InternalOrganDirectoryService {
     private InternalOrganDirectoryRepository internalOrganDirectoryRepository;
 

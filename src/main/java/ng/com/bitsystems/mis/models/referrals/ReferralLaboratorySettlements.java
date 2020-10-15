@@ -7,12 +7,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -24,7 +22,8 @@ public class ReferralLaboratorySettlements extends BaseEntity {
     @OneToOne
     private ReferralSettlements referralSettlements;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlements")
-    private Set<LaboratoryTransactionDetail> laboratoryTransactionDetails = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "laboratoryTransactionDetails_id")
+    private LaboratoryTransactionDetail laboratoryTransactionDetails;
 
 }

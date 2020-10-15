@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.inventory.requisitions;
 import ng.com.bitsystems.mis.models.inventory.requests.Requisitions;
 import ng.com.bitsystems.mis.repositories.inventory.requests.RequisitionRepository;
 import ng.com.bitsystems.mis.services.inventory.requests.RequisitionService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class RequisitionSDJPaService implements RequisitionService {
     private RequisitionRepository requisitionRepository;
 

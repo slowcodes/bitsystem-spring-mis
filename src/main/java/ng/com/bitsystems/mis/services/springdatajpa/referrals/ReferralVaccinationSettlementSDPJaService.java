@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.referrals;
 import ng.com.bitsystems.mis.models.referrals.ReferralVaccinationSettlement;
 import ng.com.bitsystems.mis.repositories.referrals.ReferralVaccinationSettlementRepository;
 import ng.com.bitsystems.mis.services.referrals.ReferralVaccinationSettlementService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class ReferralVaccinationSettlementSDPJaService implements ReferralVaccinationSettlementService {
 
     private ReferralVaccinationSettlementRepository referralVaccinationSettlementRepository;

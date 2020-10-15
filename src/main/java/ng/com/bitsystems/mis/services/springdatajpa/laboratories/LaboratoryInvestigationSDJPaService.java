@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories;
 import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
 import ng.com.bitsystems.mis.repositories.laboratories.LaboratoryInvestigationRepository;
 import ng.com.bitsystems.mis.services.laboratories.LaboratoryInvestigationService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class LaboratoryInvestigationSDJPaService implements LaboratoryInvestigationService
 {
     private LaboratoryInvestigationRepository investigationRepository;

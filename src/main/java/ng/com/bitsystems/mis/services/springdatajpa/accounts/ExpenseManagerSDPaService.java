@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.accounts;
 import ng.com.bitsystems.mis.models.accounts.ExpenseManager;
 import ng.com.bitsystems.mis.repositories.accounts.ExpenseManagerRepository;
 import ng.com.bitsystems.mis.services.accounts.ExpenseManagerService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class ExpenseManagerSDPaService implements ExpenseManagerService {
     private ExpenseManagerRepository expenseManagerRepository;
 

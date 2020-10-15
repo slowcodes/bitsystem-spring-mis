@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.users;
 import ng.com.bitsystems.mis.models.users.UsersPrivilege;
 import ng.com.bitsystems.mis.repositories.users.UsersPrivilegeRepository;
 import ng.com.bitsystems.mis.services.users.UserPrivilegeService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class UserPrivilegeSDJPaService implements UserPrivilegeService {
     private UsersPrivilegeRepository usersPrivilegeRepository;
 

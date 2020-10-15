@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories.bloodbank;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Storage;
 import ng.com.bitsystems.mis.repositories.laboratories.bloodbank.StorageRepository;
 import ng.com.bitsystems.mis.services.laboratories.bloodbank.StorageService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class StorageSDJPaService implements StorageService {
 
     private StorageRepository storageRepository;

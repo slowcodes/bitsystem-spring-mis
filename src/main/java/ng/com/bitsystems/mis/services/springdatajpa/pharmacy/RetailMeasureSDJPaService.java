@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.pharmacy;
 import ng.com.bitsystems.mis.models.pharmacy.RetailMeasure;
 import ng.com.bitsystems.mis.repositories.pharmacy.RetailMeasureRepository;
 import ng.com.bitsystems.mis.services.pharmacy.RetailMeasureService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class RetailMeasureSDJPaService implements RetailMeasureService {
     private RetailMeasureRepository retailMeasureRepository;
 

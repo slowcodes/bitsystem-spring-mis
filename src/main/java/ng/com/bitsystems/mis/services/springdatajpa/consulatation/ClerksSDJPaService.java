@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.consulatation;
 import ng.com.bitsystems.mis.models.consultation.Clerks;
 import ng.com.bitsystems.mis.repositories.consultations.ClerksRepository;
 import ng.com.bitsystems.mis.services.consultations.ClerkService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class ClerksSDJPaService implements ClerkService {
     private ClerksRepository clerksRepository;
 

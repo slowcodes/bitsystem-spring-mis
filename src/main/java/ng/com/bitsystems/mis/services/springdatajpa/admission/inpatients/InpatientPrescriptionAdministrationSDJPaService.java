@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.admission.inpatients;
 import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientPrescriptionAdministration;
 import ng.com.bitsystems.mis.repositories.admissions.inpatients.InpatientPrescriptionAdministrationRepository;
 import ng.com.bitsystems.mis.services.admission.inpatients.InpatientPrescriptionAdministrationService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class
 
 InpatientPrescriptionAdministrationSDJPaService implements InpatientPrescriptionAdministrationService {

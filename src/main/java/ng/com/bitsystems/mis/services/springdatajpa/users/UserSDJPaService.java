@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.users;
 import ng.com.bitsystems.mis.models.users.Users;
 import ng.com.bitsystems.mis.repositories.users.UsersRepository;
 import ng.com.bitsystems.mis.services.users.UserService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class UserSDJPaService implements UserService {
     private UsersRepository usersRepository;
 

@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories;
 import ng.com.bitsystems.mis.models.laboratories.ObservationQueue;
 import ng.com.bitsystems.mis.repositories.laboratories.ObservationQueueRepository;
 import ng.com.bitsystems.mis.services.laboratories.ObservationQueueService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class ObservationQueueSDJPaService implements ObservationQueueService {
 
     private ObservationQueueRepository  observationQueueRepository;

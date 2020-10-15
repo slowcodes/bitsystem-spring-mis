@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.patients;
 import ng.com.bitsystems.mis.models.patients.PatientDrugAllergy;
 import ng.com.bitsystems.mis.repositories.patients.PatientsDrugAllergyRepository;
 import ng.com.bitsystems.mis.services.patients.PatientDrugAllergyService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class PatientDrugAllegySDJPaService implements PatientDrugAllergyService {
 
     private PatientsDrugAllergyRepository patientsDrugAllergyRepository;

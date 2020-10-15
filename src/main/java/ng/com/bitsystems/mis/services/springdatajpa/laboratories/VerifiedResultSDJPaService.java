@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories;
 import ng.com.bitsystems.mis.models.laboratories.VerifiedResults;
 import ng.com.bitsystems.mis.repositories.laboratories.VerifiedResultRepository;
 import ng.com.bitsystems.mis.services.laboratories.VerifiedResultService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class VerifiedResultSDJPaService implements VerifiedResultService {
     private VerifiedResultRepository verifiedResultRepository;
 

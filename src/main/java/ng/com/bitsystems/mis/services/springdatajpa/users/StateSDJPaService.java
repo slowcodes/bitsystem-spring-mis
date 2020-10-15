@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.users;
 import ng.com.bitsystems.mis.models.users.States;
 import ng.com.bitsystems.mis.repositories.users.StateRepository;
 import ng.com.bitsystems.mis.services.users.StateService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class StateSDJPaService implements StateService {
     private StateRepository stateRepository;
 

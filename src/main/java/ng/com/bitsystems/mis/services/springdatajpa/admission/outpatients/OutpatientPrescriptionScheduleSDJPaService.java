@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.admission.outpatients;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientPrescriptionSchedule;
 import ng.com.bitsystems.mis.repositories.admissions.outpatients.OutpatientPrescriptionScheduleRepository;
 import ng.com.bitsystems.mis.services.admission.outpatients.OutpatientPrescriptionScheduleService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class OutpatientPrescriptionScheduleSDJPaService implements OutpatientPrescriptionScheduleService {
     private OutpatientPrescriptionScheduleRepository prescriptionScheduleRepository;
 

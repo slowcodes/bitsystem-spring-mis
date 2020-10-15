@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.referrals;
 import ng.com.bitsystems.mis.models.referrals.ReferralBloodBankSettlement;
 import ng.com.bitsystems.mis.repositories.referrals.ReferralBloodBankSettlementRepository;
 import ng.com.bitsystems.mis.services.referrals.ReferralBloodBankSettlementService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class ReferralBloodBankSettlementSDJPaService implements ReferralBloodBankSettlementService {
     ReferralBloodBankSettlementRepository referralBloodBankSettlementRepository;
 

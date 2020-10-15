@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.consulatation;
 import ng.com.bitsystems.mis.models.consultation.Specializations;
 import ng.com.bitsystems.mis.repositories.consultations.SpecializationRepository;
 import ng.com.bitsystems.mis.services.consultations.SpecializationService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class SpecializationSDJPaService implements SpecializationService {
     private SpecializationRepository specializationRepository;
 

@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.accounts.payments;
 import ng.com.bitsystems.mis.models.accounts.payments.OtherServicePayments;
 import ng.com.bitsystems.mis.repositories.accounts.payments.OtherServicePaymentRepository;
 import ng.com.bitsystems.mis.services.accounts.payments.OtherServicePaymentService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class OtherServicePaymentSDJPaService implements OtherServicePaymentService {
     private OtherServicePaymentRepository otherServicePaymentRepository;
 

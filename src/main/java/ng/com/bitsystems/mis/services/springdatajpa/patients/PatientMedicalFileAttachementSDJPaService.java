@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.patients;
 import ng.com.bitsystems.mis.models.patients.PatientsMedicalFileAttachment;
 import ng.com.bitsystems.mis.repositories.patients.PatientsMedicalFileAttachmentRepository;
 import ng.com.bitsystems.mis.services.patients.PatientMedicalFileAttachmentService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class PatientMedicalFileAttachementSDJPaService implements PatientMedicalFileAttachmentService {
     private PatientsMedicalFileAttachmentRepository fileAttachmentRepository;
 

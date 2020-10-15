@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories;
 import ng.com.bitsystems.mis.models.laboratories.ExperimentReadings;
 import ng.com.bitsystems.mis.repositories.laboratories.ExperimentReadingsRepository;
 import ng.com.bitsystems.mis.services.laboratories.ExperimentReadingService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class ExperimentReadingSDJPaService implements ExperimentReadingService {
 
     private ExperimentReadingsRepository experimentReadingsRepository;

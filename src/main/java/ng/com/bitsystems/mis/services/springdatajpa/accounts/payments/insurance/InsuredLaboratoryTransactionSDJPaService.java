@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.accounts.payments.insurance
 import ng.com.bitsystems.mis.models.accounts.payments.insurance.InsuredLaboratoryTransactions;
 import ng.com.bitsystems.mis.repositories.accounts.payments.insurance.InsuredLaboratoryTransactionRepository;
 import ng.com.bitsystems.mis.services.accounts.payments.insurance.InsuredLaboratoryTransactionService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class InsuredLaboratoryTransactionSDJPaService implements InsuredLaboratoryTransactionService {
     private InsuredLaboratoryTransactionRepository laboratoryTransactionRepository;
 

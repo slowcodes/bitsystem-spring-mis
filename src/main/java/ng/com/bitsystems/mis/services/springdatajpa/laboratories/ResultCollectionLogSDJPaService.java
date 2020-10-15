@@ -3,10 +3,13 @@ package ng.com.bitsystems.mis.services.springdatajpa.laboratories;
 import ng.com.bitsystems.mis.models.laboratories.ResultCollectionLog;
 import ng.com.bitsystems.mis.repositories.laboratories.ResultCollectionLogRepository;
 import ng.com.bitsystems.mis.services.laboratories.ResultCollectionLogService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+
+@Service
 public class ResultCollectionLogSDJPaService implements ResultCollectionLogService {
     private ResultCollectionLogRepository resultCollectionLogRepository;
 

@@ -2,10 +2,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.rewards.promos;
 
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromoProductRecivedLogs;
 import ng.com.bitsystems.mis.repositories.rewards.promos.PharmacyPromoProductReceivedLogsRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class PharmacyPromoProductRecievedLogService implements ng.com.bitsystems.mis.services.rewards.promos.PharmacyPromoProductRecievedLogService {
     private PharmacyPromoProductReceivedLogsRepository receivedLogsRepository;
 

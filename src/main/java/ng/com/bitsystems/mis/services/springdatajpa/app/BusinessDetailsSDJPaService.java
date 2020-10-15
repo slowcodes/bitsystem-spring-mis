@@ -3,10 +3,11 @@ package ng.com.bitsystems.mis.services.springdatajpa.app;
 import ng.com.bitsystems.mis.models.app.BusinessDetails;
 import ng.com.bitsystems.mis.repositories.app.BusinessDetailsRepository;
 import ng.com.bitsystems.mis.services.app.BusinessDetailsService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-
+@Service
 public class BusinessDetailsSDJPaService implements BusinessDetailsService {
     private BusinessDetailsRepository businessDetailsRepository;
 

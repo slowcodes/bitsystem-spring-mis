@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.services.springdatajpa.pharmacy;
 import ng.com.bitsystems.mis.models.pharmacy.PrescriptionSchedule;
 import ng.com.bitsystems.mis.repositories.pharmacy.PrescriptionScheduleRepository;
 import ng.com.bitsystems.mis.services.pharmacy.PrescriptionScheduleService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class PrecriptionScheduleSDJPaService implements PrescriptionScheduleService {
     private PrescriptionScheduleRepository prescriptionScheduleRepository;
 
