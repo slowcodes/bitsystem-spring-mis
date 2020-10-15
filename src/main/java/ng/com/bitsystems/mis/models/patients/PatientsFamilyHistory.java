@@ -28,7 +28,7 @@ public class PatientsFamilyHistory  extends BaseEntity{
 
      @ManyToOne
      @JoinColumn(name = "patientsfamily_id")
-     private PatientsFamily patientsFamily;
+     private FamilyFolder familyFolder;
 
      @ManyToOne
      @JoinColumn(name = "users_id")

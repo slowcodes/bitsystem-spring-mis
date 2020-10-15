@@ -20,7 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PatientsFamily  extends BaseEntity {
+public class FamilyFolder extends BaseEntity {
 
      private String familyName;
      private String phone;

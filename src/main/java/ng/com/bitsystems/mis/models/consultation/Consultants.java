@@ -18,10 +18,10 @@ public class Consultants extends Person {
     @JoinTable(name = "consultants_specializations",
             joinColumns = @JoinColumn(name = "consultants_id"),
             inverseJoinColumns = @JoinColumn(name = "specializations_id"))
-    private Set<Specializations> specilizations = new HashSet<>();
+    private Set<Specializations> specializations = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-    private ServicePriceCode consultationfee;
+    private ServicePriceCode consultation_fee;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "consultants")
     private Set<BookConsultation> bookConsultations = new HashSet<>();

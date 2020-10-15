@@ -1,6 +1,6 @@
 package ng.com.bitsystems.mis.services.springdatajpa.pharmacy;
 
-import ng.com.bitsystems.mis.models.pharmacy.PrecriptionAdministration;
+import ng.com.bitsystems.mis.models.pharmacy.PrescriptionAdministration;
 import ng.com.bitsystems.mis.repositories.pharmacy.PrescriptionAdministrationRepository;
 import ng.com.bitsystems.mis.services.pharmacy.PrescriptionAdministrationService;
 import org.springframework.stereotype.Service;
@@ -17,24 +17,24 @@ public class PrescriptionAdministrationSDJPaService implements PrescriptionAdmin
     }
 
     @Override
-    public Set<PrecriptionAdministration> findAll() {
-        Set<PrecriptionAdministration> precriptionAdministrations = new HashSet<>();
-        prescriptionAdministrationRepository.findAll().forEach(precriptionAdministrations::add);
-        return precriptionAdministrations;
+    public Set<PrescriptionAdministration> findAll() {
+        Set<PrescriptionAdministration> prescriptionAdministrations = new HashSet<>();
+        prescriptionAdministrationRepository.findAll().forEach(prescriptionAdministrations::add);
+        return prescriptionAdministrations;
     }
 
     @Override
-    public PrecriptionAdministration findByID(Long aLong) {
+    public PrescriptionAdministration findByID(Long aLong) {
         return prescriptionAdministrationRepository.findById(aLong).get();
     }
 
     @Override
-    public PrecriptionAdministration add(PrecriptionAdministration object) {
+    public PrescriptionAdministration add(PrescriptionAdministration object) {
         return prescriptionAdministrationRepository.save(object);
     }
 
     @Override
-    public void delete(PrecriptionAdministration object) {
+    public void delete(PrescriptionAdministration object) {
         prescriptionAdministrationRepository.delete(object);
     }
 
@@ -44,7 +44,7 @@ public class PrescriptionAdministrationSDJPaService implements PrescriptionAdmin
     }
 
     @Override
-    public void addCommand(PrecriptionAdministration object) {
+    public void addCommand(PrescriptionAdministration object) {
 
     }
 }

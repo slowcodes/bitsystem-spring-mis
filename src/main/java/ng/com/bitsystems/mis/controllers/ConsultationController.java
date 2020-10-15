@@ -16,41 +16,59 @@ public class ConsultationController {
     @RequestMapping("/specializations")
     public String specializations(){
         return "specialization.html";
+        //
     }
 
     @RequestMapping("/specializations/add")
     public String addSpecialization(){
-        return "specialization.html";
-        //HTML Form: Fields,
+        return "add_specialization.html";
+        //HTML Form: specialization, description
     }
 
     @RequestMapping("/specializations/update")
     public String updateSpecialization(){
-        return "updateSpecialization.html";
+        //HTML Form: specialization, description
+        return "update_specialization.html";
     }
 
     @RequestMapping("/consultants/add")
     public String add(){
-        return "addConsultants.html";
+        //Form first name, last name, sex,email,phone,specializations
+        return "add_consultants.html";
+    }
+
+    @RequestMapping("/consultants/update")
+    public String update(){
+        //Form first name, last name, sex,email,phone,specializations
+        return "add_consultants.html";
+    }
+
+    @RequestMapping("/consultants/delete")
+    public String delete(){
+        return "";
     }
 
     @RequestMapping("/consultations")
     public String consultations(){
         return "consultations.html";
+        //Table: Name of last, specialization, data of specialization, scheduled by, date of consultation
     }
 
     @RequestMapping("/consultation/consultants")
     public String consultants(){
         return "consultants.html";
+        //Table First name, last, specialization, Action
     }
 
     @RequestMapping("/consultation/book")
     public String book(){
+        //HTML form: Specialization, Patient Name, Note
         return "bookConsultation.html";
     }
 
     @RequestMapping("/consultation/appointments/add")
     public String addAppointment(){
         return "";
+
     }
 }

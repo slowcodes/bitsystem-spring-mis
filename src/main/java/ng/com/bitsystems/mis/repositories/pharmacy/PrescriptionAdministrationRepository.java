@@ -1,7 +1,7 @@
 package ng.com.bitsystems.mis.repositories.pharmacy;
 
-import ng.com.bitsystems.mis.models.pharmacy.PrecriptionAdministration;
+import ng.com.bitsystems.mis.models.pharmacy.PrescriptionAdministration;
 import org.springframework.data.repository.CrudRepository;
 
-public interface PrescriptionAdministrationRepository extends CrudRepository<PrecriptionAdministration, Long> {
+public interface PrescriptionAdministrationRepository extends CrudRepository<PrescriptionAdministration, Long> {
 }

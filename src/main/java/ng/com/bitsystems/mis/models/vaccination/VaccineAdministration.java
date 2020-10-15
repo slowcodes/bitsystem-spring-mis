@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.pharmacy.PrecriptionAdministration;
+import ng.com.bitsystems.mis.models.pharmacy.PrescriptionAdministration;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class VaccineAdministration extends PrecriptionAdministration {
+public class VaccineAdministration extends PrescriptionAdministration {
 
      @ManyToOne
      @JoinColumn(name = "vaccineSchedule_id")

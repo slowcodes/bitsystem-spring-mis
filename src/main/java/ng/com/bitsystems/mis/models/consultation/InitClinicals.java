@@ -13,7 +13,6 @@ import javax.persistence.MappedSuperclass;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-
 public class InitClinicals  extends BaseEntity {
     private String presentingComplaints;
     private String historyPresentingComplaints;

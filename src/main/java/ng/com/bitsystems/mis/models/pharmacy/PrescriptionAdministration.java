@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PrecriptionAdministration extends BaseEntity {
+public class PrescriptionAdministration extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "users_id")
     private Users users;

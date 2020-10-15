@@ -1,6 +1,6 @@
 package ng.com.bitsystems.mis.services.springdatajpa.patients;
 
-import ng.com.bitsystems.mis.models.patients.PatientsFamily;
+import ng.com.bitsystems.mis.models.patients.FamilyFolder;
 import ng.com.bitsystems.mis.repositories.patients.PatientsFamilyRepository;
 import ng.com.bitsystems.mis.services.patients.PatientFamilyService;
 import org.springframework.stereotype.Service;
@@ -17,24 +17,24 @@ public class PatientFamilySDJPaService implements PatientFamilyService {
     }
 
     @Override
-    public Set<PatientsFamily> findAll() {
-        Set<PatientsFamily> patientsFamilies = new HashSet<>();
+    public Set<FamilyFolder> findAll() {
+        Set<FamilyFolder> patientsFamilies = new HashSet<>();
         patientsFamilyRepository.findAll().forEach(patientsFamilies::add);
         return patientsFamilies;
     }
 
     @Override
-    public PatientsFamily findByID(Long aLong) {
+    public FamilyFolder findByID(Long aLong) {
         return patientsFamilyRepository.findById(aLong).get();
     }
 
     @Override
-    public PatientsFamily add(PatientsFamily object) {
+    public FamilyFolder add(FamilyFolder object) {
         return patientsFamilyRepository.save(object);
     }
 
     @Override
-    public void delete(PatientsFamily object) {
+    public void delete(FamilyFolder object) {
         patientsFamilyRepository.delete(object);
     }
 
@@ -44,7 +44,7 @@ public class PatientFamilySDJPaService implements PatientFamilyService {
     }
 
     @Override
-    public void addCommand(PatientsFamily object) {
+    public void addCommand(FamilyFolder object) {
 
     }
 }

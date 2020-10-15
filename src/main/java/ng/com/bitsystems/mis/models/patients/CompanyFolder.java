@@ -19,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Companies extends BaseEntity {
+public class CompanyFolder extends BaseEntity {
     private String companyName;
     private String address;
     private String phone;

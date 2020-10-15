@@ -34,7 +34,7 @@ import java.util.Set;
 public class Patients  extends AccountHolder {
      @ManyToOne
      @JoinColumn(name = "patient_family_id")
-     private PatientsFamily patientsFamily;
+     private FamilyFolder familyFolder;
 
      private Date dob;
      private String occupation;
@@ -101,7 +101,7 @@ public class Patients  extends AccountHolder {
      private Set<VaccinationTransaction> vaccinationTransaction = new HashSet<>();
 
      @ManyToMany(mappedBy = "patients")
-     private Set<Companies> company = new HashSet<>();
+     private Set<CompanyFolder> company = new HashSet<>();
 
 }
 
