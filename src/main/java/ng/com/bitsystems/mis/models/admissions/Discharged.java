@@ -10,6 +10,7 @@ import ng.com.bitsystems.mis.models.users.Users;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,10 +18,9 @@ import javax.persistence.MappedSuperclass;
 @AllArgsConstructor
 @MappedSuperclass
 public class Discharged extends BaseEntity {
-
     @ManyToOne
     @JoinColumn(name = "users_id")
     private Users users;
-    private Integer dateDischarged;
-    private Integer comment;
+    private LocalDate dateDischarged;
+    private String comment;
 }

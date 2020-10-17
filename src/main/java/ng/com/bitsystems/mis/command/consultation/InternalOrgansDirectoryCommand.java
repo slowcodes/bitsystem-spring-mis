@@ -8,4 +8,6 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class InternalOrgansDirectoryCommand {
+    private Long id;
+    private String system;
 }

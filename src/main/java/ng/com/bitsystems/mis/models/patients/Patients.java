@@ -19,6 +19,7 @@ import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankT
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransaction;
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 import ng.com.bitsystems.mis.models.users.AccountHolder;
+import ng.com.bitsystems.mis.models.users.Person;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -31,9 +32,13 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Patients  extends AccountHolder {
+public class Patients  extends Person {
+
+     @OneToOne
+     private AccountHolder accountHolder;
+
      @ManyToOne
-     @JoinColumn(name = "patient_family_id")
+     @JoinColumn(name = "family_folder_id")
      private FamilyFolder familyFolder;
 
      private Date dob;
@@ -100,8 +105,8 @@ public class Patients  extends AccountHolder {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<VaccinationTransaction> vaccinationTransaction = new HashSet<>();
 
-     @ManyToMany(mappedBy = "patients")
-     private Set<CompanyFolder> company = new HashSet<>();
+     @OneToOne
+     private CompanyFolder companyFolder;
 
 }
 

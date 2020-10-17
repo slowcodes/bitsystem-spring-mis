@@ -11,7 +11,6 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.time.LocalDateTime;
 
 
 @Getter
@@ -24,8 +23,6 @@ public class InpatientPrescriptionGeneratedAdministration extends BaseEntity {
      @ManyToOne
      @JoinColumn(name = "inpatientprescriptionschedule_id")
      private InpatientPrescriptionSchedule schedule;
-
-     private LocalDateTime extimatedAdminTime;
 
 }
 

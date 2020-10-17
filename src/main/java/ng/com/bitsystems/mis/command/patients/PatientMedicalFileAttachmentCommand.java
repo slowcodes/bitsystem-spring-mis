@@ -8,4 +8,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class PatientMedicalFileAttachmentCommand {
+    private Long id;
+    private Long patientId;
+    private byte[] medicalFile;
+    private String description;
 }

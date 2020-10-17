@@ -28,6 +28,7 @@ import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransact
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,6 +40,9 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 public class Users  extends AccountHolder {
+
+    @OneToOne
+    private AccountHolder accountHolder;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<BookConsultation> bookConsultations = new HashSet<>();

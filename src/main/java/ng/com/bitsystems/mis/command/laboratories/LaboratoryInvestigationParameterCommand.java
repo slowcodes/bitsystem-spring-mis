@@ -8,4 +8,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class LaboratoryInvestigationParameterCommand {
+    private Long id;
+    private ExperimentReadingCommand experimentReadingCommand;
+    private String variableName;
+    private String value;
 }

@@ -4,24 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.BaseEntity;
 
-import javax.persistence.MappedSuperclass;
-import java.util.Date;
+import javax.persistence.Entity;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
-public class AccountHolder extends Person {
+@Entity
+public class AccountHolder extends BaseEntity {
     private String username;
     private String password;
     private String email;
     private byte[] signature;
     private String accountStatus;
     private byte[] image;
-    private Date regDay;
     private String title;
-
-
 }

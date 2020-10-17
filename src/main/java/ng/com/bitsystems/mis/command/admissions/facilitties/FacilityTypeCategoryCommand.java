@@ -8,4 +8,6 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class FacilityTypeCategoryCommand {
+    private Long id;
+    private String category;
 }

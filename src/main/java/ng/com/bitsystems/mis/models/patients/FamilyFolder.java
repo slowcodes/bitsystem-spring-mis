@@ -27,10 +27,10 @@ public class FamilyFolder extends BaseEntity {
      private String email;
      private Date dateRegistered;
 
-     @OneToMany(mappedBy = "patientsFamily")
+     @OneToMany(mappedBy = "familyFolder")
      private Set<Patients> patients = new HashSet<>();
 
-     @OneToMany(mappedBy = "patientsFamily")
+     @OneToMany(mappedBy = "familyFolder")
      private Set<PatientsFamilyHistory> patientsFamilyHistory = new HashSet<>();
 }
 

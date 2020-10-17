@@ -8,6 +8,7 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @MappedSuperclass
 public class Person extends BaseEntity {
-
+    private String middleName;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -27,8 +28,8 @@ public class Person extends BaseEntity {
     private String email;
     @Column(name = "mobile")
     private String phone;
-    @Column(name = "dateCreated")
-    private Date regDay;
+    @Column(name = "createdAt")
+    private LocalDate regDay;
     @Column(name = "status")
     private String status;
     @Column(name = "lastLoginDate")

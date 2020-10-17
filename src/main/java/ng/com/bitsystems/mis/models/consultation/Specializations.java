@@ -15,6 +15,6 @@ import java.util.Set;
 public class Specializations extends BaseEntity {
     private String specialization;
 
-    @ManyToMany(mappedBy = "specilizations")
+    @ManyToMany(mappedBy = "specializations")
     private Set<Consultants> consultants = new HashSet<>();
 }

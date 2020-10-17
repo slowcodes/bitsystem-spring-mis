@@ -6,7 +6,8 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,6 +15,7 @@ import java.util.Date;
 public class Payments extends BaseEntity {
 
     @ManyToOne()
+    @JoinColumn(name = "user_id")
     private Users users;
 
     @Column(name="payment_method")
@@ -24,10 +26,10 @@ public class Payments extends BaseEntity {
     private double amountPaid;
 
     @Column(name="date_of_payment")
-    private Date dateOfPayment;
+    private LocalDate dateOfPayment;
 
     @Column(name="time_of_payment")
-    private Date timeOfPayment;
+    private LocalDateTime timeOfPayment;
 
     @Column(name = "comment")
     private String comment;

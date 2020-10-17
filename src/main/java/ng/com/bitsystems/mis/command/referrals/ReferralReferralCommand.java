@@ -8,4 +8,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class ReferralReferralCommand {
+    private Long id;
+    private ReferralCommand referral;
+    private ReferralCommand referred;
 }

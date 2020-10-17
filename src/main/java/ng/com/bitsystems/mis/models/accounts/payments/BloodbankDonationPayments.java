@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonationQueue;
-import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -16,16 +15,15 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@Table(name = "bloodbank_donation_payments")
 public class BloodbankDonationPayments  extends Payments {
 
      @ManyToOne
      @JoinColumn(name = "donationqueue_id")
      private DonationQueue donationQueue;
 
-     @JoinColumn(name="users_id")
-     @ManyToOne()
-     private Users users;
+//     @JoinColumn(name="users_id")
+//     @ManyToOne()
+//     private Users users;
 
 }
 

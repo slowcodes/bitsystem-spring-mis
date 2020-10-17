@@ -8,4 +8,5 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class OutpatientPrecriptionGeneratedAdminCommand {
+
 }

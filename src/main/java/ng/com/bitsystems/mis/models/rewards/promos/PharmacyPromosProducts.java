@@ -39,9 +39,6 @@ public class PharmacyPromosProducts  extends BaseEntity {
      private Integer qty;
      private Integer productPromoExclusivity;
 
-     @OneToOne
-     private PharmacyRewardBasedPromo pharmacyRewardBasedPromos;
-
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyPromosProducts")
      private Set<PharmacyPromoProductRecivedLogs> pharmacyPromoProductRecivedLogs= new HashSet<>();
 

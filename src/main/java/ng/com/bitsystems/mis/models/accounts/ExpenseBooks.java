@@ -25,7 +25,7 @@ public class ExpenseBooks extends BaseEntity {
      private String description;
 
      @Column(name = "parent_book")
-     private Integer parentBook;
+     private Long parentBook;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "expenseBooks")
      private Set<ExpenseManager> expenseManager = new HashSet<>();

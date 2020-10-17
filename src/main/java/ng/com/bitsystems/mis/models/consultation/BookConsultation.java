@@ -5,14 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.accounts.payments.insurance.InsuredConsultations;
 import ng.com.bitsystems.mis.models.patients.Patients;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -35,8 +34,5 @@ public class BookConsultation extends BaseEntity {
 
     private LocalDate createdAt;
     private LocalDate bookedConsultationDay;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookConsultation")
-    Set<InsuredConsultations> insuredConsultations = new HashSet<>();
 
 }

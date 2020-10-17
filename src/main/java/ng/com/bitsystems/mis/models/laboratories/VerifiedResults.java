@@ -28,6 +28,8 @@ public class VerifiedResults extends BaseEntity {
      private Users users;
      private Date timeOfVerfication;
 
+     @OneToOne
+     private ResultCollectionLog resultCollectionLog;
 }
 
 

@@ -8,4 +8,6 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class SpecializationCommand {
+    private Long id;
+    private String specialization;
 }

@@ -4,8 +4,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Setter
 @Getter
 @NoArgsConstructor
 public class ResultCollectionCommand {
+    private Long id;
+    private Long resultId;
+    private Long userId;
+    private LocalDate timeOfCollection;
+    private ResultCollectionCommand resultCollectionCommand;
 }

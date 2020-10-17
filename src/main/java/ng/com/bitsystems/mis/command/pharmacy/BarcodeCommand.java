@@ -8,4 +8,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class BarcodeCommand {
+    private Long id;
+    private String barcode;
+    private PharmacyProductCommand pharmacyProductCommand;
 }

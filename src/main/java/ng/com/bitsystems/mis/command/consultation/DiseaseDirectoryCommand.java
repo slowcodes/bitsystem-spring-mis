@@ -7,5 +7,9 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class DieaseDirectoryCommand {
+public class DiseaseDirectoryCommand {
+    private Long id;
+    private Long createdBy;
+    private String disease;
+    private String description;
 }

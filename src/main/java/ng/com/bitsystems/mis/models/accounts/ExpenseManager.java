@@ -18,7 +18,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@Table(name = "expense_manager")
 public class ExpenseManager extends BaseEntity {
 
      @JoinColumn(name = "users_id", insertable = false, updatable = false)

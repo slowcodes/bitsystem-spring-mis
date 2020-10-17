@@ -7,5 +7,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class GeneraedAdmissionCommand {
+public class GeneratedAdmissionCommand {
+    private Long id;
+    private PharmacyProductCommand pharmacyProductCommand;
+    private Integer extimatedAdminTime;
 }

@@ -8,4 +8,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class InventoryGroupCommand {
+    private Long id;
+    private String groupName;
+    private String groupDesc;
 }

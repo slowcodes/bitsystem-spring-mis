@@ -9,4 +9,6 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class FacilityTypeCommand {
+    private Long id;
+    private String facilityType;
 }

@@ -10,6 +10,7 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.util.Date;
 
 @Getter
@@ -18,7 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 public class VolumedBasedPromos extends BaseEntity {
-
+     @OneToOne
      private Users users;
      private String title;
      private String description;

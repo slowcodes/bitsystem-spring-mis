@@ -8,4 +8,13 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class ExperimentParametersCommand {
+    private Long id;
+    private Long laboratoryInvestigationsId;
+    private String parameter;
+    private String valueDataType;
+    private Double min;
+    private Double max;
+    private Integer presentation;
+    private String unit;
+    private Long laboratoryTransactionDetailId;
 }

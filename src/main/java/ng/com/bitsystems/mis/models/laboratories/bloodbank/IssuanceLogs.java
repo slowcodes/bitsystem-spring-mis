@@ -12,6 +12,7 @@ import ng.com.bitsystems.mis.models.users.Users;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 
@@ -22,8 +23,7 @@ import java.time.LocalDate;
 @Entity
 public class IssuanceLogs extends BaseEntity {
 
-     @ManyToOne
-     @JoinColumn(name = "storage_id")
+     @OneToOne
      private Storage storage;
 
      @ManyToOne

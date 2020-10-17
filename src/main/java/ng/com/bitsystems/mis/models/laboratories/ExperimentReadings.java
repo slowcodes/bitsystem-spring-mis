@@ -32,10 +32,6 @@ public class ExperimentReadings extends BaseEntity {
      private String valueOfParameter;
      private String color;
 
-//     @ManyToOne
-//     @JoinColumn(name = "LaboratoryTransactionDetail")
-//     private LaboratoryTransactionDetail laboratoryTransactionDetail;
-
      @ManyToOne
      @JoinColumn(name="collectedsamples_id")
      private CollectedSamples collectedSamples;

@@ -14,10 +14,12 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -27,9 +29,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class InvestigationQueue extends BaseEntity {
 
-     @ManyToOne
-     @JoinColumn(name = "laboratoryinvestigations_id")
-     private LaboratoryInvestigations laboratoryInvestigations;
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "investigationQueue")
+     private Set<LaboratoryInvestigations> laboratoryInvestigations=new HashSet<>();
 
      @OneToOne
      private DonationQueue donationQueue;

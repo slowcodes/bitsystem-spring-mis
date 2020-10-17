@@ -8,4 +8,14 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class ReferralCommand {
+    private Long id;
+    private String middleName;
+    private String firstName;
+    private String lastName;
+    private String sex;
+    private String email;
+    private String phone;
+    private String organisation;
+    private String bank;
+    private String account;
 }

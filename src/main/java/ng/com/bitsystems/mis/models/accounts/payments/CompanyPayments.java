@@ -8,6 +8,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Getter
 @Setter
@@ -15,6 +17,7 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class CompanyPayments extends BaseEntity {
-    private String transactionType;
-    private String transactionId;
+    @Enumerated(EnumType.STRING)
+    private TransactionType transactionType;
+    private Long transactionId;
 }

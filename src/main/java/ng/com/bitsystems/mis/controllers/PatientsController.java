@@ -128,7 +128,7 @@ public class PatientsController {
         //Form: ID, History
     }
 
-    @RequestMapping("/patients/history/socio-cultural/add")
+    @RequestMapping("/patients/history/socio-cultural/update")
     public String updateSocioCulturalHistory(){
         return "patient/add_socio_cultural_history.html";
         //Form: ID, History

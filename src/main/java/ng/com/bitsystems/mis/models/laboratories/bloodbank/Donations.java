@@ -26,8 +26,7 @@ public class Donations extends BaseEntity {
      @OneToOne
      private BleedingSchedule bleedingSchedule;
 
-     @ManyToOne
-     @JoinColumn(name = "storage_id")
+     @OneToOne
      private Storage storage;
 
      @ManyToOne

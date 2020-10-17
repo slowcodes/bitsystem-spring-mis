@@ -8,4 +8,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class RetailMeasureCommand {
+    private Long id;
+    private String metric;
+    private String mesures;
 }

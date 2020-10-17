@@ -8,4 +8,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class ReferralLaboratorySettlementCommand {
+    private Long id;
+    private Long referralSettlementId;
+    private Long laboratoryTransactionDetailsId;
 }

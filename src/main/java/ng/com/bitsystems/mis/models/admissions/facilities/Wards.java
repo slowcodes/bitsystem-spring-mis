@@ -21,6 +21,7 @@ import java.util.Set;
 @Entity
 public class Wards extends Facilities {
 
+     //wards can be a type of facility thus this class should be discarded
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "ward")
      private Set<Facilities> facilities = new HashSet<>();
 }

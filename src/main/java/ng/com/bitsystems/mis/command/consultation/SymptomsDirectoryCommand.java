@@ -8,4 +8,6 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class SymptomsDirectoryCommand {
+    private Long id;
+    private String symptoms;
 }

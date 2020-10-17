@@ -8,4 +8,6 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class SocioCulturalCommand {
+    private Long id;
+    private String activity;
 }

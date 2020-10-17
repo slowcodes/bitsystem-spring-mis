@@ -20,6 +20,7 @@ public class PrescriptionSchedule extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "users_id")
     private Users users;
+    private String prescriptionNote;
     private int noOfDosage;
     private Integer hourlyInterval;
     private Integer timeOfSchedule;

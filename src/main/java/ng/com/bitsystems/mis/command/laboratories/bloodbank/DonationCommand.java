@@ -4,8 +4,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @NoArgsConstructor
 public class DonationCommand {
+    private Long id;
+    private Long bleedingScheduleId;
+    private Long storageId;
+    private Long userId;
+    private LocalDateTime timeOfDonation;
+    private String tagId;
 }

@@ -9,10 +9,10 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -22,9 +22,8 @@ import java.time.LocalDate;
 @Entity
 public class PatientsFamilyHistory  extends BaseEntity{
 
-     @ManyToOne
-     @JoinColumn(name = "diseasedirectory")
-     private DiseaseDirectory diseaseDirectory;
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patientFamilyHistory")
+     private Set<DiseaseDirectory> diseaseDirectorySet = new HashSet<>();
 
      @ManyToOne
      @JoinColumn(name = "patientsfamily_id")

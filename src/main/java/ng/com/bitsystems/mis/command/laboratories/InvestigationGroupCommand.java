@@ -8,4 +8,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class InvestigationGroupCommand {
+    private Long id;
+    private Long laboratoryId;
+    private String grpName;
 }

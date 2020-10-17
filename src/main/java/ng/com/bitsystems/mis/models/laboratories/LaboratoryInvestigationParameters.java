@@ -7,6 +7,8 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Getter
@@ -15,11 +17,11 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class LaboratoryInvestigationParameters  extends BaseEntity {
-
+     @ManyToOne
+     @JoinColumn(name = "experimentReading_id")
      private ExperimentReadings experimentReadings;
      private String variableName;
      private String value;
-
 }
 
 

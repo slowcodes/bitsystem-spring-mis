@@ -32,6 +32,4 @@ public class Results extends BaseEntity {
     @OneToOne
     private VerifiedResults verifiedResults;
 
-    @OneToOne
-    private ResultCollectionLog resultCollectionLog;
 }

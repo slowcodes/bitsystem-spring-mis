@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.admissions.Admission;
-import ng.com.bitsystems.mis.models.admissions.facilities.FacilityTypes;
 import ng.com.bitsystems.mis.models.admissions.facilities.StartUsage;
 
 import javax.persistence.CascadeType;
@@ -25,8 +24,8 @@ import java.util.Set;
 @Entity
 public class InpatientAdmission extends Admission {
 
-     @OneToOne
-     private FacilityTypes admissionBed;
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientAdmission")
+     private Set <StartUsage> startUsage = new HashSet<>();
 
      @OneToOne
      private InpatientDischarged inpatientDischarged;
