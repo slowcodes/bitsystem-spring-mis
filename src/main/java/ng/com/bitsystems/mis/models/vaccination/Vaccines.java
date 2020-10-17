@@ -5,11 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.accounts.pricing.SalesPriceCode;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -22,7 +24,8 @@ public class Vaccines extends BaseEntity {
     @JoinColumn(name = "drug_id")
     private PharmacyProducts pharmacyProducts;
 
-    private Double price;
+    @OneToOne
+    private SalesPriceCode priceCode;
 
     private String description;
 }

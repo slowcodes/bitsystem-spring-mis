@@ -36,7 +36,6 @@ public class Transaction extends BaseEntity {
     private Integer discount;
 
     @ManyToOne
-    @JoinColumn(name = "patientsreferrals_id")
-    private Referrals referrals;
-
+    @JoinColumn(name = "refferals_id")
+    private Referrals referral;
 }

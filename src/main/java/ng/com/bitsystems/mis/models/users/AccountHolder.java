@@ -7,6 +7,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -21,4 +22,8 @@ public class AccountHolder extends BaseEntity {
     private String accountStatus;
     private byte[] image;
     private String title;
+    private LocalDateTime lastLoginDate;
+
+
+    //private Set<Users> users = new HashSet<>();
 }

@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.payments.insurance.InsuredBloodbankTransactions;
-import ng.com.bitsystems.mis.models.referrals.Referrals;
 import ng.com.bitsystems.mis.models.transactions.Transaction;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,9 +28,6 @@ public class BloodbankTransaction extends Transaction {
      @OneToOne(cascade = CascadeType.ALL)
      private InsuredBloodbankTransactions insuredBloodbankTransactions;
 
-     @ManyToOne
-     @JoinColumn(name = "refferals_id")
-     private Referrals referral;
 }
 
 

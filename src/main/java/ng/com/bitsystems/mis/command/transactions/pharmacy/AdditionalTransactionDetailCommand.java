@@ -8,4 +8,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class AdditionalTransactionDetailCommand {
+    private Long id;
+    private PharmacySalesTransactionDetailCommand pharmacySalesTransactionDetailCommand;
+    private Integer showInReciept;
+    private String value;
 }

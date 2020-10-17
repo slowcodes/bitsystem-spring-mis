@@ -36,7 +36,6 @@ public class PatientCommand {
     private String phone;
     private LocalDate regDay;
     private String status;
-    private Date lastLoginDay;
     private AccountHolderCommand accountHolderCommand;
     private FamilyFolderCommand familyFolderCommand;
     private Date dob;

@@ -20,6 +20,7 @@ import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransacti
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 import ng.com.bitsystems.mis.models.users.AccountHolder;
 import ng.com.bitsystems.mis.models.users.Person;
+import ng.com.bitsystems.mis.models.users.States;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -108,6 +109,9 @@ public class Patients  extends Person {
      @OneToOne
      private CompanyFolder companyFolder;
 
+     @ManyToOne
+     @JoinColumn(name = "state_id")
+     private States states;
 }
 
 

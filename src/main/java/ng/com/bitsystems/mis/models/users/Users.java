@@ -39,7 +39,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Users  extends AccountHolder {
+public class Users  extends Person {
 
     @OneToOne
     private AccountHolder accountHolder;

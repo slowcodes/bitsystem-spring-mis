@@ -1,5 +1,4 @@
 package ng.com.bitsystems.mis.models.users;
-// Generated Jul 29, 2020 6:59:27 PM by Hibernate Tools 4.3.1
 
 
 import lombok.AllArgsConstructor;
@@ -10,7 +9,9 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.patients.Patients;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,8 +23,8 @@ public class States  extends BaseEntity {
      private String state;
      private int code;
 
-     @OneToOne
-     private Patients patients;
+     @OneToMany(mappedBy = "states")
+     private Set<Patients> patients = new HashSet<>();
 
 }
 
