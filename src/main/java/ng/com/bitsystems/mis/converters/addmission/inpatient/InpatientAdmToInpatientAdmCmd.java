@@ -1,4 +1,12 @@
 package ng.com.bitsystems.mis.converters.addmission.inpatient;
 
-public class InpatientAdmToInpatientAdmCmd {
+import ng.com.bitsystems.mis.command.admissions.inpatient.InpatientAdmissionCommand;
+import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientAdmission;
+import org.springframework.core.convert.converter.Converter;
+
+public class InpatientAdmToInpatientAdmCmd implements Converter<InpatientAdmission, InpatientAdmissionCommand> {
+    @Override
+    public InpatientAdmissionCommand convert(InpatientAdmission source) {
+        return null;
+    }
 }

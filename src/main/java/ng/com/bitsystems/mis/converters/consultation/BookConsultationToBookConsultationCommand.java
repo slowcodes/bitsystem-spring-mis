@@ -1,4 +1,4 @@
 package ng.com.bitsystems.mis.converters.consultation;
 
-public class BookCOnsultationToBookConsultationCommand {
+public class BookConsultationToBookConsultationCommand {
 }

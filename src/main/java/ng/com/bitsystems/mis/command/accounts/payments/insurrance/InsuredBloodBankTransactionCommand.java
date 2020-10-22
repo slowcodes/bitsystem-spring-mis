@@ -11,7 +11,7 @@ import ng.com.bitsystems.mis.command.transactions.laboratory.bloodbank.BloodBank
 public class InsuredBloodBankTransactionCommand {
 
     private Long id;
-    private Long programsId;
+    private Long programCommandId;
     private Double percentageIncurred;
     private BloodBankTransactionCommand bloodBankTransactionCommand;
 }

@@ -27,6 +27,9 @@ public class Programs extends BaseEntity {
 
      @Column(name="company_phone")
      private Integer companyPhone;
+
+    public void addInsuredTransaction(InsuredBloodbankTransactions insuredBloodbankTransactions) {
+    }
 }
 
 

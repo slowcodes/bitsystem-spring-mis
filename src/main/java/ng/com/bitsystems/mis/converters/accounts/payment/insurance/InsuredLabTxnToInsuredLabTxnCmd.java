@@ -1,4 +1,12 @@
 package ng.com.bitsystems.mis.converters.accounts.payment.insurance;
 
-public class InsuredLabTxnToInsuredLabTxnCmd {
+import ng.com.bitsystems.mis.command.accounts.payments.insurrance.InsuredLaboratoryTransactionCommand;
+import ng.com.bitsystems.mis.models.accounts.payments.insurance.InsuredLaboratoryTransactions;
+import org.springframework.core.convert.converter.Converter;
+
+public class InsuredLabTxnToInsuredLabTxnCmd implements Converter<InsuredLaboratoryTransactions, InsuredLaboratoryTransactionCommand> {
+    @Override
+    public InsuredLaboratoryTransactionCommand convert(InsuredLaboratoryTransactions source) {
+        return null;
+    }
 }
