@@ -1,4 +1,12 @@
 package ng.com.bitsystems.mis.converters.reward.loyalty;
 
-public class LoyaltyGainToLoyaltyGainCommand {
+import ng.com.bitsystems.mis.command.rewards.loyalties.LoyaltyGainsCommand;
+import ng.com.bitsystems.mis.models.rewards.loyalties.PatientsLoyaltyGains;
+import org.springframework.core.convert.converter.Converter;
+
+public class LoyaltyGainToLoyaltyGainCommand implements Converter<PatientsLoyaltyGains, LoyaltyGainsCommand> {
+    @Override
+    public LoyaltyGainsCommand convert(PatientsLoyaltyGains source) {
+        return null;
+    }
 }

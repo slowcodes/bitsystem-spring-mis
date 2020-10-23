@@ -1,4 +1,12 @@
 package ng.com.bitsystems.mis.converters.laboratory.bloodbank;
 
-public class InvestigationQueueToInvestigationQueueCommand {
+import ng.com.bitsystems.mis.command.laboratories.bloodbank.InvestigationQueueCommand;
+import ng.com.bitsystems.mis.models.laboratories.bloodbank.InvestigationQueue;
+import org.springframework.core.convert.converter.Converter;
+
+public class InvestigationQueueToInvestigationQueueCommand implements Converter<InvestigationQueue, InvestigationQueueCommand> {
+    @Override
+    public InvestigationQueueCommand convert(InvestigationQueue source) {
+        return null;
+    }
 }

@@ -1,4 +1,13 @@
 package ng.com.bitsystems.mis.converters.transaction.pharmacy;
 
-public class AdditionalTxnParameterCommandToAdditionalTxnParameter {
+import ng.com.bitsystems.mis.command.transactions.pharmacy.AdditionalTransactionDetailCommand;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.AdditionalTransactionDetails;
+import org.springframework.core.convert.converter.Converter;
+
+public class AdditionalTxnParameterCommandToAdditionalTxnParameter implements
+        Converter<AdditionalTransactionDetails, AdditionalTransactionDetailCommand> {
+    @Override
+    public AdditionalTransactionDetailCommand convert(AdditionalTransactionDetails source) {
+        return null;
+    }
 }
