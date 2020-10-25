@@ -7,6 +7,18 @@ import org.springframework.core.convert.converter.Converter;
 public class ProgramToProgramCommand implements Converter<Programs, ProgramsCommand> {
     @Override
     public ProgramsCommand convert(Programs source) {
-        return null;
+
+        if(source==null) {
+            return null;
+        }
+        final ProgramsCommand programsCommand = new ProgramsCommand();
+
+        programsCommand.setId(source.getId());
+        programsCommand.setCompanyEmail(source.getCompanyEmail());
+        programsCommand.setCompanyPhone(source.getCompanyPhone());
+        programsCommand.setInsuranceCompany(source.getInsuranceCompany());
+        programsCommand.setServiceDiscount(source.getServiceDiscount());
+
+        return programsCommand;
     }
 }
