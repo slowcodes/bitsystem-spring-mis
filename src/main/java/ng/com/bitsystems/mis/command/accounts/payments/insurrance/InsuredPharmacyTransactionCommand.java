@@ -10,7 +10,7 @@ import ng.com.bitsystems.mis.command.transactions.pharmacy.PharmacySalesTransact
 @NoArgsConstructor
 public class InsuredPharmacyTransactionCommand {
     private Long id;
-    private Long programsId;
+    private ProgramsCommand programsCommand;
     private Double percentageIncurred;
     private PharmacySalesTransactionCommand pharmacySalesTransactionCommand;
 }

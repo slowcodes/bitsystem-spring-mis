@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class ProgramsCommand {
-
     private Long id;
     private String insuranceCompany;
     private Double serviceDiscount;

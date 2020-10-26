@@ -7,14 +7,20 @@ import ng.com.bitsystems.mis.command.accounts.OtherServiceCommand;
 import ng.com.bitsystems.mis.models.accounts.payments.PaymentMethods;
 import ng.com.bitsystems.mis.models.accounts.payments.PaymentType;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @NoArgsConstructor
 public class OtherServiceTransactionPaymentCommand {
+    private Long id;
     private Long userId;
     private PaymentMethods paymentMethod;
     private double amountPaid;
     private String comment;
     private PaymentType paymentType;
+    private LocalDate dateOfPayment;
+    private LocalDateTime timeOfPayment;
     private OtherServiceCommand otherServiceCommand;
 }

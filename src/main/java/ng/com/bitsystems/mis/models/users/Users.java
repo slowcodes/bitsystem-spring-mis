@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.ExpenseManager;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
-import ng.com.bitsystems.mis.models.accounts.payments.BloodbankDonationPayments;
-import ng.com.bitsystems.mis.models.accounts.payments.LaboratoryTransactionPayments;
-import ng.com.bitsystems.mis.models.accounts.payments.PharmacyTransactionPayments;
-import ng.com.bitsystems.mis.models.accounts.payments.VaccinationTransactionsPayments;
+import ng.com.bitsystems.mis.models.accounts.payments.*;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
 import ng.com.bitsystems.mis.models.inventory.requests.Requisitions;
@@ -87,6 +84,9 @@ public class Users  extends Person {
     private Set<BloodbankDonationPayments> bloodbankDonationPayments = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<OtherServicePayments> otherServicePayments = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<LaboratoryTransactionPayments> laboratoryTransactionPayments = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "createdBy")
@@ -107,6 +107,35 @@ public class Users  extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<VaccinationTransaction> vaccinationTransactions = new HashSet<>();
 
+    public Users addBloodBankPayment(BloodbankDonationPayments payments) {
+        bloodbankDonationPayments.add(payments);
+        payments.setUsers(this);
+        return this;
+    }
+
+    public Users addLabPayment(LaboratoryTransactionPayments labPayment) {
+        laboratoryTransactionPayments.add(labPayment);
+        labPayment.setUsers(this);
+        return this;
+    }
+
+    public Users addOtherServicePayment(OtherServicePayments otherServicePayments) {
+        this.otherServicePayments.add(otherServicePayments);
+        otherServicePayments.setUsers(this);
+        return this;
+    }
+
+    public Users addPharmacyPayment(PharmacyTransactionPayments payments) {
+        pharmacyTransactionPaymentsSales.add(payments);
+        payments.setUsers(this);
+        return this;
+    }
+
+    public Users addVaccinationPayment(VaccinationTransactionsPayments payments){
+        vaccinationTransactionsPayments.add(payments);
+        payments.setUsers(this);
+        return this;
+    }
 }
 
 

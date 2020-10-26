@@ -9,6 +9,7 @@ import ng.com.bitsystems.mis.models.accounts.payments.TransactionType;
 @Getter
 @NoArgsConstructor
 public class CompanyPaymentCommand {
+    private Long id;
     private Long transactionId;
     private TransactionType transactionType;
 }

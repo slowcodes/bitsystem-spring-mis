@@ -10,7 +10,7 @@ import ng.com.bitsystems.mis.command.accounts.OtherServiceCommand;
 @NoArgsConstructor
 public class InsuredOtherServiceCommand {
     private Long id;
-    private Long programsId;
+    private ProgramsCommand programsCommand;
     private Double percentageIncurred;
     private OtherServiceCommand otherServiceCommand;
 }

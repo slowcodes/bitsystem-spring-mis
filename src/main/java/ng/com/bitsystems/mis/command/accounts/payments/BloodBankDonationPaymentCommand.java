@@ -11,6 +11,7 @@ import ng.com.bitsystems.mis.models.accounts.payments.PaymentType;
 @Getter
 @NoArgsConstructor
 public class BloodBankDonationPaymentCommand {
+    private Long id;
     private Long userId;
     private PaymentMethods paymentMethod;
     private double amountPaid;

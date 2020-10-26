@@ -10,7 +10,7 @@ import ng.com.bitsystems.mis.command.transactions.laboratory.LaboratoryTransacti
 @NoArgsConstructor
 public class InsuredLaboratoryTransactionCommand {
     private Long id;
-    private Long programsId;
+    private ProgramsCommand program;
     private Double percentageIncurred;
     private LaboratoryTransactionCommand laboratoryTransactionCommand;
 }

@@ -10,7 +10,7 @@ import ng.com.bitsystems.mis.command.transactions.vaccination.VaccinationTransac
 @NoArgsConstructor
 public class InsuredVaccinationTransactionCommand {
     private Long id;
-    private Long programsId;
+    private ProgramsCommand programsCommand;
     private Double percentageIncurred;
     private VaccinationTransactionCommand vaccinationTransactionCommand;
 }
