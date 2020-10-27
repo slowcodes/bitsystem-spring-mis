@@ -39,7 +39,7 @@ public class ExpenseManager extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name="expensebook_id")
-     private ExpenseBooks expenseBooks;
+     private AccountBooks accountBooks;
 
 }
 

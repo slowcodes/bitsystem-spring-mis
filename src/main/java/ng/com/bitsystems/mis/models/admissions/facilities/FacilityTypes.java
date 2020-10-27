@@ -25,6 +25,12 @@ public class FacilityTypes extends BaseEntity {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "facilityTypes")
      private Set<Facilities> facilities = new HashSet<>();
+
+    public FacilityTypes addFacility(Facilities facilities) {
+        this.facilities.add(facilities);
+        facilities.setFacilityTypes(this);
+        return this;
+    }
 }
 
 

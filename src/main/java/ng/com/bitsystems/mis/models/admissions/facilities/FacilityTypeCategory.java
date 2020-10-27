@@ -23,4 +23,10 @@ public class FacilityTypeCategory extends BaseEntity {
     private Set<Facilities> facilities = new HashSet<>();
 
     private String category;
+
+    public FacilityTypeCategory addFacility(Facilities facilities) {
+        this.facilities.add(facilities);
+        facilities.setFacilityTypeCategory(this);
+        return this;
+    }
 }

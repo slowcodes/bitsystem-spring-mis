@@ -17,5 +17,5 @@ public class InitClinicals  extends BaseEntity {
     private String presentingComplaints;
     private String historyPresentingComplaints;
     private String clinicalExamination;
-    private Integer provisionalDiagnosis;
+    private String provisionalDiagnosis;
 }

@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.command.admissions.facilitties.StartUsageCommand;
-import ng.com.bitsystems.mis.command.patients.PatientCommand;
-import ng.com.bitsystems.mis.command.users.UserCommand;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -18,9 +16,12 @@ public class InpatientAdmissionCommand {
     private Long id;
     private Set<StartUsageCommand> startUsageCommand = new HashSet<>();
     private Set<InpatientPrescriptionCommand> inpatientPrescriptionCommand = new HashSet<>();
-    private PatientCommand patientCommand;
-    private UserCommand userCommand;
+    private Long patientCommandId;
+    private Long userId;
     private String status;
     private LocalDate admissionDate;
-
+    private String clinicalExamination;
+    private String historyOfPresentingComplaint;
+    private String presentingComplaint;
+    private String provisionalDiagnosis;
 }

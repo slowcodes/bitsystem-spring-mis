@@ -12,7 +12,6 @@ import ng.com.bitsystems.mis.models.admissions.facilities.StartUsage;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,16 +24,16 @@ import java.util.Set;
 public class InpatientAdmission extends Admission {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientAdmission")
-     private Set <StartUsage> startUsage = new HashSet<>();
-
-     @OneToOne
-     private InpatientDischarged inpatientDischarged;
-
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientAdmission")
      private Set<InpatientPrescriptions> inpatientPrescriptions = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientAdmission")
      private Set<StartUsage> startUsages = new HashSet<>();
+
+    public InpatientAdmission addFacilityUsage(StartUsage startUsage) {
+        this.startUsages.add(startUsage);
+        startUsage.setInpatientAdmission(this);
+        return this;
+    }
 }
 
 

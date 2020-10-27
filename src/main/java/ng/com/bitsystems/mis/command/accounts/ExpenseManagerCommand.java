@@ -11,8 +11,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ExpenseManagerCommand {
     private Long id;
-    private Long usersByIssueTo;
-    private Long usersByTeller;
+    private Long usersByIssueToId;
+    private Long usersByTellerId;
     private LocalDate expenseDate;
     private double amount;
     private String purpose;

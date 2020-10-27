@@ -1,6 +1,6 @@
 package ng.com.bitsystems.mis.services.springdatajpa.accounts;
 
-import ng.com.bitsystems.mis.models.accounts.ExpenseBooks;
+import ng.com.bitsystems.mis.models.accounts.AccountBooks;
 import ng.com.bitsystems.mis.repositories.accounts.ExpenseBookRepository;
 import ng.com.bitsystems.mis.services.accounts.ExpenseBookService;
 import org.springframework.stereotype.Service;
@@ -16,24 +16,24 @@ public class ExpenseBooksSDJPaService implements ExpenseBookService {
     }
 
     @Override
-    public Set<ExpenseBooks> findAll() {
-        Set<ExpenseBooks> expenseBooks = new HashSet<>();
-        expenseBookRepository.findAll().forEach(expenseBooks::add);
-        return expenseBooks;
+    public Set<AccountBooks> findAll() {
+        Set<AccountBooks> accountBooks = new HashSet<>();
+        expenseBookRepository.findAll().forEach(accountBooks::add);
+        return accountBooks;
     }
 
     @Override
-    public ExpenseBooks findByID(Long aLong) {
+    public AccountBooks findByID(Long aLong) {
         return expenseBookRepository.findById(aLong).get();
     }
 
     @Override
-    public ExpenseBooks add(ExpenseBooks object) {
+    public AccountBooks add(AccountBooks object) {
         return expenseBookRepository.save(object);
     }
 
     @Override
-    public void delete(ExpenseBooks object) {
+    public void delete(AccountBooks object) {
         expenseBookRepository.delete(object);
     }
 
@@ -43,7 +43,7 @@ public class ExpenseBooksSDJPaService implements ExpenseBookService {
     }
 
     @Override
-    public void addCommand(ExpenseBooks object) {
+    public void addCommand(AccountBooks object) {
 
     }
 }

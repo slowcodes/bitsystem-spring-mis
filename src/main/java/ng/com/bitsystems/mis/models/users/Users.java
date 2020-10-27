@@ -4,9 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.accounts.AccountBooks;
 import ng.com.bitsystems.mis.models.accounts.ExpenseManager;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
 import ng.com.bitsystems.mis.models.accounts.payments.*;
+import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientAdmission;
+import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientDischarged;
+import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
 import ng.com.bitsystems.mis.models.inventory.requests.Requisitions;
@@ -74,6 +78,12 @@ public class Users  extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<PharmacyPromosProducts> pharmacyPromosProducts = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "createdBy")
+    private Set<AccountBooks> accountBooksCreators = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "createdBy")
+    private Set<OtherServices> otherServiceCreator = new HashSet<>();
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usersByIssueTo")
     private Set<ExpenseManager> receiver = new HashSet<>();
 
@@ -107,6 +117,15 @@ public class Users  extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<VaccinationTransaction> vaccinationTransactions = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<InpatientAdmission> inpatientAdmissions = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<InpatientDischarged> inpatientDischargeds = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<OutpatientAdmission> outpatientAdmissions  = new HashSet<>();
+
     public Users addBloodBankPayment(BloodbankDonationPayments payments) {
         bloodbankDonationPayments.add(payments);
         payments.setUsers(this);
@@ -134,6 +153,40 @@ public class Users  extends Person {
     public Users addVaccinationPayment(VaccinationTransactionsPayments payments){
         vaccinationTransactionsPayments.add(payments);
         payments.setUsers(this);
+        return this;
+    }
+
+    public void addReciever(ExpenseManager expenseManager) {
+        this.receiver.add(expenseManager);
+        expenseManager.setUsersByIssueTo(this);
+    }
+
+    public void addIssuer(ExpenseManager expenseManager) {
+        this.isusser.add(expenseManager);
+        expenseManager.setUsersByIssueTo(this);
+    }
+
+    public Users addExpenseBookCreator(AccountBooks accountBooks) {
+        this.accountBooksCreators.add(accountBooks);
+        accountBooks.setCreatedBy(this);
+        return this;
+    }
+
+    public Users addOtherServiceCreator(OtherServices otherServices) {
+        this.otherServiceCreator.add(otherServices);
+        otherServices.setCreatedBy(this);
+        return this;
+    }
+
+    public Users addInpatientAdmission(InpatientAdmission inpatientAdmission) {
+        this.inpatientAdmissions.add(inpatientAdmission);
+        inpatientAdmission.setUsers(this);
+        return this;
+    }
+
+    public Users addInpatientDischarged(InpatientDischarged inpatientDischarged) {
+        this.inpatientDischargeds.add(inpatientDischarged);
+        inpatientDischarged.setUsers(this);
         return this;
     }
 }

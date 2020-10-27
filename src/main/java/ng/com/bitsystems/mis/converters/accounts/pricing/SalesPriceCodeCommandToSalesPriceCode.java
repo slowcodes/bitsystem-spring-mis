@@ -7,6 +7,16 @@ import org.springframework.core.convert.converter.Converter;
 public class SalesPriceCodeCommandToSalesPriceCode implements Converter<SalesPriceCodeCommand, SalesPriceCode> {
     @Override
     public SalesPriceCode convert(SalesPriceCodeCommand source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+        SalesPriceCode salesPriceCode=new SalesPriceCode();
+        salesPriceCode.setId(source.getId());
+        salesPriceCode.setBuyingPrice(source.getBuyingPrice());
+        salesPriceCode.setSellingPrice(source.getSellingPrice());
+        salesPriceCode.setDiscountQty(source.getDiscountQuantity());
+        salesPriceCode.setDiscountPrice(source.getDiscountPrice());
+        salesPriceCode.setTax(source.getTax());
+        return salesPriceCode;
     }
 }

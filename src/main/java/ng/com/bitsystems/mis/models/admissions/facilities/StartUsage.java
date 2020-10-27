@@ -10,7 +10,6 @@ import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientAdmission;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
 @Getter
@@ -30,6 +29,4 @@ public class StartUsage extends BaseEntity {
 
     private LocalDateTime startTime;
 
-    @OneToOne
-    private EndUsage endUsage;
 }

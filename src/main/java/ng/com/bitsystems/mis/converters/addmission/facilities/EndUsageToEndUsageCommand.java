@@ -5,8 +5,20 @@ import ng.com.bitsystems.mis.models.admissions.facilities.EndUsage;
 import org.springframework.core.convert.converter.Converter;
 
 public class EndUsageToEndUsageCommand implements Converter<EndUsage, EndUsageCommand> {
+
+    private StartUsageToStartUsageCommand startUsageToStartUsageCommand;
+
+
     @Override
     public EndUsageCommand convert(EndUsage source) {
-        return null;
+        if(source == null){
+            return null;
+        }
+        final EndUsageCommand endUsageCommand = new EndUsageCommand();
+        endUsageCommand.setId(source.getId());
+        endUsageCommand.setComment(source.getComment());
+        endUsageCommand.setStartUsageCommand(startUsageToStartUsageCommand.convert(source.getStartUsage()));
+        endUsageCommand.setStopTime(source.getStopTime());
+        return endUsageCommand;
     }
 }

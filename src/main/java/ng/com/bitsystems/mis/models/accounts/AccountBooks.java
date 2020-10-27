@@ -18,8 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@Table(name = "expense_books")
-public class ExpenseBooks extends BaseEntity {
+public class AccountBooks extends BaseEntity {
 
      @Column(name = "desciption")
      private String description;
@@ -30,13 +29,24 @@ public class ExpenseBooks extends BaseEntity {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "expenseBooks")
      private Set<ExpenseManager> expenseManager = new HashSet<>();
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "expenseBooks")
-     private Set<OtherServices> otherServices = new HashSet<>();
-
      @ManyToOne
      @JoinColumn(name="users_id")
      private Users createdBy;
 
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountBook")
+     private Set<OtherServices> otherServices = new HashSet<>();
+
+     public AccountBooks addExpense(ExpenseManager expenseManager) {
+          this.expenseManager.add(expenseManager);
+          expenseManager.setAccountBooks(this);
+          return this;
+     }
+
+     public AccountBooks addOtherService(OtherServices otherServices) {
+          this.otherServices.add(otherServices);
+          otherServices.setAccountBooks(this);
+          return this;
+     }
 }
 
 

@@ -17,12 +17,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@Table(name = "other_services")
 public class OtherServices extends Service {
 
      @JoinColumn(name = "expensebooks_id")
      @ManyToOne
-     private ExpenseBooks expenseBooks;
+     private AccountBooks accountBooks;
 
      @Column(name = "service_description")
      private String description;

@@ -7,6 +7,14 @@ import org.springframework.core.convert.converter.Converter;
 public class ServicePriceCodeToServicePriceCodeCommand implements Converter<ServicePriceCode, ServicePriceCodeCommand> {
     @Override
     public ServicePriceCodeCommand convert(ServicePriceCode source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+        ServicePriceCodeCommand servicePriceCodeCommand = new ServicePriceCodeCommand();
+        servicePriceCodeCommand.setId(source.getId());
+        servicePriceCodeCommand.setDiscountPrice(source.getDiscountPrice());
+        servicePriceCodeCommand.setServicePrice(source.getServicePrice());
+        servicePriceCodeCommand.setTax(source.getTax());
+        return servicePriceCodeCommand;
     }
 }

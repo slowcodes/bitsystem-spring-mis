@@ -112,6 +112,12 @@ public class Patients  extends Person {
      @ManyToOne
      @JoinColumn(name = "state_id")
      private States states;
+
+    public Patients addInpatientAdmission(InpatientAdmission inpatientAdmission) {
+         this.inpatientAdmissions.add(inpatientAdmission);
+         inpatientAdmission.setPatients(this);
+         return this;
+    }
 }
 
 

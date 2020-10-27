@@ -11,7 +11,7 @@ import ng.com.bitsystems.mis.command.accounts.pricing.RateCommand;
 public class FacilitiesCommand {
     private Long id;
     private String locationDescription;
-    private FacilityTypeCommand facilityTypeCommand;
-    private FacilityTypeCategoryCommand facilityTypeCategoryCommand;
+    private Long facilityTypeCommandId;
+    private Long facilityTypeCategoryCommandId;
     private RateCommand rateCommand;
 }

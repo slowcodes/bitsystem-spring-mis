@@ -8,6 +8,12 @@ public class OutpatientAdmissionCommandToOutpatientAdmission
 implements Converter<OutpatientAdmissionCommand, OutpatientAdmission> {
     @Override
     public OutpatientAdmission convert(OutpatientAdmissionCommand source) {
-        return null;
+
+        if(source==null){
+            return null;
+        }
+        final OutpatientAdmission outpatientAdmission = new OutpatientAdmission();
+
+        return outpatientAdmission;
     }
 }

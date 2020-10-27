@@ -7,6 +7,15 @@ import org.springframework.core.convert.converter.Converter;
 public class RateToRateCommand implements Converter<Rate, RateCommand> {
     @Override
     public RateCommand convert(Rate source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+        RateCommand rateCommand = new RateCommand();
+        rateCommand.setId(source.getId());
+        rateCommand.setCost(source.getCost());
+        rateCommand.setRateTypes(source.getRateTypes());
+        rateCommand.setServiceDescription(source.getService_description());
+        rateCommand.setTax(source.getTax());
+        return rateCommand;
     }
 }
