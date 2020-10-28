@@ -1,9 +1,10 @@
-package ng.com.bitsystems.mis.models.consultation;
+package ng.com.bitsystems.mis.models.users;
 
 import lombok.Getter;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
-import ng.com.bitsystems.mis.models.users.Person;
+import ng.com.bitsystems.mis.models.consultation.BookConsultation;
+import ng.com.bitsystems.mis.models.consultation.Specializations;
 
 import javax.persistence.*;
 import java.util.HashSet;

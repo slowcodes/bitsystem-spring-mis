@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.patients.Patients;
+import ng.com.bitsystems.mis.models.users.Consultants;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;

@@ -34,6 +34,12 @@ public class InpatientAdmission extends Admission {
         startUsage.setInpatientAdmission(this);
         return this;
     }
+
+    public InpatientAdmission addInpatientPrescription(InpatientPrescriptions inpatientPrescriptions) {
+        this.inpatientPrescriptions.add(inpatientPrescriptions);
+        inpatientPrescriptions.setInpatientAdmission(this);
+        return this;
+    }
 }
 
 

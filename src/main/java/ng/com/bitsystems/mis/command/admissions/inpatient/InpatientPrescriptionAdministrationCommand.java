@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class InpatientPrescriptionAdministrationCommand {
     private Long id;
-    private Long users_d;
+    private Long userId;
     private LocalDateTime administrationTime;
     private String comment;
     private InpatientPrescriptionCommand inpatientPrescriptionCommand;

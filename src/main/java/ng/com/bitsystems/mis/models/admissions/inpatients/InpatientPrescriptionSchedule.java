@@ -8,8 +8,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.PrescriptionSchedule;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -19,10 +23,17 @@ import javax.persistence.OneToOne;
 @Entity
 public class InpatientPrescriptionSchedule  extends PrescriptionSchedule {
 
-     @OneToOne
-     private InpatientPrescriptions inpatientPrescriptions;
+    @OneToOne
+    private InpatientPrescriptions inpatientPrescriptions;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientPrescription")
+    private Set<InpatientPrescriptionGeneratedAdministration> generatedAdministrations = new HashSet<>();
 
+    public InpatientPrescriptionSchedule addGeneratedAdmin(InpatientPrescriptionGeneratedAdministration generatedAdministration) {
+        this.generatedAdministrations.add(generatedAdministration);
+        generatedAdministration.setSchedule(this);
+        return this;
+    }
 }
 
 

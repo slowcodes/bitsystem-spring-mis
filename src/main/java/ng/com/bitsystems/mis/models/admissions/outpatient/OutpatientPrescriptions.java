@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientAdmission;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import ng.com.bitsystems.mis.models.pharmacy.Prescription;
 
@@ -24,7 +23,7 @@ public class OutpatientPrescriptions extends Prescription {
 
      @ManyToOne
      @JoinColumn(name = "outpatientadmission_id")
-     private InpatientAdmission inpatientAdmission;
+     private OutpatientAdmission outpatientAdmission;
 
      @OneToOne
      private OutpatientPrescriptionSchedule outpatientPrescriptionSchedule;

@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class InpatientPrescriptionScheduleCommand {
     private Long id;
-    private InpatientPrescriptionScheduleCommand inpatientPrescriptionScheduleCommand;
+    private InpatientPrescriptionCommand inpatientPrescriptionCommand;
     private Long users_id;
     private String prescriptionNote;
     private int noOfDosage;

@@ -8,8 +8,7 @@ import ng.com.bitsystems.mis.models.accounts.AccountBooks;
 import ng.com.bitsystems.mis.models.accounts.ExpenseManager;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
 import ng.com.bitsystems.mis.models.accounts.payments.*;
-import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientAdmission;
-import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientDischarged;
+import ng.com.bitsystems.mis.models.admissions.inpatients.*;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
@@ -115,6 +114,15 @@ public class Users  extends Person {
     private Set<PharmacySalesTransaction> pharmacySalesTransaction = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<InpatientPrescriptionSchedule> inpatientPrescriptionSchedule = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<InpatientPrescriptions> inpatientPrescriptions = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<InpatientPrescriptionAdministration> inpatientPrescriptionAdministrations = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<VaccinationTransaction> vaccinationTransactions = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -187,6 +195,24 @@ public class Users  extends Person {
     public Users addInpatientDischarged(InpatientDischarged inpatientDischarged) {
         this.inpatientDischargeds.add(inpatientDischarged);
         inpatientDischarged.setUsers(this);
+        return this;
+    }
+
+    public Users addInpatientPrescriptionAdministration(InpatientPrescriptionAdministration inpatientPrescriptionAdministration) {
+        this.inpatientPrescriptionAdministrations.add(inpatientPrescriptionAdministration);
+        inpatientPrescriptionAdministration.setUsers(this);
+        return this;
+    }
+
+    public Users addInpatientPrescriptionSchedule(InpatientPrescriptionSchedule inpatientPrescriptionSchedule) {
+        this.inpatientPrescriptionSchedule.add(inpatientPrescriptionSchedule);
+        inpatientPrescriptionSchedule.setUsers(this);
+        return this;
+    }
+
+    public Users addInpatientPrescription(InpatientPrescriptions inpatientPrescriptions) {
+        this.inpatientPrescriptions.add(inpatientPrescriptions);
+        inpatientPrescriptions.setUsers(this);
         return this;
     }
 }

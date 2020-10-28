@@ -13,6 +13,6 @@ import java.time.LocalDateTime;
 public class InpatientPrescriptionGeneratedAdministrationCommand {
     private Long id;
     private PharmacyProductCommand pharmacyProductCommand;
-    private InpatientPrescriptionScheduleCommand prescriptionScheduleCommand;
-    private LocalDateTime extimatedAdminTime;
+    private Long prescriptionScheduleCommandId;
+    private LocalDateTime estimatedAdminTime;
 }

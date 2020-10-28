@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.pharmacy.GeneratedAdministration;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class OutpatientPrescriptionGeneratedAdministration extends BaseEntity {
+public class OutpatientPrescriptionGeneratedAdministration extends GeneratedAdministration {
 
      @ManyToOne
      @JoinColumn(name = "outpatientprescriptionschedule_id")

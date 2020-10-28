@@ -3,6 +3,7 @@ package ng.com.bitsystems.mis.models.consultation;
 import lombok.Getter;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.users.Consultants;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
