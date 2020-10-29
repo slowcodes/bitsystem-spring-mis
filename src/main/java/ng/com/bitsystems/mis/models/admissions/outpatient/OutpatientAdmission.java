@@ -11,7 +11,6 @@ import ng.com.bitsystems.mis.models.admissions.Admission;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,9 +22,6 @@ import java.util.Set;
 @Entity
 public class OutpatientAdmission  extends Admission {
 
-     @OneToOne
-     private OutpatientAdmissionDischarged outpatientAdmissionDischarged;
-
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "outpatientAdmission")
      private Set<OutpatientPrescriptions> outpatientPrescriptions = new HashSet<>();
 
@@ -35,6 +31,11 @@ public class OutpatientAdmission  extends Admission {
           return this;
      }
 
+    public OutpatientAdmission addOutPatientPrescription(OutpatientPrescriptions outpatientPrescriptions) {
+         this.outpatientPrescriptions.add(outpatientPrescriptions);
+         outpatientPrescriptions.setOutpatientAdmission(this);
+         return this;
+    }
 }
 
 

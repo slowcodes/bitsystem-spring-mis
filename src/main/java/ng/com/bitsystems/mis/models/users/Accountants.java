@@ -1,5 +1,6 @@
 package ng.com.bitsystems.mis.models.users;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,5 +13,5 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class NonMedicals extends Users{
+public class Accountants extends Users {
 }

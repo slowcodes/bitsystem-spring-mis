@@ -7,6 +7,13 @@ import org.springframework.core.convert.converter.Converter;
 public class InternalOrganDirectoryCommandToInternalOrganDirectory implements Converter<InternalOrgansDirectoryCommand, InternalOrgansDirectory> {
     @Override
     public InternalOrgansDirectory convert(InternalOrgansDirectoryCommand source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+        InternalOrgansDirectory internalOrgansDirectory=new InternalOrgansDirectory();
+        internalOrgansDirectory.setId(source.getId());
+        internalOrgansDirectory.setSystem(source.getSystem());
+
+        return internalOrgansDirectory;
     }
 }

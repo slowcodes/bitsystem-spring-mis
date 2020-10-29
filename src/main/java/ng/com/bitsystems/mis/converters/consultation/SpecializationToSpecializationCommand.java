@@ -7,6 +7,13 @@ import org.springframework.core.convert.converter.Converter;
 public class SpecializationToSpecializationCommand implements Converter<Specializations, SpecializationCommand> {
     @Override
     public SpecializationCommand convert(Specializations source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+
+        final SpecializationCommand specializationCommand=new SpecializationCommand();
+        specializationCommand.setId(source.getId());
+        specializationCommand.setSpecialization(source.getSpecialization());
+        return specializationCommand;
     }
 }

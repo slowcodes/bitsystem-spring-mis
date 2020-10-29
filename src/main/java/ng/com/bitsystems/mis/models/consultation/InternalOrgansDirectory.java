@@ -8,11 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -22,8 +18,6 @@ import java.util.Set;
 public class InternalOrgansDirectory extends BaseEntity {
      private String system;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "internalOrgansDirectory")
-     private Set<InternalOrganReview> internalOrganReviews = new HashSet<>();
 }
 
 

@@ -24,9 +24,11 @@ public class InternalOrganReview extends BaseEntity {
      private InternalOrgansDirectory internalOrgansDirectory;
 
      private Integer state; //0-10, 10-Perfect condition, 0 very bad condition
-     private Integer review;
-     private ClerkingSymptoms clerkingSymptoms;
+     private String review;
 
+     @ManyToOne
+     @JoinColumn(name = "clerkId")
+     private Clerks clerks;
 }
 
 

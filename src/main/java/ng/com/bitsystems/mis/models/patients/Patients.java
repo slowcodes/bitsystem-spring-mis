@@ -118,6 +118,18 @@ public class Patients  extends Person {
          inpatientAdmission.setPatients(this);
          return this;
     }
+
+    public Patients addOutpatientAdmission(OutpatientAdmission outpatientAdmission) {
+         this.outpatientAdmissions.add(outpatientAdmission);
+         outpatientAdmission.setPatients(this);
+         return this;
+    }
+
+    public Patients addConsultation(BookConsultation bookConsultation) {
+         this.bookConsultations.add(bookConsultation);
+         bookConsultation.setPatients(this);
+         return this;
+    }
 }
 
 

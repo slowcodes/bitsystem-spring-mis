@@ -8,6 +8,13 @@ public class InternalOrganDirectoryToInternalOrganDirectoryCommand
 implements Converter<InternalOrgansDirectory, InternalOrgansDirectoryCommand> {
     @Override
     public InternalOrgansDirectoryCommand convert(InternalOrgansDirectory source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+        final InternalOrgansDirectoryCommand internalOrgansDirectoryCommand=new InternalOrgansDirectoryCommand();
+        internalOrgansDirectoryCommand.setId(source.getId());
+        internalOrgansDirectoryCommand.setSystem(source.getSystem());
+
+        return internalOrgansDirectoryCommand;
     }
 }

@@ -7,6 +7,16 @@ import org.springframework.core.convert.converter.Converter;
 public class DiseaseDirectoryToDiseaseDirectoryCommand implements Converter<DiseaseDirectory, DiseaseDirectoryCommand> {
     @Override
     public DiseaseDirectoryCommand convert(DiseaseDirectory source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+        DiseaseDirectoryCommand diseaseDirectoryCommand = new DiseaseDirectoryCommand();
+        diseaseDirectoryCommand.setId(source.getId());
+        if(source.getCreatedBy()!=null)
+            diseaseDirectoryCommand.setCreatedBy(source.getCreatedBy().getId());
+        diseaseDirectoryCommand.setDescription(source.getDescription());
+        diseaseDirectoryCommand.setDisease(source.getDisease());
+
+        return diseaseDirectoryCommand;
     }
 }

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.patients.Patients;
-import ng.com.bitsystems.mis.models.users.Consultants;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
@@ -30,8 +29,8 @@ public class BookConsultation extends BaseEntity {
     private Users users;
 
     @ManyToOne
-    @JoinColumn(name = "consultants_id")
-    private Consultants consultants;
+    @JoinColumn(name = "specialization_id")
+    private Specializations specialization;
 
     private LocalDate createdAt;
     private LocalDate bookedConsultationDay;

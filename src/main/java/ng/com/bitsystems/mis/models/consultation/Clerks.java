@@ -5,10 +5,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.patients.Patients;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -26,7 +26,24 @@ public class Clerks extends InitClinicals {
 
      private LocalDate consultationDate;
 
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clerk")
+     private Set<ClerkingSymptoms> clerkingSymptoms=new HashSet<>();
 
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clerk")
+     private Set<InternalOrganReview> internalOrganReviews=new HashSet<>();
+
+
+    public Clerks addClerkingSymptoms(ClerkingSymptoms clerkingSymptoms) {
+        this.clerkingSymptoms.add(clerkingSymptoms);
+        clerkingSymptoms.setClerks(this);
+        return this;
+    }
+
+    public Clerks addInternalOrganReview(InternalOrganReview internalOrganReview) {
+        this.internalOrganReviews.add(internalOrganReview);
+        internalOrganReview.setClerks(this);
+        return this;
+    }
 }
 
 

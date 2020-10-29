@@ -8,6 +8,15 @@ public class InternalOrganReviewToInternalOrganReviewCommand
 implements Converter<InternalOrganReview, InternalOrganReviewCommand> {
     @Override
     public InternalOrganReviewCommand convert(InternalOrganReview source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+        final InternalOrganReviewCommand internalOrganReviewCommand=new InternalOrganReviewCommand();
+        internalOrganReviewCommand.setId(source.getId());
+        internalOrganReviewCommand.setReview(source.getReview());
+        if(source.getClerks()!=null)
+            internalOrganReviewCommand.setClerksId(source.getClerks().getId());
+        internalOrganReviewCommand.setState(source.getState());
+        return internalOrganReviewCommand;
     }
 }

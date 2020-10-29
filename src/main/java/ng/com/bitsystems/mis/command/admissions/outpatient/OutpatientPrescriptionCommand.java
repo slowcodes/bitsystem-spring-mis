@@ -13,8 +13,9 @@ public class OutpatientPrescriptionCommand {
     private Long id;
     private Long usersId;
     private Form form;
+    private Long outpatientId;
     private String administrationMode;
-    private Long duration;
+    private Integer duration;
     private Integer frequency;
     private Integer dose;
     private String measure;
