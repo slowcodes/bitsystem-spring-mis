@@ -14,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class DonationRegistryCommand {
     private Long id;
-    private PatientCommand patientCommand;
+    private PatientCommand patient;
     private BloodGroups bloodGroup;
-    private Set<DonationQueueCommand> donationQueueCommands = new HashSet<>();
+    private Set<DonationCommand> donationCommands = new HashSet<>();
 }

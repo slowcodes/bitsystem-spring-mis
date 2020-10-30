@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
+import ng.com.bitsystems.mis.models.accounts.pricing.SalesPriceCode;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -26,7 +26,7 @@ public class Inventory  extends BaseEntity {
      private Set<InventoryGroups> inventoryGroups = new HashSet<>();
 
      @OneToOne
-     private ServicePriceCode servicePriceCode;
+     private SalesPriceCode salesPriceCode;
 
      private String name;
      private String itemDesc;
@@ -38,8 +38,19 @@ public class Inventory  extends BaseEntity {
      private Set<InventoryBarcodes> inventoryBarcodes = new HashSet<>();
 
      @OneToMany
-     private Set<InventoryPerLaboratoryTransaction> inventoryPerLaboratoryTransactions = new HashSet<>();
+     private Set<InventoryPerLaboratoryTransaction> inventoryPerLaboratoryTransactions=new HashSet<>();
 
+    public Inventory addBarcodes(InventoryBarcodes inventoryBarcodes) {
+         this.inventoryBarcodes.add(inventoryBarcodes);
+         inventoryBarcodes.setInventory(this);
+         return this;
+    }
+
+     public Inventory addInventoryPerTransaction(InventoryPerLaboratoryTransaction inventoryPerLaboratoryTransaction) {
+        this.inventoryPerLaboratoryTransactions.add(inventoryPerLaboratoryTransaction);
+        inventoryPerLaboratoryTransaction.setInventory(this);
+        return this;
+     }
 }
 
 

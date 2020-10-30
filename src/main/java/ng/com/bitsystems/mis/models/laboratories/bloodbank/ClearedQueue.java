@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -22,16 +23,14 @@ import javax.persistence.OneToOne;
 @Entity
 public class ClearedQueue extends BaseEntity {
 
-     @OneToOne
-     private DonationQueue donationQueue;
 
      @ManyToOne
      @JoinColumn(name = "users_id")
      private Users users;
-     private Integer timeOfClearance;
+     private LocalDateTime timeOfClearance;
 
      @OneToOne
-     private BleedingSchedule bleedingSchedules;
+     private DonationQueue donationQueue;
 }
 
 

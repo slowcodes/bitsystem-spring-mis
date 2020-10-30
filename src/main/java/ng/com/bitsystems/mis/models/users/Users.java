@@ -13,6 +13,7 @@ import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
 import ng.com.bitsystems.mis.models.inventory.requests.Requisitions;
+import ng.com.bitsystems.mis.models.invoice.Invoice;
 import ng.com.bitsystems.mis.models.laboratories.CollectedSamples;
 import ng.com.bitsystems.mis.models.laboratories.ResultCollectionLog;
 import ng.com.bitsystems.mis.models.laboratories.VerifiedResults;
@@ -134,6 +135,9 @@ public class Users  extends Person {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<OutpatientAdmission> outpatientAdmissions  = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Invoice> invoices  = new HashSet<>();
+
     public Users addBloodBankPayment(BloodbankDonationPayments payments) {
         bloodbankDonationPayments.add(payments);
         payments.setUsers(this);
@@ -213,6 +217,18 @@ public class Users  extends Person {
     public Users addInpatientPrescription(InpatientPrescriptions inpatientPrescriptions) {
         this.inpatientPrescriptions.add(inpatientPrescriptions);
         inpatientPrescriptions.setUsers(this);
+        return this;
+    }
+
+    public Users addRequisition(Requisitions requisitions) {
+        this.requisitions.add(requisitions);
+        requisitions.setUsers(this);
+        return this;
+    }
+
+    public Users addInvoices(Invoice invoice) {
+        this.invoices.add(invoice);
+        invoice.setUsers(this);
         return this;
     }
 }

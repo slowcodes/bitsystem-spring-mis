@@ -27,7 +27,13 @@ public class DonorRegistry extends BaseEntity {
      private BloodGroups bloodGroup;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "donorRegistry")
-     private Set<DonationQueue> donationQueues = new HashSet<>();
+     private Set<Donations> donations = new HashSet<>();
+
+//    public DonorRegistry addDonationQueue(DonationQueue donationQueue) {
+//        this.donationQueues.add(donationQueue);
+//        donationQueue.setDonorRegistry(this);
+//        return this;
+//    }
 }
 
 

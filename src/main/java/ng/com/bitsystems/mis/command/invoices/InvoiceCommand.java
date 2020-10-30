@@ -15,7 +15,7 @@ import java.util.Set;
 public class InvoiceCommand {
     private Long id;
     private Long patientId;
-    private long usersId;
+    private Long usersId;
     private LocalDate dateTransaction;
     private LocalDateTime timeOfTransaction;
     private String comment;

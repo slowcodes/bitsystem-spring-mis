@@ -28,4 +28,23 @@ public class Invoice extends Transaction {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "invoice")
     private Set<PharmacyInvoiceDetailsSale> pharmacyInvoiceDetailsSales = new HashSet<>();
+
+    public Invoice addLaboratoryInvoiceDetail(LaboratoryInvoiceDetails laboratoryInvoiceDetails) {
+        this.laboratoryInvoiceDetails.add(laboratoryInvoiceDetails);
+        laboratoryInvoiceDetails.setInvoice(this);
+        return this;
+    }
+
+    public Invoice addOtherServiceInvoiceDetail(OtherServiceInvoiceDetails otherServiceInvoiceDetails) {
+        this.otherServiceInvoiceDetails.add(otherServiceInvoiceDetails);
+        otherServiceInvoiceDetails.setInvoice(this);
+
+        return this;
+    }
+
+    public Invoice addPharmacyInvoiceDetail(PharmacyInvoiceDetailsSale pharmacyInvoiceDetailsSale) {
+        this.pharmacyInvoiceDetailsSales.add(pharmacyInvoiceDetailsSale);
+        pharmacyInvoiceDetailsSale.setInvoice(this);
+        return this;
+    }
 }

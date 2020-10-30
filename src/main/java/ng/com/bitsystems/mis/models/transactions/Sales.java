@@ -13,7 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -29,7 +30,8 @@ public class Sales extends BaseEntity {
     private Integer userDiscount;
     private Integer useDiscountPrice;
     private String comment;
-    private Date timeOfTransaction;
+    private LocalDateTime timeOfTransaction;
+    private LocalDate transactionDate;
     private Integer reversal;
 
     @ManyToOne

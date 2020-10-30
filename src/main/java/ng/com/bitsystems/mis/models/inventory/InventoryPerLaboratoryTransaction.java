@@ -27,7 +27,7 @@ import javax.persistence.ManyToOne;
 public class InventoryPerLaboratoryTransaction  extends BaseEntity {
 
      @ManyToOne
-     @JoinColumn(name = "inventory_id")
+     @JoinColumn(name = "inventoryId")
      private Inventory inventory;
 
      @ManyToOne
@@ -35,7 +35,6 @@ public class InventoryPerLaboratoryTransaction  extends BaseEntity {
      private LaboratoryInvestigations laboratoryInvestigations;
 
      private Integer requiredQty;
-
 }
 
 

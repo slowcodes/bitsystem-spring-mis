@@ -7,6 +7,13 @@ import org.springframework.core.convert.converter.Converter;
 public class InventoryGroupToInventoryGroupCommand implements Converter<InventoryGroups, InventoryGroupCommand> {
     @Override
     public InventoryGroupCommand convert(InventoryGroups source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+        InventoryGroupCommand inventoryGroupCommand = new InventoryGroupCommand();
+        inventoryGroupCommand.setGroupDesc(source.getGroupDesc());
+        inventoryGroupCommand.setGroupName(source.getGroupName());
+        inventoryGroupCommand.setId(source.getId());
+        return inventoryGroupCommand;
     }
 }

@@ -52,6 +52,19 @@ public class LaboratoryInvestigations  extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "investigationgroups_id")
     private InvestigationGroups investigationGroups;
+
+    public LaboratoryInvestigations addInvPerLabTxn(InventoryPerLaboratoryTransaction
+                                                            inventoryPerLaboratoryTransaction) {
+        this.inventoryPerLaboratoryTransactions.add(inventoryPerLaboratoryTransaction);
+        inventoryPerLaboratoryTransaction.setLaboratoryInvestigations(this);
+        return this;
+    }
+
+    public LaboratoryInvestigations addLabInvDetails(LaboratoryInvoiceDetails laboratoryInvoiceDetails) {
+        this.laboratoryInvoiceDetailsServices.add(laboratoryInvoiceDetails);
+        laboratoryInvoiceDetails.setLaboratoryInvestigations(this);
+        return this;
+    }
 }
 
 

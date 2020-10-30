@@ -3,7 +3,7 @@ package ng.com.bitsystems.mis.command.inventory;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.command.accounts.pricing.ServicePriceCodeCommand;
+import ng.com.bitsystems.mis.command.accounts.pricing.SalesPriceCodeCommand;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +14,7 @@ import java.util.Set;
 public class InventoryCommand {
     private Long id;
     private Set<InventoryGroupCommand> inventoryGroupCommands = new HashSet<>();
-    private ServicePriceCodeCommand servicePriceCodeCommand;
+    private SalesPriceCodeCommand salesPriceCodeCommand;
     private String name;
     private String itemDesc;
     private String measure;

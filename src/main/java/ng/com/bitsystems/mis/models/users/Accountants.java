@@ -5,8 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.invoice.OtherServiceInvoiceDetails;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,4 +19,14 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class Accountants extends Users {
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<OtherServiceInvoiceDetails> otherServiceInvoiceDetails = new HashSet<>();
+
+    public Accountants addAccountBooks(OtherServiceInvoiceDetails otherServiceInvoiceDetails) {
+        this.otherServiceInvoiceDetails.add(otherServiceInvoiceDetails);
+        otherServiceInvoiceDetails.setCreatedBy(this);
+        return this;
+    }
 }

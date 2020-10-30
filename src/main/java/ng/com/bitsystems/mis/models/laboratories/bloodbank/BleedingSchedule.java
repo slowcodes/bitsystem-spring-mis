@@ -22,9 +22,6 @@ import java.time.LocalDateTime;
 @Entity
 public class BleedingSchedule extends BaseEntity {
 
-     @OneToOne
-     private ClearedQueue clearedQueue;
-
      @ManyToOne
      @JoinColumn(name = "users_id")
      private Users users;
@@ -33,6 +30,9 @@ public class BleedingSchedule extends BaseEntity {
 
      @OneToOne
      private DonationQueue donationQueue;
+
+     @OneToOne
+     private ClearedQueue clearedQueue;
 }
 
 

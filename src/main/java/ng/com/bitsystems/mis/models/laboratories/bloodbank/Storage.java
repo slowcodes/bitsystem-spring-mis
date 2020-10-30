@@ -33,11 +33,24 @@ public class Storage extends BaseEntity {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "storage")
      private Set <BloodbankTransactionDetails> bloodbankTransactionDetails = new HashSet<>();
 
-     @OneToOne
-     private Donations donations;
+     @OneToMany(cascade = CascadeType.ALL)
+     private Set<IssuanceLogs> issuanceLogs = new HashSet<>();
 
-     @OneToOne
-     private IssuanceLogs issuanceLogs;
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "storage")
+     private Set<Donations> donations=new HashSet<>();
+
+
+     public Storage addDonation(Donations donations) {
+          this.donations.add(donations);
+          donations.setStorage(this);
+          return this;
+     }
+
+    public Storage addIssuanceLog(IssuanceLogs issuanceLogs) {
+          this.issuanceLogs.add(issuanceLogs);
+          issuanceLogs.setStorage(this);
+          return this;
+    }
 }
 
 

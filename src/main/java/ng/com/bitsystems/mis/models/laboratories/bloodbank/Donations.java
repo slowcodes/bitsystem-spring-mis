@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 public class Donations extends BaseEntity {
 
      @OneToOne
-     private BleedingSchedule bleedingSchedule;
+     private ClearedQueue clearedQueue;
 
      @OneToOne
      private Storage storage;

@@ -8,6 +8,18 @@ public class InventoryPerLabTxnToInventoryPerLabTxnCommand
 implements Converter<InventoryPerLaboratoryTransaction, InventoryPerLaboratoryTransactionCommand> {
     @Override
     public InventoryPerLaboratoryTransactionCommand convert(InventoryPerLaboratoryTransaction source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+        final InventoryPerLaboratoryTransactionCommand transactionCommand=new InventoryPerLaboratoryTransactionCommand();
+        transactionCommand.setId(transactionCommand.getId());
+        if(source.getInventory() !=null){
+            transactionCommand.setInventoryId(source.getInventory().getId());
+        }
+
+        if(source.getLaboratoryInvestigations() !=null){
+            transactionCommand.setLaboratoryInvestigationsId(source.getLaboratoryInvestigations().getId());
+        }
+        return transactionCommand;
     }
 }

@@ -130,6 +130,18 @@ public class Patients  extends Person {
          bookConsultation.setPatients(this);
          return this;
     }
+
+    public Patients addInvoice(Invoice invoice) {
+         this.invoices.add(invoice);
+         invoice.setPatients(this);
+         return this;
+    }
+
+    public Patients addIssuedBlood(IssuanceLogs issuanceLogs) {
+         this.issuanceLogs.add(issuanceLogs);
+         issuanceLogs.setPatients(this);
+         return this;
+    }
 }
 
 

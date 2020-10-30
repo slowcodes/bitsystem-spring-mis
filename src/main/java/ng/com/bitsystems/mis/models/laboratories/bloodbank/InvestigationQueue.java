@@ -12,10 +12,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -25,11 +29,11 @@ import javax.persistence.OneToOne;
 @Entity
 public class InvestigationQueue extends BaseEntity {
 
-     @OneToOne
-     private LaboratoryTransaction laboratoryTransaction;
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inv_queue")
+     private Set<LaboratoryTransactionDetail> laboratoryTransactionDetails =new HashSet<>();
 
      @OneToOne
-     private DonationQueue donationQueue;
+     private BleedingSchedule bleedingSchedule;
 }
 
 

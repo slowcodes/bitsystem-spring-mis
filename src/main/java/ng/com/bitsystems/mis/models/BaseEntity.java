@@ -1,7 +1,11 @@
 package ng.com.bitsystems.mis.models;
 
 import lombok.*;
-import javax.persistence.*;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 
@@ -21,5 +25,6 @@ public class BaseEntity implements Serializable {
     public boolean isNew() {
         return this.id == null;
     }
+
 
 }

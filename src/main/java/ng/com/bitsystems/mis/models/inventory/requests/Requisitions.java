@@ -26,6 +26,12 @@ public class Requisitions extends BaseEntity {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "requisitions")
      private Set<RequisitionDetails> requistionDetails = new HashSet<>();
+
+    public Requisitions addRequisitionDetails(RequisitionDetails requisitionDetails) {
+        this.requistionDetails.add(requisitionDetails);
+        requisitionDetails.setRequisitions(this);
+        return this;
+    }
 }
 
 

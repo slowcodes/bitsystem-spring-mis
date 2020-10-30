@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class DonationCommand {
     private Long id;
-    private Long bleedingScheduleId;
+    private ClearedQueueCommand clearedQueueCommand;
     private Long storageId;
     private Long userId;
     private LocalDateTime timeOfDonation;

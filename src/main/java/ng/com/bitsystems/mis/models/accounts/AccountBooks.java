@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.invoice.OtherServiceInvoiceDetails;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.*;
@@ -36,6 +37,9 @@ public class AccountBooks extends BaseEntity {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountBook")
      private Set<OtherServices> otherServices = new HashSet<>();
 
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountBook")
+     private Set<OtherServiceInvoiceDetails> otherServiceInvoiceDetails = new HashSet<>();
+
      public AccountBooks addExpense(ExpenseManager expenseManager) {
           this.expenseManager.add(expenseManager);
           expenseManager.setAccountBooks(this);
@@ -47,6 +51,12 @@ public class AccountBooks extends BaseEntity {
           otherServices.setAccountBooks(this);
           return this;
      }
+
+    public AccountBooks addOtherServiceInvoiceDetails(OtherServiceInvoiceDetails otherServiceInvoiceDetails) {
+          this.otherServiceInvoiceDetails.add(otherServiceInvoiceDetails);
+          otherServiceInvoiceDetails.setAccountBooks(this);
+          return this;
+    }
 }
 
 
