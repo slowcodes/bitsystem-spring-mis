@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.pricing.SalesPriceCode;
-import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransactionDetails;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -31,9 +30,6 @@ public class Storage extends BaseEntity {
      private String description;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "storage")
-     private Set <BloodbankTransactionDetails> bloodbankTransactionDetails = new HashSet<>();
-
-     @OneToMany(cascade = CascadeType.ALL)
      private Set<IssuanceLogs> issuanceLogs = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "storage")
