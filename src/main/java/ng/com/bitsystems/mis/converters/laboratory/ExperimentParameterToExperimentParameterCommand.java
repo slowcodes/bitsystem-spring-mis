@@ -8,6 +8,15 @@ public class ExperimentParameterToExperimentParameterCommand implements
         Converter<ExperimentParameters, ExperimentParametersCommand> {
     @Override
     public ExperimentParametersCommand convert(ExperimentParameters source) {
-        return null;
+        if(source==null)
+            return null;
+
+        final ExperimentParametersCommand experimentReadingCommand=new ExperimentParametersCommand();
+        experimentReadingCommand.setId(source.getId());
+        if(source.getLaboratoryInvestigations()!=null)
+            experimentReadingCommand.setLaboratoryInvestigationsId(source.getLaboratoryInvestigations().getId());
+
+
+        return experimentReadingCommand;
     }
 }

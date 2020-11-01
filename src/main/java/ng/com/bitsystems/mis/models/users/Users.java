@@ -231,6 +231,8 @@ public class Users  extends Person {
         invoice.setUsers(this);
         return this;
     }
+
+
 }
 
 

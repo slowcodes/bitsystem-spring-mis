@@ -33,10 +33,16 @@ public class LaboratoryTransactionDetail extends Service {
      @OneToOne
      private CollectedSamples collectedSamples;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratoryTransactionDetail")
-     private Set<ObservationQueue> observationQueues = new HashSet<>();
+     @OneToOne
+     private Packages packages;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratoryTransactionDetail")
      private Set<ExperimentReadings> experimentResultsByParameters = new HashSet<>();
+
+    public LaboratoryTransactionDetail addExperimentReading(ExperimentReadings experimentReadings) {
+         this.experimentResultsByParameters.add(experimentReadings);
+         experimentReadings.setLaboratoryTransactionDetail(this);
+         return this;
+    }
 }
 

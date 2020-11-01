@@ -11,8 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ResultCollectionCommand {
     private Long id;
-    private Long resultId;
     private Long userId;
     private LocalDate timeOfCollection;
-    private ResultCollectionCommand resultCollectionCommand;
+    private ResultCommand resultCommand;
 }

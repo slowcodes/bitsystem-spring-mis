@@ -11,6 +11,7 @@ import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactio
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 @Getter
@@ -20,13 +21,13 @@ import java.time.LocalDate;
 @Entity
 public class ObservationQueue extends BaseEntity {
 
-     @ManyToOne
-     @JoinColumn(name = "laboratorytransactiondetail_id")
+     @OneToOne
      private LaboratoryTransactionDetail laboratoryTransactionDetail;
 
      @ManyToOne
-     @JoinColumn(name = "laboratorypackagedatils_id")
-     private LaboratoryPackageDetails laboratoryPackageDetails;
+     @JoinColumn(name = "package_id")
+     private Packages packages;
+
      private LocalDate scheduledTime;
      private Integer status;
 

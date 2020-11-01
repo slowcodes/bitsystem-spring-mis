@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class ObservationQueueCommand {
     private Long id;
     private LaboratoryTransactionDetailCommand laboratoryTransactionDetailCommand;
-    private LaboratoryPackageDetailCommand laboratoryPackageDetailCommand;
+    private PackageCommand packageCommand;
     private LocalDate scheduledTime;
     private Integer status;
 }

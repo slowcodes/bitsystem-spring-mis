@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -31,9 +30,9 @@ public class ExperimentParameters extends BaseEntity {
      private Integer presentation;
      private String unit;
 
-     @ManyToOne
-     @JoinColumn(name = "laboratorytransactiondetail_id")
-     private LaboratoryTransactionDetail laboratoryTransactionDetail;
+//     @ManyToOne
+//     @JoinColumn(name = "laboratorytransactiondetail_id")
+//     private LaboratoryTransactionDetail laboratoryTransactionDetail;
 
 }
 

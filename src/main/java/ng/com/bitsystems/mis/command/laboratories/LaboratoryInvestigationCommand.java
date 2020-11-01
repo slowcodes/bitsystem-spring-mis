@@ -4,9 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.command.accounts.pricing.ServicePriceCodeCommand;
-import ng.com.bitsystems.mis.command.inventory.InventoryPerLaboratoryTransactionCommand;
-import ng.com.bitsystems.mis.command.invoices.LaboratoryInvoiceDetailCommand;
-import ng.com.bitsystems.mis.models.laboratories.InvestigationGroups;
 import ng.com.bitsystems.mis.models.laboratories.InvestigationType;
 
 import java.util.HashSet;
@@ -21,10 +18,8 @@ public class LaboratoryInvestigationCommand {
     private String title;
     private String desc;
     private Integer estimatedTurnaround;
-    private InvestigationGroups investigationGroups;
+    private Long investigationGroupId;
     private InvestigationType investigationType;
-    private Set<InventoryPerLaboratoryTransactionCommand> inventoryPerLaboratoryTransactionCommand = new HashSet<>();
-    private Set<LaboratoryPackageDetailCommand> laboratoryPackageDetailCommand= new HashSet<>();
+    private Set<PackageCommand> packageCommand= new HashSet<>();
     private Set<ExperimentParametersCommand> experimentParametersCommands = new HashSet<>();
-    private Set<LaboratoryInvoiceDetailCommand> laboratoryInvoiceDetailCommands = new HashSet<>();
 }

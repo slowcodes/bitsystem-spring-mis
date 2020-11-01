@@ -9,7 +9,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,8 +25,8 @@ public class Packages extends BaseEntity {
      private Double discount;
      private String packageDesc;
 
-     @OneToMany(mappedBy = "packages")
-     private Set<LaboratoryPackageDetails> laboratoryPackageDetails = new HashSet<>();
+     @ManyToMany(mappedBy = "packages")
+     private Set<LaboratoryInvestigations> laboratoryInvestigations = new HashSet<>();
 
 }
 

@@ -27,7 +27,7 @@ public class SampleCollectionQueue extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name = "laboratorypackagedatils_id")
-     private LaboratoryPackageDetails laboratoryPackageDetails;
+     private Packages packages;
 
      private LocalDate requestTime;
      private Integer collectionStatus;

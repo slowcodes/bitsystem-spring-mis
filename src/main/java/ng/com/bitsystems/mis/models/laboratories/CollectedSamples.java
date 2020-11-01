@@ -36,6 +36,13 @@ public class CollectedSamples extends BaseEntity {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "collectedSamples")
      private Set<ExperimentReadings> experimentResultsByParams = new HashSet<>();
+
+
+     public CollectedSamples addExperimentReading(ExperimentReadings experimentReadings) {
+          experimentResultsByParams.add(experimentReadings);
+          experimentReadings.setCollectedSamples(this);
+          return this;
+     }
 }
 
 

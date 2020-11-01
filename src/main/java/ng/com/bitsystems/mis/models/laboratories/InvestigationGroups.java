@@ -7,8 +7,9 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,13 +20,21 @@ import java.util.Set;
 @Entity
 public class InvestigationGroups extends BaseEntity {
 
-     @OneToOne
+     @ManyToOne
+     @JoinColumn(name = "lab_id")
      private Laboratories laboratories;
 
      private String grpName;
 
      @OneToMany(mappedBy = "investigationGroups")
      private Set<LaboratoryInvestigations> laboratoryInvestigations = new HashSet<>();
+
+
+     public InvestigationGroups addlabInvestigation(LaboratoryInvestigations laboratoryInvestigations) {
+          this.laboratoryInvestigations.add(laboratoryInvestigations);
+          laboratoryInvestigations.setInvestigationGroups(this);
+          return this;
+     }
 }
 
 

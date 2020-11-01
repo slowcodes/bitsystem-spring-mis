@@ -7,6 +7,17 @@ import org.springframework.core.convert.converter.Converter;
 public class PackageToPackageCommand implements Converter<Packages, PackageCommand> {
     @Override
     public PackageCommand convert(Packages source) {
-        return null;
+        if(source==null){
+            return null;
+        }
+
+        final PackageCommand packageCommand=new PackageCommand();
+
+        packageCommand.setDiscount(source.getDiscount());
+        packageCommand.setId(source.getId());
+        packageCommand.setPackageDesc(source.getPackageDesc());
+        packageCommand.setPackageName(source.getPackageName());
+
+        return packageCommand;
     }
 }

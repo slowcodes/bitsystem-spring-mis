@@ -142,6 +142,12 @@ public class Patients  extends Person {
          issuanceLogs.setPatients(this);
          return this;
     }
+
+    public Patients addDrugAllergy(PatientDrugAllergy patientDrugAllergy) {
+         this.patientDrugAllergies.add(patientDrugAllergy);
+         patientDrugAllergy.setPatients(this);
+         return this;
+    }
 }
 
 

@@ -7,11 +7,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,7 +28,7 @@ public class Results extends BaseEntity {
     private String commentColor;
     private String signatoryColor;
 
-    @OneToOne
-    private VerifiedResults verifiedResults;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "result")
+    private Set<ExperimentReadings> experimentReadings=new HashSet<>();
 
 }

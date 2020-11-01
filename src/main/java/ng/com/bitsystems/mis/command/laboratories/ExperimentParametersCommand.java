@@ -16,5 +16,5 @@ public class ExperimentParametersCommand {
     private Double max;
     private Integer presentation;
     private String unit;
-    private Long laboratoryTransactionDetailId;
+//    private Long laboratoryTransactionDetailId;
 }
