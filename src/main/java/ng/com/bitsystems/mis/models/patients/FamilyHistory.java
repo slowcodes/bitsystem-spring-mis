@@ -20,7 +20,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PatientsFamilyHistory  extends BaseEntity{
+public class FamilyHistory extends BaseEntity{
 
      @ManyToOne
      @JoinColumn(name = "diseaseDirectory_id")
@@ -33,6 +33,8 @@ public class PatientsFamilyHistory  extends BaseEntity{
      @ManyToOne
      @JoinColumn(name = "users_id")
      private Users users;
+
+     private String note;
 
      private LocalDate dateRecorded;
 

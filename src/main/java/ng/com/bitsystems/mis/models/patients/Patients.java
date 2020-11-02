@@ -10,9 +10,7 @@ import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.Clerks;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
-import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonorRegistry;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.IssuanceLogs;
-import ng.com.bitsystems.mis.models.referrals.PatientsReferrals;
 import ng.com.bitsystems.mis.models.rewards.loyalties.PatientsLoyaltyGains;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
 import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransaction;
@@ -38,9 +36,8 @@ public class Patients  extends Person {
      @OneToOne
      private AccountHolder accountHolder;
 
-     @ManyToOne
-     @JoinColumn(name = "family_folder_id")
-     private FamilyFolder familyFolder;
+     @ManyToMany
+     private Set<FamilyFolder> familyFolder=new HashSet<>();
 
      private Date dob;
      private String occupation;
@@ -49,17 +46,12 @@ public class Patients  extends Person {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<BookConsultation> bookConsultations = new HashSet<>();
 
-//     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
-//     private Set<PatientsReferrals> patientsReferrals = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<PatientsSocialHistory> patientsSocialHistories = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<PatientsMedicalHistory> patientsMedicalHistories = new HashSet<>();
-
-     @OneToOne
-     private PatientsReferrals patientsReferrals;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<PharmacySalesTransaction> pharmacySalesTransaction = new HashSet<>();
@@ -82,9 +74,6 @@ public class Patients  extends Person {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set <PatientsMedicalFileAttachment> patientsMedicalFileAttachments = new HashSet<>();
 
-     @OneToOne
-     private DonorRegistry donorRegistry;
-
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<PatientsLoyaltyGains> patientsLoyaltyGainses = new HashSet();
 
@@ -105,9 +94,6 @@ public class Patients  extends Person {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<VaccinationTransaction> vaccinationTransaction = new HashSet<>();
-
-     @OneToOne
-     private CompanyFolder companyFolder;
 
      @ManyToOne
      @JoinColumn(name = "state_id")
@@ -147,6 +133,30 @@ public class Patients  extends Person {
          this.patientDrugAllergies.add(patientDrugAllergy);
          patientDrugAllergy.setPatients(this);
          return this;
+    }
+
+    public Patients addFileAttachement(PatientsMedicalFileAttachment patientsMedicalFileAttachment) {
+         this.patientsMedicalFileAttachments.add(patientsMedicalFileAttachment);
+         patientsMedicalFileAttachment.setPatients(this);
+         return this;
+    }
+
+     public Patients addMedicalHistory(PatientsMedicalHistory patientsMedicalHistory) {
+         this.patientsMedicalHistories.add(patientsMedicalHistory);
+         patientsMedicalHistory.setPatients(this);
+         return this;
+     }
+
+    public Patients addVitals(PatientsVitals patientsVitals) {
+        this.patientsVitalses.add(patientsVitals);
+        patientsVitals.setPatients(this);
+        return this;
+    }
+
+    public Patients addSocialHistory(PatientsSocialHistory patientsSocialHistory) {
+        this.patientsSocialHistories.add(patientsSocialHistory);
+        patientsSocialHistory.setPatients(this);
+        return this;
     }
 }
 

@@ -11,6 +11,7 @@ import ng.com.bitsystems.mis.models.users.Users;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 
@@ -25,8 +26,7 @@ public class PatientsMedicalHistory  extends BaseEntity {
      @JoinColumn(name = "patients_id")
      private Patients patients;
 
-     @ManyToOne
-     @JoinColumn(name = "patientsmedicalactivitylisting_id")
+     @OneToOne
      private PatientsMedicalActivityListing patientsMedicalActivityListing;
 
      @ManyToOne

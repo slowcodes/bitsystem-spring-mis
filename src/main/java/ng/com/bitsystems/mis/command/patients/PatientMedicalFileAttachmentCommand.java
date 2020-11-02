@@ -12,4 +12,5 @@ public class PatientMedicalFileAttachmentCommand {
     private Long patientId;
     private byte[] medicalFile;
     private String description;
+    private Long userId;
 }

@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,10 +27,20 @@ public class FamilyFolder extends BaseEntity {
      private Date dateRegistered;
 
      @OneToMany(mappedBy = "familyFolder")
-     private Set<Patients> patients = new HashSet<>();
+     private Set<FamilyHistory> familyHistory = new HashSet<>();
 
-     @OneToMany(mappedBy = "familyFolder")
-     private Set<PatientsFamilyHistory> patientsFamilyHistory = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "family_patient",
+            joinColumns = @JoinColumn(name = "folder_id"),
+            inverseJoinColumns = @JoinColumn(name = "patient_id"))
+    private Set<Patients> patients = new HashSet<>();
+
+    public FamilyFolder addFamilyHistory(FamilyHistory familyHistory) {
+
+        this.familyHistory.add(familyHistory);
+        familyHistory.setFamilyFolder(this);
+        return this;
+    }
 }
 
 

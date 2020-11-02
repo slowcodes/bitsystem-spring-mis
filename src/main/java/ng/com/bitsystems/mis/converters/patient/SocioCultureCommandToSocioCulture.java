@@ -1,13 +1,25 @@
 package ng.com.bitsystems.mis.converters.patient;
 
-import ng.com.bitsystems.mis.command.patients.PatientSocialHistoryCommand;
 import ng.com.bitsystems.mis.command.patients.SocioCulturalCommand;
+import ng.com.bitsystems.mis.models.patients.SocioCulturalDirectory;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.Nullable;
 
 public class SocioCultureCommandToSocioCulture
-implements Converter<SocioCulturalCommand, PatientSocialHistoryCommand> {
+implements Converter<SocioCulturalCommand, SocioCulturalDirectory> {
+
+
+    @Nullable
     @Override
-    public PatientSocialHistoryCommand convert(SocioCulturalCommand source) {
-        return null;
+    public SocioCulturalDirectory convert(SocioCulturalCommand source) {
+
+        if(source==null){
+            return null;
+        }
+        final SocioCulturalDirectory socioCulturalDirectory=new SocioCulturalDirectory();
+        socioCulturalDirectory.setActivity(source.getActivity());
+        socioCulturalDirectory.setId(source.getId());
+
+        return socioCulturalDirectory;
     }
 }

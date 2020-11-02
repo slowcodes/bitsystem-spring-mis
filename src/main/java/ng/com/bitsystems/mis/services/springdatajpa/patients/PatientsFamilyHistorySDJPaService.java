@@ -1,6 +1,6 @@
 package ng.com.bitsystems.mis.services.springdatajpa.patients;
 
-import ng.com.bitsystems.mis.models.patients.PatientsFamilyHistory;
+import ng.com.bitsystems.mis.models.patients.FamilyHistory;
 import ng.com.bitsystems.mis.repositories.patients.PatientFamilyHistoryRepository;
 import ng.com.bitsystems.mis.services.patients.PatientFamilyHistoryService;
 import org.springframework.stereotype.Service;
@@ -19,24 +19,24 @@ public class PatientsFamilyHistorySDJPaService implements PatientFamilyHistorySe
     }
 
     @Override
-    public Set<PatientsFamilyHistory> findAll() {
-        Set<PatientsFamilyHistory> patientsFamilyHistories = new HashSet<>();
+    public Set<FamilyHistory> findAll() {
+        Set<FamilyHistory> patientsFamilyHistories = new HashSet<>();
         patientFamilyHistoryRepository.findAll().forEach(patientsFamilyHistories::add);
         return patientsFamilyHistories;
     }
 
     @Override
-    public PatientsFamilyHistory findByID(Long aLong) {
+    public FamilyHistory findByID(Long aLong) {
         return patientFamilyHistoryRepository.findById(aLong).get();
     }
 
     @Override
-    public PatientsFamilyHistory add(PatientsFamilyHistory object) {
+    public FamilyHistory add(FamilyHistory object) {
         return patientFamilyHistoryRepository.save(object);
     }
 
     @Override
-    public void delete(PatientsFamilyHistory object) {
+    public void delete(FamilyHistory object) {
         patientFamilyHistoryRepository.delete(object);
     }
 
@@ -46,7 +46,7 @@ public class PatientsFamilyHistorySDJPaService implements PatientFamilyHistorySe
     }
 
     @Override
-    public void addCommand(PatientsFamilyHistory object) {
+    public void addCommand(FamilyHistory object) {
 
     }
 }

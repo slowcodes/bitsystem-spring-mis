@@ -4,7 +4,6 @@ import ng.com.bitsystems.mis.command.admissions.outpatient.OutpatientPrescriptio
 import ng.com.bitsystems.mis.converters.pharmacy.PharmacyProductCommandToPharmacyProduct;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientPrescriptions;
-import ng.com.bitsystems.mis.models.users.Physicians;
 import org.springframework.core.convert.converter.Converter;
 
 public class OutpatientPrescriptionCommandToOutpatientPrescription

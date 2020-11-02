@@ -8,6 +8,8 @@ import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmissionDischarged;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientPrescriptions;
 import ng.com.bitsystems.mis.models.consultation.Specializations;
+import ng.com.bitsystems.mis.models.patients.PatientsMedicalHistory;
+import ng.com.bitsystems.mis.models.patients.PatientsSocialHistory;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -35,6 +37,12 @@ public class Physicians extends Users {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<OutpatientPrescriptions> outpatientPrescriptions=new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<PatientsMedicalHistory> patientsMedicalHistories=new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<PatientsSocialHistory> addedPatientsSocialHistories=new HashSet<>();
+
     public Physicians addClosedOutpatientCase(OutpatientAdmissionDischarged outpatient) {
         this.outpatientAdmissionDischargeds.add(outpatient);
         outpatient.setUsers(this);
@@ -50,6 +58,18 @@ public class Physicians extends Users {
     public Physicians addOutPatientPrecription(OutpatientPrescriptions outpatientPrescriptions) {
         this.outpatientPrescriptions.add(outpatientPrescriptions);
         outpatientPrescriptions.setUsers(this);
+        return this;
+    }
+
+    public Physicians addMedicalHistory(PatientsMedicalHistory patientsMedicalHistory) {
+        this.getPatientsMedicalHistories().add(patientsMedicalHistory);
+        patientsMedicalHistory.setUsers(this);
+        return this;
+    }
+
+    public Physicians addPatientSocialHistory(PatientsSocialHistory patientsSocialHistory) {
+        this.addedPatientsSocialHistories.add(patientsSocialHistory);
+        patientsSocialHistory.setUsers(this);
         return this;
     }
 }

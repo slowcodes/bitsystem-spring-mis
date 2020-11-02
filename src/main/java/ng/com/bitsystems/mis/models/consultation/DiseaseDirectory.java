@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.patients.PatientsFamilyHistory;
+import ng.com.bitsystems.mis.models.patients.FamilyHistory;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.*;
@@ -31,7 +31,7 @@ public class DiseaseDirectory extends BaseEntity {
      private String description;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "diseaseDirectory")
-     private Set<PatientsFamilyHistory> patientsFamilyHistory = new HashSet<>();
+     private Set<FamilyHistory> familyHistory = new HashSet<>();
 
 }
 

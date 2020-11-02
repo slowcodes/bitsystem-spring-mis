@@ -2,7 +2,6 @@ package ng.com.bitsystems.mis.converters.addmission.outpatient;
 
 import ng.com.bitsystems.mis.command.admissions.outpatient.OutpatientAdmissionDischargedCommand;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmissionDischarged;
-import ng.com.bitsystems.mis.models.users.Physicians;
 import org.springframework.core.convert.converter.Converter;
 
 public class OutpatientAdmDischargedCmdToOutpatientAdmDischarged

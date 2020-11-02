@@ -25,6 +25,10 @@ public class PatientsMedicalFileAttachment  extends BaseEntity {
      private byte[] medicalFile;
 
      private String description;
+
+     @ManyToOne
+     @JoinColumn(name= "user_id")
+     private Physicians physicians;
 }
 
 

@@ -8,6 +8,22 @@ public class FileAttachmentToFileAttachementCommand implements
         Converter<PatientsMedicalFileAttachment, PatientMedicalFileAttachmentCommand> {
     @Override
     public PatientMedicalFileAttachmentCommand convert(PatientsMedicalFileAttachment source) {
-        return null;
+
+        if(source==null)
+            return null;
+
+        final PatientMedicalFileAttachmentCommand command=new PatientMedicalFileAttachmentCommand();
+
+        command.setId(source.getId());
+        command.setDescription(source.getDescription());
+        command.setMedicalFile(source.getMedicalFile());
+
+        if(source.getPatients()!=null)
+            command.setPatientId(source.getPatients().getId());
+
+        if ((source.getPhysicians()!=null))
+            command.setUserId(source.getPhysicians().getId());
+
+        return command;
     }
 }
