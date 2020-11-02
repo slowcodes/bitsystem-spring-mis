@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.command.accounts.pricing.SalesPriceCodeCommand;
-import ng.com.bitsystems.mis.command.admissions.inpatient.InpatientPrescriptionCommand;
-import ng.com.bitsystems.mis.command.patients.PatientDrugAllergyCommand;
 import ng.com.bitsystems.mis.command.rewards.promo.PromoProductCommand;
 import ng.com.bitsystems.mis.command.rewards.promo.RewardBasedPromoCommand;
 import ng.com.bitsystems.mis.command.transactions.pharmacy.PharmacySalesTransactionDetailCommand;
@@ -28,11 +26,9 @@ public class PharmacyProductCommand {
     private Set<RetailMeasureCommand> retailMeasureCommands = new HashSet<>();
     private Set<CategoryCommand> categoryCommands = new HashSet<>();
     private Set<PromoProductCommand> promoProductCommands = new HashSet<>();
-    private Set<PatientDrugAllergyCommand> patientDrugAllergyCommands = new HashSet<>();//     private Set pharmacyInvoiceTransactionses = new HashSet(0);
     private Set<PharmacySupplyTransactionDetailCommand> pharmacySupplyTransactionDetailCommands = new HashSet<>();
     private Set<SupplierCommand> supplierCommands = new HashSet<>();
     private Set<RewardBasedPromoCommand> rewardBasedPromoCommands = new HashSet<>();
     private Set<BarcodeCommand> barcodeCommands = new HashSet<>();
-    private Set<InpatientPrescriptionCommand> inpatientPrescriptionCommands = new HashSet<>();
     private Set<PharmacySalesTransactionDetailCommand> pharmacySalesTransactionDetailCommands = new HashSet<>();
 }

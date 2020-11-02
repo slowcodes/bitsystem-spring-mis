@@ -10,6 +10,6 @@ import ng.com.bitsystems.mis.command.transactions.laboratory.bloodbank.BloodBank
 @NoArgsConstructor
 public class ReferralBloodBankSettlementCommand {
     private Long id;
-    private Long referralSettlementId;
-    private BloodBankTransactionDetailCommand bloodbankTransactionDetailId;
+    private ReferralSettlementCommand referralSettlement;
+    private BloodBankTransactionDetailCommand bloodbankTransactionDetail;
 }

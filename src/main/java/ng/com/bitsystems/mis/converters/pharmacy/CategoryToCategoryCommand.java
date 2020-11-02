@@ -7,6 +7,17 @@ import org.springframework.core.convert.converter.Converter;
 public class CategoryToCategoryCommand implements Converter<Category, CategoryCommand> {
     @Override
     public CategoryCommand convert(Category source) {
-        return null;
+
+        if(source==null)
+            return null;
+
+        final CategoryCommand categoryCommand = new CategoryCommand();
+
+        categoryCommand.setId(source.getId());
+        categoryCommand.setCategoryDesc(source.getCategoryDesc());
+        categoryCommand.setCategoryName(source.getCategoryName());
+        categoryCommand.setEntryDate(source.getEntryDate());
+
+        return categoryCommand;
     }
 }

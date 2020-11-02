@@ -1,6 +1,5 @@
 package ng.com.bitsystems.mis.services.springdatajpa.referrals;
 
-import ng.com.bitsystems.mis.models.referrals.ReferralsReferal;
 import ng.com.bitsystems.mis.repositories.referrals.ReferralReferralRepository;
 import ng.com.bitsystems.mis.services.referrals.ReferralReferralService;
 import org.springframework.stereotype.Service;

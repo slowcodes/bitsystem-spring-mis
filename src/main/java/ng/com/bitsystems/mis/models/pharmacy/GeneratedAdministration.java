@@ -19,7 +19,8 @@ import java.time.LocalDateTime;
 @Entity
 public class GeneratedAdministration extends BaseEntity {
     @ManyToOne
-    @JoinColumn(name = "pharmacyproduct_id")
-    private PharmacyProducts pharmacyProducts;
+    @JoinColumn(name = "presc_id")
+    private Prescription prescription;
+
     private LocalDateTime extimatedAdminTime;
 }

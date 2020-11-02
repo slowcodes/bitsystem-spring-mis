@@ -7,6 +7,14 @@ import org.springframework.core.convert.converter.Converter;
 public class RetailMeasureCommandToRetailMeasure implements Converter<RetailMeasureCommand, RetailMeasure> {
     @Override
     public RetailMeasure convert(RetailMeasureCommand source) {
-        return null;
+        if (source==null)
+            return null;
+
+        final RetailMeasure retailMeasure = new RetailMeasure();
+        retailMeasure.setMesures(source.getMesures());
+        retailMeasure.setMetric(source.getMetric());
+        retailMeasure.setId(source.getId());
+
+        return retailMeasure;
     }
 }

@@ -22,7 +22,6 @@ public class Category extends BaseEntity {
 
      @ManyToMany(mappedBy = "categories")
      private Set<PharmacyProducts> pharmacyProducts = new HashSet<>();
-
 }
 
 

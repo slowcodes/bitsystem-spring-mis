@@ -7,6 +7,19 @@ import org.springframework.core.convert.converter.Converter;
 public class BarcodeToBarcodeCommand implements Converter<Barcodes, BarcodeCommand> {
     @Override
     public BarcodeCommand convert(Barcodes source) {
-        return null;
+
+        if(source==null)
+            return null;
+
+        BarcodeCommand barcodeCommand=new BarcodeCommand();
+
+        barcodeCommand.setId(source.getId());
+        barcodeCommand.setBarcode(source.getBarcode());
+
+        if(source.getPharmacyProducts() != null){
+            barcodeCommand.setPharmacyProductCommandId(source.getPharmacyProducts().getId());
+        }
+
+        return barcodeCommand;
     }
 }

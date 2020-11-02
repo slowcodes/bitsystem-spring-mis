@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -23,7 +23,7 @@ public class ReferralLaboratorySettlements extends BaseEntity {
     private ReferralSettlements referralSettlements;
 
     @ManyToOne
-    @JoinColumn(name = "laboratoryTransactionDetails_id")
-    private LaboratoryTransactionDetail laboratoryTransactionDetails;
+    @JoinColumn(name = "labTxnId")
+    private LaboratoryTransaction laboratoryTransaction;
 
 }

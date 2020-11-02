@@ -10,5 +10,5 @@ import lombok.Setter;
 public class BarcodeCommand {
     private Long id;
     private String barcode;
-    private PharmacyProductCommand pharmacyProductCommand;
+    private Long pharmacyProductCommandId;
 }

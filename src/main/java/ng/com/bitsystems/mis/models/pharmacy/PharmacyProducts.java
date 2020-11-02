@@ -3,8 +3,6 @@ package ng.com.bitsystems.mis.models.pharmacy;
 
 import lombok.Getter;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientPrescriptions;
-import ng.com.bitsystems.mis.models.patients.PatientDrugAllergy;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyRewardBasedPromo;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySupplyTransactionsDetails;
@@ -35,9 +33,6 @@ public class PharmacyProducts  extends Drugs {
      private Set<PharmacyPromosProducts> pharmacyPromosProductses = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
-     private Set<PatientDrugAllergy> patientDrugAllergies = new HashSet<>();//     private Set pharmacyInvoiceTransactionses = new HashSet(0);
-
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
      private Set<PharmacySupplyTransactionsDetails> transactionsSupplies = new HashSet<>();
 
      @ManyToMany
@@ -56,11 +51,15 @@ public class PharmacyProducts  extends Drugs {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
      private Set<Barcodes> barcodes = new HashSet<>();
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
-     private Set<InpatientPrescriptions> inpatientPrescriptions = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
      private Set<PharmacyTransactionDetails> pharmacyTransactions = new HashSet<>();
+
+    public PharmacyProducts addPharmacy(Barcodes barcodes) {
+         this.barcodes.add(barcodes);
+         barcodes.setPharmacyProducts(this);
+         return this;
+    }
 }
 
 

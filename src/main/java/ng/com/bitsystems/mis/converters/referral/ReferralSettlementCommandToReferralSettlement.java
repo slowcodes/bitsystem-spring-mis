@@ -8,6 +8,16 @@ public class ReferralSettlementCommandToReferralSettlement
         implements Converter<ReferralSettlementCommand, ReferralSettlements> {
     @Override
     public ReferralSettlements convert(ReferralSettlementCommand source) {
-        return null;
+        if(source==null)
+            return null;
+
+        final ReferralSettlements referralSettlements=new ReferralSettlements();
+        referralSettlements.setId(source.getId());
+        referralSettlements.setCommission(source.getCommission());
+        referralSettlements.setDatePrepared(source.getDatePrepared());
+
+        if(source.g)
+
+        return referralSettlements;
     }
 }
