@@ -8,6 +8,12 @@ public class LoyaltyActivityCommandToLoyaltyActivity
 implements Converter<LoyaltyActivityCommand, PatientsLoyaltyActivites> {
     @Override
     public PatientsLoyaltyActivites convert(LoyaltyActivityCommand source) {
-        return null;
+        if(source==null)
+            return null;
+
+        final PatientsLoyaltyActivites activites = new PatientsLoyaltyActivites();
+        activites.setId(source.getId());
+
+        return activites;
     }
 }
