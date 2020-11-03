@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.invoice.Invoice;
+import ng.com.bitsystems.mis.models.accounts.OtherServices;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
 import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransaction;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransaction;
@@ -50,13 +50,8 @@ public class Referrals  extends Person {
      private Set<BloodbankTransaction> bloodbankTransactions= new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "referral")
-     private Set<Invoice> invoices= new HashSet<>();
+     private Set<OtherServices> otherServices= new HashSet<>();
 
-     public Referrals addInvoice(Invoice invoice) {
-         this.invoices.add(invoice);
-         invoice.setReferral(this);
-         return this;
-     }
 }
 
 

@@ -9,12 +9,10 @@ import org.springframework.lang.Nullable;
 public class ReferralLabSettlementToReferralLabSettlementCommand implements
         Converter<ReferralLaboratorySettlements, ReferralLaboratorySettlementCommand> {
     private LabTxnToLabTxnCommand labTxnToLabTxnCommand;
-    private ReferralSettlementToReferralSettlementCommand referralSettlementToReferralSettlementCommand;
 
-    public ReferralLabSettlementToReferralLabSettlementCommand(LabTxnToLabTxnCommand labTxnToLabTxnCommand,
-                                                               ReferralSettlementToReferralSettlementCommand referralSettlementToReferralSettlementCommand) {
+
+    public ReferralLabSettlementToReferralLabSettlementCommand(LabTxnToLabTxnCommand labTxnToLabTxnCommand) {
         this.labTxnToLabTxnCommand = labTxnToLabTxnCommand;
-        this.referralSettlementToReferralSettlementCommand = referralSettlementToReferralSettlementCommand;
     }
 
     @Override
@@ -26,7 +24,9 @@ public class ReferralLabSettlementToReferralLabSettlementCommand implements
 
         command.setId(source.getId());
         command.setLaboratoryTransactionCommand(labTxnToLabTxnCommand.convert(source.getLaboratoryTransaction()));
-        command.setReferralSettlementCommand(referralSettlementToReferralSettlementCommand.convert(source.getReferralSettlements()));
+
+        if(source.getLaboratoryTransaction()!=null)
+            command.setReferralSettlementId(source.getLaboratoryTransaction().getId());
 
         return command;
     }

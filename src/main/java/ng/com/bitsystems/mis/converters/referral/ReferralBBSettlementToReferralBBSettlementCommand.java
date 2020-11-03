@@ -9,12 +9,10 @@ import org.springframework.lang.Nullable;
 public class ReferralBBSettlementToReferralBBSettlementCommand implements
         Converter<ReferralBloodBankSettlement, ReferralBloodBankSettlementCommand> {
     private BBTxnDetailToBBTxnDetailCommand bbTxnDetailToBBTxnDetailCommand;
-    private ReferralSettlementToReferralSettlementCommand referralSettlementToReferralSettlementCommand;
 
     public ReferralBBSettlementToReferralBBSettlementCommand(BBTxnDetailToBBTxnDetailCommand bbTxnDetailToBBTxnDetailCommand,
                                                              ReferralSettlementToReferralSettlementCommand referralSettlementToReferralSettlementCommand) {
         this.bbTxnDetailToBBTxnDetailCommand = bbTxnDetailToBBTxnDetailCommand;
-        this.referralSettlementToReferralSettlementCommand = referralSettlementToReferralSettlementCommand;
     }
 
     @Nullable
@@ -26,8 +24,9 @@ public class ReferralBBSettlementToReferralBBSettlementCommand implements
         ReferralBloodBankSettlementCommand command=new ReferralBloodBankSettlementCommand();
         command.setId(source.getId());
         command.setBloodbankTransactionDetail(bbTxnDetailToBBTxnDetailCommand.convert(source.getBloodbankTransactionDetails()));
-        command.setReferralSettlement(referralSettlementToReferralSettlementCommand.convert(source.getReferralSettlements()));
-
+        if(source.getReferralSettlements()!=null){
+            command.setReferralSettlementId(source.getReferralSettlements().getId());
+        }
         return command;
     }
 }

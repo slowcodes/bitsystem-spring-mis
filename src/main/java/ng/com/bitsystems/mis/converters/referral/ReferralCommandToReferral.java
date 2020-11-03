@@ -1,22 +1,33 @@
 package ng.com.bitsystems.mis.converters.referral;
 
 import ng.com.bitsystems.mis.command.referrals.ReferralCommand;
-import ng.com.bitsystems.mis.converters.invoice.InvoiceCommandToInvoice;
+import ng.com.bitsystems.mis.converters.accounts.OtherServiceCommandToOtherService;
 import ng.com.bitsystems.mis.converters.transaction.laboratory.LabTxnCommandToLabTxn;
 import ng.com.bitsystems.mis.converters.transaction.laboratory.bloodbank.BBTxnCommandToBBTxn;
 import ng.com.bitsystems.mis.converters.transaction.pharmacy.PharmSalesTxnCommandToPharmSaleTxn;
 import ng.com.bitsystems.mis.converters.transaction.vaccination.VaccTxnCommandToVaccTxn;
 import ng.com.bitsystems.mis.models.referrals.Referrals;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.Nullable;
 
 public class ReferralCommandToReferral implements Converter<ReferralCommand, Referrals> {
     private BBTxnCommandToBBTxn bbTxnCommandToBBTxn;
-    private InvoiceCommandToInvoice invoiceCommandToInvoice;
+    private OtherServiceCommandToOtherService otherServiceCommandToOtherService;
     private LabTxnCommandToLabTxn labTxnCommandToLabTxn;
     private PharmSalesTxnCommandToPharmSaleTxn pharmSalesTxnCommandToPharmSaleTxn;
     private ReferralCommandToReferral referralCommandToReferral;
     private VaccTxnCommandToVaccTxn vaccTxnCommandToVaccTxn;
 
+    public ReferralCommandToReferral(BBTxnCommandToBBTxn bbTxnCommandToBBTxn, OtherServiceCommandToOtherService otherServiceCommandToOtherService, LabTxnCommandToLabTxn labTxnCommandToLabTxn, PharmSalesTxnCommandToPharmSaleTxn pharmSalesTxnCommandToPharmSaleTxn, ReferralCommandToReferral referralCommandToReferral, VaccTxnCommandToVaccTxn vaccTxnCommandToVaccTxn) {
+        this.bbTxnCommandToBBTxn = bbTxnCommandToBBTxn;
+        this.otherServiceCommandToOtherService = otherServiceCommandToOtherService;
+        this.labTxnCommandToLabTxn = labTxnCommandToLabTxn;
+        this.pharmSalesTxnCommandToPharmSaleTxn = pharmSalesTxnCommandToPharmSaleTxn;
+        this.referralCommandToReferral = referralCommandToReferral;
+        this.vaccTxnCommandToVaccTxn = vaccTxnCommandToVaccTxn;
+    }
+
+    @Nullable
     @Override
     public Referrals convert(ReferralCommand source) {
         if(source==null)
@@ -33,16 +44,18 @@ public class ReferralCommandToReferral implements Converter<ReferralCommand, Ref
         referrals.setPhone(source.getPhone());
         referrals.setSex(source.getSex());
 
+
+
         if(source.getBloodBankTransactionCommand().size()>0 && source.getBloodBankTransactionCommand()!=null)
             source.getBloodBankTransactionCommand().forEach(bloodBankTransactionCommand ->
                     referrals.getBloodbankTransactions().add(
                             bbTxnCommandToBBTxn.convert(bloodBankTransactionCommand)
                     ));
 
-        if(source.getInvoiceCommands().size()>0 && source.getInvoiceCommands()!=null)
-            source.getInvoiceCommands().forEach(invoiceCommand ->
-                    referrals.getInvoices().add(
-                            invoiceCommandToInvoice.convert(invoiceCommand)
+        if(source.getOtherServiceCommands().size()>0 && source.getOtherServiceCommands()!=null)
+            source.getOtherServiceCommands().forEach(otherService ->
+                    referrals.getOtherServices().add(
+                            otherServiceCommandToOtherService.convert(otherService)
                     ));
 
         if(source.getLaboratoryTransactionCommand().size()>0 && source.getLaboratoryTransactionCommand()!=null)

@@ -10,6 +10,6 @@ import ng.com.bitsystems.mis.command.transactions.vaccination.VaccinationTransac
 @NoArgsConstructor
 public class ReferralVaccinationSettlementCommand {
     private Long id;
-    private ReferralSettlementCommand referralSettlementCommand;
+    private Long referralSettlementId;
     private VaccinationTransactionDetailCommand vaccinationTransactionDetailCommand;
 }

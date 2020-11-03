@@ -3,18 +3,16 @@ package ng.com.bitsystems.mis.converters.referral;
 import ng.com.bitsystems.mis.command.referrals.ReferralLaboratorySettlementCommand;
 import ng.com.bitsystems.mis.converters.transaction.laboratory.LabTxnCommandToLabTxn;
 import ng.com.bitsystems.mis.models.referrals.ReferralLaboratorySettlements;
+import ng.com.bitsystems.mis.models.referrals.ReferralSettlements;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 
 public class ReferralLabSettlementCommandToReferralLabSettlement
 implements Converter<ReferralLaboratorySettlementCommand, ReferralLaboratorySettlements> {
     private LabTxnCommandToLabTxn labTxnCommandToLabTxn;
-    private ReferralSettlementCommandToReferralSettlement referralSettlementCommandToReferralSettlement;
 
-    public ReferralLabSettlementCommandToReferralLabSettlement(LabTxnCommandToLabTxn labTxnCommandToLabTxn,
-                                                               ReferralSettlementCommandToReferralSettlement referralSettlementCommandToReferralSettlement) {
+    public ReferralLabSettlementCommandToReferralLabSettlement(LabTxnCommandToLabTxn labTxnCommandToLabTxn) {
         this.labTxnCommandToLabTxn = labTxnCommandToLabTxn;
-        this.referralSettlementCommandToReferralSettlement = referralSettlementCommandToReferralSettlement;
     }
 
     @Nullable
@@ -27,7 +25,12 @@ implements Converter<ReferralLaboratorySettlementCommand, ReferralLaboratorySett
         ReferralLaboratorySettlements referralLaboratorySettlements = new ReferralLaboratorySettlements();
         referralLaboratorySettlements.setId(source.getId());
         referralLaboratorySettlements.setLaboratoryTransaction(labTxnCommandToLabTxn.convert(source.getLaboratoryTransactionCommand()));
-        referralLaboratorySettlements.setReferralSettlements(referralSettlementCommandToReferralSettlement.convert(source.getReferralSettlementCommand()));
+        if(source.getReferralSettlementId()!=null){
+            ReferralSettlements settlements = new ReferralSettlements();
+            settlements.setId(source.getReferralSettlementId());
+            referralLaboratorySettlements.setReferralSettlements(settlements);
+            settlements.addLabTxnSettlement(referralLaboratorySettlements);
+        }
         return referralLaboratorySettlements;
     }
 }
