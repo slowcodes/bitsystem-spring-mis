@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.laboratories.*;
+import ng.com.bitsystems.mis.models.laboratories.ExperimentReadings;
+import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
+import ng.com.bitsystems.mis.models.laboratories.Packages;
 import ng.com.bitsystems.mis.models.transactions.Service;
 
 import javax.persistence.*;
@@ -27,13 +29,14 @@ public class LaboratoryTransactionDetail extends Service {
      @JoinColumn(name = "laboratorytransaction_id")
      private LaboratoryTransaction laboratoryTransaction;
 
-     @OneToOne
-     private SampleCollectionQueue sampleCollectionQueue;
+//     @OneToOne
+//     private SampleCollectionQueue sampleCollectionQueue;
+//
+//     @OneToOne
+//     private CollectedSamples collectedSamples;
 
-     @OneToOne
-     private CollectedSamples collectedSamples;
-
-     @OneToOne
+     @ManyToOne
+     @JoinColumn(name = "packageId")
      private Packages packages;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratoryTransactionDetail")

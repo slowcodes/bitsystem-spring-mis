@@ -28,6 +28,11 @@ public class BloodbankTransaction extends Transaction {
      @OneToOne(cascade = CascadeType.ALL)
      private InsuredBloodbankTransactions insuredBloodbankTransactions;
 
+    public BloodbankTransaction addBBTxnDetails(BloodbankTransactionDetails bloodbankTransactionDetails) {
+        this.bloodbankTransactionDetails.add(bloodbankTransactionDetails);
+        bloodbankTransactionDetails.setBloodbanktransaction(this);
+        return this;
+    }
 }
 
 

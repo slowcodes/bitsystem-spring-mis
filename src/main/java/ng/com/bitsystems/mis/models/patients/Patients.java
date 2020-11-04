@@ -15,6 +15,7 @@ import ng.com.bitsystems.mis.models.rewards.loyalties.PatientsLoyaltyGains;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
 import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransaction;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransaction;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySupplyTransactions;
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 import ng.com.bitsystems.mis.models.users.AccountHolder;
 import ng.com.bitsystems.mis.models.users.Person;
@@ -55,6 +56,9 @@ public class Patients  extends Person {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<PharmacySalesTransaction> pharmacySalesTransaction = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
+    private Set<PharmacySupplyTransactions> pharmacySupplyTransactions = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<LaboratoryTransaction> laboratoryTransactions = new HashSet();
@@ -156,6 +160,36 @@ public class Patients  extends Person {
     public Patients addSocialHistory(PatientsSocialHistory patientsSocialHistory) {
         this.patientsSocialHistories.add(patientsSocialHistory);
         patientsSocialHistory.setPatients(this);
+        return this;
+    }
+
+    public Patients addBloodBankTransaction(BloodbankTransaction transaction) {
+        this.bloodbankTransaction.add(transaction);
+        transaction.setPatients(this);
+        return this;
+    }
+
+    public Patients addPharmSalesTransaction(PharmacySalesTransaction transaction) {
+        this.pharmacySalesTransaction.add(transaction);
+        transaction.setPatients(this);
+        return this;
+    }
+
+    public Patients addLabTransaction(LaboratoryTransaction transaction) {
+        this.laboratoryTransactions.add(transaction);
+        transaction.setPatients(this);
+        return this;
+    }
+
+    public Patients addVccTransaction(VaccinationTransaction transaction) {
+        this.vaccinationTransaction.add(transaction);
+        transaction.setPatients(this);
+        return this;
+    }
+
+    public Patients addPharmSupplyTransaction(PharmacySupplyTransactions transaction) {
+        pharmacySupplyTransactions.add(transaction);
+        transaction.setPatients(this);
         return this;
     }
 }

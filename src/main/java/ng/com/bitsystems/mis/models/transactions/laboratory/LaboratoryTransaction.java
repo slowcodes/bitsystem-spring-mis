@@ -31,6 +31,12 @@ public class LaboratoryTransaction extends Transaction {
 
      @OneToOne
      private InsuredLaboratoryTransactions insuredLaboratoryTransactions;
+
+    public LaboratoryTransaction addLabTnxDetail(LaboratoryTransactionDetail transaction) {
+        laboratoryTransactionDetails.add(transaction);
+        transaction.setLaboratoryTransaction(this);
+        return this;
+    }
 }
 
 

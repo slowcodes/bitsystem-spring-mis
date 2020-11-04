@@ -26,7 +26,7 @@ public class PharmacyRewardBasedPromo extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name = "pharmacyproducts_id", insertable = false, updatable = false)
-     private PharmacyPromosProducts promosProducts;
+     private PharmacyProducts promosProducts;
 
      private int qty;
 

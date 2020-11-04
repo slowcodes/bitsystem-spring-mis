@@ -21,5 +21,4 @@ public class PharmacySalesTransactionCommand {
     private String comment;
     private Integer discount;
     private Set<PharmacySalesTransactionDetailCommand> pharmacySalesTransactionDetailCommands = new HashSet<>();
-    private Long referralId;
 }

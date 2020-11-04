@@ -7,10 +7,10 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import ng.com.bitsystems.mis.models.transactions.Sales;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,9 +30,13 @@ public class PharmacySupplyTransactionsDetails extends Sales {
      @JoinColumn(name = "pharmacyproducts_id")
      private PharmacyProducts pharmacyProducts;
 
+
      private String batchNumber;
      private String comment;
      private LocalDate expiryDate;
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacySupplyTransactionDetails")
+     private Set<AdditionalTransactionDetails> additionalTransactionDetails = new HashSet<>();
 
 }
 

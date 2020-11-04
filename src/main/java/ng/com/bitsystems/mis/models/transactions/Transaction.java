@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.patients.Patients;
-import ng.com.bitsystems.mis.models.referrals.Referrals;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.JoinColumn;
@@ -34,8 +33,4 @@ public class Transaction extends BaseEntity {
     private LocalDateTime timeOfTransaction;
     private String comment;
     private Integer discount;
-
-    @ManyToOne
-    @JoinColumn(name = "refferals_id")
-    private Referrals referral;
 }

@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.command.accounts.pricing.SalesPriceCodeCommand;
-import ng.com.bitsystems.mis.command.pharmacy.PharmacyProductCommand;
 import ng.com.bitsystems.mis.command.rewards.promo.PromoProductReceivedLogsCommand;
 
 import java.util.Date;
@@ -16,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class PharmacySalesTransactionDetailCommand {
     private Long id;
-    private PharmacyProductCommand pharmacyProductCommand;
+    private Long pharmacyProductId;
     private SalesPriceCodeCommand salesPriceCodeCommand;
     private Integer userDiscount;
     private Integer useDiscountPrice;

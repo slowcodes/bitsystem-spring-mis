@@ -9,7 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AdditionalTransactionDetailCommand {
     private Long id;
-    private PharmacySalesTransactionDetailCommand pharmacySalesTransactionDetailCommand;
+    private Long pharmSalesTxnDetailId;
+    private Long parameterId;
     private Integer showInReciept;
     private String value;
 }

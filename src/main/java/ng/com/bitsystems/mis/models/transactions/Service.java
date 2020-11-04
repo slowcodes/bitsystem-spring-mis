@@ -9,7 +9,7 @@ import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
 
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -24,7 +24,7 @@ public class Service extends BaseEntity {
     private Integer frequency;
     private Integer useDiscountPrice;
     private String comment;
-    private Date timeOfTransaction;
+    private LocalDate timeOfTransaction;
     private Integer reversal;
 
 //    @ManyToOne

@@ -28,6 +28,11 @@ public class AdditionalTransactionParameters extends BaseEntity {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyTransactionDetails")
      private Set<AdditionalTransactionDetails> additionalTransactionDetails = new HashSet<>();
 
+    public AdditionalTransactionParameters addTxnDetail(AdditionalTransactionDetails details) {
+        additionalTransactionDetails.add(details);
+        details.setTransactionParameters(this);
+        return this;
+    }
 }
 
 

@@ -19,11 +19,13 @@ import ng.com.bitsystems.mis.models.laboratories.ResultCollectionLog;
 import ng.com.bitsystems.mis.models.laboratories.VerifiedResults;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonationQueue;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Donations;
-import ng.com.bitsystems.mis.models.patients.PatientsFamilyHistory;
 import ng.com.bitsystems.mis.models.patients.PatientsMedicalHistory;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
+import ng.com.bitsystems.mis.models.rewards.promos.VolumedBasedPromos;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
+import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransaction;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransaction;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySupplyTransactions;
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 
 import javax.persistence.CascadeType;
@@ -58,9 +60,6 @@ public class Users  extends Person {
     private Set<PatientsMedicalHistory> patientsMedicalHistories = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private Set<PatientsFamilyHistory> patientsFamilyHistories = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<ResultCollectionLog> resultCollectionLogs = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
@@ -77,6 +76,9 @@ public class Users  extends Person {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<PharmacyPromosProducts> pharmacyPromosProducts = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<VolumedBasedPromos> volumedBasedPromos = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "createdBy")
     private Set<AccountBooks> accountBooksCreators = new HashSet<>();
@@ -112,7 +114,13 @@ public class Users  extends Person {
     private Set<LaboratoryTransaction> laboratoryTransactions = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<BloodbankTransaction> bloodbankTransactions = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<PharmacySalesTransaction> pharmacySalesTransaction = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<PharmacySupplyTransactions> pharmacySupplyTransactions = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Set<InpatientPrescriptionSchedule> inpatientPrescriptionSchedule = new HashSet<>();
@@ -233,6 +241,47 @@ public class Users  extends Person {
     }
 
 
+    public Users addPromoProduct(PharmacyPromosProducts pharmacyPromosProducts) {
+        this.pharmacyPromosProducts.add(pharmacyPromosProducts);
+        pharmacyPromosProducts.setUsers(this);
+        return this;
+    }
+
+    public Users addVolBasedPromo(VolumedBasedPromos volumedBasedPromos) {
+        this.volumedBasedPromos.add(volumedBasedPromos);
+        volumedBasedPromos.setUsers(this);
+        return this;
+    }
+
+    public Users addBloodBankTransaction(BloodbankTransaction transaction) {
+        this.bloodbankTransactions.add(transaction);
+        transaction.setUsers(this);
+        return this;
+    }
+
+    public Users addLabTransaction(LaboratoryTransaction transaction) {
+        this.laboratoryTransactions.add(transaction);
+        transaction.setUsers(this);
+        return this;
+    }
+
+    public Users addVccTransaction(VaccinationTransaction transaction) {
+        this.vaccinationTransactions.add(transaction);
+        transaction.setUsers(this);
+        return this;
+    }
+
+    public Users addPharmSaleTransaction(PharmacySalesTransaction transaction) {
+        this.pharmacySalesTransaction.add(transaction);
+        transaction.setUsers(this);
+        return this;
+    }
+
+    public Users addPharmSupplyTransaction(PharmacySupplyTransactions transaction) {
+        this.pharmacySupplyTransactions.add(transaction);
+        transaction.setUsers(this);
+        return this;
+    }
 }
 
 

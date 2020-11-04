@@ -45,7 +45,7 @@ public class PharmacyProducts  extends Drugs {
      private Set<PharmacyRewardBasedPromo> pharmacyRewardBasedPromos = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "rewardProducts")
-     private Set<PharmacyRewardBasedPromo> pharmacyProducts = new HashSet<>();
+     private Set<PharmacyRewardBasedPromo> pharmacyOnPromo = new HashSet<>();
 
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
@@ -59,6 +59,36 @@ public class PharmacyProducts  extends Drugs {
          this.barcodes.add(barcodes);
          barcodes.setPharmacyProducts(this);
          return this;
+    }
+
+    public PharmacyProducts addPromoProduct(PharmacyPromosProducts pharmacyPromosProducts) {
+          this.pharmacyPromosProductses.add(pharmacyPromosProducts);
+          pharmacyPromosProducts.setPharmacyProducts(this);
+          return this;
+    }
+
+     public PharmacyProducts addRewardBasedPromo(PharmacyRewardBasedPromo promo) {
+        this.getPharmacyRewardBasedPromos().add(promo);
+        promo.setRewardProducts(this);
+        return this;
+     }
+
+    public PharmacyProducts addRewardProductPromo(PharmacyRewardBasedPromo promo) {
+        this.pharmacyOnPromo.add(promo);
+        promo.setRewardProducts(this);
+        return this;
+    }
+
+    public PharmacyProducts addTransactionDetails(PharmacyTransactionDetails details) {
+        this.pharmacyTransactions.add(details);
+        details.setPharmacyProducts(this);
+        return this;
+    }
+
+    public PharmacyProducts addSupplyTransactionDetails(PharmacySupplyTransactionsDetails details) {
+        this.transactionsSupplies.add(details);
+        details.setPharmacyProducts(this);
+        return this;
     }
 }
 

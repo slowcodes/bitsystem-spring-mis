@@ -3,18 +3,18 @@ package ng.com.bitsystems.mis.command.transactions.pharmacy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.command.accounts.pricing.SalesPriceCodeCommand;
-import ng.com.bitsystems.mis.command.pharmacy.PharmacyProductCommand;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
 @NoArgsConstructor
 public class PharmacySupplyTransactionDetailCommand {
     private Long id;
-    private SalesPriceCodeCommand salesPriceCodeCommand;
+    private Double buyingPrice;
     private Integer userDiscount;
     private Integer useDiscountPrice;
     private Date timeOfTransaction;
@@ -22,8 +22,9 @@ public class PharmacySupplyTransactionDetailCommand {
     private Long referralId;
     private Long pharmacySupplyTransactionId;
     private Double qty;
-    private PharmacyProductCommand pharmacyProductCommand;
+    private Long pharmacyProductId;
     private String batchNumber;
     private String comment;
     private LocalDate expiryDate;
+    private Set<AdditionalTransactionDetailCommand> additionalTransactionDetailCommands = new HashSet<>();
 }

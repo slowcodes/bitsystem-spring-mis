@@ -42,6 +42,11 @@ public class PharmacyPromosProducts  extends BaseEntity {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyPromosProducts")
      private Set<PharmacyPromoProductRecivedLogs> pharmacyPromoProductRecivedLogs= new HashSet<>();
 
+    public PharmacyPromosProducts addRecievedLog(PharmacyPromoProductRecivedLogs recivedLogs) {
+         pharmacyPromoProductRecivedLogs.add(recivedLogs);
+         recivedLogs.setPharmacyPromosProducts(this);
+         return this;
+    }
 }
 
 

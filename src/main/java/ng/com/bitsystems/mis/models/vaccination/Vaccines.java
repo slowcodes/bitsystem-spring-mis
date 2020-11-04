@@ -7,11 +7,11 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.pricing.SalesPriceCode;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
+import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransactionsDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,4 +28,13 @@ public class Vaccines extends BaseEntity {
     private SalesPriceCode priceCode;
 
     private String description;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vaccine")
+    private Set<VaccinationTransactionsDetails> vaccinationTransactionsDetails=new HashSet<>();
+
+    public Vaccines addTransaction(VaccinationTransactionsDetails transactions) {
+        vaccinationTransactionsDetails.add(transactions);
+        transactions.setVaccinations(this);
+        return this;
+    }
 }

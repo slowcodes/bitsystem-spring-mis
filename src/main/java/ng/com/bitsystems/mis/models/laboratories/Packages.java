@@ -7,9 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,6 +31,14 @@ public class Packages extends BaseEntity {
      @ManyToMany(mappedBy = "packages")
      private Set<LaboratoryInvestigations> laboratoryInvestigations = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "packages")
+    private Set<LaboratoryTransactionDetail> laboratoryTransactionDetails = new HashSet<>();
+
+    public Packages addLanTxnDetail(LaboratoryTransactionDetail transaction) {
+        laboratoryTransactionDetails.add(transaction);
+        transaction.setPackages(this);
+        return this;
+    }
 }
 
 

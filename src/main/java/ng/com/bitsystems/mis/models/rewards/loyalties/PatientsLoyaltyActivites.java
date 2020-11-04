@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Getter
 @Setter
@@ -20,12 +18,11 @@ import java.util.Set;
 @Entity
 public class PatientsLoyaltyActivites  extends BaseEntity {
 
-     private String activity;
+     @Enumerated(value = EnumType.ORDINAL)
+     private Activities activities;
+
      private Integer points;
-
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patientsLoyaltyActivites")
-     private Set <PatientsLoyaltyGains>  patientsLoyaltyActivites = new HashSet<>();
-
+     private Integer active;
 }
 
 

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
+import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -45,6 +46,10 @@ public class LaboratoryInvestigations  extends BaseEntity {
     public LaboratoryInvestigations addExperimentParameter(ExperimentParameters experimentParameters) {
         this.experimentResultParameters.add(experimentParameters);
         experimentParameters.setLaboratoryInvestigations(this);
+        return this;
+    }
+
+    public LaboratoryInvestigations addTransactions(LaboratoryTransactionDetail transaction) {
         return this;
     }
 }

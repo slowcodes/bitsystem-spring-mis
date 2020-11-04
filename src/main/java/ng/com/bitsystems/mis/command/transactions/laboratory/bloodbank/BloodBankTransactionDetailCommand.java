@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.command.accounts.pricing.SalesPriceCodeCommand;
-import ng.com.bitsystems.mis.command.laboratories.bloodbank.StorageCommand;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Setter
@@ -18,8 +18,8 @@ public class BloodBankTransactionDetailCommand {
     private Integer useDiscountPrice;
     private String comment;
     private LocalDateTime timeOfTransaction;
+    private LocalDate dateOfTransaction;
     private Integer reversal;
-    private Long referralId;
-    private StorageCommand storageCommand;
-    private BloodBankTransactionCommand bloodBankTransactionCommand;
+    private Long storageId;
+    private Long bloodBankTransactionId;
 }
