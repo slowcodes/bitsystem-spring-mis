@@ -27,7 +27,7 @@ public class AccountBooks extends BaseEntity {
      @Column(name = "parent_book")
      private Long parentBook;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "expenseBooks")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountBooks")
      private Set<ExpenseManager> expenseManager = new HashSet<>();
 
      @ManyToOne
@@ -48,13 +48,13 @@ public class AccountBooks extends BaseEntity {
 
      public AccountBooks addOtherService(OtherServices otherServices) {
           this.otherServices.add(otherServices);
-          otherServices.setAccountBooks(this);
+          otherServices.setAccountBook(this);
           return this;
      }
 
     public AccountBooks addOtherServiceInvoiceDetails(OtherServiceInvoiceDetails otherServiceInvoiceDetails) {
           this.otherServiceInvoiceDetails.add(otherServiceInvoiceDetails);
-          otherServiceInvoiceDetails.setAccountBooks(this);
+          otherServiceInvoiceDetails.setAccountBook(this);
           return this;
     }
 }

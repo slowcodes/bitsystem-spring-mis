@@ -4,6 +4,7 @@ import ng.com.bitsystems.mis.command.admissions.outpatient.OutpatientPrescriptio
 import ng.com.bitsystems.mis.converters.pharmacy.PharmacyProductCommandToPharmacyProduct;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientPrescriptions;
+import ng.com.bitsystems.mis.models.users.Users;
 import org.springframework.core.convert.converter.Converter;
 
 public class OutpatientPrescriptionCommandToOutpatientPrescription
@@ -33,10 +34,10 @@ implements Converter<OutpatientPrescriptionCommand, OutpatientPrescriptions> {
         outpatientPrescriptions.setMeasure(source.getMeasure());
 
         if(source.getUsersId() !=null){
-            Physicians physicians = new Physicians();
-            physicians.setId(source.getUsersId());
-            outpatientPrescriptions.setUsers(physicians);
-            Physicians physicians1 = physicians.addOutPatientPrecription(outpatientPrescriptions);
+            Users usr = new Users();
+            usr.setId(source.getUsersId());
+            outpatientPrescriptions.setUsers(usr);
+            Users users = usr.addOutPatientPrecription(outpatientPrescriptions);
         }
 
 

@@ -6,7 +6,7 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.command.accounts.pricing.SalesPriceCodeCommand;
 import ng.com.bitsystems.mis.command.rewards.promo.PromoProductReceivedLogsCommand;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,10 +20,10 @@ public class PharmacySalesTransactionDetailCommand {
     private Integer userDiscount;
     private Integer useDiscountPrice;
     private String comment;
-    private Date timeOfTransaction;
+    private LocalDate timeOfTransaction;
     private Integer reversal;
     private Long referralId;
     private Long pharmacySalesTransactionId;
     private PromoProductReceivedLogsCommand promoProductReceivedLogsCommand;
-    private Set<AdditionalTransactionDetailCommand> additionalTransactionDetailCommands = new HashSet<>();
+    private Set<AdditionalSalesTransactionDetailCommand> additionalSalesTransactionDetailCommands = new HashSet<>();
 }

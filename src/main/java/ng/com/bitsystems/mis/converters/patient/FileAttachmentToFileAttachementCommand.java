@@ -21,8 +21,8 @@ public class FileAttachmentToFileAttachementCommand implements
         if(source.getPatients()!=null)
             command.setPatientId(source.getPatients().getId());
 
-        if ((source.getPhysicians()!=null))
-            command.setUserId(source.getPhysicians().getId());
+        if ((source.getUsers()!=null))
+            command.setUserId(source.getUsers().getId());
 
         return command;
     }

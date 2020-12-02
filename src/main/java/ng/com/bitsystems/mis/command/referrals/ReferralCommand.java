@@ -18,6 +18,7 @@ import java.util.Set;
 public class ReferralCommand {
     private Long id;
     private String middleName;
+    private Long referral_id;
     private String firstName;
     private String lastName;
     private String sex;

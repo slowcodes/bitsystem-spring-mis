@@ -2,6 +2,7 @@ package ng.com.bitsystems.mis.converters.addmission.outpatient;
 
 import ng.com.bitsystems.mis.command.admissions.outpatient.OutpatientAdmissionDischargedCommand;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmissionDischarged;
+import ng.com.bitsystems.mis.models.users.Users;
 import org.springframework.core.convert.converter.Converter;
 
 public class OutpatientAdmDischargedCmdToOutpatientAdmDischarged
@@ -19,10 +20,10 @@ implements Converter<OutpatientAdmissionDischargedCommand, OutpatientAdmissionDi
         outpatient.setDateDischarged(source.getDateDischarged());
         outpatient.setComment(source.getComment());
         if(source.getUserId()!=null){
-            Physicians physicians = new Physicians();
-            physicians.setId(source.getUserId());
-            outpatient.setUsers(physicians);
-            Physicians physicians1 =physicians.addClosedOutpatientCase(outpatient);
+            Users usr = new Users();
+            usr.setId(source.getUserId());
+            outpatient.setUsers(usr);
+            Users user =usr.addClosedOutpatientCase(outpatient);
         }
         return outpatient;
     }

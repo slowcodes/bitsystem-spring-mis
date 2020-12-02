@@ -25,8 +25,8 @@ public class InpatientPrescriptions extends Prescription {
      @JoinColumn(name = "inpatientadmission_id")
      private InpatientAdmission inpatientAdmission;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientPrecriptions")
-     private Set<InpatientPrescriptionSchedule> inpatientPrescriptionSchedules;
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientPrescriptions")
+     private Set<InpatientPrescriptionSchedule> inpatientPrescriptionSchedules = new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientPrescriptions")
      private Set<InpatientPrescriptionAdministration> inpatientPrescriptionAdministrations = new HashSet<>();

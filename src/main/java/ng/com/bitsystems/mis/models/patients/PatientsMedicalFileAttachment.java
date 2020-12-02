@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -28,7 +29,7 @@ public class PatientsMedicalFileAttachment  extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name= "user_id")
-     private Physicians physicians;
+     private Users users;
 }
 
 

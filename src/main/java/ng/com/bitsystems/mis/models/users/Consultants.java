@@ -3,7 +3,6 @@ package ng.com.bitsystems.mis.models.users;
 import lombok.Getter;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
-import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.Specializations;
 
 import javax.persistence.*;
@@ -24,6 +23,4 @@ public class Consultants extends Person {
     @OneToOne(cascade = CascadeType.ALL)
     private ServicePriceCode consultation_fee;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "consultants")
-    private Set<BookConsultation> bookConsultations = new HashSet<>();
 }

@@ -19,8 +19,8 @@ public class OtherServiceToOtherServiceCommand implements Converter<OtherService
         }
         OtherServiceCommand otherServiceCommand = new OtherServiceCommand();
         otherServiceCommand.setId(source.getId());
-        if(source.getAccountBooks() !=null)
-            otherServiceCommand.setExpenseBooksId(source.getAccountBooks().getId());
+        if(source.getAccountBook() !=null)
+            otherServiceCommand.setExpenseBooksId(source.getAccountBook().getId());
         otherServiceCommand.setComment(source.getComment());
         if(source.getCreatedBy() != null)
             otherServiceCommand.setCreatedById(source.getCreatedBy().getId());

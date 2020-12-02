@@ -19,8 +19,8 @@ implements Converter<OtherServiceInvoiceDetails, OtherServiceInvoiceDetailComman
         command.setId(source.getId());
         if(source.getCreatedBy()!=null)
             command.setCreatedById(source.getCreatedBy().getId());
-        if(source.getAccountBooks()!=null)
-            command.setExpenseBooksId(source.getAccountBooks().getId());
+        if(source.getAccountBook()!=null)
+            command.setExpenseBooksId(source.getAccountBook().getId());
         command.setStatus(source.getStatus());
         if(source.getInvoice()!=null)
             command.setInvoiceId(source.getInvoice().getId());

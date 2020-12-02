@@ -7,10 +7,10 @@ import org.springframework.lang.Nullable;
 
 public class PharmSupplyTxnDetailToPharmSupplyTxnDetailCommand implements
         Converter<PharmacySupplyTransactionsDetails, PharmacySupplyTransactionDetailCommand> {
-    private AdditionTnxDetailToAdditionalTxnDetailCommand additionTnxDetailToAdditionalTxnDetailCommand;
+    private AdditionalSupplyTnxDetailToAdditionalTxnDetailCommand additionalSupplyTnxDetailToAdditionalTxnDetailCommand;
 
-    public PharmSupplyTxnDetailToPharmSupplyTxnDetailCommand(AdditionTnxDetailToAdditionalTxnDetailCommand additionTnxDetailToAdditionalTxnDetailCommand) {
-        this.additionTnxDetailToAdditionalTxnDetailCommand = additionTnxDetailToAdditionalTxnDetailCommand;
+    public PharmSupplyTxnDetailToPharmSupplyTxnDetailCommand(AdditionalSupplyTnxDetailToAdditionalTxnDetailCommand additionalSupplyTnxDetailToAdditionalTxnDetailCommand) {
+        this.additionalSupplyTnxDetailToAdditionalTxnDetailCommand = additionalSupplyTnxDetailToAdditionalTxnDetailCommand;
     }
 
     @Nullable
@@ -26,10 +26,10 @@ public class PharmSupplyTxnDetailToPharmSupplyTxnDetailCommand implements
             details.setPharmacyProductId(source.getPharmacyProducts().getId());
         }
 
-        if(source.getAdditionalTransactionDetails().size()>0 && source.getAdditionalTransactionDetails()!=null)
-            source.getAdditionalTransactionDetails().forEach(additionalTransactionDetailCommand ->
-                    details.getAdditionalTransactionDetailCommands().add(
-                            additionTnxDetailToAdditionalTxnDetailCommand.convert(
+        if(source.getAdditionalSupplyTransactionDetails().size()> 0 && source.getAdditionalSupplyTransactionDetails()!=null)
+            source.getAdditionalSupplyTransactionDetails().forEach(additionalTransactionDetailCommand ->
+                    details.getAdditionalSupplyTransactionDetailCommands().add(
+                            additionalSupplyTnxDetailToAdditionalTxnDetailCommand.convert(
                                     additionalTransactionDetailCommand
                             )
                     ));

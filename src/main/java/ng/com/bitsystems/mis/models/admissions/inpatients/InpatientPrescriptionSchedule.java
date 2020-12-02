@@ -8,10 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.PrescriptionSchedule;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,7 +20,8 @@ import java.util.Set;
 @Entity
 public class InpatientPrescriptionSchedule  extends PrescriptionSchedule {
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "inpatientPrescriptionId")
     private InpatientPrescriptions inpatientPrescriptions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inpatientPrescription")

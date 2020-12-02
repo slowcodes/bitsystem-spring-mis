@@ -6,13 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
+import ng.com.bitsystems.mis.models.invoice.Invoice;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
 import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransaction;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransaction;
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 import ng.com.bitsystems.mis.models.users.Person;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,9 +30,8 @@ public class Referrals  extends Person {
      private String bank;
      private String account;
 
-     @ManyToOne
-     @JoinColumn(name = "refferal_id")
-     private Referrals referrals;
+
+     private Long referral_id;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "referral")
      private Set<PharmacySalesTransaction> pharmacySalesTransactions = new HashSet<>();
@@ -51,6 +53,10 @@ public class Referrals  extends Person {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "referral")
      private Set<OtherServices> otherServices= new HashSet<>();
+
+    public Referrals addInvoice(Invoice invoice) {
+         return this;
+    }
 
 }
 

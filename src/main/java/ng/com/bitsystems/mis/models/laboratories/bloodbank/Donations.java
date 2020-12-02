@@ -36,6 +36,9 @@ public class Donations extends BaseEntity {
      private LocalDateTime timeOfDonation;
      private String tagId;
 
+     @ManyToOne
+     @JoinColumn(name = "donorId")
+     private DonorRegistry donorRegistry;
 }
 
 

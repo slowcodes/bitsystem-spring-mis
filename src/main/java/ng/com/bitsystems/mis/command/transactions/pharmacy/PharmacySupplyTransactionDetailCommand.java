@@ -26,5 +26,5 @@ public class PharmacySupplyTransactionDetailCommand {
     private String batchNumber;
     private String comment;
     private LocalDate expiryDate;
-    private Set<AdditionalTransactionDetailCommand> additionalTransactionDetailCommands = new HashSet<>();
+    private Set<AdditionalSupplyTransactionDetailCommand> additionalSupplyTransactionDetailCommands = new HashSet<>();
 }

@@ -25,7 +25,7 @@ implements Converter<ReferralBloodBankSettlementCommand, ReferralBloodBankSettle
         if(source.getReferralSettlementId()!=null){
             ReferralSettlements settlements=new ReferralSettlements();
             settlements.setId(source.getReferralSettlementId());
-            referralBloodBankSettlement.setReferralSettlements(settlements);
+            referralBloodBankSettlement.setReferralSettlement(settlements);
             settlements.addBBTxnSettlement(referralBloodBankSettlement);
         }
         return referralBloodBankSettlement;

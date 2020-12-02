@@ -7,11 +7,11 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 
 public class PharmSalesTxnDetailToPharmSalesTxnDetailCommand implements Converter<PharmacyTransactionDetails, PharmacySalesTransactionDetailCommand> {
-    private AdditionTnxDetailToAdditionalTxnDetailCommand additionTnxDetailToAdditionalTxnDetailCommand;
+    private AdditionSaleTnxDetailToAdditionalTxnDetailCommand additionSaleTnxDetailToAdditionalTxnDetailCommand;
     private SalesPriceCodeToSalesPriceCodeCommand salesPriceCodeToSalesPriceCodeCommand;
 
-    public PharmSalesTxnDetailToPharmSalesTxnDetailCommand(AdditionTnxDetailToAdditionalTxnDetailCommand additionTnxDetailToAdditionalTxnDetailCommand, SalesPriceCodeToSalesPriceCodeCommand salesPriceCodeToSalesPriceCodeCommand) {
-        this.additionTnxDetailToAdditionalTxnDetailCommand = additionTnxDetailToAdditionalTxnDetailCommand;
+    public PharmSalesTxnDetailToPharmSalesTxnDetailCommand(AdditionSaleTnxDetailToAdditionalTxnDetailCommand additionSaleTnxDetailToAdditionalTxnDetailCommand, SalesPriceCodeToSalesPriceCodeCommand salesPriceCodeToSalesPriceCodeCommand) {
+        this.additionSaleTnxDetailToAdditionalTxnDetailCommand = additionSaleTnxDetailToAdditionalTxnDetailCommand;
         this.salesPriceCodeToSalesPriceCodeCommand = salesPriceCodeToSalesPriceCodeCommand;
     }
 
@@ -29,10 +29,10 @@ public class PharmSalesTxnDetailToPharmSalesTxnDetailCommand implements Converte
             command.setPharmacyProductId(source.getPharmacyProducts().getId());
         }
 
-        if(source.getAdditionalTransactionDetails().size()>0 && source.getAdditionalTransactionDetails()!=null)
-            source.getAdditionalTransactionDetails().forEach(additionalTransactionDetail ->
-                    command.getAdditionalTransactionDetailCommands().add(
-                            additionTnxDetailToAdditionalTxnDetailCommand.convert(
+        if(source.getAdditionalSaleTransactionDetails().size()>0 && source.getAdditionalSaleTransactionDetails()!=null)
+            source.getAdditionalSaleTransactionDetails().forEach(additionalTransactionDetail ->
+                    command.getAdditionalSalesTransactionDetailCommands().add(
+                            additionSaleTnxDetailToAdditionalTxnDetailCommand.convert(
                                     additionalTransactionDetail
                             )
                     ));

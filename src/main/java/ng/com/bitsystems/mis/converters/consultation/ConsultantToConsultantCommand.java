@@ -18,8 +18,8 @@ public class ConsultantToConsultantCommand implements Converter<Consultants, Con
         }
         ConsultantCommands consultantCommands=new ConsultantCommands();
         consultantCommands.setId(source.getId());
-        if(source.getBookConsultations()!=null && source.getBookConsultations().size()>0)
-            source.getBookConsultations().forEach(bookConsultation -> consultantCommands.getBookConsultations().add(bookConsultationToBookConsultationCommand.convert(bookConsultation)));
+//        if(source.getBookConsultations()!=null && source.getBookConsultations().size()>0)
+//            source.getBookConsultations().forEach(bookConsultation -> consultantCommands.getBookConsultations().add(bookConsultationToBookConsultationCommand.convert(bookConsultation)));
         if(source.getSpecializations()!=null && source.getSpecializations().size()>0)
             source.getSpecializations().forEach(specializations -> consultantCommands.getSpecializationCommand().add(specializationToSpecializationCommand.convert(specializations)));
         consultantCommands.setServicePriceCodeCommand(servicePriceCodeToServicePriceCodeCommand.convert(source.getConsultation_fee()));

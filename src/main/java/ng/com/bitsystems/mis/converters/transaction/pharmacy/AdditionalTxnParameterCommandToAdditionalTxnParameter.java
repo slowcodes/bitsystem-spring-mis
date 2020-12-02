@@ -6,31 +6,41 @@ import org.springframework.core.convert.converter.Converter;
 
 public class AdditionalTxnParameterCommandToAdditionalTxnParameter implements
         Converter<AdditionalTransactionParameterCommand, AdditionalTransactionParameters> {
-    private AdditionalTxnDetailCommandToAdditionTnxDetail additionalTxnDetailCommandToAdditionTnxDetail;
+    private AdditionalSaleTxnDetailCommandToAdditionTnxDetail additionalSaleTxnDetailCommandToAdditionTnxDetail;
+    private AdditionalSupplyTxnDetailCommandToAdditionTnxDetail additionalSupplyTxnDetailCommandToAdditionTnxDetail;
 
-    public AdditionalTxnParameterCommandToAdditionalTxnParameter(AdditionalTxnDetailCommandToAdditionTnxDetail additionalTxnDetailCommandToAdditionTnxDetail) {
-        this.additionalTxnDetailCommandToAdditionTnxDetail = additionalTxnDetailCommandToAdditionTnxDetail;
+    public AdditionalTxnParameterCommandToAdditionalTxnParameter(AdditionalSaleTxnDetailCommandToAdditionTnxDetail additionalSaleTxnDetailCommandToAdditionTnxDetail,
+                                                                 AdditionalSupplyTxnDetailCommandToAdditionTnxDetail additionalSupplyTxnDetailCommandToAdditionTnxDetail) {
+        this.additionalSaleTxnDetailCommandToAdditionTnxDetail = additionalSaleTxnDetailCommandToAdditionTnxDetail;
+        this.additionalSupplyTxnDetailCommandToAdditionTnxDetail = additionalSupplyTxnDetailCommandToAdditionTnxDetail;
     }
     @Override
     public AdditionalTransactionParameters convert(AdditionalTransactionParameterCommand source) {
         if(source==null)
             return null;
 
-        AdditionalTransactionParameters command=new AdditionalTransactionParameters();
+        AdditionalTransactionParameters detail=new AdditionalTransactionParameters();
 
-        command.setId(source.getId());
-        command.setDataType(source.getDataType());
-        command.setDescription(source.getDescription());
-        command.setParameter(command.getParameter());
+        detail.setId(source.getId());
+        detail.setDataType(source.getDataType());
+        detail.setDescription(source.getDescription());
+        detail.setParameter(detail.getParameter());
 
-        if (source.getAdditionalTransactionDetailCommand().size()>0 && source.getAdditionalTransactionDetailCommand()!=null)
-            source.getAdditionalTransactionDetailCommand().forEach(additionalTransactionDetails ->
-                    command.getAdditionalTransactionDetails().add(
-                            additionalTxnDetailCommandToAdditionTnxDetail.convert(
+        if (source.getAdditionalSalesTransactionDetailCommand().size()>0 && source.getAdditionalSalesTransactionDetailCommand()!=null)
+            source.getAdditionalSalesTransactionDetailCommand().forEach(additionalTransactionDetails ->
+                    detail.getAdditionalSaleTransactionDetails().add(
+                            additionalSaleTxnDetailCommandToAdditionTnxDetail.convert(
                                     additionalTransactionDetails
                             )
                     ));
 
-        return command;
+        if (source.getAdditionalSupplyTransactionDetailCommand().size()>0 && source.getAdditionalSupplyTransactionDetailCommand()!=null)
+            source.getAdditionalSupplyTransactionDetailCommand().forEach(additionalTransactionDetails ->
+                    detail.getAdditionalSupplyTransactionDetails().add(
+                            additionalSupplyTxnDetailCommandToAdditionTnxDetail.convert(
+                                    additionalTransactionDetails
+                            )
+                    ));
+        return detail;
     }
 }

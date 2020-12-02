@@ -3,6 +3,7 @@ package ng.com.bitsystems.mis.converters.patient;
 import ng.com.bitsystems.mis.command.patients.PatientMedicalFileAttachmentCommand;
 import ng.com.bitsystems.mis.models.patients.Patients;
 import ng.com.bitsystems.mis.models.patients.PatientsMedicalFileAttachment;
+import ng.com.bitsystems.mis.models.users.Users;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 
@@ -26,10 +27,10 @@ public class FileAttachementCommandToFileAttachment implements Converter<Patient
         }
 
         if(source.getUserId() !=null){
-            Physicians physicians=new Physicians();
-            physicians.setId(source.getUserId());
-            patientsMedicalFileAttachment.setPhysicians(physicians);
-            Physicians doctor = physicians.addMedicalFileAttachemt(patientsMedicalFileAttachment);
+            Users usr=new Users();
+            usr.setId(source.getUserId());
+            patientsMedicalFileAttachment.setUsers(usr);
+            Users doctor = usr.addMedicalFileAttachemt(patientsMedicalFileAttachment);
         }
 
         patientsMedicalFileAttachment.setDescription(source.getDescription());

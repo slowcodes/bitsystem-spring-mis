@@ -31,7 +31,7 @@ implements Converter<OtherServiceInvoiceDetailCommand, OtherServiceInvoiceDetail
         if(source.getExpenseBooksId()!=null){
             AccountBooks accountBooks=new AccountBooks();
             accountBooks.setId(source.getExpenseBooksId());
-            otherServiceInvoiceDetails.setAccountBooks(accountBooks);
+            otherServiceInvoiceDetails.setAccountBook(accountBooks);
             AccountBooks accountBook = accountBooks.addOtherServiceInvoiceDetails(otherServiceInvoiceDetails);
         }
 

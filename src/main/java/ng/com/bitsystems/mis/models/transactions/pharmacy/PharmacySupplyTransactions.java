@@ -22,6 +22,7 @@ public class PharmacySupplyTransactions extends Transaction {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacySupplyTransactions")
     Set<PharmacySupplyTransactionsDetails> pharmacySupplyTransactionsDetails = new HashSet<>();
 
+
     public PharmacySupplyTransactions addSupplyTransaction(PharmacySupplyTransactionsDetails details) {
         pharmacySupplyTransactionsDetails.add(details);
         details.setPharmacySupplyTransactions(this);

@@ -28,7 +28,7 @@ public class Results extends BaseEntity {
     private String commentColor;
     private String signatoryColor;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "result")
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<ExperimentReadings> experimentReadings=new HashSet<>();
 
 }

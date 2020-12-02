@@ -25,11 +25,20 @@ public class AdditionalTransactionParameters extends BaseEntity {
      private String description;
      private String dataType;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyTransactionDetails")
-     private Set<AdditionalTransactionDetails> additionalTransactionDetails = new HashSet<>();
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "transactionParameters")
+     private Set<AdditionalSupplyTransactionDetails> additionalSupplyTransactionDetails = new HashSet<>();
 
-    public AdditionalTransactionParameters addTxnDetail(AdditionalTransactionDetails details) {
-        additionalTransactionDetails.add(details);
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "transactionParameters")
+    private Set<AdditionalSaleTransactionDetails> additionalSaleTransactionDetails = new HashSet<>();
+
+    public AdditionalTransactionParameters addSupplyTxnDetail(AdditionalSupplyTransactionDetails details) {
+        additionalSupplyTransactionDetails.add(details);
+        details.setTransactionParameters(this);
+        return this;
+    }
+
+    public AdditionalTransactionParameters addSalesTxnDetail(AdditionalSaleTransactionDetails details) {
+        additionalSaleTransactionDetails.add(details);
         details.setTransactionParameters(this);
         return this;
     }

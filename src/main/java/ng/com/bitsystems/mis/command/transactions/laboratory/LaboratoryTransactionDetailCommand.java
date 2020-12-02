@@ -7,7 +7,6 @@ import ng.com.bitsystems.mis.command.accounts.pricing.ServicePriceCodeCommand;
 import ng.com.bitsystems.mis.command.laboratories.ExperimentReadingCommand;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,7 +22,7 @@ public class LaboratoryTransactionDetailCommand {
     private Integer userDiscount;
     private Integer useDiscountPrice;
     private String comment;
-    private Date timeOfTransaction;
+    private LocalDate timeOfTransaction;
     private LocalDate dateOfTransaction;
     private Integer reversal;
     private Long packageId;

@@ -32,6 +32,9 @@ public class SampleCollectionQueue extends BaseEntity {
      private LocalDate requestTime;
      private Integer collectionStatus;
 
+     @ManyToOne
+     @JoinColumn(name = "packageDetailId")
+     private LaboratoryPackageDetails laboratoryPackageDetails;
 }
 
 

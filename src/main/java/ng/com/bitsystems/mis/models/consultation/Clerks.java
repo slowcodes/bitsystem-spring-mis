@@ -26,10 +26,10 @@ public class Clerks extends InitClinicals {
 
      private LocalDate consultationDate;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clerk")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clerks")
      private Set<ClerkingSymptoms> clerkingSymptoms=new HashSet<>();
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clerk")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clerks")
      private Set<InternalOrganReview> internalOrganReviews=new HashSet<>();
 
 

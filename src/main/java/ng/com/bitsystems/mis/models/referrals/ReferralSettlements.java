@@ -27,19 +27,19 @@ public class ReferralSettlements extends BaseEntity {
      private LocalDate datePrepared;
      private Double commission;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlement")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlements")
      private Set<ReferralPharmacySettlement> pharmacySettlement=new HashSet<>();
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlement")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlements")
      private Set<ReferralLaboratorySettlements> laboratorySettlement=new HashSet<>();
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlement")
      private Set<ReferralBloodBankSettlement> bloodBankSettlement=new HashSet<>();
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlement")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlements")
      private Set<ReferralOtherServiceSettlement> otherServiceSettlements=new HashSet<>();
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlement")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "referralSettlements")
      private Set<ReferralVaccinationSettlement> vaccinationSettlements=new HashSet<>();
 
      public ReferralSettlements addPharmSaleTxnSettlement(ReferralPharmacySettlement settlement) {
@@ -55,7 +55,7 @@ public class ReferralSettlements extends BaseEntity {
      }
      public ReferralSettlements addBBTxnSettlement(ReferralBloodBankSettlement settlement) {
           bloodBankSettlement.add(settlement);
-          settlement.setReferralSettlements(this);
+          settlement.setReferralSettlement(this);
           return this;
      }
      public ReferralSettlements addVaccTxnSettlement(ReferralVaccinationSettlement settlement) {

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
+import ng.com.bitsystems.mis.models.inventory.InventoryPerLaboratoryTransaction;
+import ng.com.bitsystems.mis.models.invoice.LaboratoryInvoiceDetails;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 
 import javax.persistence.*;
@@ -50,6 +52,14 @@ public class LaboratoryInvestigations  extends BaseEntity {
     }
 
     public LaboratoryInvestigations addTransactions(LaboratoryTransactionDetail transaction) {
+        return this;
+    }
+
+    public LaboratoryInvestigations addLabInvDetails(LaboratoryInvoiceDetails laboratoryInvoiceDetails) {
+        return this;
+    }
+
+    public LaboratoryInvestigations addInvPerLabTxn(InventoryPerLaboratoryTransaction inventoryPerLaboratoryTransaction) {
         return this;
     }
 }

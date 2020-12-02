@@ -1,6 +1,6 @@
 package ng.com.bitsystems.mis.services.springdatajpa.transactions.pharmacy;
 
-import ng.com.bitsystems.mis.models.transactions.pharmacy.AdditionalTransactionDetails;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.AdditionalSupplyTransactionDetails;
 import ng.com.bitsystems.mis.repositories.transactions.pharmacy.AdditionalTransactionDetailsRepository;
 import ng.com.bitsystems.mis.services.transactions.pharmacy.AdditionalTransactionDetailService;
 import org.springframework.stereotype.Service;
@@ -17,24 +17,24 @@ public class AdditionalTransactionDetailSDJPaService implements AdditionalTransa
     }
 
     @Override
-    public Set<AdditionalTransactionDetails> findAll() {
-        Set<AdditionalTransactionDetails> additionalTransactionDetails=new HashSet<>();
-        additionalTransactionDetailsRepository.findAll().forEach(additionalTransactionDetails::add);
-        return additionalTransactionDetails;
+    public Set<AdditionalSupplyTransactionDetails> findAll() {
+        Set<AdditionalSupplyTransactionDetails> additionalSupplyTransactionDetails =new HashSet<>();
+        additionalTransactionDetailsRepository.findAll().forEach(additionalSupplyTransactionDetails::add);
+        return additionalSupplyTransactionDetails;
     }
 
     @Override
-    public AdditionalTransactionDetails findByID(Long aLong) {
+    public AdditionalSupplyTransactionDetails findByID(Long aLong) {
         return additionalTransactionDetailsRepository.findById(aLong).get();
     }
 
     @Override
-    public AdditionalTransactionDetails add(AdditionalTransactionDetails object) {
+    public AdditionalSupplyTransactionDetails add(AdditionalSupplyTransactionDetails object) {
         return additionalTransactionDetailsRepository.save(object);
     }
 
     @Override
-    public void delete(AdditionalTransactionDetails object) {
+    public void delete(AdditionalSupplyTransactionDetails object) {
         additionalTransactionDetailsRepository.delete(object);
     }
 
@@ -44,7 +44,7 @@ public class AdditionalTransactionDetailSDJPaService implements AdditionalTransa
     }
 
     @Override
-    public void addCommand(AdditionalTransactionDetails object) {
+    public void addCommand(AdditionalSupplyTransactionDetails object) {
 
     }
 }

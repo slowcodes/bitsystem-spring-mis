@@ -6,10 +6,13 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 
 public class AdditionalTxnParameterToAdditionalTxnParameterCommand implements Converter<AdditionalTransactionParameters, AdditionalTransactionParameterCommand> {
-    private AdditionTnxDetailToAdditionalTxnDetailCommand additionTnxDetailToAdditionalTxnDetailCommand;
+    private AdditionSaleTnxDetailToAdditionalTxnDetailCommand additionSaleTnxDetailToAdditionalTxnDetailCommand;
+    private AdditionalSupplyTnxDetailToAdditionalTxnDetailCommand additionalSupplyTnxDetailToAdditionalTxnDetailCommand;
 
-    public AdditionalTxnParameterToAdditionalTxnParameterCommand(AdditionTnxDetailToAdditionalTxnDetailCommand additionTnxDetailToAdditionalTxnDetailCommand) {
-        this.additionTnxDetailToAdditionalTxnDetailCommand = additionTnxDetailToAdditionalTxnDetailCommand;
+    public AdditionalTxnParameterToAdditionalTxnParameterCommand(AdditionSaleTnxDetailToAdditionalTxnDetailCommand additionSaleTnxDetailToAdditionalTxnDetailCommand
+    ,AdditionalSupplyTnxDetailToAdditionalTxnDetailCommand additionalSupplyTnxDetailToAdditionalTxnDetailCommand) {
+        this.additionSaleTnxDetailToAdditionalTxnDetailCommand = additionSaleTnxDetailToAdditionalTxnDetailCommand;
+        this.additionalSupplyTnxDetailToAdditionalTxnDetailCommand =additionalSupplyTnxDetailToAdditionalTxnDetailCommand;
     }
 
     @Nullable
@@ -24,10 +27,18 @@ public class AdditionalTxnParameterToAdditionalTxnParameterCommand implements Co
         command.setDescription(source.getDescription());
         command.setParameter(command.getParameter());
 
-        if (source.getAdditionalTransactionDetails().size()>0 && source.getAdditionalTransactionDetails()!=null)
-            source.getAdditionalTransactionDetails().forEach(additionalTransactionDetails ->
-                    command.getAdditionalTransactionDetailCommand().add(
-                            additionTnxDetailToAdditionalTxnDetailCommand.convert(
+        if (source.getAdditionalSaleTransactionDetails().size()>0 && source.getAdditionalSaleTransactionDetails()!=null)
+            source.getAdditionalSaleTransactionDetails().forEach(additionalTransactionDetails ->
+                    command.getAdditionalSalesTransactionDetailCommand().add(
+                            additionSaleTnxDetailToAdditionalTxnDetailCommand.convert(
+                                    additionalTransactionDetails
+                            )
+                    ));
+
+        if (source.getAdditionalSupplyTransactionDetails().size()>0 && source.getAdditionalSupplyTransactionDetails()!=null)
+            source.getAdditionalSupplyTransactionDetails().forEach(additionalTransactionDetails ->
+                    command.getAdditionalSupplyTransactionDetailCommand().add(
+                            additionalSupplyTnxDetailToAdditionalTxnDetailCommand.convert(
                                     additionalTransactionDetails
                             )
                     ));

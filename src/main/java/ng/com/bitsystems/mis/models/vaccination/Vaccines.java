@@ -29,7 +29,7 @@ public class Vaccines extends BaseEntity {
 
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vaccine")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vaccinations")
     private Set<VaccinationTransactionsDetails> vaccinationTransactionsDetails=new HashSet<>();
 
     public Vaccines addTransaction(VaccinationTransactionsDetails transactions) {

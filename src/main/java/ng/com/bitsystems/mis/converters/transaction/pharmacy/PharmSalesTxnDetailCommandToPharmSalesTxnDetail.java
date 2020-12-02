@@ -10,11 +10,11 @@ import org.springframework.lang.Nullable;
 
 public class PharmSalesTxnDetailCommandToPharmSalesTxnDetail implements
         Converter<PharmacySalesTransactionDetailCommand, PharmacyTransactionDetails> {
-    private AdditionalTxnDetailCommandToAdditionTnxDetail additionalTxnDetailCommandToAdditionTnxDetail;
+    private AdditionalSaleTxnDetailCommandToAdditionTnxDetail additionalSaleTxnDetailCommandToAdditionTnxDetail;
     private SalesPriceCodeCommandToSalesPriceCode salesPriceCodeCommandToSalesPriceCode;
 
-    public PharmSalesTxnDetailCommandToPharmSalesTxnDetail(AdditionalTxnDetailCommandToAdditionTnxDetail additionalTxnDetailCommandToAdditionTnxDetail, SalesPriceCodeCommandToSalesPriceCode salesPriceCodeCommandToSalesPriceCode) {
-        this.additionalTxnDetailCommandToAdditionTnxDetail = additionalTxnDetailCommandToAdditionTnxDetail;
+    public PharmSalesTxnDetailCommandToPharmSalesTxnDetail(AdditionalSaleTxnDetailCommandToAdditionTnxDetail additionalSaleTxnDetailCommandToAdditionTnxDetail, SalesPriceCodeCommandToSalesPriceCode salesPriceCodeCommandToSalesPriceCode) {
+        this.additionalSaleTxnDetailCommandToAdditionTnxDetail = additionalSaleTxnDetailCommandToAdditionTnxDetail;
         this.salesPriceCodeCommandToSalesPriceCode = salesPriceCodeCommandToSalesPriceCode;
     }
 
@@ -34,10 +34,10 @@ public class PharmSalesTxnDetailCommandToPharmSalesTxnDetail implements
             PharmacyProducts products = pharmacyProducts.addTransactionDetails(details);
         }
 
-        if(source.getAdditionalTransactionDetailCommands().size()>0 && source.getAdditionalTransactionDetailCommands()!=null)
-            source.getAdditionalTransactionDetailCommands().forEach(additionalTransactionDetailCommand ->
-                    details.getAdditionalTransactionDetails().add(
-                            additionalTxnDetailCommandToAdditionTnxDetail.convert(
+        if(source.getAdditionalSalesTransactionDetailCommands().size()>0 && source.getAdditionalSalesTransactionDetailCommands()!=null)
+            source.getAdditionalSalesTransactionDetailCommands().forEach(additionalTransactionDetailCommand ->
+                    details.getAdditionalSaleTransactionDetails().add(
+                            additionalSaleTxnDetailCommandToAdditionTnxDetail.convert(
                                     additionalTransactionDetailCommand
                             )
                     ));

@@ -20,7 +20,7 @@ public class BleedingScheduleCommandToBleedingSchedule
 
         final BleedingSchedule bleedingSchedule=new BleedingSchedule();
         bleedingSchedule.setId(source.getId());
-        bleedingSchedule.setDonationQueue(source.getDonationQueue());
+        //bleedingSchedule.setDonationQueue(source.getDonationQueue());
         bleedingSchedule.setClearedQueue(clearedQueueCommandToClearedQueue.convert(source.getClearedQueueCommand()));
         bleedingSchedule.setTimeOfSchedule(source.getTimeOfSchedule());
         if(source.getUserId()!=null){

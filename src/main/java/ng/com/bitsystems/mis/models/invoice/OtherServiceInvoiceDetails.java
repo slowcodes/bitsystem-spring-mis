@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.accounts.AccountBooks;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
 
 import javax.persistence.Entity;
@@ -22,4 +23,8 @@ public class OtherServiceInvoiceDetails extends OtherServices {
     @ManyToOne
     @JoinColumn(name = "invoice_id")
     private Invoice invoice;
+
+    @ManyToOne
+    @JoinColumn(name = "accountBookId")
+    private AccountBooks accountBook;
 }

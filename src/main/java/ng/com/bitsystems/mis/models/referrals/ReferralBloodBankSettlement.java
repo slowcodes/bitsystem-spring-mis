@@ -10,7 +10,6 @@ import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankT
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -19,8 +18,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class ReferralBloodBankSettlement extends BaseEntity {
 
-    @OneToOne
-    private ReferralSettlements referralSettlements;
+    @ManyToOne
+    @JoinColumn(name = "settlementId")
+    private ReferralSettlements referralSettlement;
 
     @ManyToOne
     @JoinColumn(name = "bloodBankTransactionDetails_id")

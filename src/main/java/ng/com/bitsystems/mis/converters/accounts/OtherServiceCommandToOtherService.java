@@ -32,7 +32,7 @@ public class OtherServiceCommandToOtherService implements Converter<OtherService
         if(source.getExpenseBooksId() !=null){
             AccountBooks accountBooks = new AccountBooks();
             accountBooks.setId(source.getExpenseBooksId());
-            otherServices.setAccountBooks(accountBooks);
+            otherServices.setAccountBook(accountBooks);
             accountBooks.addOtherService(otherServices);
         }
         otherServices.setComment(source.getComment());

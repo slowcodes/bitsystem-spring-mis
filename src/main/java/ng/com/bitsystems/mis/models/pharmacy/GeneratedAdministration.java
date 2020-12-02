@@ -7,8 +7,6 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 
@@ -17,10 +15,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@MappedSuperclass
 public class GeneratedAdministration extends BaseEntity {
-    @ManyToOne
-    @JoinColumn(name = "presc_id")
-    private Prescription prescription;
+
+//    @ManyToOne
+//    @JoinColumn(name = "presc_id")
+//    private Prescription prescription;
 
     private LocalDateTime extimatedAdminTime;
 }

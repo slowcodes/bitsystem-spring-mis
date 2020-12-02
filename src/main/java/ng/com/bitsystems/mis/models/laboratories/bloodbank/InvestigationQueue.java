@@ -29,7 +29,7 @@ import java.util.Set;
 @Entity
 public class InvestigationQueue extends BaseEntity {
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "inv_queue")
+     @OneToMany(cascade = CascadeType.ALL)
      private Set<LaboratoryTransactionDetail> laboratoryTransactionDetails =new HashSet<>();
 
      @OneToOne

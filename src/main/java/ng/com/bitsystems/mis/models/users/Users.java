@@ -10,6 +10,8 @@ import ng.com.bitsystems.mis.models.accounts.OtherServices;
 import ng.com.bitsystems.mis.models.accounts.payments.*;
 import ng.com.bitsystems.mis.models.admissions.inpatients.*;
 import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmission;
+import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientAdmissionDischarged;
+import ng.com.bitsystems.mis.models.admissions.outpatient.OutpatientPrescriptions;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
 import ng.com.bitsystems.mis.models.inventory.requests.Requisitions;
@@ -19,6 +21,8 @@ import ng.com.bitsystems.mis.models.laboratories.ResultCollectionLog;
 import ng.com.bitsystems.mis.models.laboratories.VerifiedResults;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonationQueue;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Donations;
+import ng.com.bitsystems.mis.models.patients.FamilyHistory;
+import ng.com.bitsystems.mis.models.patients.PatientsMedicalFileAttachment;
 import ng.com.bitsystems.mis.models.patients.PatientsMedicalHistory;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
 import ng.com.bitsystems.mis.models.rewards.promos.VolumedBasedPromos;
@@ -28,10 +32,7 @@ import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransacti
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySupplyTransactions;
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransaction;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -145,6 +146,9 @@ public class Users  extends Person {
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Invoice> invoices  = new HashSet<>();
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Groups> groups = new HashSet<>();
 
     public Users addBloodBankPayment(BloodbankDonationPayments payments) {
         bloodbankDonationPayments.add(payments);
@@ -280,6 +284,26 @@ public class Users  extends Person {
     public Users addPharmSupplyTransaction(PharmacySupplyTransactions transaction) {
         this.pharmacySupplyTransactions.add(transaction);
         transaction.setUsers(this);
+        return this;
+    }
+
+    public Users addFamilyHistory(FamilyHistory familyHistory) {
+        return this;
+    }
+
+    public Users addMedicalFileAttachemt(PatientsMedicalFileAttachment patientsMedicalFileAttachment) {
+        return this;
+    }
+
+    public Users addClosedOutpatientCase(OutpatientAdmissionDischarged outpatient) {
+        return this;
+    }
+
+    public Users addAdmittedOutpatients(OutpatientAdmission outpatientAdmission) {
+        return this;
+    }
+
+    public Users addOutPatientPrecription(OutpatientPrescriptions outpatientPrescriptions) {
         return this;
     }
 }

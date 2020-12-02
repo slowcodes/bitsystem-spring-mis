@@ -21,7 +21,7 @@ import java.util.Set;
 public class Accountants extends Users {
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "createdBy")
     private Set<OtherServiceInvoiceDetails> otherServiceInvoiceDetails = new HashSet<>();
 
     public Accountants addAccountBooks(OtherServiceInvoiceDetails otherServiceInvoiceDetails) {

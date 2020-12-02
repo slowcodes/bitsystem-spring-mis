@@ -52,7 +52,7 @@ public class InvoiceCommandToInvoice implements Converter<InvoiceCommand, Invoic
         if(source.getReferralId()!=null){
             Referrals referrals=new Referrals();
             referrals.setId(source.getReferralId());
-            invoice.setReferral(referrals);
+            //invoice.setReferral(referrals);
             Referrals referral= referrals.addInvoice(invoice);
         }
         invoice.setTimeOfTransaction(source.getTimeOfTransaction());

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
+import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromoProductRecivedLogs;
 import ng.com.bitsystems.mis.models.transactions.Sales;
 
 import javax.persistence.*;
@@ -31,7 +32,7 @@ public class PharmacyTransactionDetails extends Sales {
 //    PharmacyPromoProductRecivedLogs pharmacyPromoProductRecivedLogs;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyTransactionDetails")
-    private Set<AdditionalTransactionDetails> additionalTransactionDetails = new HashSet<>();
+    private Set<AdditionalSaleTransactionDetails> additionalSaleTransactionDetails = new HashSet<>();
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyTransactionDetails")
 //    private Set<PharmacyPromoProductRecivedLogs> promo = new HashSet<>();
@@ -42,9 +43,14 @@ public class PharmacyTransactionDetails extends Sales {
 //        return this;
 //    }
 
-    public PharmacyTransactionDetails addAdditionalDetail(AdditionalTransactionDetails details) {
-        additionalTransactionDetails.add(details);
+    public PharmacyTransactionDetails addAdditionalDetail(AdditionalSaleTransactionDetails details) {
+        additionalSaleTransactionDetails.add(details);
         details.setPharmacyTransactionDetails(this);
+        return this;
+    }
+
+    public PharmacyTransactionDetails addRecievedPromoLog(PharmacyPromoProductRecivedLogs recivedLogs) {
+
         return this;
     }
 }

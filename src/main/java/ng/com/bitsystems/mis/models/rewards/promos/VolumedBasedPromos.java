@@ -10,8 +10,9 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.users.Users;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import java.util.Date;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -19,14 +20,17 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 public class VolumedBasedPromos extends BaseEntity {
-     @OneToOne
+
+     @ManyToOne
+     @JoinColumn(name = "user_id")
      private Users users;
+
      private String title;
      private String description;
-     private Date dateCreated;
+     private LocalDate dateCreated;
      private Integer discount;
-     private Date startDay;
-     private Date endDay;
+     private LocalDate startDay;
+     private LocalDate endDay;
      private Double minTxnTotal;
      private Integer exclusivity;
 

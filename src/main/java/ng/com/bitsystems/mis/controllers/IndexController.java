@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
-    @RequestMapping({"/", "/index", "/home"})
+    @RequestMapping({"index", "/", "/index.html"})
     public String home(Model model){
-        return "index.html";
+        return "index-2.html";
     }
 
 
     @RequestMapping({"/about.html", "/about"})
     public String about(Model model){
-        return "about.html";
+        return "about";
     }
 
 }

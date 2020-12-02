@@ -23,7 +23,7 @@ public class Laboratories  extends BaseEntity {
      private String labName;
      private String description;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratory")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "laboratories")
      private Set<InvestigationGroups> investigationGroups=new HashSet<>();
 
 }

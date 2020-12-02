@@ -35,9 +35,14 @@ public class PharmacySupplyTransactionsDetails extends Sales {
      private String comment;
      private LocalDate expiryDate;
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacySupplyTransactionDetails")
-     private Set<AdditionalTransactionDetails> additionalTransactionDetails = new HashSet<>();
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacySupplyTransactionsDetails")
+     private Set<AdditionalSupplyTransactionDetails> additionalSupplyTransactionDetails = new HashSet<>();
 
+     public PharmacySupplyTransactionsDetails addAdditionalDetail(AdditionalSupplyTransactionDetails details) {
+          additionalSupplyTransactionDetails.add(details);
+          details.setPharmacySupplyTransactionsDetails(this);
+          return this;
+     }
 }
 
 

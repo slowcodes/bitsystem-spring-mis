@@ -4,6 +4,7 @@ import ng.com.bitsystems.mis.command.patients.FamilyHistoryCommand;
 import ng.com.bitsystems.mis.converters.consultation.DiseaseDirectoryCommandToDiseaseDirectory;
 import ng.com.bitsystems.mis.models.patients.FamilyFolder;
 import ng.com.bitsystems.mis.models.patients.FamilyHistory;
+import ng.com.bitsystems.mis.models.users.Users;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 
@@ -36,10 +37,10 @@ public class FamilyHistoryCommandToFamilyHistory implements Converter<FamilyHist
         }
 
         if(source.getUserId()!=null){
-            Physicians physicians = new Physicians();
+            Users physicians = new Users();
             physicians.setId(source.getUserId());
             familyHistory.setUsers(physicians);
-            Physicians doctor = physicians.addFamilyHistory(familyHistory);
+            Users doctor = physicians.addFamilyHistory(familyHistory);
         }
 
         return familyHistory;

@@ -30,7 +30,7 @@ implements Converter<DonationQueueCommand, DonationQueue> {
             DonorRegistry donorRegistry=new DonorRegistry();
             donorRegistry.setId(source.getDonorRegistryId());
             donationQueue.setDonorRegistry(donorRegistry);
-            DonorRegistry registry = donorRegistry.addDonationQueue(donationQueue);
+            //DonorRegistry registry = donorRegistry.addDonationQueue(donationQueue);
         }
 
         return donationQueue;

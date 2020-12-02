@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.command.accounts.pricing.ServicePriceCodeCommand;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -19,7 +19,7 @@ public class LaboratoryInvoiceDetailCommand {
     private Integer frequency;
     private Integer useDiscountPrice;
     private String comment;
-    private Date timeOfTransaction;
+    private LocalDate timeOfTransaction;
     private Integer reversal;
 //    private Long referralSettlementId;
 }

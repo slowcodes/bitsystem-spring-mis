@@ -24,8 +24,8 @@ public class ReferralBBSettlementToReferralBBSettlementCommand implements
         ReferralBloodBankSettlementCommand command=new ReferralBloodBankSettlementCommand();
         command.setId(source.getId());
         command.setBloodbankTransactionDetail(bbTxnDetailToBBTxnDetailCommand.convert(source.getBloodbankTransactionDetails()));
-        if(source.getReferralSettlements()!=null){
-            command.setReferralSettlementId(source.getReferralSettlements().getId());
+        if(source.getReferralSettlement()!=null){
+            command.setReferralSettlementId(source.getReferralSettlement().getId());
         }
         return command;
     }

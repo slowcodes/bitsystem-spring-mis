@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -14,10 +14,10 @@ public class VolumeBasedPromosCommand {
     private Long userId;
     private String title;
     private String description;
-    private Date dateCreated;
+    private LocalDate dateCreated;
     private Integer discount;
-    private Date startDay;
-    private Date endDay;
+    private LocalDate startDay;
+    private LocalDate endDay;
     private Double minTxnTotal;
     private Integer exclusivity;
 }

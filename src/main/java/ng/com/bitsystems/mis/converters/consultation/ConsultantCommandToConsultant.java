@@ -21,8 +21,8 @@ public class ConsultantCommandToConsultant implements Converter<ConsultantComman
         if(source.getSpecializationCommand().size()>0 && source.getSpecializationCommand()!=null){
             source.getSpecializationCommand().forEach(specializationCommand -> consultants.getSpecializations().add(specializationCommandToSpecialization.convert(specializationCommand)));
         }
-        if(source.getBookConsultations()!=null && source.getBookConsultations().size()>0)
-            source.getBookConsultations().forEach(bookConsultation -> consultants.getBookConsultations().add(bookConsultationCommandToBookConsultation.convert(bookConsultation)));
+//        if(source.getBookConsultations()!=null && source.getBookConsultations().size()>0)
+//            source.getBookConsultations().forEach(bookConsultation -> consultants.getBookConsultations().add(bookConsultationCommandToBookConsultation.convert(bookConsultation)));
         consultants.setConsultation_fee(servicePriceCodeCommandToServicePriceCode.convert(source.getConsultation_fee()));
         consultants.setEmail(source.getEmail());
         consultants.setFirstName(source.getFirstName());

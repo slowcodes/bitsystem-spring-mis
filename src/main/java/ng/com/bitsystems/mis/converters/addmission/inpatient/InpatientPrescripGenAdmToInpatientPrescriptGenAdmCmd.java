@@ -17,7 +17,7 @@ public class InpatientPrescripGenAdmToInpatientPrescriptGenAdmCmd implements Con
         InpatientPrescriptionGeneratedAdministrationCommand command = new InpatientPrescriptionGeneratedAdministrationCommand();
         command.setId(source.getId());
         command.setEstimatedAdminTime(source.getExtimatedAdminTime());
-        command.setPharmacyProductCommand(pharmacyProductToPharmacyProductCommand.convert(source.getPharmacyProducts()));
+        //command.setPharmacyProductCommand(pharmacyProductToPharmacyProductCommand.convert(source.getPharmacyProducts()));
         if(source.getSchedule() != null)
             command.setPrescriptionScheduleCommandId(source.getSchedule().getId());
 

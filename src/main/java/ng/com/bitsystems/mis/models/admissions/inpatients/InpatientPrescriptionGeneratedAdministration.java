@@ -24,6 +24,9 @@ public class InpatientPrescriptionGeneratedAdministration extends GeneratedAdmin
      @JoinColumn(name = "inpatientprescriptionschedule_id")
      private InpatientPrescriptionSchedule schedule;
 
+     @ManyToOne
+     @JoinColumn(name = "inpatientPrescriptionId")
+     private InpatientPrescriptions inpatientPrescription;
 }
 
 
