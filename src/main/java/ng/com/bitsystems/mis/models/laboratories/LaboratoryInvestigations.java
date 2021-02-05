@@ -26,7 +26,7 @@ public class LaboratoryInvestigations  extends BaseEntity {
     @OneToOne
     private ServicePriceCode servicePriceCode;
     private String title;
-    private String desc;
+    private String inv_desc;
     private Integer estimatedTurnaround;
 
     @Enumerated(value = EnumType.STRING)

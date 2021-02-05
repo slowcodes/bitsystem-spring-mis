@@ -9,14 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     @RequestMapping({"index", "/", "/index.html"})
-    public String home(Model model){
-        return "index-2.html";
+    public String login(Model model){
+        return "login";
     }
 
+    @RequestMapping({"home", "/home", "/home.html"})
+    public String home(Model model){
+        return "index";
+    }
 
     @RequestMapping({"/about.html", "/about"})
     public String about(Model model){
-        return "about";
+        return "components/charts/chart-js";
     }
 
 }

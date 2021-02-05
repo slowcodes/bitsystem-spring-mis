@@ -3,7 +3,7 @@ package ng.com.bitsystems.mis.converters.consultation;
 import ng.com.bitsystems.mis.command.consultation.BookConsultationCommand;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.patients.Patients;
-import ng.com.bitsystems.mis.models.users.Receptionists;
+import ng.com.bitsystems.mis.models.users.Users;
 import org.springframework.core.convert.converter.Converter;
 
 public class BookConsultationCommandToBookConsultation implements Converter<BookConsultationCommand, BookConsultation> {
@@ -30,10 +30,10 @@ public class BookConsultationCommandToBookConsultation implements Converter<Book
             Patients newPatient = patients.addConsultation(bookConsultation);
         }
         if(source.getUserId()!=null){
-            Receptionists users=new Receptionists();
+            Users users=new Users();
             users.setId(source.getUserId());
             bookConsultation.setUsers(users);
-            Receptionists receptionist = users.addBookConsultation(bookConsultation);
+            Users receptionist = users.addBookConsultation(bookConsultation);
         }
 
         return bookConsultation;

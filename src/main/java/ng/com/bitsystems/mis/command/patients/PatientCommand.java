@@ -18,6 +18,7 @@ import ng.com.bitsystems.mis.command.users.AccountHolderCommand;
 import ng.com.bitsystems.mis.command.users.StateCommand;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,7 +35,7 @@ public class PatientCommand {
     private String sex;
     private String email;
     private String phone;
-    private LocalDate regDay;
+    private LocalDateTime regDay;
     private String status;
     private LocalDate lastLoginDay;
     private StateCommand stateCommand;

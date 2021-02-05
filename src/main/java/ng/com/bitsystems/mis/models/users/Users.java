@@ -16,9 +16,11 @@ import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
 import ng.com.bitsystems.mis.models.inventory.requests.Requisitions;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
+import ng.com.bitsystems.mis.models.invoice.OtherServiceInvoiceDetails;
 import ng.com.bitsystems.mis.models.laboratories.CollectedSamples;
 import ng.com.bitsystems.mis.models.laboratories.ResultCollectionLog;
 import ng.com.bitsystems.mis.models.laboratories.VerifiedResults;
+import ng.com.bitsystems.mis.models.laboratories.bloodbank.BleedingSchedule;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonationQueue;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Donations;
 import ng.com.bitsystems.mis.models.patients.FamilyHistory;
@@ -148,7 +150,44 @@ public class Users  extends Person {
     private Set<Invoice> invoices  = new HashSet<>();
 
     @ManyToMany(mappedBy = "users")
-    private Set<Groups> groups = new HashSet<>();
+    private Set<UserGroups> groups = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "createdBy")
+    private Set<OtherServiceInvoiceDetails> otherServiceInvoiceDetails = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<BookConsultation> bookConsultation = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<BleedingSchedule> bleedingSchedules = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private Set<ResultCollectionLog> issuedResults = new HashSet<>();
+
+    public Users addBookConsultation(BookConsultation bookConsultation) {
+        this.bookConsultation.add(bookConsultation);
+        bookConsultation.setUsers(this);
+        return this;
+    }
+
+    public Users addBleedingSchedule(BleedingSchedule bleedingSchedule) {
+        this.bleedingSchedules.add(bleedingSchedule);
+        bleedingSchedule.setUsers(this);
+        return this;
+    }
+
+    public Users addResultCollectionLog(ResultCollectionLog collectionLog) {
+
+        this.issuedResults.add(collectionLog);
+        collectionLog.setUsers(this);
+        return this;
+    }
+
+    public Users addAccountBooks(OtherServiceInvoiceDetails otherServiceInvoiceDetails) {
+        this.otherServiceInvoiceDetails.add(otherServiceInvoiceDetails);
+        otherServiceInvoiceDetails.setCreatedBy(this);
+        return this;
+    }
 
     public Users addBloodBankPayment(BloodbankDonationPayments payments) {
         bloodbankDonationPayments.add(payments);

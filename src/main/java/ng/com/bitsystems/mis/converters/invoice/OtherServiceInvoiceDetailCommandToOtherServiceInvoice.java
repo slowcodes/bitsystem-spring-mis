@@ -5,7 +5,7 @@ import ng.com.bitsystems.mis.converters.accounts.pricing.ServicePriceCodeCommand
 import ng.com.bitsystems.mis.models.accounts.AccountBooks;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
 import ng.com.bitsystems.mis.models.invoice.OtherServiceInvoiceDetails;
-import ng.com.bitsystems.mis.models.users.Accountants;
+import ng.com.bitsystems.mis.models.users.Users;
 import org.springframework.core.convert.converter.Converter;
 
 public class OtherServiceInvoiceDetailCommandToOtherServiceInvoice
@@ -39,10 +39,10 @@ implements Converter<OtherServiceInvoiceDetailCommand, OtherServiceInvoiceDetail
         otherServiceInvoiceDetails.setComment(source.getComment());
 
         if(source.getCreatedById()!=null){
-            Accountants accountants = new Accountants();
+            Users accountants = new Users();
             accountants.setId(source.getId());
             otherServiceInvoiceDetails.setCreatedBy(accountants);
-            Accountants accountant = accountants.addAccountBooks(otherServiceInvoiceDetails);
+            Users accountant = accountants.addAccountBooks(otherServiceInvoiceDetails);
         }
 
         otherServiceInvoiceDetails.setDescription(source.getDescription());

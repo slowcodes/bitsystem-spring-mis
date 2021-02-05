@@ -33,7 +33,7 @@ public class LaboratoryInvestigationCommandToLaboratoryInvestigation implements
         final LaboratoryInvestigations laboratoryInvestigations=new LaboratoryInvestigations();
 
         laboratoryInvestigations.setId(source.getId());
-        laboratoryInvestigations.setDesc(source.getDesc());
+        laboratoryInvestigations.setInv_desc(source.getDesc());
         laboratoryInvestigations.setEstimatedTurnaround(source.getEstimatedTurnaround());
 
         if(source.getExperimentParametersCommands().size()>0&&source.getExperimentParametersCommands()!=null)

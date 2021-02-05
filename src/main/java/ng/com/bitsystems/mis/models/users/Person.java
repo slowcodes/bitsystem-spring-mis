@@ -9,6 +9,7 @@ import ng.com.bitsystems.mis.models.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -28,7 +29,7 @@ public class Person extends BaseEntity {
     @Column(name = "mobile")
     private String phone;
     @Column(name = "createdAt")
-    private LocalDate regDay;
+    private LocalDateTime regDay;
     @Column(name = "status")
     private String status;
     @Column(name = "lastLoginDate")

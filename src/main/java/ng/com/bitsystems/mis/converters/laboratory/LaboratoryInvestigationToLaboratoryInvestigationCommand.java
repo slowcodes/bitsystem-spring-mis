@@ -31,7 +31,7 @@ public class LaboratoryInvestigationToLaboratoryInvestigationCommand implements 
                 LaboratoryInvestigationCommand();
 
         laboratoryInvestigationCommand.setId(source.getId());
-        laboratoryInvestigationCommand.setDesc(source.getDesc());
+        laboratoryInvestigationCommand.setDesc(source.getInv_desc());
         laboratoryInvestigationCommand.setEstimatedTurnaround(source.getEstimatedTurnaround());
 
         if(source.getExperimentResultParameters().size()>0 && source.getExperimentResultParameters()!=null)

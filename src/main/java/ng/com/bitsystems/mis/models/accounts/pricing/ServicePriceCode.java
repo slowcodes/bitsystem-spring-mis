@@ -21,6 +21,7 @@ public class ServicePriceCode extends BaseEntity {
 
      @Column(name="service_price")
      private Double servicePrice;
+
      @Column(name = "discount_price")
      private Double discountPrice;
 
@@ -29,11 +30,11 @@ public class ServicePriceCode extends BaseEntity {
      //private Set <VaccinationTransactionsDetails> vaccinationTransactionsDetails = new HashSet<>();
      //private Set <BloodbankTransaction> bloodbankTransactions = new HashSet<>();
 
-//     @OneToOne
-//     private OtherServices otherServices;
-//
-//     @OneToOne
-//     private Consultants consultants;
+     //     @OneToOne
+     //     private OtherServices otherServices;
+
+     //     @OneToOne
+     //     private Consultants consultants;
 }
 
 

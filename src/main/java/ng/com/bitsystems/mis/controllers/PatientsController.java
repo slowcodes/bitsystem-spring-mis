@@ -1,14 +1,28 @@
 package ng.com.bitsystems.mis.controllers;
 
+import ng.com.bitsystems.mis.services.patients.PatientService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PatientsController {
 
+
+    private PatientService patientService;
+    public PatientsController(PatientService patientService){
+        this.patientService = patientService;
+    }
     @RequestMapping("/patients")
     public String patients(){
         return "patients/patients.html";
+        //Table is OK
+    }
+
+    @RequestMapping("/users/patients/directory")
+    public String directory(Model model){
+        model.addAttribute("patients", patientService.findAll());
+        return "components/datatables/basic/paginations";
         //Table is OK
     }
 

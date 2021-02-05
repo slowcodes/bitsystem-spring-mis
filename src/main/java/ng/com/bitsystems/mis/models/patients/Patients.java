@@ -41,8 +41,15 @@ public class Patients  extends Person {
      private Set<FamilyFolder> familyFolder=new HashSet<>();
 
      private Date dob;
+
      private String occupation;
+
      private String marritalStatus;
+     private String address;
+
+     @ManyToOne
+     @JoinColumn(name = "state_id")
+     private States states;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<BookConsultation> bookConsultations = new HashSet<>();
@@ -98,10 +105,6 @@ public class Patients  extends Person {
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "patients")
      private Set<VaccinationTransaction> vaccinationTransaction = new HashSet<>();
-
-     @ManyToOne
-     @JoinColumn(name = "state_id")
-     private States states;
 
     public Patients addInpatientAdmission(InpatientAdmission inpatientAdmission) {
          this.inpatientAdmissions.add(inpatientAdmission);
