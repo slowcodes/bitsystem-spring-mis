@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @MappedSuperclass
 public class Person extends BaseEntity {
+
     private String middleName;
     @Column(name = "first_name")
     private String firstName;

@@ -1,37 +1,56 @@
 package ng.com.bitsystems.mis.controllers;
 
+import ng.com.bitsystems.mis.services.laboratories.InvestigationGroupService;
+import ng.com.bitsystems.mis.services.referrals.ReferralService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ServiceController {
 
-    @RequestMapping("/services/laboratory/book")
-    public String labResults(Model model){
-        return "components/forms/widgets/select2";
+    private InvestigationGroupService investigationGroupService;
+    private ReferralService referralService;
+
+    public ServiceController(InvestigationGroupService investigationGroupService,
+                             ReferralService referralService){
+        this.investigationGroupService = investigationGroupService;
+        this.referralService = referralService;
     }
+
 
     @RequestMapping("/laboratory/results/pending_results")
     public String pendingLabResults(){
         return "";
     }
 
+    @RequestMapping("/services/book/{patientId}")
+    public String services(Model model, @PathVariable int patientId){
+        model.addAttribute("patientId", patientId);
+        return "custom/profile/overview-3";
+    }
+
+    @RequestMapping("/services/book/{patientId}/laboratory")
+    public String labResults(Model model, @PathVariable int patientId){
+        model.addAttribute("patientId", patientId);
+        model.addAttribute("investigationGroups", investigationGroupService.findAll());
+        model.addAttribute("referrals", referralService.findAll());
+        return "components/forms/widgets/select2";
+    }
+
     @RequestMapping("/laboratory/results/collected_results")
     public String collectedResults(){
-
         return "collectedResults.html";
     }
 
     @RequestMapping("/laboratory/results/prepared_results")
     public String preparedLabResults(){
-
         return "prepareLabResult.html";
     }
 
     @RequestMapping("/laboratory/results/verified_results")
     public String verifiedResults(){
-
         return "verifiedResult.html";
     }
 

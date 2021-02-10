@@ -3,6 +3,10 @@ VALUES ('lasange','283ue839wu9','sole@quimba.ng','','Active','Prof.','12-12-12')
 
 INSERT INTO laboratories(lab_name,description) VALUES ('Microbiology', 'Microbiology Lab');
 INSERT INTO laboratories(lab_name,description) VALUES ('Virology', 'Virology Lab');
+INSERT INTO referrals(first_name, last_name, middle_name, sex, email, mobile,status,organisation,bank,referral_id)
+VALUES('Nwokolo', 'Chinedu', 'Odoh', 'Male', 'odoh.chinedu@samba.com.ng','08030718122','Active','Real Health','Union Bank',1),
+    ('LongJohn', 'Hanson', 'Belema', 'Male', 'sokariri.nnamdi@firstrivers.ng','08039039112','Active','First Rivers Clinic','Zenith Bank',1),
+    ('Udwak', 'Udofia', 'Inibehe', 'Femail', 'udwak.udofia@uui.com.ng','080483030933','Active','Rivon Clinic','First Bank of Nigeria',1);
 
 INSERT INTO investigation_groups(id, grp_name,lab_id) VALUES
 (97, 'AUTO-IMMUNE', 1),

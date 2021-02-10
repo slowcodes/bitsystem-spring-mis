@@ -29,8 +29,6 @@ public class Referrals  extends Person {
      private String organisation;
      private String bank;
      private String account;
-
-
      private Long referral_id;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "referral")
