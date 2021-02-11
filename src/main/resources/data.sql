@@ -8,6 +8,8 @@ VALUES('Nwokolo', 'Chinedu', 'Odoh', 'Male', 'odoh.chinedu@samba.com.ng','080307
     ('LongJohn', 'Hanson', 'Belema', 'Male', 'sokariri.nnamdi@firstrivers.ng','08039039112','Active','First Rivers Clinic','Zenith Bank',1),
     ('Udwak', 'Udofia', 'Inibehe', 'Femail', 'udwak.udofia@uui.com.ng','080483030933','Active','Rivon Clinic','First Bank of Nigeria',1);
 
+INSERT INTO packages(discount,package_desc,package_name) VALUES(20, 'To celebrate chritmas with customers', 'Christmas Bonus'),
+                                                                (35, 'To celebrate lovers', 'Valentine Package');
 INSERT INTO investigation_groups(id, grp_name,lab_id) VALUES
 (97, 'AUTO-IMMUNE', 1),
 (98, 'BLOOD', 1),
@@ -7308,3 +7310,5 @@ INSERT INTO patients(id,first_name,last_name,mobile,created_at,address,sex,email
 (6197, 'Izuwa', 'Joy Chinwe', '08036542298', '2020-05-18 15:56:57', '15 Salita Street New Heaven', 'Female', '', 23, '1985-10-31', '', 'Married'),
 (6198, 'Okafor', 'Adannaya', '09025571749', '2020-05-18 16:22:15', '82 Division Abakpa', 'Female', '', 26, '1998-11-24', '', 'Single'),
 (6199, 'Onuaguchi ', 'Pauline', '', '2020-05-18 17:20:04', 'Best Option Pharmacy', 'Female', '', 16, '2020-05-18', '', 'Single');
+
+INSERT INTO laboratory_package_detail(package_id,lab_id) VALUES(1, 23), (1,24), (1,25), (2,29), (2,30),(2,31);

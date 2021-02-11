@@ -30,10 +30,6 @@ public class ObservationQueue extends BaseEntity {
      private LocalDate scheduledTime;
      private Integer status;
 
-     @ManyToOne
-     @JoinColumn
-     private LaboratoryPackageDetails laboratoryPackageDetails;
-
 }
 
 
