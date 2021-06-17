@@ -3,14 +3,15 @@ package ng.com.bitsystems.mis.command.accounts.payments.insurrance;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.command.consultation.BookConsultationCommand;
+import ng.com.bitsystems.mis.command.transactions.TransactionCommand;
 
 @Setter
 @Getter
 @NoArgsConstructor
-public class InsuredConsultationCommand {
+public class InsuredTransactionCommand {
     private Long id;
     private ProgramsCommand programsCommand;
-    private Double percentageIncurred;
-    private BookConsultationCommand bookConsultationCommand;
+    private TransactionCommand transactionCommand;
+    private Double percentageIncured;
+
 }
