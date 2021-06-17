@@ -5,17 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.transactions.Transaction;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
+@Entity
 public class InsuranceTransactions extends BaseEntity {
 
 
@@ -25,4 +23,7 @@ public class InsuranceTransactions extends BaseEntity {
 
     @Column(name="percentage_incured")
     private Double percentageIncured;
+
+    @OneToOne
+    private Transaction transaction;
 }

@@ -16,7 +16,8 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 public class Programs extends BaseEntity {
-     @Column(name="insurance_company")
+
+    @Column(name="insurance_company")
      private String insuranceCompany;
 
      @Column(name="service_discount")
@@ -28,8 +29,6 @@ public class Programs extends BaseEntity {
      @Column(name="company_phone")
      private String companyPhone;
 
-    public void addInsuredTransaction(InsuredBloodbankTransactions insuredBloodbankTransactions) {
-    }
 }
 
 

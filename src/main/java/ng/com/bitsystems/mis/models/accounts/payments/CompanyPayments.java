@@ -6,10 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.patients.CompanyFolder;
+import ng.com.bitsystems.mis.models.transactions.Transaction;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
@@ -17,7 +20,11 @@ import javax.persistence.Enumerated;
 @AllArgsConstructor
 @Entity
 public class CompanyPayments extends BaseEntity {
-    @Enumerated(EnumType.STRING)
-    private TransactionType transactionType;
-    private Long transactionId;
+    @ManyToOne
+    @JoinColumn(name = "transaction_id")
+    private Transaction transaction;
+
+
+    @OneToOne
+    private CompanyFolder company;
 }
