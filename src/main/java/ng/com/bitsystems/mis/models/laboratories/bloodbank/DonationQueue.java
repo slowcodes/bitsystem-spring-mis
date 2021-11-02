@@ -30,9 +30,6 @@ public class DonationQueue extends BaseEntity {
      private Date timeOfSchedule;
      private String status;
      private Compensation compensation;
-
-
-
 }
 
 

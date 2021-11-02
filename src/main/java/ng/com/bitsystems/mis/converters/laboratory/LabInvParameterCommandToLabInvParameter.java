@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.laboratories.LaboratoryInvestigationParamet
 import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigationParameters;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LabInvParameterCommandToLabInvParameter
 implements Converter<LaboratoryInvestigationParameterCommand, LaboratoryInvestigationParameters> {
 

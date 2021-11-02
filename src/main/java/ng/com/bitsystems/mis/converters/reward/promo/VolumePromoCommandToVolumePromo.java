@@ -2,9 +2,11 @@ package ng.com.bitsystems.mis.converters.reward.promo;
 
 import ng.com.bitsystems.mis.command.rewards.promo.VolumeBasedPromosCommand;
 import ng.com.bitsystems.mis.models.rewards.promos.VolumedBasedPromos;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class VolumePromoCommandToVolumePromo implements Converter<VolumeBasedPromosCommand, VolumedBasedPromos> {
     @Override
     public VolumedBasedPromos convert(VolumeBasedPromosCommand source) {
@@ -23,10 +25,10 @@ public class VolumePromoCommandToVolumePromo implements Converter<VolumeBasedPro
         volumedBasedPromos.setTitle(source.getTitle());
 
         if(source.getUserId()==null){
-            Users users = new Users();
-            users.setId(source.getUserId());
-            volumedBasedPromos.setUsers(users);
-             users.addVolBasedPromo(volumedBasedPromos);
+            AppUsers appUsers = new AppUsers();
+            appUsers.setId(source.getUserId());
+            volumedBasedPromos.setAppUsers(appUsers);
+             appUsers.addVolBasedPromo(volumedBasedPromos);
         }
         volumedBasedPromos.setId(source.getId());
         return volumedBasedPromos;

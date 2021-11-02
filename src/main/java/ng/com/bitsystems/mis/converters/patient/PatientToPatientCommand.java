@@ -24,7 +24,6 @@ public class PatientToPatientCommand implements Converter<Patients, PatientComma
     private BookConsultationToBookConsultationCommand bookConsultationToBookConsultationCommand;
     private IssueLogToIssueLogCommand issueLogToIssueLogCommand;
     private MedicalHistoryToMedicalHistoryCommand medicalHistoryToMedicalHistoryCommand;
-    private SocialHistoryToSocialHistoryCommand socialHistoryToSocialHistoryCommand;
     private DrugAllergyToDrugAllergyCommand drugAllergyToDrugAllergyCommand;
     private PatientVitalToPatientViatalCommand patientVitalToPatientViatalCommand;
     private ClerkToClerkCommand clerkToClerkCommand;
@@ -32,7 +31,6 @@ public class PatientToPatientCommand implements Converter<Patients, PatientComma
     private LoyaltyActivityToLoyaltyActivityCommand loyaltyActivityToLoyaltyActivityCommand;
     private LoyaltyGainToLoyaltyGainCommand loyaltyGainToLoyaltyGainCommand;
     private ReceivedLogToReceivedLogCommand receivedLogToReceivedLogCommand;
-    private FileAttachmentToFileAttachementCommand fileAttachmentToFileAttachementCommand;
 
 
     @Nullable
@@ -55,7 +53,8 @@ public class PatientToPatientCommand implements Converter<Patients, PatientComma
         patientCommand.setOccupation(source.getOccupation());
         patientCommand.setPhone(source.getPhone());
         //patientCommand.setRegDay(source.getRegDay());
-        patientCommand.setStateCommand(stateToStateCommand.convert(source.getStates()));
+        if(source.getStates()!=null)
+            //patientCommand.setStateCommand(stateToStateCommand.convert(source.getStates()));
         patientCommand.setSex(source.getSex());
         patientCommand.setStatus(source.getStatus());
 
@@ -65,11 +64,6 @@ public class PatientToPatientCommand implements Converter<Patients, PatientComma
                             medicalHistoryToMedicalHistoryCommand.convert(patientsMedicalHistory)
                     ));
 
-        if(source.getPatientsMedicalFileAttachments().size()>0 && source.getPatientsMedicalFileAttachments()!=null)
-            source.getPatientsMedicalFileAttachments().forEach(fileAttachment ->
-                    patientCommand.getPatientMedicalFileAttachmentCommands().add(
-                            fileAttachmentToFileAttachementCommand.convert(fileAttachment)
-                    ));
 
         if(source.getPatientDrugAllergies().size()>0 && source.getPatientDrugAllergies()!=null)
             source.getPatientDrugAllergies().forEach(patientDrugAllergy ->
@@ -83,18 +77,6 @@ public class PatientToPatientCommand implements Converter<Patients, PatientComma
                             loyaltyGainToLoyaltyGainCommand.convert(patientsLoyaltyGains)
                     ));
 
-
-        if(source.getIssuanceLogs().size()>0 && source.getIssuanceLogs()!=null)
-            source.getIssuanceLogs().forEach(issuanceLogs ->
-                    patientCommand.getIssueLogCommands().add(
-                            issueLogToIssueLogCommand.convert(issuanceLogs)
-                    ));
-
-        if(source.getPatientsSocialHistories().size()>0 && source.getPatientsSocialHistories()!=null)
-            source.getPatientsSocialHistories().forEach(patientsSocialHistory ->
-                    patientCommand.getPatientSocialHistoryCommand().add(
-                            socialHistoryToSocialHistoryCommand.convert(patientsSocialHistory)
-                    ));
 
         if(source.getPatientsVitalses().size()>0 && source.getPatientsVitalses()!=null)
             source.getPatientsVitalses().forEach(patientsVitals ->

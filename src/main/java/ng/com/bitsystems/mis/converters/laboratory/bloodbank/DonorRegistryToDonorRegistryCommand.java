@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.laboratories.bloodbank.DonationRegistryComm
 import ng.com.bitsystems.mis.converters.patient.PatientToPatientCommand;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonorRegistry;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DonorRegistryToDonorRegistryCommand implements Converter<DonorRegistry, DonationRegistryCommand> {
     private PatientToPatientCommand patientToPatientCommand;
     private DonationToDonationCommand donationToDonationCommand;

@@ -3,7 +3,9 @@ package ng.com.bitsystems.mis.converters.laboratory;
 import ng.com.bitsystems.mis.command.laboratories.ExperimentReadingCommand;
 import ng.com.bitsystems.mis.models.laboratories.ExperimentReadings;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExperimentReadingsToExperimentReadingCommand implements Converter<ExperimentReadings, ExperimentReadingCommand> {
     @Override
     public ExperimentReadingCommand convert(ExperimentReadings source) {

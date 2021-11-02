@@ -18,12 +18,15 @@ import javax.persistence.ManyToOne;
 @Entity
 public class UsersPrivilege  extends BaseEntity {
 
-
      @ManyToOne
      @JoinColumn(name = "users_id")
-     private Users users;
-     private String privileges;
+     private AppUsers appUsers;
 
+     @ManyToOne
+     @JoinColumn(name = "users_group_id")
+     private UserGroups userGroup;
+
+     private String privileges;
 
 }
 

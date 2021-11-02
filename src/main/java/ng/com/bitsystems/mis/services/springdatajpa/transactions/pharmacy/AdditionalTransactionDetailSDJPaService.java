@@ -1,6 +1,6 @@
 package ng.com.bitsystems.mis.services.springdatajpa.transactions.pharmacy;
 
-import ng.com.bitsystems.mis.models.transactions.pharmacy.AdditionalSupplyTransactionDetails;
+import ng.com.bitsystems.mis.models.transactions.pharmacy.AdditionalTransactionDetails;
 import ng.com.bitsystems.mis.repositories.transactions.pharmacy.AdditionalTransactionDetailsRepository;
 import ng.com.bitsystems.mis.services.transactions.pharmacy.AdditionalTransactionDetailService;
 import org.springframework.stereotype.Service;
@@ -17,24 +17,24 @@ public class AdditionalTransactionDetailSDJPaService implements AdditionalTransa
     }
 
     @Override
-    public Set<AdditionalSupplyTransactionDetails> findAll() {
-        Set<AdditionalSupplyTransactionDetails> additionalSupplyTransactionDetails =new HashSet<>();
+    public Set<AdditionalTransactionDetails> findAll() {
+        Set<AdditionalTransactionDetails> additionalSupplyTransactionDetails =new HashSet<>();
         additionalTransactionDetailsRepository.findAll().forEach(additionalSupplyTransactionDetails::add);
         return additionalSupplyTransactionDetails;
     }
 
     @Override
-    public AdditionalSupplyTransactionDetails findByID(Long aLong) {
+    public AdditionalTransactionDetails findByID(Long aLong) {
         return additionalTransactionDetailsRepository.findById(aLong).get();
     }
 
     @Override
-    public AdditionalSupplyTransactionDetails add(AdditionalSupplyTransactionDetails object) {
+    public AdditionalTransactionDetails add(AdditionalTransactionDetails object) {
         return additionalTransactionDetailsRepository.save(object);
     }
 
     @Override
-    public void delete(AdditionalSupplyTransactionDetails object) {
+    public void delete(AdditionalTransactionDetails object) {
         additionalTransactionDetailsRepository.delete(object);
     }
 
@@ -44,7 +44,7 @@ public class AdditionalTransactionDetailSDJPaService implements AdditionalTransa
     }
 
     @Override
-    public void addCommand(AdditionalSupplyTransactionDetails object) {
+    public void addCommand(AdditionalTransactionDetails object) {
 
     }
 }

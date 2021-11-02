@@ -5,11 +5,19 @@ import ng.com.bitsystems.mis.converters.patient.PatientCommandToPatient;
 import ng.com.bitsystems.mis.models.referrals.PatientsReferrals;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
-public class PatientReferralCommandToPatientReferral
-implements Converter<PatientReferralCommand, PatientsReferrals> {
+@Component
+public class PatientReferralCommandToPatientReferral implements Converter<PatientReferralCommand, PatientsReferrals> {
     private PatientCommandToPatient patientCommandToPatient;
-    private ReferralCommandToReferral referralCommandToReferral;
+    //private ReferralCommandToReferral referralCommandToReferral;
+
+    public PatientReferralCommandToPatientReferral(PatientCommandToPatient patientCommandToPatient
+                                                   //ReferralCommandToReferral referralCommandToReferral
+    ) {
+        this.patientCommandToPatient = patientCommandToPatient;
+        //this.referralCommandToReferral = referralCommandToReferral;
+    }
 
     @Nullable
     @Override

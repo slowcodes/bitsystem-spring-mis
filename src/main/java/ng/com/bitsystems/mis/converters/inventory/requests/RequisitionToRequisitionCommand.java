@@ -21,8 +21,8 @@ public class RequisitionToRequisitionCommand implements Converter<Requisitions, 
         requisitionCommand.setDateOfRequisition(source.getDateOfRequisition());
         if(source.getRequistionDetails()!=null && source.getRequistionDetails().size()>0)
             source.getRequistionDetails().forEach(requisitionDetails -> requisitionCommand.getRequisitionDetailCommands().add(requisitionDetailToRequisitionDetailCommand.convert(requisitionDetails)));
-        if(source.getUsers()!=null)
-            requisitionCommand.setUsers_id(source.getUsers().getId());
+        if(source.getAppUsers()!=null)
+            requisitionCommand.setUsers_id(source.getAppUsers().getId());
         return requisitionCommand;
     }
 }

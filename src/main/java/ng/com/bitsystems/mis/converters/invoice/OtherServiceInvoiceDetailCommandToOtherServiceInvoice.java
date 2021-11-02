@@ -5,9 +5,11 @@ import ng.com.bitsystems.mis.converters.accounts.pricing.ServicePriceCodeCommand
 import ng.com.bitsystems.mis.models.accounts.AccountBooks;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
 import ng.com.bitsystems.mis.models.invoice.OtherServiceInvoiceDetails;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OtherServiceInvoiceDetailCommandToOtherServiceInvoice
 implements Converter<OtherServiceInvoiceDetailCommand, OtherServiceInvoiceDetails> {
 
@@ -36,22 +38,22 @@ implements Converter<OtherServiceInvoiceDetailCommand, OtherServiceInvoiceDetail
         }
 
         otherServiceInvoiceDetails.setStatus(source.getStatus());
-        otherServiceInvoiceDetails.setComment(source.getComment());
+
 
         if(source.getCreatedById()!=null){
-            Users accountants = new Users();
+            AppUsers accountants = new AppUsers();
             accountants.setId(source.getId());
             otherServiceInvoiceDetails.setCreatedBy(accountants);
-            Users accountant = accountants.addAccountBooks(otherServiceInvoiceDetails);
+            AppUsers accountant = accountants.addAccountBooks(otherServiceInvoiceDetails);
         }
 
         otherServiceInvoiceDetails.setDescription(source.getDescription());
-        otherServiceInvoiceDetails.setFrequency(source.getFrequency());
-        otherServiceInvoiceDetails.setReversal(source.getReversal());
+//        otherServiceInvoiceDetails.setFrequency(source.getFrequency());
+//        otherServiceInvoiceDetails.setReversal(source.getReversal());
         otherServiceInvoiceDetails.setServicePriceCode(servicePriceCodeCommandToServicePriceCode.convert(source.getServicePriceCodeCommand()));
         otherServiceInvoiceDetails.setTimeOfTransaction(source.getTimeOfTransaction());
-        otherServiceInvoiceDetails.setUseDiscountPrice(source.getUseDiscountPrice());
-        otherServiceInvoiceDetails.setUserDiscount(source.getUserDiscount());
+//        otherServiceInvoiceDetails.setUseDiscountPrice(source.getUseDiscountPrice());
+//        otherServiceInvoiceDetails.setUserDiscount(source.getUserDiscount());
 
         return otherServiceInvoiceDetails;
     }

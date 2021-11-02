@@ -15,6 +15,5 @@ public class AdditionalTransactionParameterCommand {
     private String parameter;
     private String description;
     private String dataType;
-    private Set<AdditionalSalesTransactionDetailCommand> additionalSalesTransactionDetailCommand = new HashSet<>();
-    private Set<AdditionalSupplyTransactionDetailCommand> additionalSupplyTransactionDetailCommand = new HashSet<>();
+    private Set<AdditionalTransactionDetailCommand> additionalTransactionDetailCommand = new HashSet<>();
 }

@@ -1,57 +1,50 @@
 package ng.com.bitsystems.mis.converters.transaction.laboratory;
 
 import ng.com.bitsystems.mis.command.transactions.laboratory.LaboratoryTransactionDetailCommand;
-import ng.com.bitsystems.mis.converters.accounts.pricing.ServicePriceCodeToServicePriceCodeCommand;
-import ng.com.bitsystems.mis.converters.laboratory.ExperimentReadingsToExperimentReadingCommand;
+import ng.com.bitsystems.mis.converters.laboratory.LaboratoryInvestigationToLaboratoryInvestigationCommand;
+import ng.com.bitsystems.mis.converters.laboratory.PackageToPackageCommand;
+import ng.com.bitsystems.mis.converters.laboratory.QueueToQueueCommand;
+import ng.com.bitsystems.mis.converters.transaction.ServicePriceToServicePriceCommand;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LabTxnDetailToLabTxnDetailCommand implements Converter<LaboratoryTransactionDetail, LaboratoryTransactionDetailCommand> {
-    private ServicePriceCodeToServicePriceCodeCommand servicePriceCodeToServicePriceCodeCommand;
-    private ExperimentReadingsToExperimentReadingCommand experimentReadingsToExperimentReadingCommand;
 
-    public LabTxnDetailToLabTxnDetailCommand(ServicePriceCodeToServicePriceCodeCommand servicePriceCodeToServicePriceCodeCommand, ExperimentReadingsToExperimentReadingCommand experimentReadingsToExperimentReadingCommand) {
-        this.servicePriceCodeToServicePriceCodeCommand = servicePriceCodeToServicePriceCodeCommand;
-        this.experimentReadingsToExperimentReadingCommand = experimentReadingsToExperimentReadingCommand;
+    private ServicePriceToServicePriceCommand servicePriceToServicePriceCommand;
+    private PackageToPackageCommand packageToPackageCommand;
+    private LaboratoryInvestigationToLaboratoryInvestigationCommand laboratoryInvestigationToLaboratoryInvestigationCommand;
+    private QueueToQueueCommand queueToQueueCommand;
+
+    public LabTxnDetailToLabTxnDetailCommand(ServicePriceToServicePriceCommand servicePriceToServicePriceCommand,
+                                             PackageToPackageCommand packageToPackageCommand,
+                                             QueueToQueueCommand queueToQueueCommand,
+                                             LaboratoryInvestigationToLaboratoryInvestigationCommand laboratoryInvestigationToLaboratoryInvestigationCommand) {
+        this.servicePriceToServicePriceCommand = servicePriceToServicePriceCommand;
+        this.packageToPackageCommand = packageToPackageCommand;
+        this.laboratoryInvestigationToLaboratoryInvestigationCommand=laboratoryInvestigationToLaboratoryInvestigationCommand;
+        this.queueToQueueCommand =queueToQueueCommand;
     }
 
     @Nullable
     @Override
     public LaboratoryTransactionDetailCommand convert(LaboratoryTransactionDetail source) {
+
         if (source==null)
             return null;
 
         LaboratoryTransactionDetailCommand command=new LaboratoryTransactionDetailCommand();
         command.setId(source.getId());
-
-        if(source.getExperimentResultsByParameters().size()>0 && source.getExperimentResultsByParameters()!=null)
-            source.getExperimentResultsByParameters().forEach(experimentReadingCommand ->
-                    command.getExperimentReadingCommands().add(
-                            experimentReadingsToExperimentReadingCommand.convert(
-                                    experimentReadingCommand
-                            )
-                    ));
-
-        if (source.getLaboratoryInvestigations()!=null){
-            command.setLaboratoryInvestigationId(source.getLaboratoryInvestigations().getId());
-        }
-
-        if(source.getPackages()!=null){
-            command.setPackageId(source.getPackages().getId());
-        }
+        command.setLaboratoryInvestigationCommand(laboratoryInvestigationToLaboratoryInvestigationCommand.convert(source.getInvestigations()));
+        command.setPackageCommand(packageToPackageCommand.convert(source.getLabPackages()));
 
         if(source.getLaboratoryTransaction()!= null){
-            command.setLaboratoryInvestigationId(source.getLaboratoryTransaction().getId());
+            command.setLaboratoryTransactionId(source.getLaboratoryTransaction().getId());
         }
-
-        command.setComment(source.getComment());
-        //command.setFrequency(source.getReversal());
-        command.setReversal(source.getReversal());
-        command.setServicePriceCodeCommand(servicePriceCodeToServicePriceCodeCommand.convert(source.getServicePriceCode()));
-        command.setTimeOfTransaction(source.getTimeOfTransaction());
-        command.setUseDiscountPrice(source.getUseDiscountPrice());
-        command.setUserDiscount(source.getUserDiscount());
+        command.setServicePriceCommand(servicePriceToServicePriceCommand.convert(source.getServiceDetailPricing()));
+        command.setQueueCommand(queueToQueueCommand.convert(source.getQueue()));
 
         return command;
     }

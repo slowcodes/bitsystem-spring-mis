@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.rewards.promo.RewardBasedPromoCommand;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyRewardBasedPromo;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RewardPromoCommandToRewardPromo implements
 Converter<RewardBasedPromoCommand, PharmacyRewardBasedPromo>{
     @Override

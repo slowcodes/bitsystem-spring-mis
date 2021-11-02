@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,14 +23,22 @@ public class Results extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "users_id")
-    private Users users;
+    private AppUsers appUsers;
     private String footNote;
-    private Date logTime;
+
+    @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")
+    private LocalDate dateTransaction;
+
+    @CreationTimestamp
+    private LocalDateTime timeOfTransaction;
+
     private String resultNote;
     private String commentColor;
     private String signatoryColor;
 
+    @OneToOne
+    private Queue queue;
+
     @OneToMany(cascade = CascadeType.ALL)
     private Set<ExperimentReadings> experimentReadings=new HashSet<>();
-
 }

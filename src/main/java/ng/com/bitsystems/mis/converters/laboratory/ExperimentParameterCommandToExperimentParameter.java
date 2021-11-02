@@ -2,10 +2,12 @@ package ng.com.bitsystems.mis.converters.laboratory;
 
 import ng.com.bitsystems.mis.command.laboratories.ExperimentParametersCommand;
 import ng.com.bitsystems.mis.models.laboratories.ExperimentParameters;
-import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
+import ng.com.bitsystems.mis.models.laboratories.Investigations;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExperimentParameterCommandToExperimentParameter implements
         Converter<ExperimentParametersCommand, ExperimentParameters> {
 
@@ -20,10 +22,10 @@ public class ExperimentParameterCommandToExperimentParameter implements
         experimentParameters.setId(source.getId());
 
         if(source.getLaboratoryInvestigationsId()!=null){
-            LaboratoryInvestigations laboratoryInvestigations = new  LaboratoryInvestigations();
-            laboratoryInvestigations.setId(source.getId());
-            experimentParameters.setLaboratoryInvestigations(laboratoryInvestigations);
-            LaboratoryInvestigations labInv = laboratoryInvestigations.addExperimentParameter(experimentParameters);
+            Investigations investigations = new Investigations();
+            investigations.setId(source.getId());
+            experimentParameters.setInvestigations(investigations);
+            Investigations labInv = investigations.addExperimentParameter(experimentParameters);
         }
 
         experimentParameters.setMax(source.getMax());

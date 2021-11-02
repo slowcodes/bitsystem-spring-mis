@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.rewards.promo.PromoProductCommand;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PromoProductToPromoProductCommand implements Converter<PharmacyPromosProducts, PromoProductCommand> {
     private ReceivedLogToReceivedLogCommand receivedLogToReceivedLogCommand;
 
@@ -42,8 +44,8 @@ public class PromoProductToPromoProductCommand implements Converter<PharmacyProm
         promoProductCommand.setStatus(source.getStatus());
         promoProductCommand.setTitle(source.getTitle());
 
-        if(source.getUsers()!=null)
-            promoProductCommand.setUserId(source.getUsers().getId());
+        if(source.getAppUsers()!=null)
+            promoProductCommand.setUserId(source.getAppUsers().getId());
 
         return  promoProductCommand;
     }

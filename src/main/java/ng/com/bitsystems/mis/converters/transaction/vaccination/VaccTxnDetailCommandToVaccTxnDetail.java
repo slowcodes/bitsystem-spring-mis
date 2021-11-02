@@ -7,7 +7,9 @@ import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransact
 import ng.com.bitsystems.mis.models.vaccination.Vaccines;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class VaccTxnDetailCommandToVaccTxnDetail implements
         Converter<VaccinationTransactionDetailCommand, VaccinationTransactionsDetails> {
     private ServicePriceCodeCommandToServicePriceCode servicePriceCodeCommandToServicePriceCode;
@@ -28,8 +30,8 @@ public class VaccTxnDetailCommandToVaccTxnDetail implements
         if(source.getVaccineId()!=null){
             Vaccines vaccines = new Vaccines();
             vaccines.setId(source.getVaccineId());
-            transactions.setVaccinations(vaccines);
-            Vaccines vaccine  = vaccines.addTransaction(transactions);
+            transactions.setVaccine(vaccines);
+            //Vaccines vaccine  = vaccines.addTransaction(transactions);
         }
 
         if(source.getVaccinationTransactionId()!=null){
@@ -39,13 +41,13 @@ public class VaccTxnDetailCommandToVaccTxnDetail implements
             VaccinationTransaction vaccinationTransactions = vaccinationTransaction.addTxnDetail(transactions);
         }
 
-        transactions.setComment(source.getComment());
-        transactions.setFrequency(source.getReversal());
-        transactions.setReversal(source.getReversal());
-        transactions.setServicePriceCode(servicePriceCodeCommandToServicePriceCode.convert(source.getServicePriceCodeCommand()));
-        transactions.setTimeOfTransaction(source.getTimeOfTransaction());
-        transactions.setUseDiscountPrice(source.getUseDiscountPrice());
-        transactions.setUserDiscount(source.getUserDiscount());
+//        transactions.setComment(source.getComment());
+//        transactions.setFrequency(source.getReversal());
+//        transactions.setReversal(source.getReversal());
+//        transactions.setServicePriceCode(servicePriceCodeCommandToServicePriceCode.convert(source.getServicePriceCodeCommand()));
+//        transactions.setTimeOfTransaction(source.getTimeOfTransaction());
+//        transactions.setUseDiscountPrice(source.getUseDiscountPrice());
+//        transactions.setUserDiscount(source.getUserDiscount());
         return transactions;
     }
 }

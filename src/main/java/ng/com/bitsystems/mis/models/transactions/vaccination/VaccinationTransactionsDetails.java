@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.transactions.Service;
+import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.pharmacy.Prescription;
+import ng.com.bitsystems.mis.models.transactions.ServiceTransaction;
 import ng.com.bitsystems.mis.models.vaccination.Vaccines;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -18,7 +20,7 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class VaccinationTransactionsDetails extends Service {
+public class VaccinationTransactionsDetails extends BaseEntity {
 
      @ManyToOne()
      @JoinColumn(name = "vaccinationtransaction_id")
@@ -26,8 +28,16 @@ public class VaccinationTransactionsDetails extends Service {
 
      @ManyToOne
      @JoinColumn(name = "vaccinations_id")
-     private Vaccines vaccinations;
+     private Vaccines vaccine;
 
+     @ManyToMany()
+     @JoinTable(name = "vaccine_prescription",
+             joinColumns = @JoinColumn(name = "txn_detail_id"),
+             inverseJoinColumns = @JoinColumn(name = "prescription_id"))
+     private Set<Prescription> prescriptions = new HashSet<>();
+
+     @OneToOne
+     private ServiceTransaction serviceTransaction;
 }
 
 

@@ -5,11 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
 @Getter
@@ -20,7 +21,11 @@ import java.time.LocalDateTime;
 public class PrescriptionAdministration extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "users_id")
-    private Users users;
+    private AppUsers appUsers;
+
     private LocalDateTime administrationTime;
     private String comment;
+
+    @OneToOne
+    private Prescription prescription;
 }

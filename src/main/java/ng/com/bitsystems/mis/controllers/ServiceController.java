@@ -1,6 +1,9 @@
 package ng.com.bitsystems.mis.controllers;
 
+import ng.com.bitsystems.mis.services.consultations.DiseaseDirectoryService;
+import ng.com.bitsystems.mis.services.consultations.SymptomsDirectoryService;
 import ng.com.bitsystems.mis.services.laboratories.InvestigationGroupService;
+import ng.com.bitsystems.mis.services.laboratories.PackageService;
 import ng.com.bitsystems.mis.services.referrals.ReferralService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +15,17 @@ public class ServiceController {
 
     private InvestigationGroupService investigationGroupService;
     private ReferralService referralService;
+    private PackageService packageService;
+    private DiseaseDirectoryService diseaseDirectoryService;
+    private SymptomsDirectoryService symptomsDirectoryService;
 
-    public ServiceController(InvestigationGroupService investigationGroupService,
-                             ReferralService referralService){
+    public ServiceController(InvestigationGroupService investigationGroupService, ReferralService referralService, PackageService packageService, DiseaseDirectoryService diseaseDirectoryService, SymptomsDirectoryService symptomsDirectoryService) {
         this.investigationGroupService = investigationGroupService;
         this.referralService = referralService;
+        this.packageService = packageService;
+        this.diseaseDirectoryService = diseaseDirectoryService;
+        this.symptomsDirectoryService = symptomsDirectoryService;
     }
-
 
     @RequestMapping("/laboratory/results/pending_results")
     public String pendingLabResults(){
@@ -34,8 +41,11 @@ public class ServiceController {
     @RequestMapping("/services/book/{patientId}/laboratory")
     public String labResults(Model model, @PathVariable int patientId){
         model.addAttribute("patientId", patientId);
+        model.addAttribute("lab_packages", packageService.findAll());
         model.addAttribute("investigationGroups", investigationGroupService.findAll());
         model.addAttribute("referrals", referralService.findAll());
+        model.addAttribute("symptomsDirectory", symptomsDirectoryService.findAll());
+        model.addAttribute("diseasesDirectory", diseaseDirectoryService.findAll());
         return "components/forms/widgets/select2";
     }
 
@@ -62,7 +72,6 @@ public class ServiceController {
 
     @RequestMapping("Experiments")
     public String experiments(){
-
         return "experiments.html";
     }
 

@@ -2,13 +2,14 @@ package ng.com.bitsystems.mis.converters.laboratory;
 
 import ng.com.bitsystems.mis.command.laboratories.LaboratoryInvestigationCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.ServicePriceCodeCommandToServicePriceCode;
-import ng.com.bitsystems.mis.models.laboratories.InvestigationGroups;
-import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
+import ng.com.bitsystems.mis.models.laboratories.Investigations;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LaboratoryInvestigationCommandToLaboratoryInvestigation implements
-        Converter<LaboratoryInvestigationCommand, LaboratoryInvestigations> {
+        Converter<LaboratoryInvestigationCommand, Investigations> {
 
     private ExperimentParameterCommandToExperimentParameter experimentParameterCommandToExperimentParameter;
     private PackageCommandToPackage packageCommandToPackage;
@@ -24,41 +25,41 @@ public class LaboratoryInvestigationCommandToLaboratoryInvestigation implements
 
     @Nullable
     @Override
-    public LaboratoryInvestigations convert(LaboratoryInvestigationCommand source) {
+    public Investigations convert(LaboratoryInvestigationCommand source) {
 
         if(source==null){
             return null;
         }
 
-        final LaboratoryInvestigations laboratoryInvestigations=new LaboratoryInvestigations();
+        final Investigations investigations =new Investigations();
 
-        laboratoryInvestigations.setId(source.getId());
-        laboratoryInvestigations.setInv_desc(source.getDesc());
-        laboratoryInvestigations.setEstimatedTurnaround(source.getEstimatedTurnaround());
+        investigations.setId(source.getId());
+        investigations.setInv_desc(source.getDesc());
+        investigations.setEstimatedTurnaround(source.getEstimatedTurnaround());
 
         if(source.getExperimentParametersCommands().size()>0&&source.getExperimentParametersCommands()!=null)
             source.getExperimentParametersCommands().forEach(experimentParametersCommand ->
-                    laboratoryInvestigations.getExperimentResultParameters().add(
+                    investigations.getExperimentResultParameters().add(
                             experimentParameterCommandToExperimentParameter.convert(experimentParametersCommand)
                     ));
 
-        if(source.getInvestigationGroupId()==null){
-            InvestigationGroups investigationGroups = new InvestigationGroups();
-            investigationGroups.setId(source.getInvestigationGroupId());
-            laboratoryInvestigations.setInvestigationGroups(investigationGroups);
-            InvestigationGroups groups = investigationGroups.addlabInvestigation(laboratoryInvestigations);
-        }
+//        if(source.getInvestigationGroupId()==null){
+//            InvestigationGroups investigationGroups = new InvestigationGroups();
+//            investigationGroups.setId(source.getInvestigationGroupId());
+//            investigations.setInvestigationGroups(investigationGroups);
+//            InvestigationGroups groups = investigationGroups.addlabInvestigation(investigations);
+//        }
 
-        laboratoryInvestigations.setInvestigationType(source.getInvestigationType());
+        investigations.setInvestigationType(source.getInvestigationType());
 
-        if(source.getPackageCommand().size()>0 && source.getPackageCommand()!=null)
-            source.getPackageCommand().forEach(packageCommand ->
-                    laboratoryInvestigations.getPackages().add(packageCommandToPackage.convert(packageCommand)));
+//        if(source.getPackageCommand().size()>0 && source.getPackageCommand()!=null)
+//            source.getPackageCommand().forEach(packageCommand ->
+//                    investigations.getLabPackages().add(packageCommandToPackage.convert(packageCommand)));
 
-        laboratoryInvestigations.setServicePriceCode(servicePriceCodeCommandToServicePriceCode.convert(source.getServicePriceCodeCommand()));
-        laboratoryInvestigations.setTitle(source.getTitle());
+        investigations.setServicePriceCode(servicePriceCodeCommandToServicePriceCode.convert(source.getServicePriceCodeCommand()));
+        investigations.setTitle(source.getTitle());
 
-        return laboratoryInvestigations;
+        return investigations;
     }
 
 }

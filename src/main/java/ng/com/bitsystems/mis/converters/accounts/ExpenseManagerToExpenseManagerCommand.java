@@ -3,7 +3,9 @@ package ng.com.bitsystems.mis.converters.accounts;
 import ng.com.bitsystems.mis.command.accounts.ExpenseManagerCommand;
 import ng.com.bitsystems.mis.models.accounts.ExpenseManager;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExpenseManagerToExpenseManagerCommand implements Converter<ExpenseManager, ExpenseManagerCommand> {
     @Override
     public ExpenseManagerCommand convert(ExpenseManager source) {
@@ -18,12 +20,12 @@ public class ExpenseManagerToExpenseManagerCommand implements Converter<ExpenseM
         }
         expenseManagerCommand.setExpenseDate(source.getExpenseDate());
         expenseManagerCommand.setPurpose(source.getPurpose());
-        if(source.getUsersByIssueTo()!=null){
-            expenseManagerCommand.setUsersByIssueToId(source.getUsersByIssueTo().getId());
+        if(source.getAppUsersByIssueTo()!=null){
+            expenseManagerCommand.setUsersByIssueToId(source.getAppUsersByIssueTo().getId());
         }
 
-        if(source.getUsersByTeller() !=null){
-            expenseManagerCommand.setUsersByTellerId(source.getUsersByTeller().getId());
+        if(source.getAppUsersByTeller() !=null){
+            expenseManagerCommand.setUsersByTellerId(source.getAppUsersByTeller().getId());
         }
         return expenseManagerCommand;
     }

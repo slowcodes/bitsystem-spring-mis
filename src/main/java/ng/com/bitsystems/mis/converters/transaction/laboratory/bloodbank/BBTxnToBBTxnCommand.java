@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.transactions.laboratory.bloodbank.BloodBank
 import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransaction;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BBTxnToBBTxnCommand implements Converter<BloodbankTransaction, BloodBankTransactionCommand> {
     private BBTxnDetailToBBTxnDetailCommand bbTxnDetailToBBTxnDetailCommand;
     @Nullable
@@ -14,11 +16,6 @@ public class BBTxnToBBTxnCommand implements Converter<BloodbankTransaction, Bloo
             return null;
 
         final BloodBankTransactionCommand command=new BloodBankTransactionCommand();
-        command.setComment(source.getComment());
-        command.setDateTransaction(source.getDateTransaction());
-        command.setDiscount(source.getDiscount());
-        command.setId(source.getId());
-        command.setTimeOfTransaction(source.getTimeOfTransaction());
 
         if(source.getBloodbankTransactionDetails()!=null && source.getBloodbankTransactionDetails().size()>0)
             source.getBloodbankTransactionDetails().forEach(bloodBankTransactionDetailCommand ->
@@ -26,13 +23,10 @@ public class BBTxnToBBTxnCommand implements Converter<BloodbankTransaction, Bloo
                             bbTxnDetailToBBTxnDetailCommand.convert(bloodBankTransactionDetailCommand)
                     ));
 
-        if(source.getUsers()!= null){
-            command.setUserId(source.getUsers().getId());
-        }
 
-        if(source.getPatients()!=null){
-            command.setPatientId(source.getPatients().getId());
-        }
+//        if(source.getPatients()!=null){
+//            command.setPatientId(source.getPatients().getId());
+//        }
 
         return command;
     }

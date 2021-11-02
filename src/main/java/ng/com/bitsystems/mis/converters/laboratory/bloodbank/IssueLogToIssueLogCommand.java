@@ -3,7 +3,9 @@ package ng.com.bitsystems.mis.converters.laboratory.bloodbank;
 import ng.com.bitsystems.mis.command.laboratories.bloodbank.IssueLogCommand;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.IssuanceLogs;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class IssueLogToIssueLogCommand implements Converter<IssuanceLogs, IssueLogCommand> {
     @Override
     public IssueLogCommand convert(IssuanceLogs source) {
@@ -17,8 +19,8 @@ public class IssueLogToIssueLogCommand implements Converter<IssuanceLogs, IssueL
         if(source.getPatients()!=null)
             issueLogCommand.setPatientId(source.getPatients().getId());
 
-        if(source.getUsers()!=null)
-            issueLogCommand.setUserId(source.getUsers().getId());
+        if(source.getAppUsers()!=null)
+            issueLogCommand.setUserId(source.getAppUsers().getId());
 
         if (source.getStorage()!=null)
             issueLogCommand.setStorageId(source.getStorage().getId());

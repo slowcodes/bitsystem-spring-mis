@@ -3,7 +3,9 @@ package ng.com.bitsystems.mis.converters.inventory;
 import ng.com.bitsystems.mis.command.inventory.InventoryPerLaboratoryTransactionCommand;
 import ng.com.bitsystems.mis.models.inventory.InventoryPerLaboratoryTransaction;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InventoryPerLabTxnToInventoryPerLabTxnCommand
 implements Converter<InventoryPerLaboratoryTransaction, InventoryPerLaboratoryTransactionCommand> {
     @Override
@@ -17,8 +19,8 @@ implements Converter<InventoryPerLaboratoryTransaction, InventoryPerLaboratoryTr
             transactionCommand.setInventoryId(source.getInventory().getId());
         }
 
-        if(source.getLaboratoryInvestigations() !=null){
-            transactionCommand.setLaboratoryInvestigationsId(source.getLaboratoryInvestigations().getId());
+        if(source.getInvestigations() !=null){
+            transactionCommand.setLaboratoryInvestigationsId(source.getInvestigations().getId());
         }
         return transactionCommand;
     }

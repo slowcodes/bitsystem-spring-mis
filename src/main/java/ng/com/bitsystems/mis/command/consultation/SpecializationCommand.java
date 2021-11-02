@@ -10,4 +10,5 @@ import lombok.Setter;
 public class SpecializationCommand {
     private Long id;
     private String specialization;
+    private String specialist;
 }

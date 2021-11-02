@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +15,7 @@ public class ResultCommand {
     private Long id;
     private Long userId;
     private String footNote;
-    private Date logTime;
+    private LocalDate logTime;
     private String resultNote;
     private String commentColor;
     private String signatoryColor;

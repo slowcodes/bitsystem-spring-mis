@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
-import ng.com.bitsystems.mis.models.transactions.Service;
+import ng.com.bitsystems.mis.models.transactions.laboratory.BaseLabTxnDetail;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -17,15 +16,12 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class LaboratoryInvoiceDetails extends Service {
-
-     @ManyToOne
-     @JoinColumn(name = "laboratoryinvestigations_id")
-     private LaboratoryInvestigations laboratoryInvestigations;
+public class LaboratoryInvoiceDetails extends BaseLabTxnDetail {
 
      @ManyToOne
      @JoinColumn(name = "invoice_id")
      private Invoice invoice;
+
 }
 
 

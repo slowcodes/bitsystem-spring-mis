@@ -5,7 +5,9 @@ import ng.com.bitsystems.mis.converters.transaction.laboratory.LabTxnDetailToLab
 import ng.com.bitsystems.mis.models.laboratories.CollectedSamples;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CollectedSamplesToCollectedSampleCommand implements
         Converter<CollectedSamples, CollectedSamplesCommand> {
 

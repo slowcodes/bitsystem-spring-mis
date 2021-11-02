@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.command.accounts.pricing.ServicePriceCodeCommand;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -20,6 +20,6 @@ public class OtherServiceCommand {
     private Integer frequency;
     private Integer useDiscountPrice;
     private String comment;
-    private LocalDate timeOfTransaction;
+    private LocalDateTime timeOfTransaction;
     private Integer reversal;
 }

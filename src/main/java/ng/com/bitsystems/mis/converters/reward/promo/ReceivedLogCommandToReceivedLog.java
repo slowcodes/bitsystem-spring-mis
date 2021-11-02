@@ -6,7 +6,9 @@ import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransactionDetails;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ReceivedLogCommandToReceivedLog implements Converter<PromoProductReceivedLogsCommand, PharmacyPromoProductRecivedLogs> {
 
     @Nullable

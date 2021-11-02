@@ -3,10 +3,12 @@ package ng.com.bitsystems.mis.converters.reward.promo;
 import ng.com.bitsystems.mis.command.rewards.promo.PromoProductCommand;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PromoProductCommandToPromoProduct implements Converter<PromoProductCommand, PharmacyPromosProducts> {
 
     private ReceivedLogCommandToReceivedLog receivedLogCommandToReceivedLog;
@@ -41,10 +43,10 @@ public class PromoProductCommandToPromoProduct implements Converter<PromoProduct
         pharmacyPromosProducts.setTitle(source.getTitle());
 
         if(source.getUserId()!=null){
-            Users users = new Users();
-            users.setId(source.getUserId());
-            pharmacyPromosProducts.setUsers(users);
-            Users user = users.addPromoProduct(pharmacyPromosProducts);
+            AppUsers appUsers = new AppUsers();
+            appUsers.setId(source.getUserId());
+            pharmacyPromosProducts.setAppUsers(appUsers);
+            AppUsers user = appUsers.addPromoProduct(pharmacyPromosProducts);
         }
 
         pharmacyPromosProducts.setId(source.getId());

@@ -3,7 +3,9 @@ package ng.com.bitsystems.mis.converters.accounts;
 import ng.com.bitsystems.mis.command.accounts.ExpenseBooksCommand;
 import ng.com.bitsystems.mis.models.accounts.AccountBooks;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExpenseBookToExpenseBookCommand implements Converter<AccountBooks, ExpenseBooksCommand> {
 
     private ExpenseManagerToExpenseManagerCommand expenseManagerToExpenseManagerCommand;

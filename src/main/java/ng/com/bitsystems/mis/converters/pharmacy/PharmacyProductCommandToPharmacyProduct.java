@@ -4,17 +4,17 @@ import ng.com.bitsystems.mis.command.pharmacy.PharmacyProductCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.SalesPriceCodeCommandToSalesPriceCode;
 import ng.com.bitsystems.mis.converters.reward.promo.PromoProductCommandToPromoProduct;
 import ng.com.bitsystems.mis.converters.reward.promo.RewardPromoCommandToRewardPromo;
-import ng.com.bitsystems.mis.converters.transaction.pharmacy.PharmSalesTxnDetailCommandToPharmSalesTxnDetail;
-import ng.com.bitsystems.mis.converters.transaction.pharmacy.PharmSupplyTxnDetailCommandToPharmSupplyTxnDetail;
+import ng.com.bitsystems.mis.converters.transaction.pharmacy.PharmTxnDetailCommandToPharmTxnDetail;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PharmacyProductCommandToPharmacyProduct implements Converter<PharmacyProductCommand, PharmacyProducts> {
     private BarcodeCommandToBarcode barcodeCommandToBarcode;
     private CategoryCommandToCategory categoryCommandToCategory;
-    private PharmSalesTxnDetailCommandToPharmSalesTxnDetail pharmSalesTxnDetailCommandToPharmSalesTxnDetail;
-    private PharmSupplyTxnDetailCommandToPharmSupplyTxnDetail pharmSupplyTxnDetailCommandToPharmSupplyTxnDetail;
+    private PharmTxnDetailCommandToPharmTxnDetail pharmTxnDetailCommandToPharmTxnDetail;
     private PromoProductCommandToPromoProduct promoProductCommandToPromoProduct;
     private RetailMeasureCommandToRetailMeasure retailMeasureCommandToRetailMeasure;
     private RewardPromoCommandToRewardPromo rewardPromoCommandToRewardPromo;
@@ -40,21 +40,14 @@ public class PharmacyProductCommandToPharmacyProduct implements Converter<Pharma
             source.getCategoryCommands().forEach(categoryCommand ->
                     pharmacyProducts.getCategories().add(categoryCommandToCategory.convert(categoryCommand)));
 
-        if( source.getPharmacySalesTransactionDetailCommands()!=null &&
-        source.getPharmacySalesTransactionDetailCommands().size()>0){
-            source.getPharmacySalesTransactionDetailCommands().forEach(pharmacySalesTransactionDetailCommand ->
-                    pharmacyProducts.getPharmacyTransactions().add(pharmSalesTxnDetailCommandToPharmSalesTxnDetail.convert(
+        if( source.getPharmacyTransactionDetailCommands()!=null &&
+        source.getPharmacyTransactionDetailCommands().size()>0){
+            source.getPharmacyTransactionDetailCommands().forEach(pharmacySalesTransactionDetailCommand ->
+                    pharmacyProducts.getPharmacyTransactions().add(pharmTxnDetailCommandToPharmTxnDetail.convert(
                             pharmacySalesTransactionDetailCommand
                     )));
         }
 
-        if(source.getPharmacySupplyTransactionDetailCommands().size()>0 && source.getPharmacySupplyTransactionDetailCommands()!=null)
-            source.getPharmacySupplyTransactionDetailCommands().forEach(pharmacySupplyTransactionDetailCommand ->
-                    pharmacyProducts.getTransactionsSupplies().add(
-                            pharmSupplyTxnDetailCommandToPharmSupplyTxnDetail.convert(
-                                    pharmacySupplyTransactionDetailCommand
-                            )
-                    ));
 
 //        if(source.getPromoProductCommands().size()>0 && source.getPromoProductCommands()!=null)
 //            source.getPromoProductCommands().forEach(promoProductCommand ->

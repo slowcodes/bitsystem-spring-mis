@@ -3,7 +3,9 @@ package ng.com.bitsystems.mis.converters.consultation;
 import ng.com.bitsystems.mis.command.consultation.BookConsultationCommand;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BookConsultationToBookConsultationCommand implements Converter<BookConsultation, BookConsultationCommand> {
     private SpecializationToSpecializationCommand specializationToSpecializationCommand;
 
@@ -23,8 +25,8 @@ public class BookConsultationToBookConsultationCommand implements Converter<Book
         if(source.getPatients()!=null){
             bookConsultationCommand.setPatientId(source.getPatients().getId());
         }
-        if(source.getUsers()!=null)
-            bookConsultationCommand.setUserId(source.getUsers().getId());
+        if(source.getAppUsers()!=null)
+            bookConsultationCommand.setUserId(source.getAppUsers().getId());
         bookConsultationCommand.setSpecializationCommand(specializationToSpecializationCommand.convert(source.getSpecialization()));
         return bookConsultationCommand;
     }

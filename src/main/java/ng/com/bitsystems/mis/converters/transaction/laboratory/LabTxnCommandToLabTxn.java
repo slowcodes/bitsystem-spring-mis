@@ -1,15 +1,28 @@
 package ng.com.bitsystems.mis.converters.transaction.laboratory;
 
 import ng.com.bitsystems.mis.command.transactions.laboratory.LaboratoryTransactionCommand;
-import ng.com.bitsystems.mis.models.patients.Patients;
+import ng.com.bitsystems.mis.converters.consultation.DiseaseDirectoryCommandToDiseaseDirectory;
+import ng.com.bitsystems.mis.converters.consultation.SymptomsDirectoryCommandToSymptomsDirectory;
+import ng.com.bitsystems.mis.models.transactions.ServiceTransaction;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransaction;
-import ng.com.bitsystems.mis.models.users.Users;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LabTxnCommandToLabTxn implements Converter<LaboratoryTransactionCommand, LaboratoryTransaction> {
-    private LabTxnDetailCommandToLabTxnDetail labTxnDetailCommandToLabTxnDetail;
 
+    private LabTxnDetailCommandToLabTxnDetail labTxnDetailCommandToLabTxnDetail;
+    private SymptomsDirectoryCommandToSymptomsDirectory symptomsDirectoryCommandToSymptomsDirectory;
+    private DiseaseDirectoryCommandToDiseaseDirectory diseaseDirectoryCommandToDiseaseDirectory;
+
+    public LabTxnCommandToLabTxn(LabTxnDetailCommandToLabTxnDetail labTxnDetailCommandToLabTxnDetail,
+                                 SymptomsDirectoryCommandToSymptomsDirectory symptomsDirectoryCommandToSymptomsDirectory,
+                                 DiseaseDirectoryCommandToDiseaseDirectory diseaseDirectoryCommandToDiseaseDirectory) {
+        this.labTxnDetailCommandToLabTxnDetail = labTxnDetailCommandToLabTxnDetail;
+        this.symptomsDirectoryCommandToSymptomsDirectory = symptomsDirectoryCommandToSymptomsDirectory;
+        this.diseaseDirectoryCommandToDiseaseDirectory = diseaseDirectoryCommandToDiseaseDirectory;
+    }
 
     @Override
     @Nullable
@@ -20,14 +33,15 @@ public class LabTxnCommandToLabTxn implements Converter<LaboratoryTransactionCom
         }
 
         final LaboratoryTransaction transaction=new LaboratoryTransaction();
-
-        transaction.setComment(source.getComment());
-        transaction.setDateTransaction(source.getDateTransaction());
-        transaction.setDiscount(source.getDiscount());
         transaction.setId(source.getId());
-        transaction.setTimeOfTransaction(source.getTimeOfTransaction());
-        transaction.setProvisonalDiagnosis(source.getProvisionalDiagnosis());
-        transaction.setPresentingComplaint(source.getPresentingComplaint());
+
+        if(source.getPresentingComplaints().size() >0 && source.getPresentingComplaints() !=null)
+            source.getPresentingComplaints().forEach(presentingComplaints -> transaction.getSymptoms().add(
+                    symptomsDirectoryCommandToSymptomsDirectory.convert(presentingComplaints)
+            ));
+
+        if(source.getProvisionalDiagnosis() !=null && source.getProvisionalDiagnosis().size()>0)
+            source.getProvisionalDiagnosis().forEach(provisional_diagnosis -> diseaseDirectoryCommandToDiseaseDirectory.convert(provisional_diagnosis));
 
         if(source.getLaboratoryTransactionDetailCommands()!=null && source.getLaboratoryTransactionDetailCommands().size()>0)
             source.getLaboratoryTransactionDetailCommands().forEach(laboratoryTransactionDetailCommand ->
@@ -35,19 +49,13 @@ public class LabTxnCommandToLabTxn implements Converter<LaboratoryTransactionCom
                             labTxnDetailCommandToLabTxnDetail.convert(laboratoryTransactionDetailCommand)
                     ));
 
-        if(source.getUserId()!= null){
-            Users users=new Users();
-            users.setId(source.getUserId());
-            transaction.setUsers(users);
-            Users user = users.addLabTransaction(transaction);
+        if(source.getServiceTxnId() != null){
+            ServiceTransaction txn = new ServiceTransaction();
+            txn.setId(source.getServiceTxnId());
+            transaction.setServiceTransaction(txn);
         }
-
-        if(source.getPatientId()!=null){
-            Patients patient = new Patients();
-            patient.setId(source.getPatientId());
-            transaction.setPatients(patient);
-            Patients patients = patient.addLabTransaction(transaction);
-        }
-        return null;
+        transaction.setAnonymous(source.getAnonymous());
+        transaction.setAgeInResult(source.getAgeInResult());
+        return transaction;
     }
 }

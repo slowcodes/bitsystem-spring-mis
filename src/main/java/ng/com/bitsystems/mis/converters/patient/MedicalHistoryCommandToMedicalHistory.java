@@ -3,12 +3,12 @@ package ng.com.bitsystems.mis.converters.patient;
 import ng.com.bitsystems.mis.command.patients.PatientMedicalHistoryCommand;
 import ng.com.bitsystems.mis.models.patients.Patients;
 import ng.com.bitsystems.mis.models.patients.PatientsMedicalHistory;
-import ng.com.bitsystems.mis.models.users.Physicians;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MedicalHistoryCommandToMedicalHistory implements Converter<PatientMedicalHistoryCommand, PatientsMedicalHistory> {
-    private ActivityListingCommandToActivityListing activityListingCommandToActivityListing;
 
     @Nullable
     @Override
@@ -28,14 +28,6 @@ public class MedicalHistoryCommandToMedicalHistory implements Converter<PatientM
             Patients patient = patients.addMedicalHistory(patientsMedicalHistory);
         }
 
-        patientsMedicalHistory.setPatientsMedicalActivityListing(activityListingCommandToActivityListing.convert(source.getPatientMedicalActivityListingCommand()));
-
-        if(source.getUserId()!=null){
-            Physicians physicians=new Physicians();
-            physicians.setId(source.getUserId());
-            patientsMedicalHistory.setUsers(physicians);
-            Physicians doctor = physicians.addMedicalHistory(patientsMedicalHistory);
-        }
 
         return patientsMedicalHistory;
     }

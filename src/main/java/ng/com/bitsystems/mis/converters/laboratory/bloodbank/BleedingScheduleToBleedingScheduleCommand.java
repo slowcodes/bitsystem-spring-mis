@@ -3,7 +3,9 @@ package ng.com.bitsystems.mis.converters.laboratory.bloodbank;
 import ng.com.bitsystems.mis.command.laboratories.bloodbank.BleedingScheduleCommand;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.BleedingSchedule;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BleedingScheduleToBleedingScheduleCommand implements Converter<BleedingSchedule, BleedingScheduleCommand> {
     private DonationQueueToDonationQueueCommand donationQueueToDonationQueueCommand;
     private ClearedQueueToClearedQueueCommand clearedQueueToClearedQueueCommand;
@@ -27,8 +29,8 @@ public class BleedingScheduleToBleedingScheduleCommand implements Converter<Blee
         bleedingScheduleCommand.setClearedQueueCommand(clearedQueueToClearedQueueCommand.convert(source.getClearedQueue()));
         bleedingScheduleCommand.setTimeOfSchedule(source.getTimeOfSchedule());
 
-        if(source.getUsers()!=null)
-            bleedingScheduleCommand.setUserId(source.getUsers().getId());
+        if(source.getAppUsers()!=null)
+            bleedingScheduleCommand.setUserId(source.getAppUsers().getId());
 
         return bleedingScheduleCommand;
     }

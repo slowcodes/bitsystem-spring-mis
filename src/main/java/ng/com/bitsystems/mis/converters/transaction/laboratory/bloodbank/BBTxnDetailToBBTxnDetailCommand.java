@@ -5,7 +5,9 @@ import ng.com.bitsystems.mis.converters.accounts.pricing.SalesPriceCodeToSalesPr
 import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransactionDetails;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BBTxnDetailToBBTxnDetailCommand implements
         Converter<BloodbankTransactionDetails, BloodBankTransactionDetailCommand> {
     private SalesPriceCodeToSalesPriceCodeCommand salesPriceCodeToSalesPriceCodeCommand;
@@ -30,10 +32,10 @@ public class BBTxnDetailToBBTxnDetailCommand implements
             command.setStorageId(source.getStorage().getId());
         }
 
-        command.setComment(source.getComment());
-        command.setReversal(source.getReversal());
-        command.setTimeOfTransaction(source.getTimeOfTransaction());
-        command.setDateOfTransaction(source.getTransactionDate());
+//        command.setComment(source.getComment());
+//        command.setReversal(source.getReversal());
+//        command.setTimeOfTransaction(source.getTimeOfTransaction());
+//        command.setDateOfTransaction(source.getTransactionDate());
         command.setSalesPriceCodeCommand(salesPriceCodeToSalesPriceCodeCommand.convert(source.getSalesPriceCode()));
         command.setUseDiscountPrice(source.getUseDiscountPrice());
         command.setUserDiscount(source.getUserDiscount());

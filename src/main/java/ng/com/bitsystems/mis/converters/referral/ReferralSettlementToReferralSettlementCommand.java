@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.referrals.ReferralSettlementCommand;
 import ng.com.bitsystems.mis.models.referrals.ReferralSettlements;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ReferralSettlementToReferralSettlementCommand
 implements Converter<ReferralSettlements, ReferralSettlementCommand> {
 

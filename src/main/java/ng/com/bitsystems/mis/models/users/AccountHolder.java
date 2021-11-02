@@ -7,6 +7,9 @@ import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
 @Getter
@@ -17,13 +20,10 @@ import java.time.LocalDateTime;
 public class AccountHolder extends BaseEntity {
     private String username;
     private String password;
-    private String email;
     private byte[] signature;
-    private String accountStatus;
-    private byte[] image;
-    private String title;
+    @OneToOne
+    private AppUsers usersId;
+    @Enumerated(EnumType.STRING)
+    private AccountStatus status;
     private LocalDateTime lastLoginDate;
-
-
-    //private Set<Users> users = new HashSet<>();
 }

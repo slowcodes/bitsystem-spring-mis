@@ -37,8 +37,6 @@ public class BloodbankTransaction extends BaseEntity {
         bloodbankTransactionDetails.setBloodbanktransaction(this);
         return this;
     }
-
-
 }
 
 

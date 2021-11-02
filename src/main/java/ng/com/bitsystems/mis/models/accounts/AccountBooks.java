@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.invoice.OtherServiceInvoiceDetails;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -32,7 +32,7 @@ public class AccountBooks extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name="users_id")
-     private Users createdBy;
+     private AppUsers createdBy;
 
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountBook")
      private Set<OtherServices> otherServices = new HashSet<>();

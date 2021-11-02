@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.rewards.promo.VolumeBasedPromosCommand;
 import ng.com.bitsystems.mis.models.rewards.promos.VolumedBasedPromos;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class VolumePromoToVolumePromoCommand implements Converter<VolumedBasedPromos, VolumeBasedPromosCommand> {
 
     @Nullable
@@ -25,8 +27,8 @@ public class VolumePromoToVolumePromoCommand implements Converter<VolumedBasedPr
         command.setStartDay(source.getStartDay());
         command.setTitle(source.getTitle());
 
-        if (source.getUsers()!=null){
-            command.setUserId(source.getUsers().getId());
+        if (source.getAppUsers()!=null){
+            command.setUserId(source.getAppUsers().getId());
         }
         return command;
     }

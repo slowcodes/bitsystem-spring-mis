@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.inventory.InventoryBarcodeCommand;
 import ng.com.bitsystems.mis.models.inventory.Inventory;
 import ng.com.bitsystems.mis.models.inventory.InventoryBarcodes;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InventoryBarcodeCommandToInventoryBarcode
 implements Converter<InventoryBarcodeCommand, InventoryBarcodes> {
     @Override

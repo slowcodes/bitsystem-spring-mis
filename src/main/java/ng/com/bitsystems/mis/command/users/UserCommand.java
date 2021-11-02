@@ -4,11 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.command.accounts.ExpenseManagerCommand;
-import ng.com.bitsystems.mis.command.accounts.OtherServiceCommand;
-import ng.com.bitsystems.mis.command.accounts.payments.BloodBankDonationPaymentCommand;
-import ng.com.bitsystems.mis.command.accounts.payments.LaboratoryTransactionPaymentCommand;
-import ng.com.bitsystems.mis.command.accounts.payments.PharmacyTransactionPaymentCommand;
-import ng.com.bitsystems.mis.command.accounts.payments.VaccinationTransactionPaymentCommand;
+import ng.com.bitsystems.mis.command.accounts.payments.PaymentCommand;
 import ng.com.bitsystems.mis.command.consultation.BookConsultationCommand;
 import ng.com.bitsystems.mis.command.consultation.DiseaseDirectoryCommand;
 import ng.com.bitsystems.mis.command.inventory.request.RequisitionCommand;
@@ -20,9 +16,7 @@ import ng.com.bitsystems.mis.command.laboratories.bloodbank.DonationQueueCommand
 import ng.com.bitsystems.mis.command.patients.FamilyHistoryCommand;
 import ng.com.bitsystems.mis.command.patients.PatientMedicalHistoryCommand;
 import ng.com.bitsystems.mis.command.rewards.promo.PromoProductCommand;
-import ng.com.bitsystems.mis.command.transactions.laboratory.LaboratoryTransactionCommand;
-import ng.com.bitsystems.mis.command.transactions.pharmacy.PharmacySalesTransactionCommand;
-import ng.com.bitsystems.mis.command.transactions.vaccination.VaccinationTransactionCommand;
+import ng.com.bitsystems.mis.command.transactions.TransactionCommand;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -55,12 +49,6 @@ public class UserCommand {
     private Set<PromoProductCommand> PromoProductCommad = new HashSet<>();
     private Set<ExpenseManagerCommand> receiver = new HashSet<>();
     private Set<ExpenseManagerCommand> isusser = new HashSet<>();
-    private Set<BloodBankDonationPaymentCommand> bloodBankDonationPaymentCommands = new HashSet<>();
-    private Set<LaboratoryTransactionPaymentCommand> laboratoryTransactionPaymentCommands = new HashSet<>();
-    private Set<OtherServiceCommand> otherServiceCommands = new HashSet<>();
-    private Set<PharmacyTransactionPaymentCommand> pharmacyTransactionPaymentsSales=new HashSet<>();
-    private Set<VaccinationTransactionPaymentCommand> vaccinationTransactionPaymentCommands = new HashSet<>();
-    private Set<LaboratoryTransactionCommand> laboratoryTransactionCommands = new HashSet<>();
-    private Set<PharmacySalesTransactionCommand> pharmacySalesTransactionCommands = new HashSet<>();
-    private Set<VaccinationTransactionCommand> vaccinationTransactionCommands = new HashSet<>();
+    private Set<PaymentCommand> pharmacyTransactionPaymentsSales=new HashSet<>();
+    private Set<TransactionCommand> pharmacyTransactionCommands = new HashSet<>();
 }

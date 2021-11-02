@@ -5,7 +5,9 @@ import ng.com.bitsystems.mis.converters.accounts.pricing.ServicePriceCodeToServi
 import ng.com.bitsystems.mis.models.transactions.vaccination.VaccinationTransactionsDetails;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class VaccTxnDetailToVaccTxnDetailCommand implements
         Converter<VaccinationTransactionsDetails, VaccinationTransactionDetailCommand> {
     private ServicePriceCodeToServicePriceCodeCommand servicePriceCodeToServicePriceCodeCommand;
@@ -23,21 +25,19 @@ public class VaccTxnDetailToVaccTxnDetailCommand implements
         VaccinationTransactionDetailCommand command = new VaccinationTransactionDetailCommand();
         command.setId(source.getId());
 
-        if(source.getVaccinations()!=null){
-            command.setVaccineId(source.getVaccinations().getId());
+        if(source.getVaccine()!=null){
+            command.setVaccineId(source.getVaccine().getId());
         }
 
         if(source.getVaccinationTransaction()!=null){
             command.setVaccinationTransactionId(source.getVaccinationTransaction().getId());
         }
 
-        command.setComment(source.getComment());
-        //command.setFrequency(source.getReversal());
-        command.setReversal(source.getReversal());
-        command.setServicePriceCodeCommand(servicePriceCodeToServicePriceCodeCommand.convert(source.getServicePriceCode()));
-        command.setTimeOfTransaction(source.getTimeOfTransaction());
-        command.setUseDiscountPrice(source.getUseDiscountPrice());
-        command.setUserDiscount(source.getUserDiscount());
+//        command.setComment(source.getComment());
+//        command.setServicePriceCodeCommand(servicePriceCodeToServicePriceCodeCommand.convert(source.getServicePriceCode()));
+//        command.setTimeOfTransaction(source.getTimeOfTransaction());
+//        command.setUseDiscountPrice(source.getUseDiscountPrice());
+//        command.setUserDiscount(source.getUserDiscount());
         return command;
     }
 }

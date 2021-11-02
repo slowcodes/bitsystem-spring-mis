@@ -3,9 +3,11 @@ package ng.com.bitsystems.mis.converters.laboratory;
 import ng.com.bitsystems.mis.command.laboratories.CollectedSamplesCommand;
 import ng.com.bitsystems.mis.converters.transaction.laboratory.LabTxnDetailCommandToLabTxnDetail;
 import ng.com.bitsystems.mis.models.laboratories.CollectedSamples;
-import ng.com.bitsystems.mis.models.users.Scientists;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CollectedSampleCommandToCollectedSample implements Converter<CollectedSamplesCommand, CollectedSamples> {
 
     private LabTxnDetailCommandToLabTxnDetail labTxnDetailCommandToLabTxnDetail;
@@ -26,10 +28,10 @@ public class CollectedSampleCommandToCollectedSample implements Converter<Collec
         collectedSamples.setId(source.getId());
 
         if(source.getUserId()!=null){
-            Scientists scientists = new Scientists();
+            AppUsers scientists = new AppUsers();
             scientists.setId(source.getUserId());
-            collectedSamples.setUsers(scientists);
-            Scientists scientist = scientists.addCollectedSample(collectedSamples);
+            //collectedSamples.setAppUsers(scientists);
+            AppUsers scientist = scientists.addCollectedSample(collectedSamples);
         }
 
         collectedSamples.setAnalysed(source.getAnalysed());

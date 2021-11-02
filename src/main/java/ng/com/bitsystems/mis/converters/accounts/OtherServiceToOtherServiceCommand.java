@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.accounts.OtherServiceCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.ServicePriceCodeToServicePriceCodeCommand;
 import ng.com.bitsystems.mis.models.accounts.OtherServices;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OtherServiceToOtherServiceCommand implements Converter<OtherServices, OtherServiceCommand> {
     private ServicePriceCodeToServicePriceCodeCommand servicePriceCodeToServicePriceCodeCommand;
 
@@ -21,16 +23,14 @@ public class OtherServiceToOtherServiceCommand implements Converter<OtherService
         otherServiceCommand.setId(source.getId());
         if(source.getAccountBook() !=null)
             otherServiceCommand.setExpenseBooksId(source.getAccountBook().getId());
-        otherServiceCommand.setComment(source.getComment());
         if(source.getCreatedBy() != null)
             otherServiceCommand.setCreatedById(source.getCreatedBy().getId());
         otherServiceCommand.setDescription(source.getDescription());
-        otherServiceCommand.setFrequency(source.getFrequency());
-        otherServiceCommand.setReversal(source.getReversal());
+//        otherServiceCommand.setFrequency(source.getFrequency());
+//        otherServiceCommand.setReversal(source.getReversal());
         otherServiceCommand.setServicePriceCodeCommand(servicePriceCodeToServicePriceCodeCommand.convert(source.getServicePriceCode()));
         otherServiceCommand.setTimeOfTransaction(source.getTimeOfTransaction());
-        otherServiceCommand.setUseDiscountPrice(source.getUseDiscountPrice());
-        otherServiceCommand.setUserDiscount(source.getUserDiscount());
+
 
         return otherServiceCommand;
     }

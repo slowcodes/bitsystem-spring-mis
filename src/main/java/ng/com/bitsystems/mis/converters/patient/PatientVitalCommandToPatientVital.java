@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.patients.PatientVitalsCommand;
 import ng.com.bitsystems.mis.models.patients.Patients;
 import ng.com.bitsystems.mis.models.patients.PatientsVitals;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PatientVitalCommandToPatientVital implements Converter<PatientVitalsCommand, PatientsVitals> {
     @Override
     public PatientsVitals convert(PatientVitalsCommand source) {

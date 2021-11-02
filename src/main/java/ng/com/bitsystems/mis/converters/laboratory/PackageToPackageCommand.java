@@ -1,12 +1,14 @@
 package ng.com.bitsystems.mis.converters.laboratory;
 
 import ng.com.bitsystems.mis.command.laboratories.PackageCommand;
-import ng.com.bitsystems.mis.models.laboratories.Packages;
+import ng.com.bitsystems.mis.models.laboratories.LabPackages;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
-public class PackageToPackageCommand implements Converter<Packages, PackageCommand> {
+@Component
+public class PackageToPackageCommand implements Converter<LabPackages, PackageCommand> {
     @Override
-    public PackageCommand convert(Packages source) {
+    public PackageCommand convert(LabPackages source) {
         if(source==null){
             return null;
         }

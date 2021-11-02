@@ -4,9 +4,10 @@ import ng.com.bitsystems.mis.command.invoices.LaboratoryInvoiceDetailCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.ServicePriceCodeCommandToServicePriceCode;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
 import ng.com.bitsystems.mis.models.invoice.LaboratoryInvoiceDetails;
-import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LaboratoryInvoiceDetailCommandToLaboratoryInviceDetail
 implements Converter<LaboratoryInvoiceDetailCommand, LaboratoryInvoiceDetails> {
     
@@ -30,20 +31,20 @@ implements Converter<LaboratoryInvoiceDetailCommand, LaboratoryInvoiceDetails> {
             Invoice inv = invoice.addLaboratoryInvoiceDetail(laboratoryInvoiceDetails);
         }
 
-        if(source.getLaboratoryInvestigationId()!=null){
-            LaboratoryInvestigations laboratoryInvestigations=new LaboratoryInvestigations();
-            laboratoryInvestigations.setId(source.getLaboratoryInvestigationId());
-            laboratoryInvoiceDetails.setLaboratoryInvestigations(laboratoryInvestigations);
-            LaboratoryInvestigations labInv = laboratoryInvestigations.addLabInvDetails(laboratoryInvoiceDetails);
-        }
+//        if(source.getLaboratoryInvestigationId()!=null){
+//            Investigations laboratoryInvestigations=new Investigations();
+//            laboratoryInvestigations.setId(source.getLaboratoryInvestigationId());
+//            laboratoryInvoiceDetails.setInvestigations(laboratoryInvestigations);
+//            Investigations labInv = laboratoryInvestigations.addLabInvDetails(laboratoryInvoiceDetails);
+//        }
 
-        laboratoryInvoiceDetails.setComment(source.getComment());
-        laboratoryInvoiceDetails.setFrequency(source.getFrequency());
-        laboratoryInvoiceDetails.setReversal(source.getReversal());
-        laboratoryInvoiceDetails.setServicePriceCode(servicePriceCodeCommandToServicePriceCode.convert(source.getServicePriceCodeCommand()));
-        laboratoryInvoiceDetails.setTimeOfTransaction(source.getTimeOfTransaction());
-        laboratoryInvoiceDetails.setUseDiscountPrice(source.getUseDiscountPrice());
-        laboratoryInvoiceDetails.setUserDiscount(source.getUserDiscount());
+//        laboratoryInvoiceDetails.setComment(source.getComment());
+//        laboratoryInvoiceDetails.setFrequency(source.getFrequency());
+//        laboratoryInvoiceDetails.setReversal(source.getReversal());
+//      laboratoryInvoiceDetails.setServicePriceCode(servicePriceCodeCommandToServicePriceCode.convert(source.getServicePriceCodeCommand()));
+//        laboratoryInvoiceDetails.setTimeOfTransaction(source.getTimeOfTransaction());
+//      laboratoryInvoiceDetails.setUseDiscountPrice(source.getUseDiscountPrice());
+//        laboratoryInvoiceDetails.setUserDiscount(source.getUserDiscount());
 
         return laboratoryInvoiceDetails;
     }

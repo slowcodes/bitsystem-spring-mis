@@ -2,10 +2,12 @@ package ng.com.bitsystems.mis.converters.laboratory;
 
 import ng.com.bitsystems.mis.command.laboratories.ResultCollectionCommand;
 import ng.com.bitsystems.mis.models.laboratories.ResultCollectionLog;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ResultCollectionCommandToResultCollection implements Converter<ResultCollectionCommand, ResultCollectionLog> {
 
     private ResultCommandToResult resultCommandToResult;
@@ -25,10 +27,10 @@ public class ResultCollectionCommandToResultCollection implements Converter<Resu
         collectionLog.setResult(resultCommandToResult.convert(source.getResultCommand()));
 
         if(source.getUserId()!=null){
-            Users receptionist=new Users();
+            AppUsers receptionist=new AppUsers();
             receptionist.setId(source.getUserId());
-            collectionLog.setUsers(receptionist);
-            Users user = receptionist.addResultCollectionLog(collectionLog);
+            collectionLog.setAppUsers(receptionist);
+            AppUsers user = receptionist.addResultCollectionLog(collectionLog);
         }
 
 

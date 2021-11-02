@@ -3,9 +3,11 @@ package ng.com.bitsystems.mis.converters.laboratory.bloodbank;
 import ng.com.bitsystems.mis.command.laboratories.bloodbank.DonationQueueCommand;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonationQueue;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.DonorRegistry;
-import ng.com.bitsystems.mis.models.users.Scientists;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DonationQueueCommandToDonationQueue
 implements Converter<DonationQueueCommand, DonationQueue> {
     @Override
@@ -17,10 +19,10 @@ implements Converter<DonationQueueCommand, DonationQueue> {
         donationQueue.setId(source.getId());
 
         if(source.getUserId()!=null){
-            Scientists scientists=new Scientists();
+            AppUsers scientists=new AppUsers();
             scientists.setId(source.getUserId());
-            donationQueue.setUsers(scientists);
-            Scientists sct = scientists.addDonationQueue(donationQueue);
+            //donationQueue.setAppUsers(scientists);
+            AppUsers sct = scientists.addDonationQueue(donationQueue);
         }
 
         donationQueue.setCompensation(source.getCompensation());

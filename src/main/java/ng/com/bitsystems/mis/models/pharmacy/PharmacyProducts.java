@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromosProducts;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyRewardBasedPromo;
-import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySupplyTransactionsDetails;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransactionDetails;
 
 import javax.persistence.*;
@@ -32,8 +31,6 @@ public class PharmacyProducts  extends Drugs {
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
      private Set<PharmacyPromosProducts> pharmacyPromosProductses = new HashSet<>();
 
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyProducts")
-     private Set<PharmacySupplyTransactionsDetails> transactionsSupplies = new HashSet<>();
 
      @ManyToMany
      @JoinTable(name = "pharmacy_suppliers",
@@ -85,11 +82,6 @@ public class PharmacyProducts  extends Drugs {
         return this;
     }
 
-    public PharmacyProducts addSupplyTransactionDetails(PharmacySupplyTransactionsDetails details) {
-        this.transactionsSupplies.add(details);
-        details.setPharmacyProducts(this);
-        return this;
-    }
 }
 
 

@@ -12,4 +12,6 @@ public class CompanyPaymentCommand {
     private Long id;
     private Long transactionId;
     private TransactionType transactionType;
+    private PaymentCommand paymentCommand;
+    private Long companyId;
 }

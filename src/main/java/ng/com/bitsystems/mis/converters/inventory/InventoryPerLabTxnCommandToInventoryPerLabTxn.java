@@ -3,9 +3,10 @@ package ng.com.bitsystems.mis.converters.inventory;
 import ng.com.bitsystems.mis.command.inventory.InventoryPerLaboratoryTransactionCommand;
 import ng.com.bitsystems.mis.models.inventory.Inventory;
 import ng.com.bitsystems.mis.models.inventory.InventoryPerLaboratoryTransaction;
-import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InventoryPerLabTxnCommandToInventoryPerLabTxn
 implements Converter<InventoryPerLaboratoryTransactionCommand, InventoryPerLaboratoryTransaction> {
 
@@ -26,12 +27,12 @@ implements Converter<InventoryPerLaboratoryTransactionCommand, InventoryPerLabor
         }
         inventoryPerLaboratoryTransaction.setRequiredQty(source.getRequiredQty());
 
-        if(source.getLaboratoryInvestigationsId()!=null){
-            LaboratoryInvestigations laboratoryInvestigations=new LaboratoryInvestigations();
-            laboratoryInvestigations.setId(source.getLaboratoryInvestigationsId());
-            inventoryPerLaboratoryTransaction.setLaboratoryInvestigations(laboratoryInvestigations);
-            LaboratoryInvestigations investigations=laboratoryInvestigations.addInvPerLabTxn(inventoryPerLaboratoryTransaction);
-        }
+//        if(source.getLaboratoryInvestigationsId()!=null){
+//            Investigations laboratoryInvestigations=new Investigations();
+//            laboratoryInvestigations.setId(source.getLaboratoryInvestigationsId());
+//            inventoryPerLaboratoryTransaction.setInvestigations(laboratoryInvestigations);
+//            Investigations investigations=laboratoryInvestigations.addInvPerLabTxn(inventoryPerLaboratoryTransaction);
+//        }
         return inventoryPerLaboratoryTransaction;
     }
 }

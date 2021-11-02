@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.laboratories.bloodbank.StorageCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.SalesPriceCodeCommandToSalesPriceCode;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Storage;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StorageCommandToStorage implements Converter<StorageCommand, Storage> {
     private DonationCommandToDonation donationCommandToDonation;
     private SalesPriceCodeCommandToSalesPriceCode salesPriceCodeCommandToSalesPriceCode;

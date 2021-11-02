@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Storage;
-import ng.com.bitsystems.mis.models.transactions.Sales;
+import ng.com.bitsystems.mis.models.transactions.ProductPrice;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class BloodbankTransactionDetails extends Sales {
+public class BloodbankTransactionDetails extends ProductPrice {
 
      @ManyToOne
      @JoinColumn(name = "storage_id")

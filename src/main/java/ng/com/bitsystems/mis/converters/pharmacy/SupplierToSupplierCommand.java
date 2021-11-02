@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.pharmacy.SupplierCommand;
 import ng.com.bitsystems.mis.models.pharmacy.Suppliers;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SupplierToSupplierCommand implements Converter<Suppliers, SupplierCommand> {
     @Nullable
     @Override

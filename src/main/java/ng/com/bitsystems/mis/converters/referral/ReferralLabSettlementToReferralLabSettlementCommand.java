@@ -5,7 +5,9 @@ import ng.com.bitsystems.mis.converters.transaction.laboratory.LabTxnToLabTxnCom
 import ng.com.bitsystems.mis.models.referrals.ReferralLaboratorySettlements;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ReferralLabSettlementToReferralLabSettlementCommand implements
         Converter<ReferralLaboratorySettlements, ReferralLaboratorySettlementCommand> {
     private LabTxnToLabTxnCommand labTxnToLabTxnCommand;

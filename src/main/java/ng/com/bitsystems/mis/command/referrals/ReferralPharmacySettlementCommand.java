@@ -3,7 +3,7 @@ package ng.com.bitsystems.mis.command.referrals;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.command.transactions.pharmacy.PharmacySalesTransactionCommand;
+import ng.com.bitsystems.mis.command.transactions.pharmacy.SalesCommand;
 
 @Setter
 @Getter
@@ -11,5 +11,5 @@ import ng.com.bitsystems.mis.command.transactions.pharmacy.PharmacySalesTransact
 public class ReferralPharmacySettlementCommand {
     private Long id;
     private Long referralSettlementsId;
-    private PharmacySalesTransactionCommand pharmacySalesTransactionCommand;
+    private SalesCommand salesCommand;
 }

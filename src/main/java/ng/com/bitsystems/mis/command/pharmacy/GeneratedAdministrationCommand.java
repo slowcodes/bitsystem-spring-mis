@@ -10,7 +10,9 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 public class GeneratedAdministrationCommand {
+
     private Long id;
-    private PharmacyProductCommand pharmacyProductCommand;
+    private PrescriptionCommand prescriptionCommand;
     private LocalDateTime extimatedAdminTime;
+    private Long quantity;
 }

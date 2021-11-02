@@ -5,24 +5,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
+@Entity
 public class Prescription extends BaseEntity {
+
     @ManyToOne
     @JoinColumn(name = "pharmacyproducts_id")
     private PharmacyProducts pharmacyProducts;
 
     @ManyToOne
     @JoinColumn(name = "users_id")
-    private Users users;
+    private AppUsers appUsers;
 
     @Enumerated(value = EnumType.STRING)
     private Form form;
@@ -33,4 +36,13 @@ public class Prescription extends BaseEntity {
     private int frequency;
     private int dose;
     private String measure;
+
+    @OneToMany(mappedBy = "prescription", cascade = CascadeType.ALL)
+    private Set<PrescriptionSchedule> prescriptionSchedules = new HashSet<>();
+
+    public Prescription addSchedule(PrescriptionSchedule prescriptionSchedule) {
+        this.prescriptionSchedules.add(prescriptionSchedule);
+        prescriptionSchedule.setPrescription(this);
+        return this;
+    }
 }

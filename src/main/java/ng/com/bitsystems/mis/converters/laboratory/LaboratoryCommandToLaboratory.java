@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.laboratories.LaboratoriesCommand;
 import ng.com.bitsystems.mis.models.laboratories.Laboratories;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LaboratoryCommandToLaboratory implements Converter<LaboratoriesCommand, Laboratories> {
     private InvestigationGroupCommandToInvestigationGroup investigationGroupCommandToInvestigationGroup;
 
@@ -25,9 +27,9 @@ public class LaboratoryCommandToLaboratory implements Converter<LaboratoriesComm
         laboratories.setDescription(source.getDescription());
         laboratories.setLabName(source.getLabName());
 
-        if(source.getInvestigationGroupCommand().size()>0&&source.getInvestigationGroupCommand()!=null)
-            source.getInvestigationGroupCommand().forEach(investigationGroupCommand ->
-                    laboratories.getInvestigationGroups().add(investigationGroupCommandToInvestigationGroup.convert(investigationGroupCommand)));
+//        if(source.getInvestigationGroupCommand().size()>0&&source.getInvestigationGroupCommand()!=null)
+//            source.getInvestigationGroupCommand().forEach(investigationGroupCommand ->
+//                    laboratories.getInvestigationGroups().add(investigationGroupCommandToInvestigationGroup.convert(investigationGroupCommand)));
 
         return laboratories;
     }

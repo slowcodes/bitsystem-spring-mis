@@ -4,30 +4,35 @@ import ng.com.bitsystems.mis.command.pharmacy.PharmacyProductCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.SalesPriceCodeToSalesPriceCodeCommand;
 import ng.com.bitsystems.mis.converters.reward.promo.PromoProductToPromoProductCommand;
 import ng.com.bitsystems.mis.converters.reward.promo.RewardPromoToRewardPromoCommand;
-import ng.com.bitsystems.mis.converters.transaction.pharmacy.PharmSalesTxnDetailToPharmSalesTxnDetailCommand;
-import ng.com.bitsystems.mis.converters.transaction.pharmacy.PharmSupplyTxnDetailToPharmSupplyTxnDetailCommand;
+import ng.com.bitsystems.mis.converters.transaction.pharmacy.PharmTxnDetailToPharmTxnDetailCommand;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PharmacyProductToPharmacyProductCommand
 implements Converter<PharmacyProducts, PharmacyProductCommand> {
 
     private BarcodeToBarcodeCommand barcodeToBarcodeCommand;
     private CategoryToCategoryCommand categoryToCategoryCommand;
-    private PharmSalesTxnDetailToPharmSalesTxnDetailCommand pharmSalesTxnDetailToPharmSalesTxnDetailCommand;
-    private PharmSupplyTxnDetailToPharmSupplyTxnDetailCommand pharmSupplyTxnDetailToPharmSupplyTxnDetailCommand;
+    private PharmTxnDetailToPharmTxnDetailCommand pharmTxnDetailToPharmTxnDetailCommand;
     private PromoProductToPromoProductCommand promoProductToPromoProductCommand;
     private RetailMeasureToRetailMeasureCommand retailMeasureToRetailMeasureCommand;
     private RewardPromoToRewardPromoCommand rewardPromoToRewardPromoCommand;
     private SupplierToSupplierCommand supplierToSupplierCommand;
     private SalesPriceCodeToSalesPriceCodeCommand salesPriceCodeToSalesPriceCodeCommand;
 
-    public PharmacyProductToPharmacyProductCommand(BarcodeToBarcodeCommand barcodeToBarcodeCommand, CategoryToCategoryCommand categoryToCategoryCommand, PharmSalesTxnDetailToPharmSalesTxnDetailCommand pharmSalesTxnDetailToPharmSalesTxnDetailCommand, PharmSupplyTxnDetailToPharmSupplyTxnDetailCommand pharmSupplyTxnDetailToPharmSupplyTxnDetailCommand, PromoProductToPromoProductCommand promoProductToPromoProductCommand, RetailMeasureToRetailMeasureCommand retailMeasureToRetailMeasureCommand, RewardPromoToRewardPromoCommand rewardPromoToRewardPromoCommand, SupplierToSupplierCommand supplierToSupplierCommand, SalesPriceCodeToSalesPriceCodeCommand salesPriceCodeToSalesPriceCodeCommand) {
+    public PharmacyProductToPharmacyProductCommand(BarcodeToBarcodeCommand barcodeToBarcodeCommand,
+                                                   CategoryToCategoryCommand categoryToCategoryCommand,
+                                                   PharmTxnDetailToPharmTxnDetailCommand pharmTxnDetailToPharmTxnDetailCommand,
+                                                   PromoProductToPromoProductCommand promoProductToPromoProductCommand,
+                                                   RetailMeasureToRetailMeasureCommand retailMeasureToRetailMeasureCommand,
+                                                   RewardPromoToRewardPromoCommand rewardPromoToRewardPromoCommand,
+                                                   SupplierToSupplierCommand supplierToSupplierCommand, SalesPriceCodeToSalesPriceCodeCommand salesPriceCodeToSalesPriceCodeCommand) {
         this.barcodeToBarcodeCommand = barcodeToBarcodeCommand;
         this.categoryToCategoryCommand = categoryToCategoryCommand;
-        this.pharmSalesTxnDetailToPharmSalesTxnDetailCommand = pharmSalesTxnDetailToPharmSalesTxnDetailCommand;
-        this.pharmSupplyTxnDetailToPharmSupplyTxnDetailCommand = pharmSupplyTxnDetailToPharmSupplyTxnDetailCommand;
+        this.pharmTxnDetailToPharmTxnDetailCommand = pharmTxnDetailToPharmTxnDetailCommand;
         this.promoProductToPromoProductCommand = promoProductToPromoProductCommand;
         this.retailMeasureToRetailMeasureCommand = retailMeasureToRetailMeasureCommand;
         this.rewardPromoToRewardPromoCommand = rewardPromoToRewardPromoCommand;
@@ -73,16 +78,11 @@ implements Converter<PharmacyProducts, PharmacyProductCommand> {
                             promoProductToPromoProductCommand.convert(pharmacyPromosProducts)
                     ));
 
-        if (source.getTransactionsSupplies().size()>0 && source.getTransactionsSupplies()!=null)
-            source.getTransactionsSupplies().forEach(pharmacySupplyTransactionsDetails ->
-                    pharmacyProductCommand.getPharmacySupplyTransactionDetailCommands().add(
-                            pharmSupplyTxnDetailToPharmSupplyTxnDetailCommand.convert(pharmacySupplyTransactionsDetails)
-                    ));
 
         if (source.getPharmacyTransactions().size()>0 && source.getPharmacyTransactions()!=null)
             source.getPharmacyTransactions().forEach(pharmacyTransactionDetails ->
-                    pharmacyProductCommand.getPharmacySalesTransactionDetailCommands().add(
-                            pharmSalesTxnDetailToPharmSalesTxnDetailCommand.convert(pharmacyTransactionDetails)
+                    pharmacyProductCommand.getPharmacyTransactionDetailCommands().add(
+                            pharmTxnDetailToPharmTxnDetailCommand.convert(pharmacyTransactionDetails)
                     ));
 
         if (source.getCategories().size()>0 && source.getCategories()!=null)

@@ -6,12 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.users.Users;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 
@@ -21,20 +17,18 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 public class PatientsMedicalHistory  extends BaseEntity {
-
      @ManyToOne
      @JoinColumn(name = "patients_id")
      private Patients patients;
 
-     @OneToOne
-     private PatientsMedicalActivityListing patientsMedicalActivityListing;
-
-     @ManyToOne
-     @JoinColumn(name = "users_id")
-     private Users users;
+     @Enumerated(value = EnumType.STRING)
+     private MedicalActivity medicalActivity;
 
      private LocalDate dateRecorded;
 
+     private byte[] attachment;
+
+     private String note;
 }
 
 

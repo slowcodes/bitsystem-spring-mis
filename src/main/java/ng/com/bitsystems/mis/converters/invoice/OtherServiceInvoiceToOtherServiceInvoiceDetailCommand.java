@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.invoices.OtherServiceInvoiceDetailCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.ServicePriceCodeToServicePriceCodeCommand;
 import ng.com.bitsystems.mis.models.invoice.OtherServiceInvoiceDetails;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OtherServiceInvoiceToOtherServiceInvoiceDetailCommand
 implements Converter<OtherServiceInvoiceDetails, OtherServiceInvoiceDetailCommand> {
 
@@ -24,14 +26,14 @@ implements Converter<OtherServiceInvoiceDetails, OtherServiceInvoiceDetailComman
         command.setStatus(source.getStatus());
         if(source.getInvoice()!=null)
             command.setInvoiceId(source.getInvoice().getId());
-        command.setComment(source.getComment());
+//        command.setComment(source.getComment());
         command.setDescription(source.getDescription());
-        command.setFrequency(source.getFrequency());
-        command.setReversal(source.getReversal());
+//        command.setFrequency(source.getFrequency());
+//        command.setReversal(source.getReversal());
         command.setServicePriceCodeCommand(servicePriceCodeToServicePriceCodeCommand.convert(source.getServicePriceCode()));
         command.setTimeOfTransaction(source.getTimeOfTransaction());
-        command.setUseDiscountPrice(source.getUseDiscountPrice());
-        command.setUserDiscount(source.getUserDiscount());
+//        command.setUseDiscountPrice(source.getUseDiscountPrice());
+//        command.setUserDiscount(source.getUserDiscount());
 
         return command;
     }

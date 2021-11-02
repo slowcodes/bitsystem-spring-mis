@@ -7,7 +7,9 @@ import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankT
 import ng.com.bitsystems.mis.models.transactions.laboratory.bloodbank.BloodbankTransactionDetails;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BBTxnDetailCommandToBBTxnDetail implements
         Converter<BloodBankTransactionDetailCommand, BloodbankTransactionDetails> {
 
@@ -34,10 +36,10 @@ public class BBTxnDetailCommandToBBTxnDetail implements
             storage.addBBTransactionDetail(bloodbankTransactionDetails);
         }
 
-        bloodbankTransactionDetails.setComment(source.getComment());
-        bloodbankTransactionDetails.setReversal(source.getReversal());
-        bloodbankTransactionDetails.setTimeOfTransaction(source.getTimeOfTransaction());
-        bloodbankTransactionDetails.setTransactionDate(source.getDateOfTransaction());
+//        bloodbankTransactionDetails.setComment(source.getComment());
+//        bloodbankTransactionDetails.setReversal(source.getReversal());
+//        bloodbankTransactionDetails.setTimeOfTransaction(source.getTimeOfTransaction());
+//        bloodbankTransactionDetails.setTransactionDate(source.getDateOfTransaction());
         bloodbankTransactionDetails.setSalesPriceCode(salesPriceCodeCommandToSalesPriceCode.convert(source.getSalesPriceCodeCommand()));
         bloodbankTransactionDetails.setUseDiscountPrice(source.getUseDiscountPrice());
         bloodbankTransactionDetails.setUserDiscount(source.getUserDiscount());

@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.laboratories.ResultCollectionCommand;
 import ng.com.bitsystems.mis.models.laboratories.ResultCollectionLog;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ResultCollectionToResultCollectionCommand
 implements Converter<ResultCollectionLog, ResultCollectionCommand> {
 
@@ -25,8 +27,8 @@ implements Converter<ResultCollectionLog, ResultCollectionCommand> {
         resultCollectionCommand.setResultCommand(resultToResultCommand.convert(source.getResult()));
         resultCollectionCommand.setTimeOfCollection(source.getTimeOfCollection());
 
-        if(source.getUsers()!=null){
-            resultCollectionCommand.setUserId(source.getUsers().getId());
+        if(source.getAppUsers()!=null){
+            resultCollectionCommand.setUserId(source.getAppUsers().getId());
         }
 
         return resultCollectionCommand;

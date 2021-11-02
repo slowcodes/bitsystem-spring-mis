@@ -13,7 +13,7 @@ public class IndexController {
         return "login";
     }
 
-    @RequestMapping({"home", "/home", "/home.html"})
+    @RequestMapping({"home", "/home", "/home.html", "/dashboard"})
     public String home(Model model){
         return "index";
     }

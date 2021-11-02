@@ -3,16 +3,15 @@ package ng.com.bitsystems.mis.converters.transaction.pharmacy;
 import ng.com.bitsystems.mis.command.transactions.pharmacy.AdditionalTransactionParameterCommand;
 import ng.com.bitsystems.mis.models.transactions.pharmacy.AdditionalTransactionParameters;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AdditionalTxnParameterCommandToAdditionalTxnParameter implements
         Converter<AdditionalTransactionParameterCommand, AdditionalTransactionParameters> {
-    private AdditionalSaleTxnDetailCommandToAdditionTnxDetail additionalSaleTxnDetailCommandToAdditionTnxDetail;
-    private AdditionalSupplyTxnDetailCommandToAdditionTnxDetail additionalSupplyTxnDetailCommandToAdditionTnxDetail;
+    private AdditionalTxnDetailCommandToAdditionTnxDetail additionalTxnDetailCommandToAdditionTnxDetail;
 
-    public AdditionalTxnParameterCommandToAdditionalTxnParameter(AdditionalSaleTxnDetailCommandToAdditionTnxDetail additionalSaleTxnDetailCommandToAdditionTnxDetail,
-                                                                 AdditionalSupplyTxnDetailCommandToAdditionTnxDetail additionalSupplyTxnDetailCommandToAdditionTnxDetail) {
-        this.additionalSaleTxnDetailCommandToAdditionTnxDetail = additionalSaleTxnDetailCommandToAdditionTnxDetail;
-        this.additionalSupplyTxnDetailCommandToAdditionTnxDetail = additionalSupplyTxnDetailCommandToAdditionTnxDetail;
+    public AdditionalTxnParameterCommandToAdditionalTxnParameter(AdditionalTxnDetailCommandToAdditionTnxDetail additionalTxnDetailCommandToAdditionTnxDetail) {
+        this.additionalTxnDetailCommandToAdditionTnxDetail = additionalTxnDetailCommandToAdditionTnxDetail;
     }
     @Override
     public AdditionalTransactionParameters convert(AdditionalTransactionParameterCommand source) {
@@ -26,21 +25,21 @@ public class AdditionalTxnParameterCommandToAdditionalTxnParameter implements
         detail.setDescription(source.getDescription());
         detail.setParameter(detail.getParameter());
 
-        if (source.getAdditionalSalesTransactionDetailCommand().size()>0 && source.getAdditionalSalesTransactionDetailCommand()!=null)
-            source.getAdditionalSalesTransactionDetailCommand().forEach(additionalTransactionDetails ->
-                    detail.getAdditionalSaleTransactionDetails().add(
-                            additionalSaleTxnDetailCommandToAdditionTnxDetail.convert(
+        if (source.getAdditionalTransactionDetailCommand().size()>0 && source.getAdditionalTransactionDetailCommand()!=null)
+            source.getAdditionalTransactionDetailCommand().forEach(additionalTransactionDetails ->
+                    detail.getAdditionalTransactionDetails().add(
+                            additionalTxnDetailCommandToAdditionTnxDetail.convert(
                                     additionalTransactionDetails
                             )
                     ));
 
-        if (source.getAdditionalSupplyTransactionDetailCommand().size()>0 && source.getAdditionalSupplyTransactionDetailCommand()!=null)
-            source.getAdditionalSupplyTransactionDetailCommand().forEach(additionalTransactionDetails ->
-                    detail.getAdditionalSupplyTransactionDetails().add(
-                            additionalSupplyTxnDetailCommandToAdditionTnxDetail.convert(
-                                    additionalTransactionDetails
-                            )
-                    ));
+//        if (source.getAdditionalSupplyTransactionDetailCommand().size()>0 && source.getAdditionalSupplyTransactionDetailCommand()!=null)
+//            source.getAdditionalSupplyTransactionDetailCommand().forEach(additionalTransactionDetails ->
+//                    detail.getAdditionalSupplyTransactionDetails().add(
+//                            additionalSupplyTxnDetailCommandToAdditionTnxDetail.convert(
+//                                    additionalTransactionDetails
+//                            )
+//                    ));
         return detail;
     }
 }

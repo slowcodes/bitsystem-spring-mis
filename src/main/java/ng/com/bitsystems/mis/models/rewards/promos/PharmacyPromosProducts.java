@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -28,7 +28,7 @@ public class PharmacyPromosProducts  extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name = "users_id")
-     private Users users;
+     private AppUsers appUsers;
 
      private int status;
      private String title;

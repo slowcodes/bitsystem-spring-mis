@@ -27,5 +27,5 @@ public class UserGroups extends BaseEntity {
     @JoinTable(name = "users_groups",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private Set<Users> users = new HashSet<>();
+    private Set<AppUsers> appUsers = new HashSet<>();
 }

@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
+import ng.com.bitsystems.mis.models.laboratories.Investigations;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -32,7 +32,7 @@ public class InventoryPerLaboratoryTransaction  extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name = "laboratoryinvestigation_id")
-     private LaboratoryInvestigations laboratoryInvestigations;
+     private Investigations investigations;
 
      private Integer requiredQty;
 }

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -26,7 +26,7 @@ public class CollectedSamples extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name = "users_id")
-     private Users users;
+     private AppUsers appUsers;
 
      @Enumerated(value = EnumType.STRING)
      private SampleType sampleType;

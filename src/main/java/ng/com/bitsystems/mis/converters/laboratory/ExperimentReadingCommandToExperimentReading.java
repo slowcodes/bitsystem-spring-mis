@@ -5,7 +5,9 @@ import ng.com.bitsystems.mis.models.laboratories.CollectedSamples;
 import ng.com.bitsystems.mis.models.laboratories.ExperimentReadings;
 import ng.com.bitsystems.mis.models.transactions.laboratory.LaboratoryTransactionDetail;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExperimentReadingCommandToExperimentReading implements Converter<ExperimentReadingCommand, ExperimentReadings> {
     private ExperimentParameterCommandToExperimentParameter parameterCommandToExperimentParameter;
     @Override
@@ -31,7 +33,7 @@ public class ExperimentReadingCommandToExperimentReading implements Converter<Ex
             LaboratoryTransactionDetail laboratoryTransactionDetail = new LaboratoryTransactionDetail();
             laboratoryTransactionDetail.setId(source.getLaboratoryTransactionDetailId());
             experimentReadings.setLaboratoryTransactionDetail(laboratoryTransactionDetail);
-            LaboratoryTransactionDetail labTxnDetail = laboratoryTransactionDetail.addExperimentReading(experimentReadings);
+//            LaboratoryTransactionDetail labTxnDetail = laboratoryTransactionDetail.addExperimentReading(experimentReadings);
         }
 
         return experimentReadings;

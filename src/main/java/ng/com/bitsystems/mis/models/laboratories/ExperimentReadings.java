@@ -35,7 +35,6 @@ public class ExperimentReadings extends BaseEntity {
      @ManyToOne
      @JoinColumn(name="collectedsamples_id")
      private CollectedSamples collectedSamples;
-
 }
 
 

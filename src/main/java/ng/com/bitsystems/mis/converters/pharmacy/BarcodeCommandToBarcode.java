@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.pharmacy.BarcodeCommand;
 import ng.com.bitsystems.mis.models.pharmacy.Barcodes;
 import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BarcodeCommandToBarcode implements Converter<BarcodeCommand, Barcodes> {
     @Override
     public Barcodes convert(BarcodeCommand source) {

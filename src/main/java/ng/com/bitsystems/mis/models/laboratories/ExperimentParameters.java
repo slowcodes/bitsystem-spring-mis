@@ -20,8 +20,8 @@ import javax.persistence.ManyToOne;
 public class ExperimentParameters extends BaseEntity {
 
      @ManyToOne
-     @JoinColumn(name = "laboratoryinvestigations_id")
-     private LaboratoryInvestigations laboratoryInvestigations;
+     @JoinColumn(name = "lab_investigations_id")
+     private Investigations investigations;
 
      private String parameter;
      private String valueDataType;

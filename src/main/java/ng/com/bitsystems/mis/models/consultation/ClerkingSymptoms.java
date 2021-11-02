@@ -24,7 +24,7 @@ public class ClerkingSymptoms extends BaseEntity {
      @JoinColumn(name = "symptomsdirectory_id")
      private SymptomsDirectory symptomsDirectory;
 
-     private Integer degree;
+     private Integer degree; //{0-10:0-very low, 10-very high }
 
      @ManyToOne
      @JoinColumn(name = "clerks_id")

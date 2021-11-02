@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,11 +22,11 @@ public class ExpenseManager extends BaseEntity {
 
      @JoinColumn(name = "users_id", insertable = false, updatable = false)
      @ManyToOne()
-     private Users usersByIssueTo;
+     private AppUsers appUsersByIssueTo;
 
      @JoinColumn(name = "users_id", insertable = false, updatable = false)
      @ManyToOne()
-     private Users usersByTeller;
+     private AppUsers appUsersByTeller;
 
      @Column(name = "date_of_expenditure")
      private LocalDate expenseDate;

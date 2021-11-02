@@ -41,8 +41,8 @@ public class RewardController {
     public String addPromotions(){
         return "promotions.html";
 
-        //Transaction Vol. Promotions
-        //Product Based Promotions
+        //ProductPrice Vol. Promotions
+        //ProductPrice Based Promotions
     }
 
     @RequestMapping("/promotions/update")

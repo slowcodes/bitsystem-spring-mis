@@ -26,15 +26,16 @@ public class InvestigationGroups extends BaseEntity {
 
      private String grpName;
 
-     @OneToMany(mappedBy = "investigationGroups")
-     private Set<LaboratoryInvestigations> laboratoryInvestigations = new HashSet<>();
+     @OneToMany
+     @JoinColumn(name = "inv_grp_id")
+     private Set<Investigations> investigations = new HashSet<>();
 
-
-     public InvestigationGroups addlabInvestigation(LaboratoryInvestigations laboratoryInvestigations) {
-          this.laboratoryInvestigations.add(laboratoryInvestigations);
-          laboratoryInvestigations.setInvestigationGroups(this);
-          return this;
-     }
+//
+//     public InvestigationGroups addlabInvestigation(Investigations investigations) {
+//          this.investigations.add(investigations);
+//          investigations.setInvestigationGroups(this);
+//          return this;
+//     }
 }
 
 

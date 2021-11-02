@@ -5,12 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.models.BaseEntity;
 import ng.com.bitsystems.mis.models.accounts.pricing.ServicePriceCode;
-import ng.com.bitsystems.mis.models.referrals.Referrals;
-import ng.com.bitsystems.mis.models.transactions.Service;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -18,7 +19,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class OtherServices extends Service {
+public class OtherServices extends BaseEntity {
 
      @JoinColumn(name = "expensebooks_id")
      @ManyToOne
@@ -27,16 +28,16 @@ public class OtherServices extends Service {
      @Column(name = "service_description")
      private String description;
 
-     @OneToOne(fetch = FetchType.EAGER)
-     private ServicePriceCode servicePriceCode;
-
      @JoinColumn(name = "users_id")
      @ManyToOne
-     private Users createdBy;
+     private AppUsers createdBy;
 
-     @ManyToOne
-     @JoinColumn(name = "referralId")
-     private Referrals referral;
+     @CreationTimestamp
+     private LocalDateTime timeOfTransaction;
+
+     @OneToOne
+     private ServicePriceCode servicePriceCode;
+
 }
 
 

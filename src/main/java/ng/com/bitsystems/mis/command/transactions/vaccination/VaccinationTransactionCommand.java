@@ -3,9 +3,8 @@ package ng.com.bitsystems.mis.command.transactions.vaccination;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ng.com.bitsystems.mis.command.transactions.TransactionCommand;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,12 +13,8 @@ import java.util.Set;
 @NoArgsConstructor
 public class VaccinationTransactionCommand {
     private Long id;
+    private TransactionCommand transactionCommand;
     private Long patientId;
-    private Long userId;
-    private LocalDate dateTransaction;
-    private LocalDateTime timeOfTransaction;
-    private String comment;
-    private Integer discount;
-    Set<VaccinationTransactionDetailCommand> vaccinationTransactionDetailCommand = new HashSet<>();
     private Long referralId;
+    private Set<VaccinationTransactionDetailCommand> vaccinationTransactionDetailCommand = new HashSet<>();
 }

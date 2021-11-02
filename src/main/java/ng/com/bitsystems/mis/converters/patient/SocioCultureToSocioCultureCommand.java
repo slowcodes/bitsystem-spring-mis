@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.patients.SocioCulturalCommand;
 import ng.com.bitsystems.mis.models.patients.SocioCulturalDirectory;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SocioCultureToSocioCultureCommand implements Converter<SocioCulturalDirectory,
         SocioCulturalCommand> {
 

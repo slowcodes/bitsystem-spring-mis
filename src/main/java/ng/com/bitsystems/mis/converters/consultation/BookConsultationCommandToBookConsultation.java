@@ -3,9 +3,11 @@ package ng.com.bitsystems.mis.converters.consultation;
 import ng.com.bitsystems.mis.command.consultation.BookConsultationCommand;
 import ng.com.bitsystems.mis.models.consultation.BookConsultation;
 import ng.com.bitsystems.mis.models.patients.Patients;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BookConsultationCommandToBookConsultation implements Converter<BookConsultationCommand, BookConsultation> {
     private SpecializationCommandToSpecialization specializationCommandToSpecialization;
 
@@ -30,10 +32,10 @@ public class BookConsultationCommandToBookConsultation implements Converter<Book
             Patients newPatient = patients.addConsultation(bookConsultation);
         }
         if(source.getUserId()!=null){
-            Users users=new Users();
-            users.setId(source.getUserId());
-            bookConsultation.setUsers(users);
-            Users receptionist = users.addBookConsultation(bookConsultation);
+            AppUsers appUsers =new AppUsers();
+            appUsers.setId(source.getUserId());
+            bookConsultation.setAppUsers(appUsers);
+            AppUsers receptionist = appUsers.addBookConsultation(bookConsultation);
         }
 
         return bookConsultation;

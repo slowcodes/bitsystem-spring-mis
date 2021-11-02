@@ -4,9 +4,11 @@ import ng.com.bitsystems.mis.command.invoices.InvoiceCommand;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
 import ng.com.bitsystems.mis.models.patients.Patients;
 import ng.com.bitsystems.mis.models.referrals.Referrals;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InvoiceCommandToInvoice implements Converter<InvoiceCommand, Invoice> {
     private LaboratoryInvoiceDetailCommandToLaboratoryInviceDetail laboratoryInvoiceDetailCommandToLaboratoryInviceDetail;
     private OtherServiceInvoiceDetailCommandToOtherServiceInvoice otherServiceInvoiceDetailCommandToOtherServiceInvoice;
@@ -58,10 +60,10 @@ public class InvoiceCommandToInvoice implements Converter<InvoiceCommand, Invoic
         invoice.setTimeOfTransaction(source.getTimeOfTransaction());
 
         if(source.getUsersId() != null){
-            Users users=new Users();
-            users.setId(source.getPatientId());
-            invoice.setUsers(users);
-            Users urs=users.addInvoices(invoice);
+            AppUsers appUsers =new AppUsers();
+            appUsers.setId(source.getPatientId());
+            invoice.setAppUsers(appUsers);
+            AppUsers urs= appUsers.addInvoices(invoice);
         }
         return invoice;
     }

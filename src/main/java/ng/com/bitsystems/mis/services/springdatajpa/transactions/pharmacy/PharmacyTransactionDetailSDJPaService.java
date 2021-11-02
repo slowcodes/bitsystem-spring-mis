@@ -1,7 +1,7 @@
 package ng.com.bitsystems.mis.services.springdatajpa.transactions.pharmacy;
 
 import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacyTransactionDetails;
-import ng.com.bitsystems.mis.repositories.transactions.pharmacy.PharmacySalesTransactionDetailsRepository;
+import ng.com.bitsystems.mis.repositories.transactions.pharmacy.PharmacyTransactionDetailRepository;
 import ng.com.bitsystems.mis.services.transactions.pharmacy.PharmacyTransactionDetailService;
 import org.springframework.stereotype.Service;
 
@@ -10,37 +10,37 @@ import java.util.Set;
 
 @Service
 public class PharmacyTransactionDetailSDJPaService implements PharmacyTransactionDetailService {
-    private PharmacySalesTransactionDetailsRepository pharmacySalesTransactionDetailsRepository;
+    private PharmacyTransactionDetailRepository pharmacyTransactionDetailRepository;
 
-    public PharmacyTransactionDetailSDJPaService(PharmacySalesTransactionDetailsRepository pharmacySalesTransactionDetailsRepository) {
-        this.pharmacySalesTransactionDetailsRepository = pharmacySalesTransactionDetailsRepository;
+    public PharmacyTransactionDetailSDJPaService(PharmacyTransactionDetailRepository pharmacyTransactionDetailRepository) {
+        this.pharmacyTransactionDetailRepository = pharmacyTransactionDetailRepository;
     }
 
     @Override
     public Set<PharmacyTransactionDetails> findAll() {
         Set<PharmacyTransactionDetails> pharmacyTransactionDetails=new HashSet<>();
-        pharmacySalesTransactionDetailsRepository.findAll().forEach(pharmacyTransactionDetails::add);
+        pharmacyTransactionDetailRepository.findAll().forEach(pharmacyTransactionDetails::add);
         return pharmacyTransactionDetails;
     }
 
     @Override
     public PharmacyTransactionDetails findByID(Long aLong) {
-        return pharmacySalesTransactionDetailsRepository.findById(aLong).get();
+        return pharmacyTransactionDetailRepository.findById(aLong).get();
     }
 
     @Override
     public PharmacyTransactionDetails add(PharmacyTransactionDetails object) {
-        return pharmacySalesTransactionDetailsRepository.save(object);
+        return pharmacyTransactionDetailRepository.save(object);
     }
 
     @Override
     public void delete(PharmacyTransactionDetails object) {
-        pharmacySalesTransactionDetailsRepository.delete(object);
+        pharmacyTransactionDetailRepository.delete(object);
     }
 
     @Override
     public void deleteById(Long aLong) {
-        pharmacySalesTransactionDetailsRepository.deleteById(aLong);
+        pharmacyTransactionDetailRepository.deleteById(aLong);
     }
 
     @Override

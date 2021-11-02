@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.command.accounts.pricing.SalesPriceCodeCommand;
 import ng.com.bitsystems.mis.command.pharmacy.PharmacyProductCommand;
-import ng.com.bitsystems.mis.command.transactions.pharmacy.AdditionalSalesTransactionDetailCommand;
+import ng.com.bitsystems.mis.command.transactions.pharmacy.AdditionalTransactionDetailCommand;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,6 +25,6 @@ public class PharmacyInvoiceDetailCommand {
     private Integer useDiscountPrice;
     private String status;
     private SalesPriceCodeCommand salesPriceCodeCommand;
-    private Set<AdditionalSalesTransactionDetailCommand> additionalSalesTransactionDetailCommands;
+    private Set<AdditionalTransactionDetailCommand> additionalTransactionDetailCommands;
 
 }

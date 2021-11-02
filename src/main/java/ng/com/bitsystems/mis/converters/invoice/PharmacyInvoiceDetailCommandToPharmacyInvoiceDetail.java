@@ -3,22 +3,24 @@ package ng.com.bitsystems.mis.converters.invoice;
 import ng.com.bitsystems.mis.command.invoices.PharmacyInvoiceDetailCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.SalesPriceCodeCommandToSalesPriceCode;
 import ng.com.bitsystems.mis.converters.pharmacy.PharmacyProductCommandToPharmacyProduct;
-import ng.com.bitsystems.mis.converters.transaction.pharmacy.AdditionalSaleTxnDetailCommandToAdditionTnxDetail;
+import ng.com.bitsystems.mis.converters.transaction.pharmacy.AdditionalTxnDetailCommandToAdditionTnxDetail;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
 import ng.com.bitsystems.mis.models.invoice.PharmacyInvoiceDetailsSale;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PharmacyInvoiceDetailCommandToPharmacyInvoiceDetail
 implements Converter<PharmacyInvoiceDetailCommand, PharmacyInvoiceDetailsSale> {
     private SalesPriceCodeCommandToSalesPriceCode salesPriceCodeCommandToSalesPriceCode;
-    private AdditionalSaleTxnDetailCommandToAdditionTnxDetail additionalSaleTxnDetailCommandToAdditionTnxDetail;
+    private AdditionalTxnDetailCommandToAdditionTnxDetail additionalTxnDetailCommandToAdditionTnxDetail;
     private PharmacyProductCommandToPharmacyProduct pharmacyProductCommandToPharmacyProduct;
 
     public PharmacyInvoiceDetailCommandToPharmacyInvoiceDetail(SalesPriceCodeCommandToSalesPriceCode salesPriceCodeCommandToSalesPriceCode,
-                                                               AdditionalSaleTxnDetailCommandToAdditionTnxDetail additionalSaleTxnDetailCommandToAdditionTnxDetail,
+                                                               AdditionalTxnDetailCommandToAdditionTnxDetail additionalTxnDetailCommandToAdditionTnxDetail,
                                                                PharmacyProductCommandToPharmacyProduct pharmacyProductCommandToPharmacyProduct) {
         this.salesPriceCodeCommandToSalesPriceCode = salesPriceCodeCommandToSalesPriceCode;
-        this.additionalSaleTxnDetailCommandToAdditionTnxDetail = additionalSaleTxnDetailCommandToAdditionTnxDetail;
+        this.additionalTxnDetailCommandToAdditionTnxDetail = additionalTxnDetailCommandToAdditionTnxDetail;
         this.pharmacyProductCommandToPharmacyProduct = pharmacyProductCommandToPharmacyProduct;
     }
 
@@ -39,21 +41,21 @@ implements Converter<PharmacyInvoiceDetailCommand, PharmacyInvoiceDetailsSale> {
         }
 
         sale.setStatus(source.getStatus());
-        sale.setSalesPriceCode(salesPriceCodeCommandToSalesPriceCode.convert(source.getSalesPriceCodeCommand()));
+//        sale.setSalesPriceCode(salesPriceCodeCommandToSalesPriceCode.convert(source.getSalesPriceCodeCommand()));
 
-        if(source.getAdditionalSalesTransactionDetailCommands().size()>0 && source.getAdditionalSalesTransactionDetailCommands()!= null)
-            source.getAdditionalSalesTransactionDetailCommands().forEach(additionalTransactionDetailCommand ->
-                    sale.getAdditionalSaleTransactionDetails().add(
-                            additionalSaleTxnDetailCommandToAdditionTnxDetail.convert(additionalTransactionDetailCommand)
+        if(source.getAdditionalTransactionDetailCommands().size()>0 && source.getAdditionalTransactionDetailCommands()!= null)
+            source.getAdditionalTransactionDetailCommands().forEach(additionalTransactionDetailCommand ->
+                    sale.getAdditionalTransactionDetails().add(
+                            additionalTxnDetailCommandToAdditionTnxDetail.convert(additionalTransactionDetailCommand)
                     ));
 
-        sale.setSalesPriceCode(salesPriceCodeCommandToSalesPriceCode.convert(source.getSalesPriceCodeCommand()));
-        sale.setComment(source.getComment());
+//        sale.setSalesPriceCode(salesPriceCodeCommandToSalesPriceCode.convert(source.getSalesPriceCodeCommand()));
+//        sale.setComment(source.getComment());
         sale.setStatus(source.getStatus());
         sale.setPharmacyProducts(pharmacyProductCommandToPharmacyProduct.convert(source.getPharmacyProductCommand()));
-        sale.setTimeOfTransaction(source.getTimeOfTransaction());
-        sale.setUseDiscountPrice(source.getUseDiscountPrice());
-        sale.setUserDiscount(source.getDiscount());
+//        sale.setTimeOfTransaction(source.getTimeOfTransaction());
+//        sale.setUseDiscountPrice(source.getUseDiscountPrice());
+//        sale.setUserDiscount(source.getDiscount());
 
         return sale;
     }

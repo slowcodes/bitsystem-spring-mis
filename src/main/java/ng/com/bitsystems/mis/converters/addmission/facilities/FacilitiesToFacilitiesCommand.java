@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.admissions.facilitties.FacilitiesCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.RateToRateCommand;
 import ng.com.bitsystems.mis.models.admissions.facilities.Facilities;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FacilitiesToFacilitiesCommand implements Converter<Facilities, FacilitiesCommand> {
     private RateToRateCommand rateToRateCommand;
 

@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.laboratories.bloodbank.InvestigationQueueCo
 import ng.com.bitsystems.mis.converters.transaction.laboratory.LabTxnDetailToLabTxnDetailCommand;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.InvestigationQueue;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InvestigationQueueToInvestigationQueueCommand implements Converter<InvestigationQueue, InvestigationQueueCommand> {
 
     private LabTxnDetailToLabTxnDetailCommand labTxnDetailToLabTxnDetailCommand;

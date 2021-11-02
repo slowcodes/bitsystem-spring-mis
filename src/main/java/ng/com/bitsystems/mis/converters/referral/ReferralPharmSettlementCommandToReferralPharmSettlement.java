@@ -1,20 +1,19 @@
 package ng.com.bitsystems.mis.converters.referral;
 
 import ng.com.bitsystems.mis.command.referrals.ReferralPharmacySettlementCommand;
-import ng.com.bitsystems.mis.converters.transaction.pharmacy.PharmSalesTxnCommandToPharmSaleTxn;
+import ng.com.bitsystems.mis.converters.transaction.pharmacy.SalesCommandToSales;
 import ng.com.bitsystems.mis.models.referrals.ReferralPharmacySettlement;
 import ng.com.bitsystems.mis.models.referrals.ReferralSettlements;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ReferralPharmSettlementCommandToReferralPharmSettlement
 implements Converter<ReferralPharmacySettlementCommand, ReferralPharmacySettlement> {
-    private ReferralSettlementCommandToReferralSettlement referralSettlementCommandToReferralSettlement;
-    private PharmSalesTxnCommandToPharmSaleTxn pharmSalesTxnCommandToPharmSaleTxn;
+    private SalesCommandToSales salesCommandToSales;
 
-    public ReferralPharmSettlementCommandToReferralPharmSettlement(ReferralSettlementCommandToReferralSettlement referralSettlementCommandToReferralSettlement,
-                                                                   PharmSalesTxnCommandToPharmSaleTxn pharmSalesTxnCommandToPharmSaleTxn) {
-        this.referralSettlementCommandToReferralSettlement = referralSettlementCommandToReferralSettlement;
-        this.pharmSalesTxnCommandToPharmSaleTxn = pharmSalesTxnCommandToPharmSaleTxn;
+    public ReferralPharmSettlementCommandToReferralPharmSettlement(SalesCommandToSales salesCommandToSales) {
+        this.salesCommandToSales = salesCommandToSales;
     }
 
     @Override
@@ -24,7 +23,7 @@ implements Converter<ReferralPharmacySettlementCommand, ReferralPharmacySettleme
         }
         final ReferralPharmacySettlement settlement = new ReferralPharmacySettlement();
         settlement.setId(source.getId());
-        settlement.setPharmacySalesTransactions(pharmSalesTxnCommandToPharmSaleTxn.convert(source.getPharmacySalesTransactionCommand()));
+        settlement.setSales(salesCommandToSales.convert(source.getSalesCommand()));
         if(source.getReferralSettlementsId()!=null){
             ReferralSettlements referralSettlements=new ReferralSettlements();
             referralSettlements.setId(source.getReferralSettlementsId());

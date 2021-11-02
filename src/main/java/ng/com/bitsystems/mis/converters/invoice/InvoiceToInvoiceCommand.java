@@ -3,7 +3,9 @@ package ng.com.bitsystems.mis.converters.invoice;
 import ng.com.bitsystems.mis.command.invoices.InvoiceCommand;
 import ng.com.bitsystems.mis.models.invoice.Invoice;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InvoiceToInvoiceCommand implements Converter<Invoice, InvoiceCommand> {
 
     private LaboratoryInviceDetailToLaboratoryInvoiceDetailCommand laboratoryInviceDetailToLaboratoryInvoiceDetailCommand ;
@@ -24,8 +26,8 @@ public class InvoiceToInvoiceCommand implements Converter<Invoice, InvoiceComman
         }
         InvoiceCommand invoiceCommand=new InvoiceCommand();
         invoiceCommand.setId(source.getId());
-        if(source.getUsers()!=null)
-            invoiceCommand.setUsersId(source.getUsers().getId());
+        if(source.getAppUsers()!=null)
+            invoiceCommand.setUsersId(source.getAppUsers().getId());
         if(source.getPatients()!=null)
             invoiceCommand.setPatientId(source.getPatients().getId());
         if(source.getPharmacyInvoiceDetailsSales().size()>0 && source.getPharmacyInvoiceDetailsSales()!=null)

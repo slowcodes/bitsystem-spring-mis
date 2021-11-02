@@ -1,6 +1,6 @@
 package ng.com.bitsystems.mis.services.springdatajpa.laboratories;
 
-import ng.com.bitsystems.mis.models.laboratories.Packages;
+import ng.com.bitsystems.mis.models.laboratories.LabPackages;
 import ng.com.bitsystems.mis.repositories.laboratories.PackageRepository;
 import ng.com.bitsystems.mis.services.laboratories.PackageService;
 import org.springframework.stereotype.Service;
@@ -18,24 +18,24 @@ public class PackageSDJPsService implements PackageService {
     }
 
     @Override
-    public Set<Packages> findAll() {
-        Set<Packages> packages = new HashSet<>();
-        packageRepository.findAll().forEach(packages::add);
-        return packages;
+    public Set<LabPackages> findAll() {
+        Set<LabPackages> aPackages = new HashSet<>();
+        packageRepository.findAll().forEach(aPackages::add);
+        return aPackages;
     }
 
     @Override
-    public Packages findByID(Long aLong) {
+    public LabPackages findByID(Long aLong) {
         return packageRepository.findById(aLong).get();
     }
 
     @Override
-    public Packages add(Packages object) {
+    public LabPackages add(LabPackages object) {
         return packageRepository.save(object);
     }
 
     @Override
-    public void delete(Packages object) {
+    public void delete(LabPackages object) {
         packageRepository.delete(object);
     }
 
@@ -45,7 +45,7 @@ public class PackageSDJPsService implements PackageService {
     }
 
     @Override
-    public void addCommand(Packages object) {
+    public void addCommand(LabPackages object) {
 
     }
 }

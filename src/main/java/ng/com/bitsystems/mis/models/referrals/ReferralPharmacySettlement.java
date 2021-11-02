@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.transactions.pharmacy.PharmacySalesTransaction;
+import ng.com.bitsystems.mis.models.transactions.Sales;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -24,5 +24,5 @@ public class ReferralPharmacySettlement extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "pharmacySalesTransaction_id")
-    private PharmacySalesTransaction pharmacySalesTransactions;
+    private Sales sales;
 }

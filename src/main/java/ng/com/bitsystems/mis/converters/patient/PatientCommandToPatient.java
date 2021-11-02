@@ -24,7 +24,6 @@ public class PatientCommandToPatient implements Converter<PatientCommand, Patien
     private BookConsultationCommandToBookConsultation bookConsultationCommandToBookConsultatio;
     private IssueLogCommandToIssueLog issueLogCommandToIssueLog;
     private MedicalHistoryCommandToMedicalHistory medicalHistoryCommandToMedicalHistory;
-    private SocialHistoryCommandToSocialHistory socialHistoryCommandToSocialHistory;
     private DrugAllergyCommandToDrugAllergy drugAllergyCommandToDrugAllergy;
     private PatientVitalCommandToPatientVital patientVitalCommandToPatientVital;
     private ClerkCommandToClerk clerkCommandToClerk;
@@ -32,7 +31,6 @@ public class PatientCommandToPatient implements Converter<PatientCommand, Patien
     private LoyaltyActivityCommandToLoyaltyActivity loyaltyActivityCommandToLoyaltyActivity;
     private LoyaltyGainCommandToLoyaltyGain loyaltyGainCommandToLoyaltyGain;
     private ReceivedLogCommandToReceivedLog receivedLogCommandToReceivedLog;
-    private FileAttachementCommandToFileAttachment fileAttachementCommandToFileAttachment;
 
     public PatientCommandToPatient(StateCommandToState stateCommandToState,
                                    AccountHolderCommandToAccountHolder accountHolderCommandToAccountHolder,
@@ -41,19 +39,17 @@ public class PatientCommandToPatient implements Converter<PatientCommand, Patien
                                    BookConsultationCommandToBookConsultation bookConsultationCommandToBookConsultatio,
                                    IssueLogCommandToIssueLog issueLogCommandToIssueLog,
                                    MedicalHistoryCommandToMedicalHistory medicalHistoryCommandToMedicalHistory,
-                                   SocialHistoryCommandToSocialHistory socialHistoryCommandToSocialHistory,
                                    DrugAllergyCommandToDrugAllergy drugAllergyCommandToDrugAllergy,
                                    PatientVitalCommandToPatientVital patientVitalCommandToPatientVital,
                                    VaccTxnCommandToVaccTxn vaccTxnCommandToVaccTxn,
 
-                                   ClerkCommandToClerk clerkCommandToClerk, InvoiceCommandToInvoice invoiceToInvoiceCommand, LoyaltyActivityCommandToLoyaltyActivity loyaltyActivityCommandToLoyaltyActivity, LoyaltyGainCommandToLoyaltyGain loyaltyGainCommandToLoyaltyGain, ReceivedLogCommandToReceivedLog receivedLogCommandToReceivedLog, FileAttachementCommandToFileAttachment fileAttachementCommandToFileAttachment) {
+                                   ClerkCommandToClerk clerkCommandToClerk, InvoiceCommandToInvoice invoiceToInvoiceCommand, LoyaltyActivityCommandToLoyaltyActivity loyaltyActivityCommandToLoyaltyActivity, LoyaltyGainCommandToLoyaltyGain loyaltyGainCommandToLoyaltyGain, ReceivedLogCommandToReceivedLog receivedLogCommandToReceivedLog) {
         this.stateCommandToState = stateCommandToState;
 
 
         this.bookConsultationCommandToBookConsultatio = bookConsultationCommandToBookConsultatio;
         this.issueLogCommandToIssueLog = issueLogCommandToIssueLog;
         this.medicalHistoryCommandToMedicalHistory = medicalHistoryCommandToMedicalHistory;
-        this.socialHistoryCommandToSocialHistory = socialHistoryCommandToSocialHistory;
         this.drugAllergyCommandToDrugAllergy = drugAllergyCommandToDrugAllergy;
         this.patientVitalCommandToPatientVital = patientVitalCommandToPatientVital;
         this.clerkCommandToClerk = clerkCommandToClerk;
@@ -61,7 +57,6 @@ public class PatientCommandToPatient implements Converter<PatientCommand, Patien
         this.loyaltyActivityCommandToLoyaltyActivity = loyaltyActivityCommandToLoyaltyActivity;
         this.loyaltyGainCommandToLoyaltyGain = loyaltyGainCommandToLoyaltyGain;
         this.receivedLogCommandToReceivedLog = receivedLogCommandToReceivedLog;
-        this.fileAttachementCommandToFileAttachment = fileAttachementCommandToFileAttachment;
     }
 
     @Nullable
@@ -84,7 +79,8 @@ public class PatientCommandToPatient implements Converter<PatientCommand, Patien
         patients.setLastName(source.getLastName());
         //patients.setLastLoginDay(source.getLastLoginDay());
         patients.setEmail(source.getEmail());
-        patients.setStates(stateCommandToState.convert(source.getStateCommand()));
+        if(source.getStateCommand()!=null)
+            //patients.setStates(stateCommandToState.convert(source.getStateCommand()));
         //patients.setAccountHolder(accountHolderCommandToAccountHolder.convert(source.getAccountHolderCommand()));
         patients.setDob(source.getDob());
 
@@ -117,18 +113,6 @@ public class PatientCommandToPatient implements Converter<PatientCommand, Patien
                             patientVitalCommandToPatientVital.convert(patientVitalsCommand)
                     ));
 
-        if(source.getPatientSocialHistoryCommand().size()>0 && source.getPatientSocialHistoryCommand()!=null)
-            source.getPatientSocialHistoryCommand().forEach(patientSocialHistoryCommand ->
-                    patients.getPatientsSocialHistories().add(
-                            socialHistoryCommandToSocialHistory.convert(patientSocialHistoryCommand)
-                    ));
-
-        if(source.getIssueLogCommands().size()>0 && source.getIssueLogCommands()!=null)
-            source.getIssueLogCommands().forEach(issueLogCommand ->
-                    patients.getIssuanceLogs().add(issueLogCommandToIssueLog.convert(
-                            issueLogCommand
-                    )));
-
 
 
         if(source.getLoyaltyGainsCommands().size()>0 && source.getLoyaltyGainsCommands()!=null)
@@ -144,11 +128,6 @@ public class PatientCommandToPatient implements Converter<PatientCommand, Patien
                             patientDrugAllergyCommand
                     )));
 
-        if(source.getPatientMedicalFileAttachmentCommands().size()>0 && source.getPatientMedicalFileAttachmentCommands()!=null)
-            source.getPatientMedicalFileAttachmentCommands().forEach(patientMedicalFileAttachmentCommand ->
-                    patients.getPatientsMedicalFileAttachments().add(
-                            fileAttachementCommandToFileAttachment.convert(patientMedicalFileAttachmentCommand)
-                    ));
 
 
         if(source.getPatientMedicalHistoryCommands().size()>0 && source.getPatientMedicalHistoryCommands()!=null)

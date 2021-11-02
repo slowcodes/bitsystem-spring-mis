@@ -2,7 +2,7 @@ package ng.com.bitsystems.mis.converters.inventory.requests;
 
 import ng.com.bitsystems.mis.command.inventory.request.RequisitionCommand;
 import ng.com.bitsystems.mis.models.inventory.requests.Requisitions;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
 
 public class RequisitionCommandToRequisition implements Converter<RequisitionCommand, Requisitions> {
@@ -20,10 +20,10 @@ public class RequisitionCommandToRequisition implements Converter<RequisitionCom
         final Requisitions requisitions=new Requisitions();
         requisitions.setId(source.getId());
         if(source.getUsers_id()!=null){
-            Users users = new Users();
-            users.setId(source.getUsers_id());
-            requisitions.setUsers(users);
-            Users urs = users.addRequisition(requisitions);
+            AppUsers appUsers = new AppUsers();
+            appUsers.setId(source.getUsers_id());
+            requisitions.setAppUsers(appUsers);
+            AppUsers urs = appUsers.addRequisition(requisitions);
         }
 
         requisitions.setDateOfRequisition(source.getDateOfRequisition());

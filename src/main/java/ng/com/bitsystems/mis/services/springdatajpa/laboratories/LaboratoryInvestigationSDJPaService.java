@@ -1,6 +1,8 @@
 package ng.com.bitsystems.mis.services.springdatajpa.laboratories;
 
-import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
+import ng.com.bitsystems.mis.command.laboratories.LaboratoryInvestigationCommand;
+import ng.com.bitsystems.mis.converters.laboratory.LaboratoryInvestigationCommandToLaboratoryInvestigation;
+import ng.com.bitsystems.mis.models.laboratories.Investigations;
 import ng.com.bitsystems.mis.repositories.laboratories.LaboratoryInvestigationRepository;
 import ng.com.bitsystems.mis.services.laboratories.LaboratoryInvestigationService;
 import org.springframework.stereotype.Service;
@@ -12,30 +14,38 @@ import java.util.Set;
 public class LaboratoryInvestigationSDJPaService implements LaboratoryInvestigationService
 {
     private LaboratoryInvestigationRepository investigationRepository;
+    private LaboratoryInvestigationCommandToLaboratoryInvestigation laboratoryInvestigationCommandToLaboratoryInvestigation;
 
-    public LaboratoryInvestigationSDJPaService(LaboratoryInvestigationRepository investigationRepository) {
+    public LaboratoryInvestigationSDJPaService(LaboratoryInvestigationRepository investigationRepository,
+                                               LaboratoryInvestigationCommandToLaboratoryInvestigation laboratoryInvestigationCommandToLaboratoryInvestigation) {
         this.investigationRepository = investigationRepository;
+        this.laboratoryInvestigationCommandToLaboratoryInvestigation = laboratoryInvestigationCommandToLaboratoryInvestigation;
     }
 
     @Override
-    public Set<LaboratoryInvestigations> findAll() {
-        Set<LaboratoryInvestigations> laboratoryInvestigations = new HashSet<>();
-        investigationRepository.findAll().forEach(laboratoryInvestigations::add);
-        return laboratoryInvestigations;
+    public Set<Investigations> findAll() {
+        Set<Investigations> investigations = new HashSet<>();
+        investigationRepository.findAll().forEach(investigations::add);
+        return investigations;
     }
 
     @Override
-    public LaboratoryInvestigations findByID(Long aLong) {
+    public Investigations findByID(Long aLong) {
         return investigationRepository.findById(aLong).get();
     }
 
     @Override
-    public LaboratoryInvestigations add(LaboratoryInvestigations object) {
+    public Investigations add(Investigations object) {
         return investigationRepository.save(object);
     }
 
     @Override
-    public void delete(LaboratoryInvestigations object) {
+    public Investigations add(LaboratoryInvestigationCommand object) {
+        return investigationRepository.save(laboratoryInvestigationCommandToLaboratoryInvestigation.convert(object));
+    }
+
+    @Override
+    public void delete(Investigations object) {
         investigationRepository.delete(object);
     }
 
@@ -45,7 +55,7 @@ public class LaboratoryInvestigationSDJPaService implements LaboratoryInvestigat
     }
 
     @Override
-    public void addCommand(LaboratoryInvestigations object) {
+    public void addCommand(Investigations object) {
 
     }
 }

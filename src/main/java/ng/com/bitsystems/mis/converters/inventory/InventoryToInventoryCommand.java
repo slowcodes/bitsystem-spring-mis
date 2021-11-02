@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.inventory.InventoryCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.SalesPriceCodeToSalesPriceCodeCommand;
 import ng.com.bitsystems.mis.models.inventory.Inventory;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InventoryToInventoryCommand implements Converter<Inventory, InventoryCommand> {
     private InventoryGroupToInventoryGroupCommand inventoryGroupToInventoryGroupCommand;
     private InventoryBarcodeToInventoryBarcodeCommand inventoryBarcodeToInventoryBarcodeCommand;

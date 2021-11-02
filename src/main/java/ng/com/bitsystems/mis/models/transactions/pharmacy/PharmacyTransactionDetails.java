@@ -4,47 +4,32 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.models.pharmacy.PharmacyProducts;
 import ng.com.bitsystems.mis.models.rewards.promos.PharmacyPromoProductRecivedLogs;
-import ng.com.bitsystems.mis.models.transactions.Sales;
+import ng.com.bitsystems.mis.models.transactions.ProductPrice;
+import ng.com.bitsystems.mis.models.transactions.Transaction;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PharmacyTransactionDetails extends Sales {
-
-    @ManyToOne
-    @JoinColumn(name = "pharmacyproducts_id")
-    private PharmacyProducts pharmacyProducts;
+public class PharmacyTransactionDetails extends BasePharmTxnDetails {
 
 
     @ManyToOne
-    @JoinColumn(name = "pharmacytransaction_id")
-    private PharmacySalesTransaction pharmacySalesTransaction;
+    @JoinColumn(name = "transaction_id")
+    private Transaction transaction;
 
-//    @OneToOne
-//    PharmacyPromoProductRecivedLogs pharmacyPromoProductRecivedLogs;
+    @OneToOne
+    private ProductPrice goodsTransaction;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyTransactionDetails")
-    private Set<AdditionalSaleTransactionDetails> additionalSaleTransactionDetails = new HashSet<>();
-
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pharmacyTransactionDetails")
-//    private Set<PharmacyPromoProductRecivedLogs> promo = new HashSet<>();
-//
-//    public PharmacyTransactionDetails addRecievedPromoLog(PharmacyPromoProductRecivedLogs recivedLogs) {
-//        promo.add(recivedLogs);
-//        recivedLogs.setPharmacyTransactionDetails(this);
-//        return this;
-//    }
-
-    public PharmacyTransactionDetails addAdditionalDetail(AdditionalSaleTransactionDetails details) {
-        additionalSaleTransactionDetails.add(details);
+    public PharmacyTransactionDetails addAdditionalDetail(AdditionalTransactionDetails details) {
+        super.getAdditionalTransactionDetails().add(details);
         details.setPharmacyTransactionDetails(this);
         return this;
     }

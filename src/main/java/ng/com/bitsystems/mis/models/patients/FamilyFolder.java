@@ -7,8 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
+import ng.com.bitsystems.mis.models.consultation.DiseaseDirectory;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,8 +30,6 @@ public class FamilyFolder extends BaseEntity {
      private String email;
      private Date dateRegistered;
 
-     @OneToMany(mappedBy = "familyFolder")
-     private Set<FamilyHistory> familyHistory = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "family_patient",
@@ -35,12 +37,12 @@ public class FamilyFolder extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "patient_id"))
     private Set<Patients> patients = new HashSet<>();
 
-    public FamilyFolder addFamilyHistory(FamilyHistory familyHistory) {
+    @ManyToMany
+    @JoinTable(name = "family_disease_history",
+            joinColumns = @JoinColumn(name = "family_id"),
+            inverseJoinColumns = @JoinColumn(name = "disease_id"))
+    private Set<DiseaseDirectory> diseaseDirectory = new HashSet<>();
 
-        this.familyHistory.add(familyHistory);
-        familyHistory.setFamilyFolder(this);
-        return this;
-    }
 }
 
 

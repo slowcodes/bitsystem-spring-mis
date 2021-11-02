@@ -2,14 +2,14 @@ package ng.com.bitsystems.mis.services.springdatajpa.vaccination;
 
 import ng.com.bitsystems.mis.models.vaccination.Vaccines;
 import ng.com.bitsystems.mis.repositories.vaccinations.VaccineRepository;
-import ng.com.bitsystems.mis.services.vaccination.VaccineService;
+import ng.com.bitsystems.mis.services.CrudService;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class VaccineSDJPaService implements VaccineService {
+public class VaccineSDJPaService implements CrudService<Vaccines, Long> {
     private VaccineRepository vaccineRepository;
 
     public VaccineSDJPaService(VaccineRepository vaccineRepository) {

@@ -2,9 +2,11 @@ package ng.com.bitsystems.mis.converters.laboratory;
 
 import ng.com.bitsystems.mis.command.laboratories.ResultCommand;
 import ng.com.bitsystems.mis.models.laboratories.Results;
-import ng.com.bitsystems.mis.models.users.Scientists;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ResultCommandToResult implements Converter<ResultCommand, Results> {
     private ExperimentReadingCommandToExperimentReading experimentReadingCommandToExperimentReading;
 
@@ -22,14 +24,14 @@ public class ResultCommandToResult implements Converter<ResultCommand, Results> 
 
         results.setCommentColor(source.getCommentColor());
         results.setFootNote(source.getFootNote());
-        results.setLogTime(source.getLogTime());
+        results.setDateTransaction(source.getLogTime());
         results.setSignatoryColor(source.getSignatoryColor());
 
         if(source.getUserId()!=null){
-            Scientists scientists=new Scientists();
+            AppUsers scientists=new AppUsers();
             scientists.setId(source.getUserId());
-            results.setUsers(scientists);
-            Scientists user = scientists.addCreatedResults(results);
+            //results.setAppUsers(scientists);
+            AppUsers user = scientists.addCreatedResults(results);
         }
 
         results.setResultNote(source.getResultNote());

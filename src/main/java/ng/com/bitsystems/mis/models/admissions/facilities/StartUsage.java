@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.admissions.inpatients.InpatientAdmission;
+import ng.com.bitsystems.mis.models.admissions.Admission;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -24,8 +24,8 @@ public class StartUsage extends BaseEntity {
     private Facilities facilities;
 
     @ManyToOne
-    @JoinColumn(name = "inpatientAdmission_id")
-    private InpatientAdmission inpatientAdmission;
+    @JoinColumn(name = "admission_id")
+    private Admission admission;
 
     private LocalDateTime startTime;
 

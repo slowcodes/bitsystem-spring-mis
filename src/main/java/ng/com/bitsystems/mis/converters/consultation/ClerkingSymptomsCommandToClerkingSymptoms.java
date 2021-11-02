@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.consultation.ClerkingSymptomsCommand;
 import ng.com.bitsystems.mis.models.consultation.ClerkingSymptoms;
 import ng.com.bitsystems.mis.models.consultation.Clerks;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ClerkingSymptomsCommandToClerkingSymptoms implements Converter<ClerkingSymptomsCommand, ClerkingSymptoms> {
     private SymptomsDirectoryCommandToSymptomsDirectory symptomsDirectoryCommandToSymptomsDirectory;
 

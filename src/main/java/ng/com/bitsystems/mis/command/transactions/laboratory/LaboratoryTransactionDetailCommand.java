@@ -3,29 +3,19 @@ package ng.com.bitsystems.mis.command.transactions.laboratory;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ng.com.bitsystems.mis.command.accounts.pricing.ServicePriceCodeCommand;
-import ng.com.bitsystems.mis.command.laboratories.ExperimentReadingCommand;
-
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import ng.com.bitsystems.mis.command.laboratories.LaboratoryInvestigationCommand;
+import ng.com.bitsystems.mis.command.laboratories.PackageCommand;
+import ng.com.bitsystems.mis.command.laboratories.QueueCommand;
+import ng.com.bitsystems.mis.command.transactions.ServicePriceCommand;
 
 @Setter
 @Getter
 @NoArgsConstructor
-
 public class LaboratoryTransactionDetailCommand {
     private Long id;
-    private Long laboratoryInvestigationId;
+    private LaboratoryInvestigationCommand laboratoryInvestigationCommand;
     private Long laboratoryTransactionId;
-    private ServicePriceCodeCommand servicePriceCodeCommand;
-    private Integer userDiscount;
-    private Integer useDiscountPrice;
-    private String comment;
-    private LocalDate timeOfTransaction;
-    private LocalDate dateOfTransaction;
-    private Integer reversal;
-    private Long packageId;
-    private Set<ExperimentReadingCommand> experimentReadingCommands = new HashSet<>();
-
+    private ServicePriceCommand servicePriceCommand;
+    private PackageCommand packageCommand;
+    private QueueCommand queueCommand;
 }

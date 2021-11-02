@@ -2,11 +2,13 @@ package ng.com.bitsystems.mis.converters.laboratory;
 
 import ng.com.bitsystems.mis.command.laboratories.LaboratoryInvestigationCommand;
 import ng.com.bitsystems.mis.converters.accounts.pricing.ServicePriceCodeToServicePriceCodeCommand;
-import ng.com.bitsystems.mis.models.laboratories.LaboratoryInvestigations;
+import ng.com.bitsystems.mis.models.laboratories.Investigations;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
-public class LaboratoryInvestigationToLaboratoryInvestigationCommand implements Converter<LaboratoryInvestigations, LaboratoryInvestigationCommand> {
+@Component
+public class LaboratoryInvestigationToLaboratoryInvestigationCommand implements Converter<Investigations, LaboratoryInvestigationCommand> {
 
     private ServicePriceCodeToServicePriceCodeCommand servicePriceCodeToServicePriceCodeCommand;
     private PackageToPackageCommand packageToPackageCommand;
@@ -22,7 +24,7 @@ public class LaboratoryInvestigationToLaboratoryInvestigationCommand implements 
 
     @Nullable
     @Override
-    public LaboratoryInvestigationCommand convert(LaboratoryInvestigations source) {
+    public LaboratoryInvestigationCommand convert(Investigations source) {
 
         if(source==null){
             return null;
@@ -45,10 +47,10 @@ public class LaboratoryInvestigationToLaboratoryInvestigationCommand implements 
 
         laboratoryInvestigationCommand.setInvestigationType(source.getInvestigationType());
 
-        if(source.getPackages()!=null && source.getPackages().size()>0)
-            source.getPackages().forEach(packages -> laboratoryInvestigationCommand.getPackageCommand().add(
-                    packageToPackageCommand.convert(packages)
-            ));
+//        if(source.getLabPackages()!=null && source.getLabPackages().size()>0)
+//            source.getLabPackages().forEach(packages -> laboratoryInvestigationCommand.getPackageCommand().add(
+//                    packageToPackageCommand.convert(packages)
+//            ));
 
         laboratoryInvestigationCommand.setServicePriceCodeCommand(servicePriceCodeToServicePriceCodeCommand.convert(source.getServicePriceCode()));
         laboratoryInvestigationCommand.setTitle(source.getTitle());

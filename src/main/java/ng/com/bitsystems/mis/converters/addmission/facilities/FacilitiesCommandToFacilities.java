@@ -6,7 +6,9 @@ import ng.com.bitsystems.mis.models.admissions.facilities.Facilities;
 import ng.com.bitsystems.mis.models.admissions.facilities.FacilityTypeCategory;
 import ng.com.bitsystems.mis.models.admissions.facilities.FacilityTypes;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FacilitiesCommandToFacilities implements Converter<FacilitiesCommand, Facilities> {
     private RateCommandToRate rateCommandToRate;
 

@@ -2,9 +2,11 @@ package ng.com.bitsystems.mis.converters.accounts;
 
 import ng.com.bitsystems.mis.command.accounts.ExpenseBooksCommand;
 import ng.com.bitsystems.mis.models.accounts.AccountBooks;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExpenseBookCommandToExpenseBook implements Converter<ExpenseBooksCommand, AccountBooks> {
 
     private ExpenseManagerCommandToExpenseManager expenseManagerCommandToExpenseManager;
@@ -21,10 +23,10 @@ public class ExpenseBookCommandToExpenseBook implements Converter<ExpenseBooksCo
         AccountBooks accountBooks = new AccountBooks();
         accountBooks.setId(source.getId());
         if(source.getCreatedById()!=null){
-            Users users = new Users();
-            users.setId(source.getCreatedById());
-            accountBooks.setCreatedBy(users);
-            Users usr = users.addExpenseBookCreator(accountBooks);
+            AppUsers appUsers = new AppUsers();
+            appUsers.setId(source.getCreatedById());
+            accountBooks.setCreatedBy(appUsers);
+            AppUsers usr = appUsers.addExpenseBookCreator(accountBooks);
         }
         accountBooks.setDescription(source.getDescription());
 

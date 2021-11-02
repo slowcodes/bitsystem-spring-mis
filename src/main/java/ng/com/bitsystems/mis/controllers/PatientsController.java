@@ -87,7 +87,7 @@ public class PatientsController {
     public String ewalletTransactions() {
         return "patient/ewallet_transactions.html";
 
-        // Date, amount, Service, Description, Action
+        // Date, amount, Services, Description, Action
     }
 
     @RequestMapping("/patients/family")

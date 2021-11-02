@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @MappedSuperclass
 public class Person extends BaseEntity {
-
+    @Column(name = "middle_name")
     private String middleName;
     @Column(name = "first_name")
     private String firstName;
@@ -33,7 +33,7 @@ public class Person extends BaseEntity {
     private LocalDateTime regDay;
     @Column(name = "status")
     private String status;
-    @Column(name = "lastLoginDate")
+    @Column(name = "lastLoginDate", columnDefinition = "DATE DEFAULT CURRENT_DATE")
     private LocalDate lastLoginDay;
 
 

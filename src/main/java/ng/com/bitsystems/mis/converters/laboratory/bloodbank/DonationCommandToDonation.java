@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.laboratories.bloodbank.DonationCommand;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Donations;
 import ng.com.bitsystems.mis.models.laboratories.bloodbank.Storage;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DonationCommandToDonation implements Converter<DonationCommand, Donations> {
     private ClearedQueueCommandToClearedQueue clearedQueueCommandToClearedQueue;
 

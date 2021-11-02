@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.BaseEntity;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,7 +22,7 @@ public class ReferralSettlements extends BaseEntity {
 
      @ManyToOne
      @JoinColumn(name = "user_id")
-     private Users preparedBy;
+     private AppUsers preparedBy;
 
      private LocalDate datePrepared;
      private Double commission;

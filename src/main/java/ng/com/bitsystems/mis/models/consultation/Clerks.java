@@ -3,7 +3,7 @@ package ng.com.bitsystems.mis.models.consultation;
 import lombok.Getter;
 import lombok.Setter;
 import ng.com.bitsystems.mis.models.patients.Patients;
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,7 +22,7 @@ public class Clerks extends InitClinicals {
 
      @ManyToOne
      @JoinColumn(name ="user_id")
-     private Users users;
+     private AppUsers appUsers;
 
      private LocalDate consultationDate;
 

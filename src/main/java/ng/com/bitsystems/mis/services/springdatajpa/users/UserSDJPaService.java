@@ -1,6 +1,6 @@
 package ng.com.bitsystems.mis.services.springdatajpa.users;
 
-import ng.com.bitsystems.mis.models.users.Users;
+import ng.com.bitsystems.mis.models.users.AppUsers;
 import ng.com.bitsystems.mis.repositories.users.UsersRepository;
 import ng.com.bitsystems.mis.services.users.UserService;
 import org.springframework.stereotype.Service;
@@ -17,24 +17,24 @@ public class UserSDJPaService implements UserService {
     }
 
     @Override
-    public Set<Users> findAll() {
-        Set<Users> users= new HashSet<>();
+    public Set<AppUsers> findAll() {
+        Set<AppUsers> users= new HashSet<>();
         usersRepository.findAll().forEach(users::add);
         return users;
     }
 
     @Override
-    public Users findByID(Long aLong) {
+    public AppUsers findByID(Long aLong) {
         return usersRepository.findById(aLong).get();
     }
 
     @Override
-    public Users add(Users object) {
+    public AppUsers add(AppUsers object) {
         return usersRepository.save(object);
     }
 
     @Override
-    public void delete(Users object) {
+    public void delete(AppUsers object) {
         usersRepository.delete(object);
     }
 
@@ -44,7 +44,7 @@ public class UserSDJPaService implements UserService {
     }
 
     @Override
-    public void addCommand(Users object) {
+    public void addCommand(AppUsers object) {
 
     }
 }

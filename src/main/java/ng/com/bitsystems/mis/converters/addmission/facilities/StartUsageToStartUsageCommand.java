@@ -3,7 +3,9 @@ package ng.com.bitsystems.mis.converters.addmission.facilities;
 import ng.com.bitsystems.mis.command.admissions.facilitties.StartUsageCommand;
 import ng.com.bitsystems.mis.models.admissions.facilities.StartUsage;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StartUsageToStartUsageCommand implements Converter<StartUsage, StartUsageCommand> {
     private FacilitiesToFacilitiesCommand facilitiesToFacilitiesCommand;
 
@@ -20,8 +22,8 @@ public class StartUsageToStartUsageCommand implements Converter<StartUsage, Star
         startUsageCommand.setId(source.getId());
         startUsageCommand.setFacilitiesCommand(facilitiesToFacilitiesCommand.convert(source.getFacilities()));
         startUsageCommand.setStartTime(source.getStartTime());
-        if(source.getInpatientAdmission()!=null){
-            startUsageCommand.setInpatientAdmissionCommandId(source.getInpatientAdmission().getId());
+        if(source.getAdmission()!=null){
+            startUsageCommand.setInpatientAdmissionCommandId(source.getAdmission().getId());
         }
         return startUsageCommand;
     }

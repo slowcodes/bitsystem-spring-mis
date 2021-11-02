@@ -4,7 +4,9 @@ import ng.com.bitsystems.mis.command.patients.PatientDrugAllergyCommand;
 import ng.com.bitsystems.mis.models.patients.PatientDrugAllergy;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DrugAllergyToDrugAllergyCommand implements Converter<PatientDrugAllergy, PatientDrugAllergyCommand> {
 
     @Nullable
